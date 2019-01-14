@@ -20,3 +20,7 @@ This project is currently in the design phase and is undergoing preliminary deve
 - Planning and Scheduling component
 - Responsible for collaborative organization features, including Projects, Planning, and Scheduling.
 - Will aid in finding available times and places
+#### Trade Together
+- Depends on Better Together Core
+- Asset management and trade component
+- Responsible for managing inventory of assets (items), as well as trand among members and potentially a storefront component at some point
