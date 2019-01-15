@@ -24,3 +24,6 @@ This project is currently in the design phase and is undergoing preliminary deve
 - Depends on Better Together Core
 - Asset management and trade component
 - Responsible for managing inventory of assets (items), as well as trand among members and potentially a storefront component at some point
+#### Decide Together
+- Depends on Better Together Core
+- Decision making and history component
