@@ -11,7 +11,8 @@ ENV BUNDLE_GEMFILE=/better_together/Gemfile \
   BUNDLE_PATH=/bundler \
   GEM_PATH=/bundler \
   GEM_HOME=/bundler
-
+  
+RUN gem install bundler
 RUN bundle install
 COPY . /better_together
 
