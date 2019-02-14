@@ -5,14 +5,16 @@ WORKDIR /better_together
 COPY Gemfile /better_together/Gemfile
 COPY Gemfile.lock /better_together/Gemfile.lock
 
+# RUN gem install bundler
+# RUN gem install nokogiri
+# RUN gem install mini_racer -v '0.1.15'
+
 # Use a persistent volume for the gems installed by the bundler
 ENV BUNDLE_GEMFILE=/better_together/Gemfile \
   BUNDLE_JOBS=2 \
   BUNDLE_PATH=/bundler \
   GEM_PATH=/bundler \
   GEM_HOME=/bundler
-  
-RUN gem install bundler
 RUN bundle install
 COPY . /better_together
 

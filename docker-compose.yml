@@ -3,6 +3,7 @@ version: '3'
 volumes:
   db-data:
   app-data:
+  bundler-data:
 
 services:
   app:
@@ -15,13 +16,14 @@ services:
       - "3000:3000"
     depends_on:
       - db
+      - bundler
   db:
     container_name: better_together-db
-    image: postgres:latest
+    image: mdillon/postgis:latest
     volumes:
       - db-data:/var/lib/postgresql/data
   bundler:
     container_name: better_together-bundler
     image: busybox
     volumes:
-      - /bundler
+      - bundler-data:/bundler
