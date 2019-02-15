@@ -1,4 +1,7 @@
 # Better Together
+
+[![Build Status](https://travis-ci.com/better-together-org/better-together.svg?branch=master)](https://travis-ci.com/better-together-org/better-together)
+
 Better Together is a social platform for all. It is made up of a number of modular repositories that may be used on their own for a subset of features.
 
 This project is currently in the design phase and is undergoing preliminary development. We are currently looking for people and organizations who are interested in contributing to this project.
