@@ -17,10 +17,10 @@
 default: &default
   adapter: postgresql
   encoding: unicode
+  # host: localhost
   host: db
   username: postgres
-  password:
-  pool: 5
+  password: 
   # For details on connection pooling, see Rails configuration guide
   # http://guides.rubyonrails.org/configuring.html#database-pooling
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
@@ -86,4 +86,4 @@ production:
   <<: *default
   database: better_together_production
   username: better_together
-  password: <%= ENV['JOATU_DATABASE_PASSWORD'] %>
+  password: <%= ENV['BETTER_TOGETHER_DATABASE_PASSWORD'] %>

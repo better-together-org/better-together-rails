@@ -2,8 +2,6 @@ version: '3'
 
 volumes:
   db-data:
-  app-data:
-  bundler-data:
 
 services:
   app:
@@ -11,7 +9,7 @@ services:
     build: .
     command: bash -c "rm -f tmp/pids/server.pid && bundle exec rails s -p 3000 -b '0.0.0.0'"
     volumes:
-      - app-data:/better_together
+      - .:/better_together
     ports:
       - "3000:3000"
     depends_on:
@@ -26,4 +24,4 @@ services:
     container_name: better_together-bundler
     image: busybox
     volumes:
-      - bundler-data:/bundler
+      - .:/bundler
