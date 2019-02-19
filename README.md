@@ -2,9 +2,14 @@
 
 [![Build Status](https://travis-ci.com/better-together-org/better-together.svg?branch=master)](https://travis-ci.com/better-together-org/better-together)
 
-Better Together is a social platform for all. It is made up of a number of modular repositories that may be used on their own for a subset of features.
+Better Together is a cooperative community building organization and platform. 
 
-This project is currently in the design phase and is undergoing preliminary development. We are currently looking for people and organizations who are interested in contributing to this project.
+This project is currently in the design phase and is undergoing preliminary development. We are currently looking for people and organizations to join and help build the platform.
+
+The Better Together platform can be deployed as a standalone application, or its independent gems can be independently integrated into third-party applications for a subset of its features.
+
+## Cooperative Organization Structure
+Better Together was founded to collaboratively design, build and maintain a community platform owned and operated by its members.
 
 ## Project Architecture
 ### Better Together
@@ -12,7 +17,7 @@ This project is currently in the design phase and is undergoing preliminary deve
 - Access to all the platform features from all specific domain applications
 ### Better Together Core
 - Responsible for the core components and features shared by all domain-specific repositories
-- Includes `Person` and `Group` entities, and provides the ability to invite to and join certain entities, such as groups.
+- Includes `Person`, `Group`, and `Membership`, entities.
 ### Domain-specific repositories
 #### Communicate Together
 - Depends on Better Together Core
@@ -26,7 +31,7 @@ This project is currently in the design phase and is undergoing preliminary deve
 #### Trade Together
 - Depends on Better Together Core
 - Asset management and trade component
-- Responsible for managing inventory of assets (items), as well as trand among members and potentially a storefront component at some point
+- Responsible for managing inventory of assets (items), as well as trade among members
 #### Decide Together
 - Depends on Better Together Core
 - Decision making and history component
