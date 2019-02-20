@@ -6,8 +6,6 @@ Better Together is a cooperative community building organization and platform.
 
 This project is currently in the design phase and is undergoing preliminary development. We are currently looking for people and organizations to join and help build the platform.
 
-The Better Together platform can be deployed as a standalone application, or its independent gems can be integrated into third-party applications for a subset of its features.
-
 ## Cooperative Organization Structure
 Better Together was founded to collaboratively design, build and maintain a community platform owned and operated by its members.
 
@@ -18,26 +16,34 @@ Better together is proud to partner with its member organizations to sponsor the
 <a href="https://citsci.geog.mcgill.ca/" target="_blank" title="DRAW: Data Rescue Archives and Weather"><img width="300" src="app/assets/images/partners/DRAW.png" alt="DRAW: Data Rescue Archives and Weather"/></a>
 
 ## Project Architecture
+The Better Together platform is designed to be a modular system. It can either be deployed as a standalone application for full functionality, or one or more of its independent gems can be integrated into third-party applications for a subset of its features.
+
 ### Better Together
 - Main wrapper application for the platform
 - Access to all the platform features from all specific domain applications
+
 ### Better Together Core
-- Responsible for the core components and features shared by all domain-specific repositories
-- Includes `Person`, `Group`, and `Membership`, entities.
-### Domain-specific repositories
+- Includes the core components and features shared by all domain-specific repositories
+- Provides mechanisms to both join and invite people to groups or other entities
+- Includes `Person`, `Group`, `Membership`, and `Invitation` entities
+
+### Feature-specific plugins
 #### Communicate Together
 - Depends on Better Together Core
 - Communication and social interaction component
 - Responsible for information publishing (Pages), discussions (Discussions, Posts, Comments)
+
 #### Organize Together
 - Depends on Better Together Core
 - Planning and Scheduling component
-- Responsible for collaborative organization features, including Projects, Planning, and Scheduling.
+- Responsible for collaborative organization features, including Projects, Planning, and Scheduling
 - Will aid in finding available times and places
+
 #### Trade Together
 - Depends on Better Together Core
 - Asset management and trade component
 - Responsible for managing inventory of assets (items), as well as trade among members
+
 #### Decide Together
 - Depends on Better Together Core
 - Decision making and history component
