@@ -14,10 +14,9 @@ Better Together was founded to collaboratively design, build and maintain a comm
 ## Partner Organizations
 Better together is proud to partner with its member organizations to sponsor the development of the platform. If you would like to support the platform by becoming a development partner, please get in touch.
 
-<div style="text-align: center;">
-  <img src="app/assets/images/partners/joatu.png" style="display: inline-block; width: 300px; margin: 0 auto;" alt="Joatu">
-  <img src="app/assets/images/partners/DRAW.png" style="display: inline-block; width: 300px; margin: 0 auto;" alt="DRAW: Data Rescue Archives and Weather">
-</div>
+<a href="http://alpha.joatu.org/" target="_blank" title="Joatu"><img width="300" src="app/assets/images/partners/joatu.png" alt="Joatu" /></a>
+
+<a href="https://citsci.geog.mcgill.ca/" target="_blank" title="DRAW: Data Rescue Archives and Weather"><img width="300" src="app/assets/images/partners/DRAW.png" alt="DRAW: Data Rescue Archives and Weather"/></a>
 
 ## Project Architecture
 ### Better Together
