@@ -11,6 +11,14 @@ The Better Together platform can be deployed as a standalone application, or its
 ## Cooperative Organization Structure
 Better Together was founded to collaboratively design, build and maintain a community platform owned and operated by its members.
 
+## Partner Organizations
+Better together is proud to partner with its member organizations to sponsor the development of the platform. If you would like to support the platform by becoming a development partner, please get in touch.
+
+<div style="text-align: center;">
+  <img src="app/assets/images/partners/joatu.png" style="display: inline-block; width: 300px; margin: 0 auto;" alt="Joatu">
+  <img src="app/assets/images/partners/DRAW.png" style="display: inline-block; width: 300px; margin: 0 auto;" alt="DRAW: Data Rescue Archives and Weather">
+</div>
+
 ## Project Architecture
 ### Better Together
 - Main wrapper application for the platform
