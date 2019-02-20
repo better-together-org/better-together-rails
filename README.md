@@ -6,7 +6,7 @@ Better Together is a cooperative community building organization and platform.
 
 This project is currently in the design phase and is undergoing preliminary development. We are currently looking for people and organizations to join and help build the platform.
 
-The Better Together platform can be deployed as a standalone application, or its independent gems can be independently integrated into third-party applications for a subset of its features.
+The Better Together platform can be deployed as a standalone application, or its independent gems can be integrated into third-party applications for a subset of its features.
 
 ## Cooperative Organization Structure
 Better Together was founded to collaboratively design, build and maintain a community platform owned and operated by its members.
