@@ -1,4 +1,4 @@
-FROM ruby:2.5
+FROM ruby:2.5.5
 RUN apt-get update -qq && apt-get install -y build-essential nodejs postgresql-client libssl-dev
 RUN mkdir /better_together
 WORKDIR /better_together
@@ -15,7 +15,7 @@ ENV BUNDLE_GEMFILE=/better_together/Gemfile \
   BUNDLE_PATH=/bundler \
   GEM_PATH=/bundler \
   GEM_HOME=/bundler
-RUN bundle install
+RUN bundle update
 COPY . /better_together
 
 # Add a script to be executed every time the container starts.
