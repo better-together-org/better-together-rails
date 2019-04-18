@@ -16,6 +16,7 @@ before_install:
   # - docker-compose up -d bundle
   # - docker-compose up -d db
   - docker-compose build
+  - gem install bundler:1.17.2
 script:
   - docker-compose run app bundle
   - docker-compose run app bundle exec rake db:setup
