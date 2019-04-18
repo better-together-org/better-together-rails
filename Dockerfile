@@ -15,7 +15,7 @@ ENV BUNDLE_GEMFILE=/better_together/Gemfile \
   BUNDLE_PATH=/bundler \
   GEM_PATH=/bundler \
   GEM_HOME=/bundler
-RUN bundle update
+RUN bundle install
 COPY . /better_together
 
 # Add a script to be executed every time the container starts.
