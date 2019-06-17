@@ -28,7 +28,7 @@ The Better Together platform is designed to be a modular system. It can either b
 ### Better Together Community Engine
 - Access to all the platform features from all specific domain applications
 
-### Gather Together
+#### Gather Together
 - Provides mechanisms to both join and invite people to groups or other entities
 - People can create, join, and invite others to groups.
 
