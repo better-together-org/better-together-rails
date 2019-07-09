@@ -1,6 +1,7 @@
 # Better Together
 
 [![Build Status](https://travis-ci.com/better-together-org/better-together.svg?branch=master)](https://travis-ci.com/better-together-org/better-together)
+[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2Fbetter-together-org%2Fbetter-together.svg?type=shield)](https://app.fossa.io/projects/git%2Bgithub.com%2Fbetter-together-org%2Fbetter-together?ref=badge_shield)
 
 [Join Us!](mailto:better.together.coop@gmail.com?subject=Invitation) | [LinkedIn](https://www.linkedin.com/company/better-together-coop/)
 
@@ -47,3 +48,7 @@ The Better Together platform is designed to be a modular system. It can either b
 
 #### Decide Together
 - Decision making and history component
+
+
+## License
+[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2Fbetter-together-org%2Fbetter-together.svg?type=large)](https://app.fossa.io/projects/git%2Bgithub.com%2Fbetter-together-org%2Fbetter-together?ref=badge_large)
