@@ -91,7 +91,7 @@ GEM
     ffi (1.13.1)
     friendly_id (5.2.5)
       activerecord (>= 4.0.0)
-    fuubar (2.3.2)
+    fuubar (2.5.0)
       rspec-core (~> 3.0)
       ruby-progressbar (~> 1.4)
     globalid (0.4.2)
