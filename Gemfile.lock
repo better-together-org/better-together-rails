@@ -296,7 +296,6 @@ DEPENDENCIES
   puma (~> 4.3)
   rack-cors
   rails (~> 5.2.4.3)
-  redis
   rspec
   rspec-rails
   rubocop
