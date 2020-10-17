@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/better-together-org/community-engine-rails.git
-  revision: a1a676b121d80f25e5f5011661aa8f3bd75c9986
+  revision: 58c838f1af8cf69f44329ea441d5a3cddcdf615f
   branch: production
   specs:
     better_together (0.1.0)
@@ -109,7 +109,7 @@ GEM
     listen (3.2.1)
       rb-fsevent (~> 0.10, >= 0.10.3)
       rb-inotify (~> 0.9, >= 0.9.10)
-    loofah (2.6.0)
+    loofah (2.7.0)
       crass (~> 1.0.2)
       nokogiri (>= 1.5.9)
     mail (2.7.1)
@@ -238,7 +238,7 @@ GEM
     sprockets (4.0.2)
       concurrent-ruby (~> 1.0)
       rack (> 1, < 3)
-    sprockets-rails (3.2.1)
+    sprockets-rails (3.2.2)
       actionpack (>= 4.0)
       activesupport (>= 4.0)
       sprockets (>= 3.0.0)
