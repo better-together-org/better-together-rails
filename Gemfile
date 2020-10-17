@@ -14,7 +14,7 @@ gem 'better_together', '~> 0.1.0',
 
 # gem 'nokogiri', '~> 1.10'
 # Use Puma as the app server
-gem 'puma', '~> 4.3'
+gem 'puma', '~> 5.0'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 6.0'
 # Use Uglifier as compressor for JavaScript assets
@@ -27,7 +27,7 @@ gem 'turbolinks', '~> 5'
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 4.0'
 # Use ActiveModel has_secure_password
-gem 'bcrypt', '~> 3.1.15'
+gem 'bcrypt', '~> 3.1.16'
 
 # Use ActiveStorage variant
 # gem 'mini_magick', '~> 4.8'
