@@ -1,27 +1,48 @@
-version: '3'
+version: '3.6'
 
 volumes:
-  db-data:
+  bt-api-bundler-gems:
+  bt-api-db-data:
+  bt-api-redis:
+
+x-env-info: &env-info
+  env_file:
+    - './docker-env.conf'
+
+x-app-shared: &app-shared
+  <<: *env-info
+  image: better-together/api-rails:latest
+  volumes:
+    - .:/bt-api
+    - bt-api-bundler-gems:/usr/local/bundle/
+  depends_on:
+    - db
+    - redis
 
 services:
-  app:
-    container_name: better_together-app
+  app: &app
+    <<: *app-shared
+    container_name: better-together-api-app
     build: .
     command: bash -c "rm -f tmp/pids/server.pid && bundle exec rails s -p 3000 -b '0.0.0.0'"
-    volumes:
-      - .:/better_together
     ports:
       - "3000:3000"
-    depends_on:
-      - db
-      - bundler
   db:
-    container_name: better_together-db
+    container_name: better-together-db
     image: mdillon/postgis:latest
     volumes:
-      - db-data:/var/lib/postgresql/data
-  bundler:
-    container_name: better_together-bundler
-    image: busybox
+      - bt-api-db-data:/var/lib/postgresql/data
+
+  sidekiq:
+    <<: *app-shared
+    container_name: bt-api-sidekiq
+    command: bundle exec sidekiq -C config/sidekiq.yml
+    depends_on:
+      - app
+
+  redis:
+    image: 'redis:4.0-alpine'
+    container_name: bt-api-redis
+    command: redis-server
     volumes:
-      - .:/bundler
+      - bt-api-redis:/data

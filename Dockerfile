@@ -1,28 +1,19 @@
 FROM ruby:2.5.5
-RUN apt-get update -qq && apt-get install -y build-essential nodejs postgresql-client libssl-dev
-RUN mkdir /better_together
-WORKDIR /better_together
-COPY Gemfile /better_together/Gemfile
-COPY Gemfile.lock /better_together/Gemfile.lock
 
-# RUN gem install bundler
-# RUN gem install nokogiri
-# RUN gem install mini_racer -v '0.1.15'
+RUN apt-get update -qq \
+  && apt-get install -y build-essential postgresql-client libpq-dev nodejs libssl-dev apt-transport-https ca-certificates
 
-# Use a persistent volume for the gems installed by the bundler
-ENV BUNDLE_GEMFILE=/better_together/Gemfile \
-  BUNDLE_JOBS=2 \
-  BUNDLE_PATH=/bundler \
-  GEM_PATH=/bundler \
-  GEM_HOME=/bundler
-RUN bundle install
-COPY . /better_together
+RUN curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add - \
+  && echo "deb https://dl.yarnpkg.com/debian/ stable main" | tee /etc/apt/sources.list.d/yarn.list
 
-# Add a script to be executed every time the container starts.
-#COPY entrypoint.sh /usr/bin/
-#RUN chmod +x /usr/bin/entrypoint.sh
-#NTRYPOINT ["entrypoint.sh"]
-#EXPOSE 3000
+RUN apt-get update -qq && apt-get install -y yarn
 
-# Start the main process.
-#CMD ["rails", "server", "-b", "0.0.0.0"]
+RUN mkdir /bt-api
+WORKDIR /bt-api
+COPY Gemfile /bt-api/Gemfile
+COPY Gemfile.lock /bt-api/Gemfile.lock
+
+RUN gem uninstall bundler
+RUN gem install bundler:2.0.2
+
+COPY . /bt-api
