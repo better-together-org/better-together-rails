@@ -129,10 +129,9 @@ GEM
     io-like (0.3.1)
     jwt (2.2.1)
     libv8 (8.4.255.0)
-    listen (3.1.5)
-      rb-fsevent (~> 0.9, >= 0.9.4)
-      rb-inotify (~> 0.9, >= 0.9.7)
-      ruby_dep (~> 1.2)
+    listen (3.2.1)
+      rb-fsevent (~> 0.10, >= 0.10.3)
+      rb-inotify (~> 0.9, >= 0.9.10)
     loofah (2.6.0)
       crass (~> 1.0.2)
       nokogiri (>= 1.5.9)
@@ -244,19 +243,17 @@ GEM
     rubocop-rspec (1.42.0)
       rubocop (>= 0.87.0)
     ruby-progressbar (1.10.1)
-    ruby_dep (1.5.0)
     rubyzip (2.3.0)
-    sass (3.7.4)
-      sass-listen (~> 4.0.0)
-    sass-listen (4.0.0)
-      rb-fsevent (~> 0.9, >= 0.9.4)
-      rb-inotify (~> 0.9, >= 0.9.7)
-    sass-rails (5.1.0)
-      railties (>= 5.2.0)
-      sass (~> 3.1)
-      sprockets (>= 2.8, < 4.0)
-      sprockets-rails (>= 2.0, < 4.0)
-      tilt (>= 1.1, < 3)
+    sass-rails (6.0.0)
+      sassc-rails (~> 2.1, >= 2.1.1)
+    sassc (2.4.0)
+      ffi (~> 1.9)
+    sassc-rails (2.1.2)
+      railties (>= 4.0.0)
+      sassc (>= 2.0)
+      sprockets (> 3.0)
+      sprockets-rails
+      tilt
     selenium-webdriver (3.142.7)
       childprocess (>= 0.5, < 4.0)
       rubyzip (>= 1.2.2)
@@ -272,7 +269,7 @@ GEM
     spring-watcher-listen (2.0.1)
       listen (>= 2.7, < 4.0)
       spring (>= 1.2, < 3.0)
-    sprockets (3.7.2)
+    sprockets (4.0.2)
       concurrent-ruby (~> 1.0)
       rack (> 1, < 3)
     sprockets-rails (3.2.1)
@@ -324,7 +321,7 @@ DEPENDENCIES
   factory_bot_rails
   faker
   fuubar
-  listen (>= 3.0.5, < 3.2)
+  listen (>= 3.0.5, < 3.3)
   mini_racer
   pg (>= 0.18, < 2.0)
   pry-rails
@@ -335,7 +332,7 @@ DEPENDENCIES
   rspec-rails
   rubocop
   rubocop-rspec
-  sass-rails (~> 5.0)
+  sass-rails (~> 6.0)
   selenium-webdriver
   shoulda-callback-matchers
   shoulda-matchers
