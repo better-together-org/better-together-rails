@@ -1,4 +1,4 @@
-FROM ruby:2.5.5
+FROM ruby:2.7.1
 
 RUN apt-get update -qq \
   && apt-get install -y build-essential postgresql-client libpq-dev nodejs libssl-dev apt-transport-https ca-certificates
