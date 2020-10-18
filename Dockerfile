@@ -13,7 +13,4 @@ WORKDIR /bt-api
 COPY Gemfile /bt-api/Gemfile
 COPY Gemfile.lock /bt-api/Gemfile.lock
 
-RUN gem uninstall bundler
-RUN gem install bundler:2.0.2
-
 COPY . /bt-api
