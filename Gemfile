@@ -14,7 +14,7 @@ gem 'better_together', '~> 0.1.0',
 
 # gem 'nokogiri', '~> 1.10'
 # Use Puma as the app server
-gem 'puma', '~> 5.0'
+gem 'puma', '~> 5.1'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 6.0'
 # Use Uglifier as compressor for JavaScript assets
