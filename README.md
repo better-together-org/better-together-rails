@@ -1,8 +1,8 @@
 # Better Together
 
-[![Build Status](https://travis-ci.com/better-together-org/better-together.svg?branch=master)](https://travis-ci.com/better-together-org/better-together)
+[![Build Status](https://travis-ci.com/better-together-org/better-together-api-rails.svg?branch=production)](https://travis-ci.com/better-together-org/better-together-api-rails)
 
-[Join Us!](mailto:better.together.coop@gmail.com?subject=Invitation) | [LinkedIn](https://www.linkedin.com/company/better-together-coop/)
+[Join Us!](mailto:community@bettertogethersolutions.com?subject=Invitation) | [LinkedIn](https://www.linkedin.com/company/better-together-coop/)
 
 # We Are Better Together
 
