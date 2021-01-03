@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/better-together-org/community-engine-rails.git
-  revision: a357d1e47c0920863c1085762e36d76642ec38a4
+  revision: f9cdfec504247a8a10c7e2bb060de98538b2b686
   branch: production
   specs:
     better_together (0.1.0)
@@ -107,8 +107,8 @@ GEM
     ffi (1.14.2)
     friendly_id (5.3.0)
       activerecord (>= 4.0.0)
-    friendly_id-mobility (0.5.4)
-      friendly_id (>= 5.0.0, <= 5.3.0)
+    friendly_id-mobility (0.5.5)
+      friendly_id (>= 5.0.0, <= 5.4.0)
       mobility (>= 0.5.1, < 1.0)
     fuubar (2.5.1)
       rspec-core (~> 3.0)
