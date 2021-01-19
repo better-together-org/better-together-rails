@@ -25,7 +25,8 @@ gem 'mini_racer', platforms: :ruby
 # Turbolinks makes navigating your web application faster. Read more: https://github.com/turbolinks/turbolinks
 gem 'turbolinks', '~> 5'
 # Use Redis adapter to run Action Cable in production
-# gem 'redis', '~> 4.0'
+gem 'redis', '~> 4.2'
+gem 'sidekiq', '~> 6.1.2'
 # Use ActiveModel has_secure_password
 gem 'bcrypt', '~> 3.1.16'
 
