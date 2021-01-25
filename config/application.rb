@@ -15,5 +15,23 @@ module BetterTogether
     # Application configuration can go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded after loading
     # the framework and any gems in your application.
+
+    config.action_mailer.smtp_settings = {
+      address: 'smtp.sendgrid.net',
+      port: '587',
+      authentication: :plain,
+      user_name: ENV.fetch('SENDGRID_USERNAME', ''),
+      password: ENV.fetch('SENDGRID_PASSWORD', ''),
+      domain: 'heroku.com',
+      enable_starttls_auto: true
+    }
+
+    Rails.application.routes.default_url_options = {
+      host: ENV.fetch('APP_HOST', 'http://localhost:3000')
+    }
+
+    config.action_mailer.default_url_options = {
+      host: ENV.fetch('APP_HOST', 'http://localhost:3000')
+    }
   end
 end
