@@ -33,7 +33,7 @@ gem 'mini_racer', platforms: :ruby
 gem 'turbolinks', '~> 5'
 # Use Redis adapter to run Action Cable in production
 gem 'redis', '~> 4.2'
-gem 'sidekiq', '~> 6.1.3'
+gem 'sidekiq', '~> 6.2.0'
 # Use ActiveModel has_secure_password
 gem 'bcrypt', '~> 3.1.16'
 
