@@ -21,7 +21,7 @@ gem 'pundit-resources', '~> 1.1.3',
 
 # gem 'nokogiri', '~> 1.10'
 # Use Puma as the app server
-gem 'puma', '~> 5.2'
+gem 'puma', '~> 5.5'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 6.0'
 # Use Uglifier as compressor for JavaScript assets
@@ -33,7 +33,7 @@ gem 'mini_racer', platforms: :ruby
 gem 'turbolinks', '~> 5'
 # Use Redis adapter to run Action Cable in production
 gem 'redis', '~> 4.2'
-gem 'sidekiq', '~> 6.1.3'
+gem 'sidekiq', '~> 6.2.1'
 # Use ActiveModel has_secure_password
 gem 'bcrypt', '~> 3.1.16'
 
