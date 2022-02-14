@@ -142,7 +142,7 @@ GEM
       railties (>= 5.0.0)
     faker (2.18.0)
       i18n (>= 1.6, < 2)
-    ffi (1.14.2)
+    ffi (1.15.5)
     friendly_id (5.4.0)
       activerecord (>= 4.0.0)
     friendly_id-mobility (0.5.5)
@@ -164,7 +164,7 @@ GEM
       railties (>= 4.1)
     jwt (2.3.0)
     libv8 (8.4.255.0)
-    listen (3.4.1)
+    listen (3.7.1)
       rb-fsevent (~> 0.10, >= 0.10.3)
       rb-inotify (~> 0.9, >= 0.9.10)
     loofah (2.14.0)
@@ -237,7 +237,7 @@ GEM
       thor (>= 0.20.3, < 2.0)
     rainbow (3.0.0)
     rake (13.0.6)
-    rb-fsevent (0.10.4)
+    rb-fsevent (0.11.1)
     rb-inotify (0.10.1)
       ffi (~> 1.0)
     redis (4.2.5)
@@ -374,7 +374,7 @@ DEPENDENCIES
   factory_bot_rails
   faker
   fuubar
-  listen (>= 3.0.5, < 3.5)
+  listen (>= 3.0.5, < 3.8)
   mini_racer
   pg (>= 0.18, < 2.0)
   pry-rails
