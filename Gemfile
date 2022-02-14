@@ -4,7 +4,7 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 ruby '2.7.1'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '~> 6.0.3.3'
+gem 'rails', '~> 6.0.4'
 # Use postgresql as the database for Active Record
 gem 'pg', '>= 0.18', '< 2.0'
 
@@ -21,7 +21,7 @@ gem 'pundit-resources', '~> 1.1.3',
 
 # gem 'nokogiri', '~> 1.10'
 # Use Puma as the app server
-gem 'puma', '~> 5.2'
+gem 'puma', '~> 5.6'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 6.0'
 # Use Uglifier as compressor for JavaScript assets
@@ -33,7 +33,7 @@ gem 'mini_racer', platforms: :ruby
 gem 'turbolinks', '~> 5'
 # Use Redis adapter to run Action Cable in production
 gem 'redis', '~> 4.2'
-gem 'sidekiq', '~> 6.1.3'
+gem 'sidekiq', '~> 6.4.0'
 # Use ActiveModel has_secure_password
 gem 'bcrypt', '~> 3.1.16'
 
