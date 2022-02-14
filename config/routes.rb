@@ -8,4 +8,5 @@ Rails.application.routes.draw do
   authenticate :user do
     mount Sidekiq::Web => '/sidekiq'
   end
+  mount BetterTogether::Engine => "/"
 end

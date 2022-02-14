@@ -14,6 +14,7 @@ x-app-shared: &app-shared
   image: better-together/api-rails:latest
   volumes:
     - .:/bt-api
+    # - ../community-engine/rails:/community-engine
     - bt-api-bundler-gems:/usr/local/bundle/
   depends_on:
     - db

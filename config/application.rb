@@ -36,6 +36,10 @@ module BetterTogether
       enable_starttls_auto: true
     }
 
+    Rails.application.routes.default_url_options = {
+      host: ENV.fetch('APP_HOST', 'http://localhost:3000')
+    }
+
     config.action_mailer.default_url_options = {
       host: ENV.fetch('APP_HOST', 'http://localhost:3000')
     }
