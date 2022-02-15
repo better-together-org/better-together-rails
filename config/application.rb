@@ -22,7 +22,10 @@ module BetterTogether
       authentication: :plain,
       user_name: ENV.fetch('SENDGRID_USERNAME', ''),
       password: ENV.fetch('SENDGRID_PASSWORD', ''),
-      domain: 'heroku.com',
+      domain: ENV.fetch(
+        'SMTP_DOMAIN',
+        ENV.fetch('APP_HOST', 'http://localhost:3000')
+      ),
       enable_starttls_auto: true
     }
 
