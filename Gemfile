@@ -16,8 +16,9 @@ gem 'better_together', '~> 0.3.0',
 # gem 'better_together', '~> 0.2.2',
 #     path: '/community-engine'
 
-gem 'pundit-resources', '~> 1.1.3',
+gem 'pundit-resources', '~> 1.1.4',
     github: 'better-together-org/pundit-resources'
+    # path: '../pundit-resources'
 
 # gem 'nokogiri', '~> 1.10'
 # Use Puma as the app server
