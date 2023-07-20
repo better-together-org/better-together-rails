@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/better-together-org/community-engine-rails.git
-  revision: c4ca21c919465ebf135732453154c75fdf916465
+  revision: 3f8e91ab1967c3b6c954cd0fdd32d4ea739c3936
   branch: production
   specs:
     better_together (0.3.0)
@@ -94,7 +94,7 @@ GEM
       i18n (>= 1.6, < 2)
       minitest (>= 5.1)
       tzinfo (~> 2.0)
-    addressable (2.8.1)
+    addressable (2.8.4)
       public_suffix (>= 2.0.2, < 6.0)
     archive-zip (0.12.0)
       io-like (~> 0.3.0)
