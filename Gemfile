@@ -22,7 +22,7 @@ gem 'pundit-resources', '~> 1.1.4',
 
 # gem 'nokogiri', '~> 1.10'
 # Use Puma as the app server
-gem 'puma', '~> 6.3'
+gem 'puma', '~> 6.4'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 6.0'
 # Use Uglifier as compressor for JavaScript assets
