@@ -3,26 +3,27 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '2.7.1'
 
-gem 'rails', '~> 6.0.4'
 gem 'rack-cors'
-
+# Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
+gem 'rails', '~> 7.0.8'
 # Use postgresql as the database for Active Record
 gem 'pg', '>= 0.18', '< 2.0'
 
-gem 'better_together', '~> 0.2.2',
+gem 'better_together', '~> 0.3.1',
     github: 'better-together-org/community-engine-rails',
     branch: :production
 
 # local
-# gem 'better_together', '~> 0.2.0',
+# gem 'better_together', '~> 0.2.2',
 #     path: '/community-engine'
 
-gem 'pundit-resources', '~> 1.1.3',
+gem 'pundit-resources', '~> 1.1.4',
     github: 'better-together-org/pundit-resources'
+    # path: '../pundit-resources'
 
 # gem 'nokogiri', '~> 1.10'
 # Use Puma as the app server
-gem 'puma', '~> 5.6'
+gem 'puma', '~> 6.4'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 6.0'
 # Use Uglifier as compressor for JavaScript assets
@@ -36,11 +37,10 @@ gem 'devise-jwt'
 # Turbolinks makes navigating your web application faster. Read more: https://github.com/turbolinks/turbolinks
 gem 'turbolinks', '~> 5'
 # Use Redis adapter to run Action Cable in production
-gem 'redis', '~> 4.2'
-gem 'sidekiq', '~> 6.4.1'
-
+gem 'redis', '~> 5.0'
+gem 'sidekiq', '~> 7.1.6'
 # Use ActiveModel has_secure_password
-gem 'bcrypt', '~> 3.1.16'
+gem 'bcrypt', '~> 3.1.18'
 
 # Use ActiveStorage variant
 # gem 'mini_magick', '~> 4.8'
@@ -69,10 +69,10 @@ end
 group :development do
   # Access an interactive console on exception pages or by calling 'console' anywhere in the code.
   gem 'web-console', '>= 3.3.0'
-  gem 'listen', '>= 3.0.5', '< 3.8'
+  gem 'listen', '>= 3.0.5', '< 3.9'
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
-  gem 'spring-watcher-listen', '~> 2.0.0'
+  gem 'spring-watcher-listen', '~> 2.1.0'
 end
 
 group :test do
