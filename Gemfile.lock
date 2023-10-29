@@ -358,7 +358,7 @@ GEM
       activesupport (>= 3)
     shoulda-matchers (5.3.0)
       activesupport (>= 5.2.0)
-    sidekiq (7.1.5)
+    sidekiq (7.1.6)
       concurrent-ruby (< 2)
       connection_pool (>= 2.3.0)
       rack (>= 2.2.4)
@@ -435,7 +435,7 @@ DEPENDENCIES
   selenium-webdriver
   shoulda-callback-matchers
   shoulda-matchers
-  sidekiq (~> 7.1.5)
+  sidekiq (~> 7.1.6)
   spring
   spring-watcher-listen (~> 2.1.0)
   turbolinks (~> 5)
