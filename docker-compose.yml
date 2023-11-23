@@ -15,7 +15,7 @@ x-app-shared: &app-shared
   volumes:
     - .:/bt-api
     # - ../pundit-resources:/pundit-resources
-    # - ../community-engine-rails:/community-engine
+    - ../community-engine-rails:/community-engine
     - bt-api-bundler-gems:/usr/local/bundle/
   depends_on:
     - db
@@ -26,9 +26,9 @@ services:
     <<: *app-shared
     container_name: better-together-api-app
     build: .
-    command: bash -c "rm -f tmp/pids/server.pid && bundle exec rails s -p 3000 -b '0.0.0.0'"
+    command: bash -c "rm -f tmp/pids/server.pid && bundle exec rails s -p 3001 -b '0.0.0.0'"
     ports:
-      - "3000:3000"
+      - "3001:3001"
   db:
     container_name: better-together-db
     image: mdillon/postgis:latest

@@ -1,4 +1,4 @@
-FROM ruby:2.7.1
+FROM ruby:3.2
 
 RUN apt-get update -qq \
   && apt-get install -y build-essential postgresql-client libpq-dev nodejs libssl-dev apt-transport-https ca-certificates
@@ -12,5 +12,8 @@ RUN mkdir /bt-api
 WORKDIR /bt-api
 COPY Gemfile /bt-api/Gemfile
 COPY Gemfile.lock /bt-api/Gemfile.lock
+
+RUN gem uninstall bundler
+RUN gem install bundler:2.4.13
 
 COPY . /bt-api

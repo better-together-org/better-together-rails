@@ -1,9 +1,17 @@
 GIT
-  remote: https://github.com/better-together-org/community-engine-rails.git
-  revision: 157e80ba51fc40da297ade3b0e75ea8b581bf9ec
-  branch: production
+  remote: https://github.com/better-together-org/pundit-resources.git
+  revision: 16b9030863dd36357ffdad238b7812a079ab84bb
   specs:
-    better_together (0.3.1)
+    pundit-resources (1.1.4)
+      activesupport
+      jsonapi-resources
+      pundit
+      rails (>= 4.2.1, < 7.1)
+
+PATH
+  remote: /community-engine
+  specs:
+    better_together (0.3.2)
       devise
       devise-jwt
       friendly_id (>= 5.2, < 5.5)
@@ -14,17 +22,8 @@ GIT
       pundit-resources
       rack-cors (>= 1.1.1, < 2.1.0)
       rails (>= 5.2.2, < 7.1.0)
+      reform-rails (~> 0.2.0)
       rswag (>= 2.3.1, < 2.12.0)
-
-GIT
-  remote: https://github.com/better-together-org/pundit-resources.git
-  revision: 16b9030863dd36357ffdad238b7812a079ab84bb
-  specs:
-    pundit-resources (1.1.4)
-      activesupport
-      jsonapi-resources
-      pundit
-      rails (>= 4.2.1, < 7.1)
 
 GEM
   remote: https://rubygems.org/
@@ -127,7 +126,8 @@ GEM
       activerecord (>= 5.a)
       database_cleaner-core (~> 2.0.0)
     database_cleaner-core (2.0.1)
-    date (3.3.3)
+    date (3.3.4)
+    declarative (0.0.20)
     devise (4.9.3)
       bcrypt (~> 3.0)
       orm_adapter (~> 0.1)
@@ -138,13 +138,16 @@ GEM
       devise (~> 4.0)
       warden-jwt_auth (~> 0.8)
     diff-lcs (1.5.0)
+    disposable (0.6.3)
+      declarative (>= 0.0.9, < 1.0.0)
+      representable (>= 3.1.1, < 4)
     dry-auto_inject (1.0.1)
       dry-core (~> 1.0)
       zeitwerk (~> 2.6)
-    dry-configurable (1.0.1)
+    dry-configurable (1.1.0)
       dry-core (~> 1.0, < 2)
       zeitwerk (~> 2.6)
-    dry-core (1.0.0)
+    dry-core (1.0.1)
       concurrent-ruby (~> 1.0)
       zeitwerk (~> 2.6)
     erubi (1.12.0)
@@ -179,11 +182,10 @@ GEM
       railties (>= 4.1)
     jwt (2.7.1)
     language_server-protocol (3.17.0.3)
-    libv8 (8.4.255.0)
     listen (3.8.0)
       rb-fsevent (~> 0.10, >= 0.10.3)
       rb-inotify (~> 0.9, >= 0.9.10)
-    loofah (2.21.4)
+    loofah (2.22.0)
       crass (~> 1.0.2)
       nokogiri (>= 1.12.0)
     mail (2.8.1)
@@ -196,24 +198,22 @@ GEM
     method_source (1.0.0)
     mini_mime (1.1.5)
     mini_portile2 (2.8.5)
-    mini_racer (0.3.1)
-      libv8 (~> 8.4.255)
     minitest (5.20.0)
     mobility (1.2.9)
       i18n (>= 0.6.10, < 2)
       request_store (~> 1.0)
     msgpack (1.7.2)
-    net-imap (0.3.7)
+    net-imap (0.4.6)
       date
       net-protocol
     net-pop (0.1.2)
       net-protocol
-    net-protocol (0.2.1)
+    net-protocol (0.2.2)
       timeout
     net-smtp (0.4.0)
       net-protocol
-    nio4r (2.5.9)
-    nokogiri (1.15.4)
+    nio4r (2.6.1)
+    nokogiri (1.15.5)
       mini_portile2 (~> 2.8.2)
       racc (~> 1.4)
     orm_adapter (0.5.0)
@@ -222,17 +222,15 @@ GEM
       ast (~> 2.4.1)
       racc
     pg (1.5.4)
-    pry (0.13.1)
+    pry (0.14.2)
       coderay (~> 1.1)
       method_source (~> 1.0)
-    pry-rails (0.3.9)
-      pry (>= 0.10.4)
-    public_suffix (5.0.3)
+    public_suffix (5.0.4)
     puma (6.4.0)
       nio4r (~> 2.0)
     pundit (2.3.1)
       activesupport (>= 3.0.0)
-    racc (1.7.1)
+    racc (1.7.3)
     rack (2.2.8)
     rack-cors (2.0.1)
       rack (>= 2.0.0)
@@ -275,7 +273,18 @@ GEM
       redis-client (>= 0.17.0)
     redis-client (0.18.0)
       connection_pool
+    reform (2.6.2)
+      disposable (>= 0.5.0, < 1.0.0)
+      representable (>= 3.1.1, < 4)
+      uber (< 0.2.0)
+    reform-rails (0.2.6)
+      activemodel (>= 5.0)
+      reform (>= 2.3.1, < 3.0.0)
     regexp_parser (2.8.2)
+    representable (3.2.0)
+      declarative (< 0.1.0)
+      trailblazer-option (>= 0.1.1, < 0.2.0)
+      uber (< 0.2.0)
     request_store (1.5.1)
       rack (>= 1.4)
     responders (3.1.1)
@@ -376,12 +385,14 @@ GEM
       sprockets (>= 3.0.0)
     thor (1.3.0)
     tilt (2.0.10)
-    timeout (0.4.0)
+    timeout (0.4.1)
+    trailblazer-option (0.1.2)
     turbolinks (5.2.1)
       turbolinks-source (~> 5.2)
     turbolinks-source (5.2.0)
     tzinfo (2.0.6)
       concurrent-ruby (~> 1.0)
+    uber (0.1.0)
     uglifier (4.2.0)
       execjs (>= 0.3.0, < 3)
     unicode-display_width (2.5.0)
@@ -420,9 +431,8 @@ DEPENDENCIES
   faker
   fuubar
   listen (>= 3.0.5, < 3.9)
-  mini_racer
   pg (>= 0.18, < 2.0)
-  pry-rails
+  pry
   puma (~> 6.4)
   pundit-resources (~> 1.1.4)!
   rails (~> 7.0.8)
@@ -443,7 +453,7 @@ DEPENDENCIES
   web-console (>= 3.3.0)
 
 RUBY VERSION
-   ruby 2.7.1p83
+   ruby 3.2.2
 
 BUNDLED WITH
    2.1.4
