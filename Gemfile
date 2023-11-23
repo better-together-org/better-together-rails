@@ -36,7 +36,7 @@ gem 'turbolinks', '~> 5'
 gem 'redis', '~> 5.0'
 gem 'sidekiq', '~> 7.2.0'
 # Use ActiveModel has_secure_password
-gem 'bcrypt', '~> 3.1.18'
+gem 'bcrypt', '~> 3.1.20'
 
 # Use ActiveStorage variant
 # gem 'mini_magick', '~> 4.8'
