@@ -8,13 +8,13 @@ gem 'rails', '~> 7.0.8'
 # Use postgresql as the database for Active Record
 gem 'pg', '>= 0.18', '< 2.0'
 
-# gem 'better_together', '~> 0.3.1',
-#     github: 'better-together-org/community-engine-rails',
-#     branch: :main
+gem 'better_together', '~> 0.3.3',
+    github: 'better-together-org/community-engine-rails',
+    branch: :main
 
 # local
-gem 'better_together', '~> 0.3.1',
-    path: '/community-engine'
+# gem 'better_together', '~> 0.3.1',
+#     path: '/community-engine'
 
 gem 'pundit-resources', '~> 1.1.4',
     github: 'better-together-org/pundit-resources'

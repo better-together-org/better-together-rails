@@ -1,17 +1,9 @@
 GIT
-  remote: https://github.com/better-together-org/pundit-resources.git
-  revision: 16b9030863dd36357ffdad238b7812a079ab84bb
+  remote: https://github.com/better-together-org/community-engine-rails.git
+  revision: f599b35638876e48f2e4717d928598cdefa992a3
+  branch: main
   specs:
-    pundit-resources (1.1.4)
-      activesupport
-      jsonapi-resources
-      pundit
-      rails (>= 4.2.1, < 7.1)
-
-PATH
-  remote: /community-engine
-  specs:
-    better_together (0.3.2)
+    better_together (0.3.3)
       devise
       devise-jwt
       friendly_id (>= 5.2, < 5.5)
@@ -24,6 +16,16 @@ PATH
       rails (>= 5.2.2, < 7.1.0)
       reform-rails (~> 0.2.0)
       rswag (>= 2.3.1, < 2.12.0)
+
+GIT
+  remote: https://github.com/better-together-org/pundit-resources.git
+  revision: 16b9030863dd36357ffdad238b7812a079ab84bb
+  specs:
+    pundit-resources (1.1.4)
+      activesupport
+      jsonapi-resources
+      pundit
+      rails (>= 4.2.1, < 7.1)
 
 GEM
   remote: https://rubygems.org/
@@ -421,7 +423,7 @@ PLATFORMS
 
 DEPENDENCIES
   bcrypt (~> 3.1.20)
-  better_together (~> 0.3.1)!
+  better_together (~> 0.3.3)!
   bootsnap (>= 1.7.0)
   byebug
   capybara (>= 2.15)
