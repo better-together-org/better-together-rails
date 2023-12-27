@@ -8,7 +8,7 @@ gem 'rails', '~> 7.0.8'
 # Use postgresql as the database for Active Record
 gem 'pg', '>= 0.18', '< 2.0'
 
-gem 'better_together', '~> 0.3.3',
+gem 'better_together', '~> 0.3.4',
     github: 'better-together-org/community-engine-rails',
     branch: :main
 
