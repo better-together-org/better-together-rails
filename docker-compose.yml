@@ -34,17 +34,19 @@ services:
     image: mdillon/postgis:latest
     volumes:
       - bt-api-db-data:/var/lib/postgresql/data
+    ports:
+      - "5435:5432"
 
   sidekiq:
     <<: *app-shared
-    container_name: bt-api-sidekiq
+    container_name: better-together-api-sidekiq
     command: bundle exec sidekiq -C config/sidekiq.yml
     depends_on:
       - app
 
   redis:
-    image: 'redis:4.0-alpine'
-    container_name: bt-api-redis
+    image: 'redis:7.2-alpine'
+    container_name: better-together-api-redis
     command: redis-server
     volumes:
       - bt-api-redis:/data
