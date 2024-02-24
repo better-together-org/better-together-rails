@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/better-together-org/community-engine-rails.git
-  revision: 37082bb25665460b275cad63117a399e62b0dd91
+  revision: 85c6c4b1b3b1917a3700c90c595f4c9626a33e24
   branch: main
   specs:
     better_together (0.3.5)
@@ -14,7 +14,7 @@ GIT
       pundit (>= 2.1, < 2.4)
       pundit-resources
       rack-cors (>= 1.1.1, < 2.1.0)
-      rails (>= 5.2.2, < 7.1.0)
+      rails (>= 5.2.2, < 7.2.0)
       reform-rails (~> 0.2.0)
       rswag (>= 2.3.1, < 2.14.0)
 
@@ -206,6 +206,7 @@ GEM
     method_source (1.0.0)
     mini_magick (4.12.0)
     mini_mime (1.1.5)
+    mini_portile2 (2.8.5)
     minitest (5.22.2)
     mobility (1.2.9)
       i18n (>= 0.6.10, < 2)
@@ -221,6 +222,9 @@ GEM
     net-smtp (0.4.0.1)
       net-protocol
     nio4r (2.7.0)
+    nokogiri (1.16.2)
+      mini_portile2 (~> 2.8.2)
+      racc (~> 1.4)
     nokogiri (1.16.2-x86_64-linux)
       racc (~> 1.4)
     orm_adapter (0.5.0)
@@ -428,6 +432,7 @@ GEM
     zeitwerk (2.6.13)
 
 PLATFORMS
+  ruby
   x86_64-linux
 
 DEPENDENCIES
