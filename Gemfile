@@ -13,7 +13,7 @@ gem 'better_together', '~> 0.3.5',
     branch: :main
 
 # local
-# gem 'better_together', '~> 0.3.1',
+# gem 'better_together', '~> 0.3.5',
 #     path: '/community-engine'
 
 gem 'pundit-resources', '~> 1.1.4',
