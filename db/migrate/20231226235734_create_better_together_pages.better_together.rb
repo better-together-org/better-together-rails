@@ -16,12 +16,12 @@ class CreateBetterTogetherPages < ActiveRecord::Migration[7.0]
                    name: 'by_page_publication_date'
                  }
 
-      t.string :page_privacy,
-               index: {
-                 name: 'by_page_privacy'
-               },
-               null: false,
-               default: 'public'
+      t.string :privacy,
+                 index: {
+                   name: 'by_page_privacy'
+                 },
+                 null: false,
+                 default: 'public'
       t.string :layout
       t.string :template
       t.string :language, default: 'en'
