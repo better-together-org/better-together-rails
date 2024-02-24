@@ -30,8 +30,9 @@ services:
     ports:
       - "3001:3001"
   db:
+    <<: *env-info
     container_name: better-together-db
-    image: mdillon/postgis:latest
+    image: postgis/postgis:latest
     volumes:
       - bt-api-db-data:/var/lib/postgresql/data
     ports:
