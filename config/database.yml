@@ -18,9 +18,9 @@ default: &default
   adapter: postgresql
   encoding: unicode
   # host: localhost
-  host: better-together-db
-  username: <%= ENV.fetch("DATABASE_USER") { 'postgres' } %>
-  password: <%= ENV.fetch("DATABASE_PASSWORD") { 'postgres' } %>
+  host: <%= ENV.fetch("POSTGRES_HOST") { 'better-together-api-db' } %>
+  username: <%= ENV.fetch("POSTGRES_USER") { 'postgres' } %>
+  password: <%= ENV.fetch("POSTGRES_PASSWORD") { 'postgres' } %>
   # For details on connection pooling, see Rails configuration guide
   # http://guides.rubyonrails.org/configuring.html#database-pooling
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>

@@ -31,7 +31,7 @@ services:
       - "3001:3001"
   db:
     <<: *env-info
-    container_name: better-together-db
+    container_name: better-together-api-db
     image: postgis/postgis:latest
     volumes:
       - bt-api-db-data:/var/lib/postgresql/data
