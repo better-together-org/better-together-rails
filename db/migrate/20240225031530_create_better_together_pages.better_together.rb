@@ -1,6 +1,9 @@
+# frozen_string_literal: true
+
 # This migration comes from better_together (originally 20231123233418)
+# Creates pages table
 class CreateBetterTogetherPages < ActiveRecord::Migration[7.0]
-  def change
+  def change # rubocop:todo Metrics/MethodLength
     create_bt_table :pages do |t|
       t.string :title
       t.string :slug, null: false, index: { unique: true }
@@ -17,11 +20,11 @@ class CreateBetterTogetherPages < ActiveRecord::Migration[7.0]
                  }
 
       t.string :privacy,
-                 index: {
-                   name: 'by_page_privacy'
-                 },
-                 null: false,
-                 default: 'public'
+               index: {
+                 name: 'by_page_privacy'
+               },
+               null: false,
+               default: 'public'
       t.string :layout
       t.string :template
       t.string :language, default: 'en'

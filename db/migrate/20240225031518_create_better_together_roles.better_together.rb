@@ -1,4 +1,7 @@
+# frozen_string_literal: true
+
 # This migration comes from better_together (originally 20190224201824)
+# Creates roles table
 class CreateBetterTogetherRoles < ActiveRecord::Migration[7.0]
   def change
     create_bt_table :roles do |t|
@@ -7,7 +10,7 @@ class CreateBetterTogetherRoles < ActiveRecord::Migration[7.0]
       t.string :target_class, limit: 100
 
       # Add a composite unique index on target_class and sort_order
-      t.index [:target_class, :sort_order], unique: true, name: 'index_roles_on_target_class_and_sort_order'
+      t.index %i[target_class sort_order], unique: true, name: 'index_roles_on_target_class_and_sort_order'
     end
   end
 end

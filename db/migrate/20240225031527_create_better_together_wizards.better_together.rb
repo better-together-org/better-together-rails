@@ -1,6 +1,9 @@
+# frozen_string_literal: true
+
 # This migration comes from better_together (originally 20231115185720)
+# Creates wizards table
 class CreateBetterTogetherWizards < ActiveRecord::Migration[7.0]
-  def change
+  def change # rubocop:todo Metrics/MethodLength
     create_bt_table :wizards do |t|
       t.string :name, null: false
       t.string :slug, null: false, index: { unique: true }

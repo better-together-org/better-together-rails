@@ -1,11 +1,14 @@
+# frozen_string_literal: true
+
 # This migration comes from better_together (originally 20210103193242)
+# Creates users table
 class DeviseCreateBetterTogetherUsers < ActiveRecord::Migration[7.0]
-  def change
+  def change # rubocop:todo Metrics/AbcSize, Metrics/MethodLength
     create_bt_table :users do |t|
+      t.string :slug, null: false, index: { unique: true }
       ## Database authenticatable
-      t.string :email, null: false, default: ""
-      t.string :username, null: false, index: { unique: true }
-      t.string :encrypted_password, null: false, default: ""
+      t.string :email, null: false, default: ''
+      t.string :encrypted_password, null: false, default: ''
 
       ## Recoverable
       t.string   :reset_password_token
