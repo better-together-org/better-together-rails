@@ -1,9 +1,9 @@
 GIT
   remote: https://github.com/better-together-org/community-engine-rails.git
-  revision: 85c6c4b1b3b1917a3700c90c595f4c9626a33e24
+  revision: 8214131b6bc257b6e44e00488cc377a42ad80f91
   branch: main
   specs:
-    better_together (0.3.5)
+    better_together (0.3.6)
       devise
       devise-jwt
       friendly_id (>= 5.2, < 5.5)
@@ -437,7 +437,7 @@ PLATFORMS
 
 DEPENDENCIES
   bcrypt (~> 3.1.20)
-  better_together (~> 0.3.5)!
+  better_together (~> 0.3.6)!
   bootsnap (>= 1.7.0)
   byebug
   capybara (>= 2.15)
