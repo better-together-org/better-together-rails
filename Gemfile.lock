@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/better-together-org/community-engine-rails.git
-  revision: 88cd225457bba1c0f21d8763e57ba720d769ff04
+  revision: 3997d0d41a0a4da0a279693a1cc3deaa754ce190
   branch: main
   specs:
     better_together (0.3.6)
@@ -203,7 +203,7 @@ GEM
       net-smtp
     marcel (1.0.4)
     matrix (0.4.2)
-    method_source (1.0.0)
+    method_source (1.1.0)
     mini_magick (4.12.0)
     mini_mime (1.1.5)
     mini_portile2 (2.8.6)
