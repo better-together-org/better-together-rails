@@ -282,7 +282,7 @@ GEM
       ffi (~> 1.0)
     redis (5.2.0)
       redis-client (>= 0.22.0)
-    redis-client (0.22.0)
+    redis-client (0.22.1)
       connection_pool
     reform (2.6.2)
       disposable (>= 0.5.0, < 1.0.0)
@@ -385,7 +385,7 @@ GEM
       activesupport (>= 3)
     shoulda-matchers (6.2.0)
       activesupport (>= 5.2.0)
-    sidekiq (7.2.2)
+    sidekiq (7.2.4)
       concurrent-ruby (< 2)
       connection_pool (>= 2.3.0)
       rack (>= 2.2.4)
@@ -464,7 +464,7 @@ DEPENDENCIES
   selenium-webdriver
   shoulda-callback-matchers
   shoulda-matchers
-  sidekiq (~> 7.2.2)
+  sidekiq (~> 7.2.4)
   spring
   spring-watcher-listen (~> 2.1.0)
   turbolinks (~> 5)
