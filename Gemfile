@@ -3,80 +3,95 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '3.2.2'
 
-# Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '~> 7.0.8'
-# Use postgresql as the database for Active Record
-gem 'pg', '>= 0.18', '< 2.0'
-
-# published
+# Use the published version of better_together for production
 gem 'better_together', '~> 0.3.6',
     github: 'better-together-org/community-engine-rails',
     branch: :main
 
-# development
-# gem 'better_together', '~> 0.3.6',
-#     path: '/community-engine'
+# Use the local development version of better_together
+# gem 'better_together', '~> 0.3.6', path: '/community-engine'
 
-gem 'pundit-resources', '~> 1.1.4',
-    github: 'better-together-org/pundit-resources'
-    # path: '../pundit-resources'
-
-# gem 'nokogiri', '~> 1.10'
-# Use Puma as the app server
-gem 'puma', '~> 6.4'
-# Use SCSS for stylesheets
-# gem 'sass-rails', '~> 6.0'
-# Use Uglifier as compressor for JavaScript assets
-gem 'uglifier', '>= 1.3.0'
-# See https://github.com/rails/execjs#readme for more supported runtimes
-# gem 'mini_racer', platforms: :ruby
-
-# Turbolinks makes navigating your web application faster. Read more: https://github.com/turbolinks/turbolinks
-# gem 'turbolinks', '~> 5'
-# Use Redis adapter to run Action Cable in production
-gem 'redis', '~> 5.2'
-gem 'sidekiq', '~> 7.2.4'
-# Use ActiveModel has_secure_password
+# bcrypt for secure password handling
 gem 'bcrypt', '~> 3.1.20'
-
-# Use ActiveStorage variant
-# gem 'mini_magick', '~> 4.8'
-
-# Use Capistrano for deployment
-# gem 'capistrano-rails', group: :development
-
-# Reduces boot times through caching; required in config/boot.rb
+# Bootsnap for faster boot times
 gem 'bootsnap', '>= 1.7.0', require: false
+# Database adapter for PostgreSQL
+gem 'pg', '>= 0.18', '< 2.0'
+# Puma as the app server
+gem 'puma', '~> 6.4'
+# Core Rails gem
+gem 'rails', '~> 7.0.8'
+# Redis for ActionCable and background jobs
+gem 'redis', '~> 5.2'
+# Sidekiq for background processing
+gem 'sidekiq', '~> 7.2.4'
+# Uglifier for JavaScript compression
+gem 'uglifier', '>= 1.3.0'
+
+# Pundit for authorization, custom fork for Better Together
+gem 'pundit-resources', '~> 1.1.4', github: 'better-together-org/pundit-resources'
 
 group :development, :test do
-  # Call 'byebug' anywhere in the code to stop execution and get a debugger console
+  # Better errors for enhanced error pages
+  gem 'better_errors'
+  # Binding of caller provides pry console at breakpoints
+  gem 'binding_of_caller'
+  # Debugger tool
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
-  gem 'pry'
-  gem 'fuubar'
+  # Faker for generating fake data
   gem 'faker'
+  # FactoryBot for setting up test data
   gem 'factory_bot_rails'
+  # Fuubar for fancy test progress bar
+  gem 'fuubar'
+  # Pry for a powerful shell alternative to IRB
+  gem 'pry'
+  # RuboCop for static code analysis
   gem 'rubocop'
-  gem 'rubocop-rspec'
-  gem 'rspec'
-  gem 'rspec-rails'
-  gem 'shoulda-matchers'
-  gem 'shoulda-callback-matchers'
 end
 
 group :development do
-  # Access an interactive console on exception pages or by calling 'console' anywhere in the code.
-  gem 'web-console', '>= 3.3.0'
+  # Brakeman for static analysis security vulnerability scanning
+  gem 'brakeman', require: false
+  # Bundler audit for checking gem vulnerabilities
+  gem 'bundler-audit', require: false
+  # Listen for file system changes
   gem 'listen', '>= 3.0.5', '< 3.10'
-  # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
+  # Rack mini profiler for performance profiling
+  gem 'rack-mini-profiler'
+  # Readline implementation for Ruby
+  gem 'rb-readline'
+  # Spring for fast Rails actions via pre-loading
   gem 'spring'
+  # Spring watcher for file changes
   gem 'spring-watcher-listen', '~> 2.1.0'
+  # Tracing tool
+  gem 'rbtrace'
+  # Web-console for an interactive console on exception pages
+  gem 'web-console', '>= 3.3.0'
 end
 
 group :test do
-  # Adds support for Capybara system testing and selenium driver
+  # Capybara for integration testing
   gem 'capybara', '>= 2.15'
+  # Coveralls for test coverage reporting
+  gem 'coveralls'
+  # Database cleaner for test database cleaning
   gem 'database_cleaner'
-  gem 'selenium-webdriver'
   # Easy installation and use of chromedriver to run system tests with Chrome
   gem 'chromedriver-helper'
+  # RuboCop RSpec for RSpec-specific code analysis
+  gem 'rubocop-rspec'
+  # RSpec for unit testing
+  gem 'rspec'
+  # RSpec Rails integration
+  gem 'rspec-rails'
+  # Selenium WebDriver for browser automation
+  gem 'selenium-webdriver'
+  # Shoulda Callback Matchers for testing callbacks
+  gem 'shoulda-callback-matchers'
+  # Shoulda Matchers for simplifying model tests
+  gem 'shoulda-matchers'
+  # SimpleCov for test coverage analysis
+  gem 'simplecov', require: false
 end
