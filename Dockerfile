@@ -55,6 +55,10 @@ WORKDIR /bt-api
 # Copy the application code from the build stage
 COPY --from=builder /bt-api /bt-api
 
+# Create and set permissions for tmp/pids directory
+RUN mkdir -p tmp/pids
+RUN chmod -R 755 tmp
+
 # Set environment variables
 ENV RAILS_ENV=production
 ENV RACK_ENV=production
