@@ -17,13 +17,10 @@
 default: &default
   adapter: postgis
   encoding: unicode
-  # host: localhost
-  host: <%= ENV.fetch("POSTGRES_HOST") { 'better-together-api-db' } %>
-  username: <%= ENV.fetch("POSTGRES_USER") { 'postgres' } %>
-  password: <%= ENV.fetch("POSTGRES_PASSWORD") { 'postgres' } %>
   # For details on connection pooling, see Rails configuration guide
   # http://guides.rubyonrails.org/configuring.html#database-pooling
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+  url: <%= ENV.fetch("DATABASE_URL") { 'postgres://postgres:postgres@better-together-api-db' } %>
 
 development:
   <<: *default
