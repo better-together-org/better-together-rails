@@ -25,7 +25,9 @@ services:
   app: &app
     <<: *app-shared
     container_name: better-together-api-app
-    build: .
+    build: # "context" and "dockerfile" fields have to be under "build"
+      context: .
+      dockerfile: ./Dockerfile.dev
     command: bash -c "rm -f tmp/pids/server.pid && bundle exec rails s -p 3001 -b '0.0.0.0'"
     ports:
       - "3001:3001"
