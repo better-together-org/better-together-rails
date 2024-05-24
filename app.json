@@ -75,5 +75,14 @@
     "worker": {
       "quantity": 1
     }
+  },
+  "healthchecks": {
+    "web": {
+      "path": "/healthcheck",
+      "protocol": "HTTP",
+      "interval": 10,
+      "timeout": 5,
+      "max_attempts": 3
+    }
   }
 }
