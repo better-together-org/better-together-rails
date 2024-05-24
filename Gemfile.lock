@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/better-together-org/community-engine-rails.git
-  revision: dcd607626a1c04ffe76b414c30cfee1a4cd0373a
+  revision: ecd457da21ead4bda447f4f055ed0629ae19f76e
   branch: 12-implement-geographic-data-models-and-migrations
   specs:
     better_together (0.3.6)
@@ -30,13 +30,13 @@ GIT
 
 GIT
   remote: https://github.com/better-together-org/pundit-resources.git
-  revision: 16b9030863dd36357ffdad238b7812a079ab84bb
+  revision: b6218c695c2b6c7413ab416a318cd540835c5394
   specs:
-    pundit-resources (1.1.4)
+    pundit-resources (1.1.5)
       activesupport
       jsonapi-resources
       pundit
-      rails (>= 4.2.1, < 7.1)
+      rails (>= 4.2.1, < 7.2)
 
 GEM
   remote: https://rubygems.org/
