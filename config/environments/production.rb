@@ -90,4 +90,15 @@ Rails.application.configure do
 
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
+
+  # Ensure that secure cookies are used
+  config.session_store :cookie_store, key: '_better_together_session', secure: Rails.env.production?
+
+  # Use a real queuing backend for Active Job (and separate queues per environment).
+  config.active_job.queue_adapter     = :sidekiq
+  config.active_job.queue_name_prefix = "better_together_production"
+
+  # Force all access to the app over SSL, use Strict-Transport-Security, and use secure cookies.
+  config.force_ssl = true
+  config.ssl_options = { hsts: { expires: 1.year, preload: true } }
 end
