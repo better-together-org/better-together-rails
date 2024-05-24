@@ -15,7 +15,7 @@
 # gem 'pg'
 #
 default: &default
-  adapter: postgresql
+  adapter: postgis
   encoding: unicode
   # host: localhost
   host: <%= ENV.fetch("POSTGRES_HOST") { 'better-together-api-db' } %>
@@ -84,6 +84,4 @@ test:
 #
 production:
   <<: *default
-  database: better_together_production
-  username: better_together
-  password: <%= ENV['BETTER_TOGETHER_DATABASE_PASSWORD'] %>
+  url: <%= ENV['DATABASE_URL'] %>
