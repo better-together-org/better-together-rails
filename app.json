@@ -77,12 +77,15 @@
     }
   },
   "healthchecks": {
-    "web": {
-      "path": "/healthcheck",
-      "protocol": "HTTP",
-      "interval": 10,
-      "timeout": 5,
-      "max_attempts": 3
-    }
+    "web": [
+      {
+        "type": "http",
+        "path": "/healthcheck",
+        "protocol": "HTTP",
+        "interval": 10,
+        "timeout": 5,
+        "max_attempts": 3
+      }
+    ]
   }
 }
