@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/better-together-org/community-engine-rails.git
-  revision: 4a5db11d10df7589abca0efc32c5962950aaf2e0
+  revision: dcd607626a1c04ffe76b414c30cfee1a4cd0373a
   branch: 12-implement-geographic-data-models-and-migrations
   specs:
     better_together (0.3.6)
