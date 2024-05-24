@@ -21,6 +21,7 @@ gem 'pg', '>= 0.18', '< 2.0'
 gem 'puma', '~> 6.4'
 # Core Rails gem
 gem 'rails', '~> 7.0.8'
+gem 'rack-protection'
 # Redis for ActionCable and background jobs
 gem 'redis', '~> 5.2'
 # Sidekiq for background processing

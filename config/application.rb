@@ -26,6 +26,12 @@ module BetterTogether
     # config.time_zone = "Central Time (US & Canada)"
     # config.eager_load_paths << Rails.root.join("extras")
 
+    # Use middleware to handle forwarded headers
+    config.middleware.use Rack::ForwardedHeaders
+
+    # Use middleware to handle forwarded headers
+    config.middleware.use Rack::Protection::HttpOrigin, origin_whitelist: [ENV.fetch('APP_HOST') { 'http://localhost:3000' }]
+
     I18n.enforce_available_locales = true
 
     # Initialize configuration defaults for originally generated Rails version.
