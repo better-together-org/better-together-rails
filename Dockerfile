@@ -17,6 +17,7 @@ RUN apt-get update -qq \
   && echo "deb https://dl.yarnpkg.com/debian/ stable main" | tee /etc/apt/sources.list.d/yarn.list \
   && apt-get update -qq \
   && apt-get install -y --no-install-recommends yarn \
+  && curl -sL https://sentry.io/get-cli/ | bash \
   && rm -rf /var/lib/apt/lists/*
 
 # Set working directory
@@ -47,6 +48,8 @@ RUN apt-get update -qq \
     libssl-dev \
     libvips42 \
     yarn \
+    curl \
+  && curl -sL https://sentry.io/get-cli/ | bash \
   && rm -rf /var/lib/apt/lists/*
 
 # Set working directory
