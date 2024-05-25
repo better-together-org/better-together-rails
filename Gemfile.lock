@@ -1,7 +1,7 @@
 GIT
   remote: https://github.com/better-together-org/community-engine-rails.git
-  revision: ecd457da21ead4bda447f4f055ed0629ae19f76e
-  branch: 12-implement-geographic-data-models-and-migrations
+  revision: 293ec8342cd673c0f34f8e983b697b0c274920e5
+  branch: main
   specs:
     better_together (0.3.6)
       activerecord-import

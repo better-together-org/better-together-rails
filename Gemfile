@@ -6,7 +6,7 @@ ruby '3.2.4'
 # Use the published version of better_together for production
 gem 'better_together', '~> 0.3.6',
     github: 'better-together-org/community-engine-rails',
-    branch: '12-implement-geographic-data-models-and-migrations'
+    branch: :main
 
 # Use the local development version of better_together
 # gem 'better_together', '~> 0.3.6', path: '/community-engine'
