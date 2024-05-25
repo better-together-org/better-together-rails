@@ -26,6 +26,12 @@ gem 'rack-protection'
 gem 'redis', '~> 5.2'
 # Sidekiq for background processing
 gem 'sidekiq', '~> 7.2.4'
+
+# Error and performance monitoring with Sentry
+gem 'stackprof'
+gem 'sentry-ruby'
+gem 'sentry-rails'
+
 # Uglifier for JavaScript compression
 gem 'uglifier', '>= 1.3.0'
 
