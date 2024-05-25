@@ -20,7 +20,7 @@ RUN apt-get update -qq \
   && rm -rf /var/lib/apt/lists/*
 
 # Set working directory
-WORKDIR /bt-api
+WORKDIR /bt
 
 # Copy Gemfile and Gemfile.lock
 COPY Gemfile Gemfile.lock ./
@@ -50,10 +50,10 @@ RUN apt-get update -qq \
   && rm -rf /var/lib/apt/lists/*
 
 # Set working directory
-WORKDIR /bt-api
+WORKDIR /bt
 
 # Copy the application code from the build stage
-COPY --from=builder /bt-api /bt-api
+COPY --from=builder /bt /bt
 
 # Create and set permissions for tmp/pids directory
 RUN mkdir -p tmp/pids

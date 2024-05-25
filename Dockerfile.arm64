@@ -18,7 +18,7 @@ RUN apt-get update -qq && \
     rm -rf /var/lib/apt/lists/*
 
 # Set working directory
-WORKDIR /bt-api
+WORKDIR /bt
 
 # Copy Gemfile and Gemfile.lock
 COPY Gemfile Gemfile.lock ./

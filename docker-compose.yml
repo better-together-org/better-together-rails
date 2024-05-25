@@ -1,9 +1,9 @@
 version: '3.6'
 
 volumes:
-  bt-api-bundler-gems:
-  bt-api-db-data:
-  bt-api-redis:
+  bt-bundler-gems:
+  bt-db-data:
+  bt-redis:
 
 x-env-info: &env-info
   env_file:
@@ -11,12 +11,12 @@ x-env-info: &env-info
 
 x-app-shared: &app-shared
   <<: *env-info
-  image: better-together/api-rails:latest
+  image: better-together/better-together-rails:dev
   volumes:
-    - .:/bt-api
+    - .:/bt
     # - ../pundit-resources:/pundit-resources
     - ../community-engine-rails:/community-engine
-    - bt-api-bundler-gems:/usr/local/bundle/
+    - bt-bundler-gems:/usr/local/bundle/
   depends_on:
     - db
     - redis
@@ -24,7 +24,7 @@ x-app-shared: &app-shared
 services:
   app: &app
     <<: *app-shared
-    container_name: better-together-api-app
+    container_name: better-together-app
     build: # "context" and "dockerfile" fields have to be under "build"
       context: .
       dockerfile: ./Dockerfile.dev
@@ -33,23 +33,23 @@ services:
       - "3001:3001"
   db:
     <<: *env-info
-    container_name: better-together-api-db
+    container_name: better-together-db
     image: postgis/postgis:latest
     volumes:
-      - bt-api-db-data:/var/lib/postgresql/data
+      - bt-db-data:/var/lib/postgresql/data
     ports:
       - "5435:5432"
 
   sidekiq:
     <<: *app-shared
-    container_name: better-together-api-sidekiq
+    container_name: better-together-sidekiq
     command: bundle exec sidekiq -C config/sidekiq.yml
     depends_on:
       - app
 
   redis:
     image: 'redis:7.2-alpine'
-    container_name: better-together-api-redis
+    container_name: better-together-redis
     command: redis-server
     volumes:
-      - bt-api-redis:/data
+      - bt-redis:/data
