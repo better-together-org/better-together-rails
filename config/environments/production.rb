@@ -105,8 +105,8 @@ Rails.application.configure do
   # Force all access to the app over SSL, use Strict-Transport-Security, and use secure cookies.
   # Ensure requests are considered secure if they come through a reverse proxy with the correct headers
   # config.action_controller.forgery_protection_origin_check = true
-  config.force_ssl = true
+  # config.force_ssl = true
   # Configure the trusted proxies to include Cloudflare and any internal proxies you use.
-  config.action_dispatch.trusted_proxies = [IPAddr.new("0.0.0.0/0")] # This trusts all proxies. Change it to a specific range if necessary.
+  # config.action_dispatch.trusted_proxies = [IPAddr.new("0.0.0.0/0")] # This trusts all proxies. Change it to a specific range if necessary.
   # config.ssl_options = { hsts: { expires: 1.year, preload: true } }
 end
