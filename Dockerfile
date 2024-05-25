@@ -1,5 +1,5 @@
 # Stage 1: Build environment
-FROM ruby:3.2 AS builder
+FROM ruby:3.2.2 AS builder
 
 # Install dependencies
 RUN apt-get update -qq \
@@ -37,7 +37,7 @@ COPY . .
 RUN bundle exec rake assets:precompile
 
 # Stage 2: Runtime environment
-FROM ruby:3.2
+FROM ruby:3.2.2
 
 # Install runtime dependencies
 RUN apt-get update -qq \
