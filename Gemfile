@@ -87,8 +87,8 @@ group :test do
   gem 'coveralls'
   # Database cleaner for test database cleaning
   gem 'database_cleaner'
-  # Easy installation and use of chromedriver to run system tests with Chrome
-  gem 'chromedriver-helper'
+  # # Easy installation and use of chromedriver to run system tests with Chrome
+  gem 'webdrivers'
   # RuboCop RSpec for RSpec-specific code analysis
   gem 'rubocop-rspec'
   # RSpec for unit testing
