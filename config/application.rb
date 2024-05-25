@@ -1,6 +1,6 @@
-require_relative "boot"
+require_relative 'boot'
 
-require "rails/all"
+require 'rails/all'
 
 # Require the gems listed in Gemfile, including any gems
 # you've limited to :test, :development, or :production.
@@ -41,20 +41,19 @@ module BetterTogether
       ActiveStorage::Analyzer::AudioAnalyzer
     ]
 
-
     config.action_mailer.default_options = {
       from: ENV.fetch('FROM_ADDRESS', 'Better Together Community <community@bettertogethersolutions.com>'),
       reply_to: ENV.fetch('REPLY_ADDRESS', 'Better Together Community Support <support@bettertogethersolutions.com>')
     }
 
     config.action_mailer.smtp_settings = {
-      :address        => ENV.fetch('SMTP_ADDRESS') { 'smtp.sendgrid.net' },
-      :port           => '587',
-      :authentication => :plain,
-      :user_name      => ENV.fetch('SMTP_USERNAME') { 'apikey' },
-      :password       => ENV['SMTP_PASSWORD'],
-      :domain         => ENV.fetch('APP_HOST') { 'localhost:3000'},
-      :enable_starttls_auto => true
+      address: ENV.fetch('SMTP_ADDRESS') { 'smtp.sendgrid.net' },
+      port: '587',
+      authentication: :plain,
+      user_name: ENV.fetch('SMTP_USERNAME') { 'apikey' },
+      password: ENV['SMTP_PASSWORD'],
+      domain: ENV.fetch('APP_HOST') { 'localhost:3000' },
+      enable_starttls_auto: true
     }
 
     Rails.application.routes.default_url_options = {

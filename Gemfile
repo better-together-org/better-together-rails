@@ -20,17 +20,17 @@ gem 'pg', '>= 0.18', '< 2.0'
 # Puma as the app server
 gem 'puma', '~> 6.4'
 # Core Rails gem
-gem 'rails', '~> 7.0.8'
 gem 'rack-protection'
+gem 'rails', '~> 7.0.8'
 # Redis for ActionCable and background jobs
 gem 'redis', '~> 5.2'
 # Sidekiq for background processing
 gem 'sidekiq', '~> 7.2.4'
 
 # Error and performance monitoring with Sentry
-gem 'stackprof'
-gem 'sentry-ruby'
 gem 'sentry-rails'
+gem 'sentry-ruby'
+gem 'stackprof'
 
 # Uglifier for JavaScript compression
 gem 'uglifier', '>= 1.3.0'
@@ -44,7 +44,7 @@ group :development, :test do
   # Binding of caller provides pry console at breakpoints
   gem 'binding_of_caller'
   # Debugger tool
-  gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
+  gem 'byebug', platforms: %i[mri mingw x64_mingw]
   # Faker for generating fake data
   gem 'faker'
   # FactoryBot for setting up test data
