@@ -1,7 +1,7 @@
-class WelcomeController < ApplicationController
+# frozen_string_literal: true
+
+class WelcomeController < ApplicationController # rubocop:todo Style/Documentation
   def index
-    respond_to do |format|
-      format.html
-    end
+    respond_to(&:html)
   end
 end

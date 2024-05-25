@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require_relative 'boot'
 
 require 'rails/all'
@@ -7,7 +9,7 @@ require 'rails/all'
 Bundler.require(*Rails.groups)
 
 module BetterTogether
-  class Application < Rails::Application
+  class Application < Rails::Application # rubocop:todo Style/Documentation
     # Initialize configuration defaults for originally generated Rails version.
     config.api_only = false
     config.session_store :cookie_store, key: '_bt_session'
@@ -27,7 +29,9 @@ module BetterTogether
     # config.eager_load_paths << Rails.root.join("extras")
 
     # Use middleware to handle forwarded headers
+    # rubocop:todo Layout/LineLength
     # config.middleware.use Rack::Protection::HttpOrigin, origin_whitelist: [ENV.fetch('APP_HOST') { 'http://localhost:3000' }]
+    # rubocop:enable Layout/LineLength
 
     I18n.enforce_available_locales = true
 
@@ -47,12 +51,12 @@ module BetterTogether
     }
 
     config.action_mailer.smtp_settings = {
-      address: ENV.fetch('SMTP_ADDRESS') { 'smtp.sendgrid.net' },
+      address: ENV.fetch('SMTP_ADDRESS', 'smtp.sendgrid.net'),
       port: '587',
       authentication: :plain,
-      user_name: ENV.fetch('SMTP_USERNAME') { 'apikey' },
+      user_name: ENV.fetch('SMTP_USERNAME', 'apikey'),
       password: ENV['SMTP_PASSWORD'],
-      domain: ENV.fetch('APP_HOST') { 'localhost:3000' },
+      domain: ENV.fetch('APP_HOST', 'localhost:3000'),
       enable_starttls_auto: true
     }
 

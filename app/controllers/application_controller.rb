@@ -1,4 +1,6 @@
-class ApplicationController < ::BetterTogether::ApplicationController
+# frozen_string_literal: true
+
+class ApplicationController < ::BetterTogether::ApplicationController # rubocop:todo Style/Documentation
   protected
 
   def error_reporting(exception)
