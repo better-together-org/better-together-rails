@@ -109,4 +109,5 @@ Rails.application.configure do
   # Configure the trusted proxies to include Cloudflare and any internal proxies you use.
   # config.action_dispatch.trusted_proxies = [IPAddr.new("0.0.0.0/0")] # This trusts all proxies. Change it to a specific range if necessary.
   # config.ssl_options = { hsts: { expires: 1.year, preload: true } }
+  config.assume_ssl = true
 end
