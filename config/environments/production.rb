@@ -111,5 +111,5 @@ Rails.application.configure do
   # config.ssl_options = { hsts: { expires: 1.year, preload: true } }
   config.action_controller.forgery_protection_origin_check = ENV.fetch('FORGERY_ORIGIN_CHECK', false)
   config.assume_ssl = ENV.fetch('ASSUME_SSL', false)
-  config.force_ssl = ENV.fetch('SSL', false)
+  config.force_ssl = ENV.fetch('FORCE_SSL', false)
 end
