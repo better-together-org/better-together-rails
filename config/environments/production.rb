@@ -2,7 +2,7 @@
 
 require 'active_support/core_ext/integer/time'
 
-Rails.application.configure do
+Rails.application.configure do # rubocop:todo Metrics/BlockLength
   # Settings specified here will take precedence over those in config/application.rb.
 
   # Code is not reloaded between requests.
@@ -104,11 +104,6 @@ Rails.application.configure do
 
   # Force all access to the app over SSL, use Strict-Transport-Security, and use secure cookies.
   # Ensure requests are considered secure if they come through a reverse proxy with the correct headers
-  # config.action_controller.forgery_protection_origin_check = true
-  # config.force_ssl = true
-  # Configure the trusted proxies to include Cloudflare and any internal proxies you use.
-  # config.action_dispatch.trusted_proxies = [IPAddr.new("0.0.0.0/0")] # This trusts all proxies. Change it to a specific range if necessary.
-  # config.ssl_options = { hsts: { expires: 1.year, preload: true } }
   config.action_controller.forgery_protection_origin_check = ENV.fetch('FORGERY_ORIGIN_CHECK', false)
   config.assume_ssl = ENV.fetch('ASSUME_SSL', false)
   config.force_ssl = ENV.fetch('FORCE_SSL', false)
