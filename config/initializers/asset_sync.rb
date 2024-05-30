@@ -4,6 +4,8 @@ if defined?(AssetSync)
     config.aws_access_key_id = ENV['AWS_ACCESS_KEY_ID']
     config.aws_secret_access_key = ENV['AWS_SECRET_ACCESS_KEY']
     config.aws_session_token = ENV['AWS_SESSION_TOKEN'] if ENV.key?('AWS_SESSION_TOKEN')
+    config.aws_iam_roles = true
+
     # To use AWS reduced redundancy storage.
     # config.aws_reduced_redundancy = true
     #
