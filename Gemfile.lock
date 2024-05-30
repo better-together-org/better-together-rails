@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/better-together-org/community-engine-rails.git
-  revision: 293ec8342cd673c0f34f8e983b697b0c274920e5
+  revision: ac0b48aaa9bc4d6b234a69bccc713060df482271
   branch: main
   specs:
     better_together (0.3.6)
@@ -545,7 +545,7 @@ GEM
     websocket-extensions (0.1.5)
     xpath (3.2.0)
       nokogiri (~> 1.8)
-    zeitwerk (2.6.14)
+    zeitwerk (2.6.15)
 
 PLATFORMS
   ruby
