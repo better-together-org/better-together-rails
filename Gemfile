@@ -20,6 +20,9 @@ gem 'better_together', '~> 0.3.6',
 gem 'bcrypt', '~> 3.1.20'
 # Bootsnap for faster boot times
 gem 'bootsnap', '>= 1.7.0', require: false
+
+gem 'fog-aws'
+
 # Database adapter for PostgreSQL
 gem 'pg', '>= 0.18', '< 2.0'
 # Puma as the app server
