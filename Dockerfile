@@ -10,6 +10,15 @@ ARG FOG_REGION
 ARG ASSET_HOST
 ARG CDN_DISTRIBUTION_ID
 
+# Set environment variables for asset precompilation
+ENV AWS_ACCESS_KEY_ID=${AWS_ACCESS_KEY_ID}
+ENV AWS_SECRET_ACCESS_KEY=${AWS_SECRET_ACCESS_KEY}
+ENV FOG_DIRECTORY=${FOG_DIRECTORY}
+ENV FOG_HOST=${FOG_HOST}
+ENV FOG_REGION=${FOG_REGION}
+ENV ASSET_HOST=${ASSET_HOST}
+ENV CDN_DISTRIBUTION_ID=${CDN_DISTRIBUTION_ID}
+
 # Install dependencies
 RUN apt-get update -qq \
   && apt-get install -y --no-install-recommends \
@@ -43,16 +52,7 @@ RUN gem uninstall bundler \
 # Copy the rest of the application code
 COPY . .
 
-# Set environment variables for asset precompilation
-ENV AWS_ACCESS_KEY_ID=$AWS_ACCESS_KEY_ID
-ENV AWS_SECRET_ACCESS_KEY=$AWS_SECRET_ACCESS_KEY
-ENV FOG_DIRECTORY=$FOG_DIRECTORY
-ENV FOG_HOST=$FOG_HOST
-ENV FOG_REGION=$FOG_REGION
-ENV ASSET_HOST=$ASSET_HOST
-ENV CDN_DISTRIBUTION_ID=$CDN_DISTRIBUTION_ID
-
-# Precompile assets
+# Precompile assets and sync to S3
 RUN bundle exec rake assets:precompile
 
 # Stage 2: Runtime environment

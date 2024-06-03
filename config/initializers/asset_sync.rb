@@ -1,76 +1,37 @@
 if defined?(AssetSync)
   AssetSync.configure do |config|
     config.fog_provider = 'AWS'
+    
     config.aws_access_key_id = ENV['AWS_ACCESS_KEY_ID']
     config.aws_secret_access_key = ENV['AWS_SECRET_ACCESS_KEY']
-    config.aws_session_token = ENV['AWS_SESSION_TOKEN'] if ENV.key?('AWS_SESSION_TOKEN')
-    config.aws_iam_roles = true
-
-    # To use AWS reduced redundancy storage.
-    # config.aws_reduced_redundancy = true
-    #
-    # Change AWS signature version. Default is 4
-    # config.aws_signature_version = 4
-    #
-    # Change canned ACL of uploaded object. Default is unset. Will override fog_public if set.
-    # Choose from: private | public-read | public-read-write | aws-exec-read |
-    #              authenticated-read | bucket-owner-read | bucket-owner-full-control 
-    # config.aws_acl = nil 
-    #
-    # Change host option in fog (only if you need to)
-    # config.fog_host = "s3.amazonaws.com"
-    #
-    # Change port option in fog (only if you need to)
-    # config.fog_port = "9000"
-    #
-    # Use http instead of https. Default should be "https" (at least for fog-aws)
-    # config.fog_scheme = "http"
+    
+    if ENV.key?('AWS_SESSION_TOKEN')
+      config.aws_session_token = ENV['AWS_SESSION_TOKEN']
+    end
+    
+    # Ensure that aws_iam_roles is set to false if not explicitly required
+    config.aws_iam_roles = ENV['AWS_IAM_ROLES'] == 'true'
+    
     config.fog_directory = ENV['FOG_DIRECTORY']
-
-    # Invalidate a file on a cdn after uploading files
-    # config.cdn_distribution_id = "12345"
-    # config.invalidate = ['file1.js']
-
-    # Increase upload performance by configuring your region
     config.fog_region = ENV['FOG_REGION']
-    #
-    # Set `public` option when uploading file depending on value,
-    # Setting to "default" makes asset sync skip setting the option
-    # Possible values: true, false, "default" (default: true)
-    # config.fog_public = true
-    #
-    # Don't delete files from the store
+
+    # Additional configurations (commented out by default)
+    # config.aws_reduced_redundancy = true
+    # config.aws_signature_version = 4
+    # config.aws_acl = nil
+    # config.fog_host = "s3.amazonaws.com"
+    # config.fog_port = "9000"
+    config.fog_scheme = "https"
+    # config.cdn_distribution_id = ENV['CDN_DISTRIBUTION_ID'] if ENV.key?('CDN_DISTRIBUTION_ID')
+    # config.invalidate = ['file1.js']
     # config.existing_remote_files = "keep"
-    #
-    # Automatically replace files with their equivalent gzip compressed version
     # config.gzip_compression = true
-    #
-    # Use the Rails generated 'manifest.yml' file to produce the list of files to
-    # upload instead of searching the assets directory.
     # config.manifest = true
-    #
-    # Upload the manifest file also.
     # config.include_manifest = false
-    #
-    # Upload files concurrently
-    config.concurrent_uploads = true
-    #
-    # Path to cache file to skip scanning remote
     # config.remote_file_list_cache_file_path = './.asset_sync_remote_file_list_cache.json'
-    #
-    # Path on remote storage to persist remote file list file
     # config.remote_file_list_remote_path = '/remote/asset_sync_remote_file.json'
-    #
-    # Fail silently.  Useful for environments such as Heroku
     # config.fail_silently = true
-    #
-    # Log silently. Default is `true`. But you can set it to false if more logging message are preferred.
-    # Logging messages are sent to `STDOUT` when `log_silently` is falsy
-    # config.log_silently = true
-    #
-    # Allow custom assets to be cacheable. Note: The base filename will be matched
-    # If you have an asset with name `app.0ba4d3.js`, only `app.0ba4d3` will need to be matched
-    # config.cache_asset_regexps = [ /\.[a-f0-9]{8}$/i, /\.[a-f0-9]{20}$/i ]
-    # config.cache_asset_regexp = /\.[a-f0-9]{8}$/i
+    config.log_silently = true
+    config.concurrent_uploads = true
   end
 end
