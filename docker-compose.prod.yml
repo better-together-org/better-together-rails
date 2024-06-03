@@ -27,7 +27,7 @@ services:
         CDN_DISTRIBUTION_ID: ${CDN_DISTRIBUTION_ID}
       context: .
       dockerfile: ./Dockerfile
-    command: ./.dokku/web.sh
+    command: bundle exec puma -C config/puma.rb
     ports:
       - '5000:5000'
 

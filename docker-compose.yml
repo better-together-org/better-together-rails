@@ -10,12 +10,12 @@ x-env-info: &env-info
     - './.env.dev'
 
 x-app-shared: &app-shared
-  # <<: *env-info
+  <<: *env-info
   image: better-together/better-together-rails:dev
   volumes:
     - .:/bt
     # - ../pundit-resources:/pundit-resources
-    # - ../community-engine-rails:/community-engine
+    - ../community-engine-rails:/community-engine
     - bt-bundler-gems:/usr/local/bundle/
   depends_on:
     - db
