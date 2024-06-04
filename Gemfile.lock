@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/better-together-org/community-engine-rails.git
-  revision: 9bffe8bd57a97577bc08275e515694b419e50233
+  revision: 1ab686666145511ecadadb827da23b2bf7d7b18a
   branch: main
   specs:
     better_together (0.3.6)
@@ -205,7 +205,8 @@ GEM
       railties (>= 5.0.0)
     faker (3.4.1)
       i18n (>= 1.8.11, < 2)
-    ffi (1.16.3)
+    ffi (1.17.0)
+    ffi (1.17.0-x86_64-linux-gnu)
     font-awesome-sass (6.5.2)
       sassc (~> 2.0)
     friendly_id (5.4.2)
@@ -265,7 +266,7 @@ GEM
     mime-types-data (3.2024.0305)
     mini_magick (4.12.0)
     mini_mime (1.1.5)
-    mini_portile2 (2.8.6)
+    mini_portile2 (2.8.7)
     minitest (5.23.1)
     mobility (1.2.9)
       i18n (>= 0.6.10, < 2)
@@ -275,7 +276,7 @@ GEM
       mobility (~> 1.2)
     msgpack (1.7.2)
     multi_json (1.15.0)
-    net-imap (0.4.11)
+    net-imap (0.4.12)
       date
       net-protocol
     net-pop (0.1.2)
