@@ -7,7 +7,7 @@ volumes:
 
 x-env-info: &env-info
   env_file:
-    - './docker-env.conf'
+    - './.env.dev'
 
 x-app-shared: &app-shared
   <<: *env-info

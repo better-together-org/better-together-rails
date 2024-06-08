@@ -5,6 +5,9 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '3.2.2'
 
+gem 'asset_sync'
+gem 'aws-sdk-s3', require: false
+
 # Use the published version of better_together for production
 gem 'better_together', '~> 0.3.6',
     github: 'better-together-org/community-engine-rails',
@@ -17,13 +20,21 @@ gem 'better_together', '~> 0.3.6',
 gem 'bcrypt', '~> 3.1.20'
 # Bootsnap for faster boot times
 gem 'bootsnap', '>= 1.7.0', require: false
+
+gem 'fog-aws'
+
 # Database adapter for PostgreSQL
 gem 'pg', '>= 0.18', '< 2.0'
 # Puma as the app server
 gem 'puma', '~> 6.4'
+
+# Pundit for authorization, custom fork for Better Together
+gem 'pundit-resources', '~> 1.1.4', github: 'better-together-org/pundit-resources'
+
 # Core Rails gem
 gem 'rack-protection'
 gem 'rails', '~> 7.0.8'
+
 # Redis for ActionCable and background jobs
 gem 'redis', '~> 5.2'
 # Sidekiq for background processing
@@ -36,9 +47,6 @@ gem 'stackprof'
 
 # Uglifier for JavaScript compression
 gem 'uglifier', '>= 1.3.0'
-
-# Pundit for authorization, custom fork for Better Together
-gem 'pundit-resources', '~> 1.1.4', github: 'better-together-org/pundit-resources'
 
 group :development, :test do
   # Better errors for enhanced error pages

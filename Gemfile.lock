@@ -113,9 +113,30 @@ GEM
       tzinfo (~> 2.0)
     addressable (2.8.6)
       public_suffix (>= 2.0.2, < 6.0)
+    asset_sync (2.19.1)
+      activemodel (>= 4.1.0)
+      fog-core
+      mime-types (>= 2.99)
+      unf
     ast (2.4.2)
     autoprefixer-rails (10.4.16.0)
       execjs (~> 2)
+    aws-eventstream (1.3.0)
+    aws-partitions (1.936.0)
+    aws-sdk-core (3.196.1)
+      aws-eventstream (~> 1, >= 1.3.0)
+      aws-partitions (~> 1, >= 1.651.0)
+      aws-sigv4 (~> 1.8)
+      jmespath (~> 1, >= 1.6.1)
+    aws-sdk-kms (1.82.0)
+      aws-sdk-core (~> 3, >= 3.193.0)
+      aws-sigv4 (~> 1.1)
+    aws-sdk-s3 (1.151.0)
+      aws-sdk-core (~> 3, >= 3.194.0)
+      aws-sdk-kms (~> 1)
+      aws-sigv4 (~> 1.8)
+    aws-sigv4 (1.8.0)
+      aws-eventstream (~> 1, >= 1.0.2)
     base64 (0.2.0)
     bcrypt (3.1.20)
     better_errors (2.10.1)
@@ -197,6 +218,7 @@ GEM
       concurrent-ruby (~> 1.0)
       zeitwerk (~> 2.6)
     erubi (1.12.0)
+    excon (0.110.0)
     execjs (2.9.1)
     factory_bot (6.4.5)
       activesupport (>= 5.0.0)
@@ -206,9 +228,24 @@ GEM
     faker (3.4.1)
       i18n (>= 1.8.11, < 2)
     ffi (1.17.0)
-    ffi (1.17.0-x86_64-linux-gnu)
+    fog-aws (3.22.0)
+      fog-core (~> 2.1)
+      fog-json (~> 1.1)
+      fog-xml (~> 0.1)
+    fog-core (2.4.0)
+      builder
+      excon (~> 0.71)
+      formatador (>= 0.2, < 2.0)
+      mime-types
+    fog-json (1.2.0)
+      fog-core
+      multi_json (~> 1.10)
+    fog-xml (0.1.4)
+      fog-core
+      nokogiri (>= 1.5.11, < 2.0.0)
     font-awesome-sass (6.5.2)
       sassc (~> 2.0)
+    formatador (1.1.0)
     friendly_id (5.4.2)
       activerecord (>= 4.0.0)
     friendly_id-mobility (1.0.4)
@@ -237,6 +274,7 @@ GEM
       actionpack (>= 6.0.0)
       activesupport (>= 6.0.0)
       railties (>= 6.0.0)
+    jmespath (1.6.2)
     json (2.7.2)
     json-schema (4.3.0)
       addressable (>= 2.8)
@@ -523,6 +561,9 @@ GEM
     uber (0.1.0)
     uglifier (4.2.0)
       execjs (>= 0.3.0, < 3)
+    unf (0.1.4)
+      unf_ext
+    unf_ext (0.0.9.1)
     unicode-display_width (2.5.0)
     warden (1.2.9)
       rack (>= 2.0.9)
@@ -553,6 +594,8 @@ PLATFORMS
   x86_64-linux
 
 DEPENDENCIES
+  asset_sync
+  aws-sdk-s3
   bcrypt (~> 3.1.20)
   better_errors
   better_together (~> 0.3.6)!
@@ -566,6 +609,7 @@ DEPENDENCIES
   database_cleaner
   factory_bot_rails
   faker
+  fog-aws
   fuubar
   listen (>= 3.0.5, < 3.10)
   pg (>= 0.18, < 2.0)
