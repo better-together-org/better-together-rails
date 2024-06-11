@@ -2,7 +2,7 @@
   "name": "community-engine",
   "scripts": {
     "dokku": {
-      "predeploy": "echo 'empty pre-deploy step'"
+      "predeploy": "bundle install"
     },
     "postdeploy": "bundle exec rails db:seed"
   },
