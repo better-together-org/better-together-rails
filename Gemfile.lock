@@ -1,7 +1,7 @@
 GIT
   remote: https://github.com/better-together-org/community-engine-rails.git
-  revision: f55b7b619f9e09bb11135ff6c9e4add1fe4c3759
-  branch: main
+  revision: 634c40e771d7683e75ec26da565ffa45f87a1db3
+  branch: fix/trix-uploads
   specs:
     better_together (0.4.0)
       activerecord-import

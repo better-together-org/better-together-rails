@@ -3,6 +3,7 @@
 require_relative 'boot'
 
 require 'rails/all'
+require 'better_together/engine'
 
 # Require the gems listed in Gemfile, including any gems
 # you've limited to :test, :development, or :production.
@@ -25,7 +26,6 @@ module BetterTogether
     # These settings can be overridden in specific environments using the files
     # in config/environments, which are processed later.
     #
-    # config.time_zone = "Central Time (US & Canada)"
     # config.eager_load_paths << Rails.root.join("extras")
 
     # Use middleware to handle forwarded headers
@@ -60,14 +60,15 @@ module BetterTogether
       enable_starttls_auto: true
     }
 
-    Rails.application.routes.default_url_options = {
-      host: ENV.fetch('APP_HOST', 'http://localhost:3000')
+    default_url_options = {
+      **::BetterTogether::Engine.routes.default_url_options
     }
 
-    config.action_mailer.default_url_options = {
-      host: ENV.fetch('APP_HOST', 'http://localhost:3000')
-    }
+    Rails.application.routes.default_url_options =
+      config.action_mailer.default_url_options =
+      config.default_url_options = 
+      default_url_options
 
-    config.time_zone = 'Newfoundland'
+    config.time_zone = ENV.fetch('APP_TIME_ZONE', 'Newfoundland')
   end
 end
