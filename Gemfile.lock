@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/better-together-org/community-engine-rails.git
-  revision: 2978edeade9c9297c56ba62e95370e4405bae394
+  revision: d3330b0a6a4e5ab487ef6337c26ad7979b2ce5e4
   branch: fix/trix-uploads
   specs:
     better_together (0.4.0)

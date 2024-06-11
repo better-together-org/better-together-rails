@@ -14,7 +14,7 @@ gem 'better_together', '~> 0.4.0',
     branch: 'fix/trix-uploads'
 
 # Use the local development version of better_together
-# gem 'better_together', '~> 0.3.6', path: '/community-engine'
+# gem 'better_together', '~> 0.4.0', path: '/community-engine'
 
 # bcrypt for secure password handling
 gem 'bcrypt', '~> 3.1.20'
