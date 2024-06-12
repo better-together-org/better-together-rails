@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/better-together-org/community-engine-rails.git
-  revision: 0b32c3e7518d494c4201d12c756296645d01dcf1
+  revision: c3582ee7a2033c3a6d9194a2b11f6bdceec7647b
   branch: main
   specs:
     better_together (0.4.1)
@@ -484,10 +484,10 @@ GEM
     ruby-vips (2.2.1)
       ffi (~> 1.12)
     rubyzip (2.3.2)
-    sass-embedded (1.77.4)
+    sass-embedded (1.77.5)
       google-protobuf (>= 3.25, < 5.0)
       rake (>= 13)
-    sass-embedded (1.77.4-x86_64-linux-gnu)
+    sass-embedded (1.77.5-x86_64-linux-gnu)
       google-protobuf (>= 3.25, < 5.0)
     sassc (2.4.0)
       ffi (~> 1.9)
