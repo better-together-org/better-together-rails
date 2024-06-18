@@ -1,7 +1,7 @@
 GIT
   remote: https://github.com/better-together-org/community-engine-rails.git
-  revision: 3bcaf73618fd2b62dc6175c1719a8d5445c7ca21
-  branch: main
+  revision: 53027c80d32f9960eecd6faa7032c5f32d310276
+  branch: fix/spatial-table-exclusion
   specs:
     better_together (0.4.1)
       activerecord-import
@@ -297,7 +297,7 @@ GEM
       activerecord (>= 4.1)
       concurrent-ruby
       railties (>= 4.1)
-    jwt (2.8.1)
+    jwt (2.8.2)
       base64
     language_server-protocol (3.17.0.3)
     listen (3.9.0)
@@ -665,4 +665,4 @@ RUBY VERSION
    ruby 3.2.2p53
 
 BUNDLED WITH
-   2.1.4
+   2.4.13
