@@ -1,7 +1,7 @@
 GIT
   remote: https://github.com/better-together-org/community-engine-rails.git
-  revision: 4eae3b38bd85dc97dc858b21481a8d72be0d579b
-  branch: main
+  revision: c9be8268268bd2ae247f3fe004caf7f0cdaf9d4a
+  branch: feature/i18n
   specs:
     better_together (0.4.1)
       activerecord-import
