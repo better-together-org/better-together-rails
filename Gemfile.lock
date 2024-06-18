@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/better-together-org/community-engine-rails.git
-  revision: 932d0d6e31fc01b884c65f2363e4370a645f2d51
+  revision: 3bcaf73618fd2b62dc6175c1719a8d5445c7ca21
   branch: main
   specs:
     better_together (0.4.1)
@@ -359,7 +359,7 @@ GEM
       method_source (~> 1.0)
     psych (5.1.2)
       stringio
-    public_suffix (5.1.0)
+    public_suffix (5.1.1)
     puma (6.4.2)
       nio4r (~> 2.0)
     pundit (2.3.2)
