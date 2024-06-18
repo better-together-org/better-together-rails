@@ -1,7 +1,7 @@
 GIT
   remote: https://github.com/better-together-org/community-engine-rails.git
-  revision: 53027c80d32f9960eecd6faa7032c5f32d310276
-  branch: fix/spatial-table-exclusion
+  revision: d1645f518ec4e290913d24d3ccff0dafea0c6ef0
+  branch: main
   specs:
     better_together (0.4.1)
       activerecord-import

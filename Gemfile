@@ -11,7 +11,7 @@ gem 'aws-sdk-s3', require: false
 # Use the published version of better_together for production
 gem 'better_together', '~> 0.4.1',
     github: 'better-together-org/community-engine-rails',
-    branch: 'fix/spatial-table-exclusion'
+    branch: 'main'
 
 # Use the local development version of better_together
 # gem 'better_together', '~> 0.4.1', path: '/community-engine'
