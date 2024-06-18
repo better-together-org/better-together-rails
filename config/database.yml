@@ -19,8 +19,8 @@ default: &default
   encoding: unicode
   # For details on connection pooling, see Rails configuration guide
   # http://guides.rubyonrails.org/configuring.html#database-pooling
-  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
-  url: <%= ENV.fetch("DATABASE_URL") { 'postgres://postgres:postgres@better-together-db' } %>
+  pool: <%= ENV.fetch('RAILS_MAX_THREADS') { 5 } %>
+  url: <%= ENV.fetch('DATABASE_URL') { 'postgres://postgres:postgres@better-together-db' } %>
 
 development:
   <<: *default
@@ -81,4 +81,4 @@ test:
 #
 production:
   <<: *default
-  url: <%= ENV['DATABASE_URL'] %>
+  url: <%= ENV.fetch('DATABASE_URL', '') %>
