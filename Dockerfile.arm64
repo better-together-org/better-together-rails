@@ -1,5 +1,5 @@
 # Use an ARM-compatible Ruby image
-FROM arm64v8/ruby:3.2
+FROM arm64v8/ruby:3.2.4
 
 # Install necessary packages
 RUN apt-get update -qq && \
@@ -11,10 +11,6 @@ RUN apt-get update -qq && \
     libssl-dev \
     libvips42 \
     curl && \
-    curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add - && \
-    echo "deb https://dl.yarnpkg.com/debian/ stable main" | tee /etc/apt/sources.list.d/yarn.list && \
-    apt-get update -qq && \
-    apt-get install -y --no-install-recommends yarn && \
     rm -rf /var/lib/apt/lists/*
 
 # Set working directory
@@ -24,7 +20,7 @@ WORKDIR /bt
 COPY Gemfile Gemfile.lock ./
 
 # Install bundler and gems
-RUN gem install bundler:2.4.13 && bundle install --jobs 4 --retry 3
+RUN bundle install --jobs 4 --retry 3
 
 # Copy the rest of the application code
 COPY . .
