@@ -2,7 +2,7 @@
 # When pushed to dokku via git, it detects this Dockerfile and automatically chooses Docker build
 
 # Stage 1: Build environment
-FROM ruby:3.2.2 AS builder
+FROM ruby:3.2.4 AS builder
 
 # Define build-time variables
 ARG AWS_ACCESS_KEY_ID
@@ -34,10 +34,6 @@ RUN apt-get update -qq \
     ca-certificates \
     libvips42 \
     curl \
-  && curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add - \
-  && echo "deb https://dl.yarnpkg.com/debian/ stable main" | tee /etc/apt/sources.list.d/yarn.list \
-  && apt-get update -qq \
-  && apt-get install -y --no-install-recommends yarn \
   && curl -sL https://sentry.io/get-cli/ | bash \
   && rm -rf /var/lib/apt/lists/*
 
@@ -59,7 +55,7 @@ COPY . .
 RUN bundle exec rake assets:precompile
 
 # Stage 2: Runtime environment
-FROM ruby:3.2.2
+FROM ruby:3.2.4
 
 # Install runtime dependencies
 RUN apt-get update -qq \
