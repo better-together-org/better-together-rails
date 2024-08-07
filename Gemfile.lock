@@ -1,13 +1,15 @@
 GIT
   remote: https://github.com/better-together-org/community-engine-rails.git
-  revision: c9be8268268bd2ae247f3fe004caf7f0cdaf9d4a
+  revision: b1d4c252bc5d496e6a3b2b54c4740ebe2e9862ff
   branch: feature/i18n
+  specs:
     better_together (0.4.1)
       activerecord-import
       activerecord-postgis-adapter
       bootstrap (~> 5.3.2)
       dartsass-sprockets (~> 3.1)
       devise
+      devise-i18n
       devise-jwt
       font-awesome-sass (~> 6.5)
       friendly_id (>= 5.2, < 5.6)
@@ -207,6 +209,8 @@ GEM
       railties (>= 4.1.0)
       responders
       warden (~> 1.2.3)
+    devise-i18n (1.12.1)
+      devise (>= 4.9.0)
     devise-jwt (0.12.1)
       devise (~> 4.0)
       warden-jwt_auth (~> 0.10)
