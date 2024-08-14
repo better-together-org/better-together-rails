@@ -539,7 +539,7 @@ GEM
       concurrent-ruby (~> 1.0, >= 1.0.2)
     shoulda-callback-matchers (1.1.4)
       activesupport (>= 3)
-    shoulda-matchers (6.2.0)
+    shoulda-matchers (6.3.0)
       activesupport (>= 5.2.0)
     sidekiq (7.3.0)
       concurrent-ruby (< 2)
