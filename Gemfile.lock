@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/better-together-org/community-engine-rails.git
-  revision: 4e8219fbb8e79f3682c58971bb62bc2d68f9a3f5
+  revision: 51e0e878031cfafbc59247473a3a406ace333713
   branch: main
   specs:
     better_together (0.4.1)
@@ -23,7 +23,7 @@ GIT
       rack-cors (>= 1.1.1, < 2.1.0)
       rails (>= 5.2.2, < 7.2.0)
       reform-rails (~> 0.2.0)
-      rswag (>= 2.3.1, < 2.14.0)
+      rswag (>= 2.3.1, < 2.15.0)
       sprockets-rails
       stimulus-rails (~> 1.3)
       turbo-rails (~> 2.0)
@@ -478,21 +478,21 @@ GEM
       rspec-mocks (~> 3.13)
       rspec-support (~> 3.13)
     rspec-support (3.13.1)
-    rswag (2.13.0)
-      rswag-api (= 2.13.0)
-      rswag-specs (= 2.13.0)
-      rswag-ui (= 2.13.0)
-    rswag-api (2.13.0)
-      activesupport (>= 3.1, < 7.2)
-      railties (>= 3.1, < 7.2)
-    rswag-specs (2.13.0)
-      activesupport (>= 3.1, < 7.2)
+    rswag (2.14.0)
+      rswag-api (= 2.14.0)
+      rswag-specs (= 2.14.0)
+      rswag-ui (= 2.14.0)
+    rswag-api (2.14.0)
+      activesupport (>= 5.2, < 8.0)
+      railties (>= 5.2, < 8.0)
+    rswag-specs (2.14.0)
+      activesupport (>= 5.2, < 8.0)
       json-schema (>= 2.2, < 5.0)
-      railties (>= 3.1, < 7.2)
+      railties (>= 5.2, < 8.0)
       rspec-core (>= 2.14)
-    rswag-ui (2.13.0)
-      actionpack (>= 3.1, < 7.2)
-      railties (>= 3.1, < 7.2)
+    rswag-ui (2.14.0)
+      actionpack (>= 5.2, < 8.0)
+      railties (>= 5.2, < 8.0)
     rubocop (1.65.1)
       json (~> 2.3)
       language_server-protocol (>= 3.17.0)
