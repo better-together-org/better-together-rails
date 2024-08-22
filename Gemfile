@@ -36,7 +36,7 @@ gem 'rack-protection'
 gem 'rails', '~> 7.1.3'
 
 # Redis for ActionCable and background jobs
-gem 'redis', '~> 5.2'
+gem 'redis', '~> 5.3'
 # Sidekiq for background processing
 gem 'sidekiq', '~> 7.3.0'
 
