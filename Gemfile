@@ -11,7 +11,7 @@ gem 'aws-sdk-s3', require: false
 # Use the published version of better_together for production
 gem 'better_together', '~> 0.5.0',
     github: 'better-together-org/community-engine-rails',
-    branch: 'main'
+    branch: 'wip/new-to-nl'
 
 # Use the local development version of better_together
 # gem 'better_together', '~> 0.4.1', path: '/community-engine'
@@ -44,6 +44,9 @@ gem 'sidekiq', '~> 7.3.1'
 gem 'sentry-rails'
 gem 'sentry-ruby'
 gem 'stackprof'
+
+# Storext for easier json attributes, custom fork for Better Together
+gem 'storext', github: 'better-together-org/storext'
 
 # Uglifier for JavaScript compression
 gem 'uglifier', '>= 1.3.0'
