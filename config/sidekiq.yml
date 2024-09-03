@@ -1,15 +1,21 @@
 default: &default
   url: <%= ENV["REDIS_URL"] || 'redis://localhost:6379' %>
-  queues:
-    - default
-    - mailers
 
 development:
   <<: *default
   verbose: true
+  queues:
+    - default
+    - mailers
 
 test:
   <<: *default
+  queues:
+    - default
+    - mailers
 
 production:
   <<: *default
+  queues:
+    - better_together_production_default
+    - better_together_production_mailers
