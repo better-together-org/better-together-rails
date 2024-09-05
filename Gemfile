@@ -38,7 +38,7 @@ gem 'rails', '~> 7.1.3'
 # Redis for ActionCable and background jobs
 gem 'redis', '~> 5.3'
 # Sidekiq for background processing
-gem 'sidekiq', '~> 7.3.1'
+gem 'sidekiq', '~> 7.3.2'
 
 # Error and performance monitoring with Sentry
 gem 'sentry-rails'
