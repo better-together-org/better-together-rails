@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_09_03_114604) do
+ActiveRecord::Schema[7.1].define(version: 2024_09_10_015050) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
   enable_extension "plpgsql"
@@ -70,6 +70,34 @@ ActiveRecord::Schema[7.1].define(version: 2024_09_03_114604) do
     t.index ["identifier"], name: "index_better_together_communities_on_identifier", unique: true
     t.index ["privacy"], name: "by_community_privacy"
     t.index ["slug"], name: "index_better_together_communities_on_slug", unique: true
+  end
+
+  create_table "better_together_content_blocks", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.integer "lock_version", default: 0, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "type", null: false
+    t.string "identifier", limit: 100
+    t.jsonb "accessibility_attributes", default: {}, null: false
+    t.jsonb "content_settings", default: {}, null: false
+    t.jsonb "css_settings", default: {}, null: false
+    t.jsonb "data_attributes", default: {}, null: false
+    t.jsonb "html_attributes", default: {}, null: false
+    t.jsonb "layout_settings", default: {}, null: false
+    t.jsonb "media_settings", default: {}, null: false
+  end
+
+  create_table "better_together_content_page_blocks", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.integer "lock_version", default: 0, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.uuid "page_id", null: false
+    t.uuid "block_id", null: false
+    t.integer "position", null: false
+    t.index ["block_id"], name: "index_better_together_content_page_blocks_on_block_id"
+    t.index ["page_id", "block_id", "position"], name: "content_page_blocks_on_page_block_and_position"
+    t.index ["page_id", "block_id"], name: "content_page_blocks_on_page_and_block", unique: true
+    t.index ["page_id"], name: "index_better_together_content_page_blocks_on_page_id"
   end
 
   create_table "better_together_conversation_participants", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
@@ -262,6 +290,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_09_03_114604) do
     t.string "item_type", null: false
     t.string "linkable_type"
     t.uuid "linkable_id"
+    t.string "route_name"
     t.index ["identifier"], name: "index_better_together_navigation_items_on_identifier", unique: true
     t.index ["linkable_type", "linkable_id"], name: "by_linkable"
     t.index ["navigation_area_id", "parent_id", "position"], name: "navigation_items_area_position", unique: true
@@ -279,15 +308,12 @@ ActiveRecord::Schema[7.1].define(version: 2024_09_03_114604) do
     t.string "slug", null: false
     t.text "meta_description"
     t.string "keywords"
-    t.boolean "published"
     t.datetime "published_at"
     t.string "privacy", default: "public", null: false
     t.string "layout"
     t.string "template"
-    t.string "language", default: "en"
     t.index ["identifier"], name: "index_better_together_pages_on_identifier", unique: true
     t.index ["privacy"], name: "by_page_privacy"
-    t.index ["published"], name: "by_page_publication_status"
     t.index ["published_at"], name: "by_page_publication_date"
     t.index ["slug"], name: "index_better_together_pages_on_slug", unique: true
   end
@@ -573,6 +599,8 @@ ActiveRecord::Schema[7.1].define(version: 2024_09_03_114604) do
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "better_together_communities", "better_together_people", column: "creator_id"
+  add_foreign_key "better_together_content_page_blocks", "better_together_content_blocks", column: "block_id"
+  add_foreign_key "better_together_content_page_blocks", "better_together_pages", column: "page_id"
   add_foreign_key "better_together_conversation_participants", "better_together_conversations", column: "conversation_id"
   add_foreign_key "better_together_conversation_participants", "better_together_people", column: "person_id"
   add_foreign_key "better_together_conversations", "better_together_people", column: "creator_id"

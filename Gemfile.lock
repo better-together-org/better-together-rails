@@ -1,9 +1,10 @@
 GIT
   remote: https://github.com/better-together-org/community-engine-rails.git
-  revision: 7178ef418172ba2b9f7fb27ab00dcd2687ff0ebd
+  revision: 474effc677e83b738826304aedda6c8fe7d86026
   branch: wip/new-to-nl
   specs:
     better_together (0.5.0)
+      active_storage_validations
       activerecord-import
       activerecord-postgis-adapter
       bootstrap (~> 5.3.2)
@@ -11,6 +12,8 @@ GIT
       devise
       devise-i18n
       devise-jwt
+      elasticsearch-model (~> 7)
+      elasticsearch-rails (~> 7)
       font-awesome-sass (~> 6.5)
       friendly_id (>= 5.2, < 5.6)
       friendly_id-mobility (~> 1.0.4)
@@ -22,7 +25,7 @@ GIT
       mobility-actiontext (~> 1.1)
       noticed
       premailer-rails
-      pundit (>= 2.1, < 2.4)
+      pundit (>= 2.1, < 2.5)
       pundit-resources
       rack-cors (>= 1.1.1, < 2.1.0)
       rails (>= 5.2.2, < 7.2.0)
@@ -104,6 +107,11 @@ GEM
       erubi (~> 1.11)
       rails-dom-testing (~> 2.2)
       rails-html-sanitizer (~> 1.6)
+    active_storage_validations (1.1.4)
+      activejob (>= 5.2.0)
+      activemodel (>= 5.2.0)
+      activestorage (>= 5.2.0)
+      activesupport (>= 5.2.0)
     activejob (7.1.4)
       activesupport (= 7.1.4)
       globalid (>= 0.3.6)
@@ -113,7 +121,7 @@ GEM
       activemodel (= 7.1.4)
       activesupport (= 7.1.4)
       timeout (>= 0.4.0)
-    activerecord-import (1.8.0)
+    activerecord-import (1.8.1)
       activerecord (>= 4.2)
     activerecord-postgis-adapter (9.0.2)
       activerecord (~> 7.1.0)
@@ -253,6 +261,20 @@ GEM
     dry-core (1.0.1)
       concurrent-ruby (~> 1.0)
       zeitwerk (~> 2.6)
+    elasticsearch (7.17.11)
+      elasticsearch-api (= 7.17.11)
+      elasticsearch-transport (= 7.17.11)
+    elasticsearch-api (7.17.11)
+      multi_json
+    elasticsearch-model (7.2.1)
+      activesupport (> 3)
+      elasticsearch (~> 7)
+      hashie
+    elasticsearch-rails (7.2.1)
+    elasticsearch-transport (7.17.11)
+      base64
+      faraday (>= 1, < 3)
+      multi_json
     erubi (1.13.0)
     excon (0.111.0)
     execjs (2.9.1)
@@ -263,6 +285,11 @@ GEM
       railties (>= 5.0.0)
     faker (3.4.2)
       i18n (>= 1.8.11, < 2)
+    faraday (2.11.0)
+      faraday-net_http (>= 2.0, < 3.4)
+      logger
+    faraday-net_http (3.3.0)
+      net-http
     ffi (1.17.0-x86_64-linux-gnu)
     fog-aws (3.25.0)
       base64 (~> 0.2.0)
@@ -296,6 +323,7 @@ GEM
     google-protobuf (4.28.0-x86_64-linux)
       bigdecimal
       rake (>= 13)
+    hashie (5.0.0)
     htmlentities (4.3.4)
     http-accept (1.7.0)
     http-cookie (1.0.5)
@@ -358,7 +386,9 @@ GEM
     msgpack (1.7.2)
     multi_json (1.15.0)
     mutex_m (0.2.0)
-    net-imap (0.4.15)
+    net-http (0.4.1)
+      uri
+    net-imap (0.4.16)
       date
       net-protocol
     net-pop (0.1.2)
@@ -371,7 +401,7 @@ GEM
     nio4r (2.7.3)
     nokogiri (1.16.7-x86_64-linux)
       racc (~> 1.4)
-    noticed (2.4.1)
+    noticed (2.4.3)
       rails (>= 6.1.0)
     optimist (3.1.0)
     orm_adapter (0.5.0)
@@ -397,7 +427,7 @@ GEM
     public_suffix (6.0.1)
     puma (6.4.2)
       nio4r (~> 2.0)
-    pundit (2.3.2)
+    pundit (2.4.0)
       activesupport (>= 3.0.0)
     racc (1.8.1)
     rack (3.1.7)
@@ -468,7 +498,7 @@ GEM
       activemodel (>= 5.0)
       reform (>= 2.3.1, < 3.0.0)
     regexp_parser (2.9.2)
-    reline (0.5.9)
+    reline (0.5.10)
       io-console (~> 0.5)
     representable (3.2.0)
       declarative (< 0.1.0)
@@ -546,12 +576,12 @@ GEM
       ffi (~> 1.12)
       logger
     rubyzip (2.3.2)
-    sass-embedded (1.77.8-x86_64-linux-gnu)
-      google-protobuf (~> 4.26)
+    sass-embedded (1.78.0-x86_64-linux-gnu)
+      google-protobuf (~> 4.27)
     sassc (2.4.0)
       ffi (~> 1.9)
-    sassc-embedded (1.77.8)
-      sass-embedded (~> 1.77)
+    sassc-embedded (1.78.0)
+      sass-embedded (~> 1.78)
     selenium-webdriver (4.24.0)
       base64 (~> 0.2)
       logger (~> 1.4)
@@ -620,6 +650,7 @@ GEM
       execjs (>= 0.3.0, < 3)
     unf (0.2.0)
     unicode-display_width (2.5.0)
+    uri (0.13.1)
     virtus (2.0.0)
       axiom-types (~> 0.1)
       coercible (~> 1.0)
