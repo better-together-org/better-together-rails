@@ -1,9 +1,9 @@
 GIT
   remote: https://github.com/better-together-org/community-engine-rails.git
-  revision: 474effc677e83b738826304aedda6c8fe7d86026
-  branch: wip/new-to-nl
+  revision: 28d4080a4334a66e64eacab251186b737085cd17
+  branch: main
   specs:
-    better_together (0.5.0)
+    better_together (0.6.0)
       active_storage_validations
       activerecord-import
       activerecord-postgis-adapter
@@ -688,7 +688,7 @@ DEPENDENCIES
   aws-sdk-s3
   bcrypt (~> 3.1.20)
   better_errors
-  better_together (~> 0.5.0)!
+  better_together (~> 0.6.0)!
   binding_of_caller
   bootsnap (>= 1.7.0)
   brakeman

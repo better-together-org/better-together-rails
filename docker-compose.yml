@@ -41,7 +41,6 @@ services:
     ports:
       - "5435:5432"
   
-    
   elasticsearch:
     container_name: better-together-elasticsearch
     image: elasticsearch:7.17.23
