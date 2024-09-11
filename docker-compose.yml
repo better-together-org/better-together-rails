@@ -3,6 +3,7 @@ version: '3.6'
 volumes:
   bt-bundler-gems:
   bt-db-data:
+  bt-elasticsearch:
   bt-redis:
 
 x-env-info: &env-info
@@ -39,6 +40,25 @@ services:
       - bt-db-data:/var/lib/postgresql/data
     ports:
       - "5435:5432"
+  
+  elasticsearch:
+    container_name: better-together-elasticsearch
+    image: elasticsearch:7.17.23
+    environment:
+      - node.name=elasticsearch
+      - cluster.name=better-together-es
+      - discovery.seed_hosts=elasticsearch
+      - discovery.type=single-node
+      - bootstrap.memory_lock=true
+      - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
+    ports:
+      - 9202:9200
+    ulimits:
+      memlock:
+        soft: -1
+        hard: -1
+    volumes:
+      - bt-elasticsearch:/usr/share/elasticsearch/data
 
   sidekiq:
     <<: *app-shared

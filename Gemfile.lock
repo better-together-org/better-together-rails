@@ -1,9 +1,10 @@
 GIT
   remote: https://github.com/better-together-org/community-engine-rails.git
-  revision: 145ad3890b26954e1ff247ed2c48ff9520d8a718
+  revision: 28d4080a4334a66e64eacab251186b737085cd17
   branch: main
   specs:
-    better_together (0.5.0)
+    better_together (0.6.0)
+      active_storage_validations
       activerecord-import
       activerecord-postgis-adapter
       bootstrap (~> 5.3.2)
@@ -11,6 +12,8 @@ GIT
       devise
       devise-i18n
       devise-jwt
+      elasticsearch-model (~> 7)
+      elasticsearch-rails (~> 7)
       font-awesome-sass (~> 6.5)
       friendly_id (>= 5.2, < 5.6)
       friendly_id-mobility (~> 1.0.4)
@@ -20,6 +23,8 @@ GIT
       jsonapi-resources (>= 0.10.0)
       mobility (>= 1.0.1, < 2.0)
       mobility-actiontext (~> 1.1)
+      noticed
+      premailer-rails
       pundit (>= 2.1, < 2.5)
       pundit-resources
       rack-cors (>= 1.1.1, < 2.1.0)
@@ -28,6 +33,7 @@ GIT
       rswag (>= 2.3.1, < 2.15.0)
       sprockets-rails
       stimulus-rails (~> 1.3)
+      storext
       translate_enum
       turbo-rails (~> 2.0)
 
@@ -40,6 +46,14 @@ GIT
       jsonapi-resources
       pundit
       rails (>= 4.2.1, < 7.2)
+
+GIT
+  remote: https://github.com/better-together-org/storext.git
+  revision: 1d7c3707b3e412fece0022c16cc6f51564969d2c
+  specs:
+    storext (3.3.0)
+      activerecord (>= 4.0, < 8)
+      virtus
 
 GEM
   remote: https://rubygems.org/
@@ -93,6 +107,11 @@ GEM
       erubi (~> 1.11)
       rails-dom-testing (~> 2.2)
       rails-html-sanitizer (~> 1.6)
+    active_storage_validations (1.1.4)
+      activejob (>= 5.2.0)
+      activemodel (>= 5.2.0)
+      activestorage (>= 5.2.0)
+      activesupport (>= 5.2.0)
     activejob (7.1.4)
       activesupport (= 7.1.4)
       globalid (>= 0.3.6)
@@ -149,6 +168,10 @@ GEM
       aws-sigv4 (~> 1.5)
     aws-sigv4 (1.9.1)
       aws-eventstream (~> 1, >= 1.0.2)
+    axiom-types (0.1.1)
+      descendants_tracker (~> 0.0.4)
+      ice_nine (~> 0.11.0)
+      thread_safe (~> 0.3, >= 0.3.1)
     base64 (0.2.0)
     bcrypt (3.1.20)
     better_errors (2.10.1)
@@ -181,6 +204,8 @@ GEM
       regexp_parser (>= 1.5, < 3.0)
       xpath (~> 3.2)
     coderay (1.1.3)
+    coercible (1.0.0)
+      descendants_tracker (~> 0.0.1)
     concurrent-ruby (1.3.4)
     connection_pool (2.4.1)
     coveralls (0.7.1)
@@ -190,6 +215,8 @@ GEM
       term-ansicolor
       thor
     crass (1.0.6)
+    css_parser (1.19.0)
+      addressable
     dartsass-sprockets (3.1.0)
       railties (>= 4.0.0)
       sassc-embedded (~> 1.69)
@@ -205,6 +232,8 @@ GEM
     date (3.3.4)
     debug_inspector (1.2.0)
     declarative (0.0.20)
+    descendants_tracker (0.0.4)
+      thread_safe (~> 0.3, >= 0.3.1)
     devise (4.9.4)
       bcrypt (~> 3.0)
       orm_adapter (~> 0.1)
@@ -232,6 +261,20 @@ GEM
     dry-core (1.0.1)
       concurrent-ruby (~> 1.0)
       zeitwerk (~> 2.6)
+    elasticsearch (7.17.11)
+      elasticsearch-api (= 7.17.11)
+      elasticsearch-transport (= 7.17.11)
+    elasticsearch-api (7.17.11)
+      multi_json
+    elasticsearch-model (7.2.1)
+      activesupport (> 3)
+      elasticsearch (~> 7)
+      hashie
+    elasticsearch-rails (7.2.1)
+    elasticsearch-transport (7.17.11)
+      base64
+      faraday (>= 1, < 3)
+      multi_json
     erubi (1.13.0)
     excon (0.111.0)
     execjs (2.9.1)
@@ -242,7 +285,11 @@ GEM
       railties (>= 5.0.0)
     faker (3.4.2)
       i18n (>= 1.8.11, < 2)
-    ffi (1.17.0)
+    faraday (2.11.0)
+      faraday-net_http (>= 2.0, < 3.4)
+      logger
+    faraday-net_http (3.3.0)
+      net-http
     ffi (1.17.0-x86_64-linux-gnu)
     fog-aws (3.26.0)
       base64 (~> 0.2.0)
@@ -273,12 +320,11 @@ GEM
       ruby-progressbar (~> 1.4)
     globalid (1.2.1)
       activesupport (>= 6.1)
-    google-protobuf (4.28.0)
-      bigdecimal
-      rake (>= 13)
     google-protobuf (4.28.0-x86_64-linux)
       bigdecimal
       rake (>= 13)
+    hashie (5.0.0)
+    htmlentities (4.3.4)
     http-accept (1.7.0)
     http-cookie (1.0.5)
       domain_name (~> 0.5)
@@ -287,6 +333,7 @@ GEM
     i18n-timezones (1.4.8)
       i18n (>= 0.9.3)
       rails (>= 5.1.6.2)
+    ice_nine (0.11.2)
     image_processing (1.13.0)
       mini_magick (>= 4.9.5, < 5)
       ruby-vips (>= 2.0.17, < 3)
@@ -329,7 +376,6 @@ GEM
     mime-types-data (3.2024.0903)
     mini_magick (4.13.2)
     mini_mime (1.1.5)
-    mini_portile2 (2.8.7)
     minitest (5.25.1)
     mobility (1.2.9)
       i18n (>= 0.6.10, < 2)
@@ -340,6 +386,8 @@ GEM
     msgpack (1.7.2)
     multi_json (1.15.0)
     mutex_m (0.2.0)
+    net-http (0.4.1)
+      uri
     net-imap (0.4.16)
       date
       net-protocol
@@ -351,11 +399,10 @@ GEM
       net-protocol
     netrc (0.11.0)
     nio4r (2.7.3)
-    nokogiri (1.16.7)
-      mini_portile2 (~> 2.8.2)
-      racc (~> 1.4)
     nokogiri (1.16.7-x86_64-linux)
       racc (~> 1.4)
+    noticed (2.4.3)
+      rails (>= 6.1.0)
     optimist (3.1.0)
     orm_adapter (0.5.0)
     parallel (1.26.3)
@@ -364,6 +411,14 @@ GEM
       racc
     pg (1.5.8)
     popper_js (2.11.8)
+    premailer (1.27.0)
+      addressable
+      css_parser (>= 1.19.0)
+      htmlentities (>= 4.0.0)
+    premailer-rails (1.12.0)
+      actionmailer (>= 3)
+      net-smtp
+      premailer (~> 1.7, >= 1.7.9)
     pry (0.14.2)
       coderay (~> 1.1)
       method_source (~> 1.0)
@@ -524,8 +579,6 @@ GEM
     sass-embedded (1.78.0)
       google-protobuf (~> 4.27)
       rake (>= 13)
-    sass-embedded (1.78.0-x86_64-linux-gnu)
-      google-protobuf (~> 4.27)
     sassc (2.4.0)
       ffi (~> 1.9)
     sassc-embedded (1.78.0)
@@ -578,6 +631,7 @@ GEM
     term-ansicolor (1.8.0)
       tins (~> 1.0)
     thor (1.3.2)
+    thread_safe (0.3.6)
     tilt (2.4.0)
     timeout (0.4.1)
     tins (1.33.0)
@@ -597,6 +651,11 @@ GEM
       execjs (>= 0.3.0, < 3)
     unf (0.2.0)
     unicode-display_width (2.5.0)
+    uri (0.13.1)
+    virtus (2.0.0)
+      axiom-types (~> 0.1)
+      coercible (~> 1.0)
+      descendants_tracker (~> 0.0, >= 0.0.3)
     warden (1.2.9)
       rack (>= 2.0.9)
     warden-jwt_auth (0.10.0)
@@ -623,7 +682,6 @@ GEM
     zeitwerk (2.6.18)
 
 PLATFORMS
-  ruby
   x86_64-linux
 
 DEPENDENCIES
@@ -631,7 +689,7 @@ DEPENDENCIES
   aws-sdk-s3
   bcrypt (~> 3.1.20)
   better_errors
-  better_together (~> 0.5.0)!
+  better_together (~> 0.6.0)!
   binding_of_caller
   bootsnap (>= 1.7.0)
   brakeman
@@ -669,6 +727,7 @@ DEPENDENCIES
   spring
   spring-watcher-listen (~> 2.1.0)
   stackprof
+  storext!
   uglifier (>= 1.3.0)
   web-console (>= 3.3.0)
   webdrivers
