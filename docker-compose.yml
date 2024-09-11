@@ -1,0 +1,75 @@
+version: '3.6'
+
+volumes:
+  bt-bundler-gems:
+  bt-db-data:
+  bt-elasticsearch:
+  bt-redis:
+
+x-env-info: &env-info
+  env_file:
+    - './.env.dev'
+
+x-app-shared: &app-shared
+  <<: *env-info
+  image: better-together/better-together-rails:dev
+  volumes:
+    - .:/bt
+    # - ../pundit-resources:/pundit-resources
+    - ../community-engine-rails:/community-engine
+    - bt-bundler-gems:/usr/local/bundle/
+  depends_on:
+    - db
+    - redis
+
+services:
+  app: &app
+    <<: *app-shared
+    container_name: better-together-app
+    build: # "context" and "dockerfile" fields have to be under "build"
+      context: .
+      dockerfile: ./Dockerfile.dev
+    command: bash -c "rm -f tmp/pids/server.pid && bundle exec rails s -p 3001 -b '0.0.0.0'"
+    ports:
+      - "3001:3001"
+  db:
+    <<: *env-info
+    container_name: better-together-db
+    image: postgis/postgis:latest
+    volumes:
+      - bt-db-data:/var/lib/postgresql/data
+    ports:
+      - "5435:5432"
+  
+  elasticsearch:
+    container_name: better-together-elasticsearch
+    image: elasticsearch:7.17.23
+    environment:
+      - node.name=elasticsearch
+      - cluster.name=better-together-es
+      - discovery.seed_hosts=elasticsearch
+      - discovery.type=single-node
+      - bootstrap.memory_lock=true
+      - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
+    ports:
+      - 9202:9200
+    ulimits:
+      memlock:
+        soft: -1
+        hard: -1
+    volumes:
+      - bt-elasticsearch:/usr/share/elasticsearch/data
+
+  sidekiq:
+    <<: *app-shared
+    container_name: better-together-sidekiq
+    command: bundle exec sidekiq -C config/sidekiq.yml
+    depends_on:
+      - app
+
+  redis:
+    image: 'redis:7.2-alpine'
+    container_name: better-together-redis
+    command: redis-server
+    volumes:
+      - bt-redis:/data
