@@ -1,0 +1,43 @@
+<% content_for :page_title do %>
+  <%= t('.title') %>
+<% end %>
+
+<div class="container my-3">
+  <div class="d-flex justify-content-between align-items-center">
+    <h1><%= t('.title') %></h1>
+
+    <% if policy(Partner.new).create? %>  <!-- Policy check for create permission -->
+      <%= link_to t('.new_btn_text'), new_partner_path, class: 'btn btn-primary' %>
+    <% end %>
+  </div>
+
+  <% if @partners.any? %>
+    <div class="row">
+      <% @partners.each do |partner| %>
+        <div class="col-md-4 mb-4">
+          <div class="card h-100">
+            <div class="card-header">
+              <%= partner.name %> <!-- Partner name in the header -->
+            </div>
+            <div class="card-body">
+              <p><%= partner.description %></p> <!-- Partner description in the body -->
+            </div>
+            <div class="card-footer d-flex justify-content-between">
+              <%= link_to t('.edit'), edit_partner_path(partner), class: 'btn btn-secondary btn-sm' %>
+              <%= link_to t('.delete'), partner_path(partner), method: :delete, data: { confirm: t('.confirm_delete') }, class: 'btn btn-danger btn-sm' %>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  <% else %>
+    <div class="alert alert-info text-center mt-4" role="alert">
+      <%= t('.no_partners_message') %>
+    </div>
+    <% if policy(Partner.new).create? %>
+      <div class="text-center mt-3">
+        <%= link_to t('.new_btn_text'), new_partner_path, class: 'btn btn-sm btn-primary' %>
+      </div>
+    <% end %>
+  <% end %>
+</div>
