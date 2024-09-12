@@ -9,7 +9,7 @@ require 'better_together/engine'
 # you've limited to :test, :development, or :production.
 Bundler.require(*Rails.groups)
 
-module BetterTogether
+module NewToNl
   class Application < Rails::Application # rubocop:todo Style/Documentation
     # Initialize configuration defaults for originally generated Rails version.
     config.api_only = false

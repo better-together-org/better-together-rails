@@ -1,10 +1,10 @@
 version: '3.6'
 
 volumes:
-  bt-bundler-gems:
-  bt-db-data:
-  bt-elasticsearch:
-  bt-redis:
+  bundler-gems:
+  db-data:
+  elasticsearch:
+  redis:
 
 x-env-info: &env-info
   env_file:
@@ -12,12 +12,12 @@ x-env-info: &env-info
 
 x-app-shared: &app-shared
   <<: *env-info
-  image: better-together/better-together-rails:dev
+  image: new-to-nl:dev
   volumes:
     - .:/bt
     # - ../pundit-resources:/pundit-resources
-    - ../community-engine-rails:/community-engine
-    - bt-bundler-gems:/usr/local/bundle/
+    - ../../better-together/community-engine-rails:/community-engine
+    - bundler-gems:/usr/local/bundle/
   depends_on:
     - db
     - redis
@@ -25,7 +25,7 @@ x-app-shared: &app-shared
 services:
   app: &app
     <<: *app-shared
-    container_name: better-together-app
+    container_name: new-to-nl-app
     build: # "context" and "dockerfile" fields have to be under "build"
       context: .
       dockerfile: ./Dockerfile.dev
@@ -34,19 +34,19 @@ services:
       - "3001:3001"
   db:
     <<: *env-info
-    container_name: better-together-db
+    container_name: new-to-nl-db
     image: postgis/postgis:latest
     volumes:
-      - bt-db-data:/var/lib/postgresql/data
+      - db-data:/var/lib/postgresql/data
     ports:
       - "5435:5432"
   
   elasticsearch:
-    container_name: better-together-elasticsearch
+    container_name: new-to-nl-elasticsearch
     image: elasticsearch:7.17.23
     environment:
       - node.name=elasticsearch
-      - cluster.name=better-together-es
+      - cluster.name=new-to-nl-es
       - discovery.seed_hosts=elasticsearch
       - discovery.type=single-node
       - bootstrap.memory_lock=true
@@ -58,18 +58,25 @@ services:
         soft: -1
         hard: -1
     volumes:
-      - bt-elasticsearch:/usr/share/elasticsearch/data
+      - elasticsearch:/usr/share/elasticsearch/data
 
   sidekiq:
     <<: *app-shared
-    container_name: better-together-sidekiq
+    container_name: new-to-nl-sidekiq
     command: bundle exec sidekiq -C config/sidekiq.yml
     depends_on:
       - app
 
   redis:
     image: 'redis:7.2-alpine'
-    container_name: better-together-redis
+    container_name: new-to-nl-redis
     command: redis-server
     volumes:
-      - bt-redis:/data
+      - redis:/data
+
+  mail-server:
+    image: mailhog/mailhog
+    container_name: new-to-nl-smtp
+    ports:
+      - '1025:1025'
+      - '8026:8025'

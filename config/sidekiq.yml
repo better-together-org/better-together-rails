@@ -17,5 +17,5 @@ test:
 production:
   <<: *default
   queues:
-    - better_together_production_default
-    - better_together_production_mailers
+    - new_to_nl_production_default
+    - new_to_nl_production_mailers
