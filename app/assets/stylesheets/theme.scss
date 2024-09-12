@@ -1,0 +1,113 @@
+
+// Override the color variables in the host application
+$primary: #3E78B2; /* Change to a different blue */
+$secondary: #70A288; /* Change to a different green */
+$success: #70A288;
+$text-opposite-theme-color: #222; /* Darker text */
+$background-opposite-theme-color: #f0f0f0; /* Lighter background */
+$light-background-text-color: #222;
+$dark-background-text-color: #f0f0f0;
+
+$navbar-bg: #004BA8;
+
+// Import the gem's SCSS styles after overriding the variables
+@import 'better_together/application';
+
+body {
+  position: relative;
+
+  &:before {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    top: 0;
+    background-image: image-url('bg-texture.jpg');
+    background-repeat: repeat;
+    background-size: contain;
+    opacity: 0.2;
+    z-index: -1;
+  }
+}
+
+#main-nav {
+  background-color: $navbar-bg;
+  color: $dark-background-text-color;
+
+  a {
+    color: $dark-background-text-color;
+  }
+
+  .dropdown-menu {
+    background-color: $navbar-bg;
+
+    .dropdown-item:hover {
+      background-color: lighten($navbar-bg, 10%);
+    }
+  }
+}
+
+#app-footer {
+  background-color: $navbar-bg;
+  color: $dark-background-text-color;
+
+  a {
+    color: $dark-background-text-color;
+  }
+
+  .dropdown-menu {
+    background-color: $navbar-bg;
+
+    .dropdown-item:hover {
+      background-color: lighten($navbar-bg, 10%);
+    }
+  }
+
+  .navbar-text {
+    color: $dark-background-text-color;
+  }
+}
+
+/* Animation keyframes for shrinking and growing */
+@keyframes shrink-grow {
+  0% {
+    transform: scale(1); /* Original size */
+  }
+  50% {
+    transform: scale(0.8); /* Shrinks to 80% */
+  }
+  100% {
+    transform: scale(1); /* Grows back to original size */
+  }
+}
+
+/* Animation keyframes for shrinking and growing */
+@keyframes shrink-grow-mild {
+  0% {
+    transform: scale(1); /* Original size */
+  }
+  50% {
+    transform: scale(0.95); /* Shrinks to 95% */
+  }
+  100% {
+    transform: scale(1); /* Grows back to original size */
+  }
+}
+
+.btn {
+  transition: transform 0.5s ease-in-out; /* Smooth animation for transform */
+
+  &:hover {
+    animation: shrink-grow-mild 0.5s ease-in-out forwards; /* Animates over 0.4 seconds */
+  }
+}
+
+a i.fas, a i.fa {
+  transition: transform 0.4s ease-in-out; /* Smooth animation for transform */
+
+  &:hover {
+    animation: shrink-grow 0.4s ease-in-out forwards; /* Animates over 0.4 seconds */
+  }
+}
+
