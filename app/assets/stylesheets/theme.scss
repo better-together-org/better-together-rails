@@ -4,13 +4,14 @@ $blue-1: #004BA8;
 $blue-2: #3E78B2;
 $beige:  #EAF0CE;
 $green-2: #70A288;
-// $green-2: #619479; // variant
+// $green-2: #538068; // variant
 // $green-1: #214E34;
 // $green-1: #30734C; // variant
 $green-1: #406350; // variant
 
 // Assign the gradient to a variable
 $nl-gradient: linear-gradient(to right, $blue-1, $blue-2, $green-2, $green-1);
+$nl-gradient-blue: linear-gradient(to right, $blue-1, $blue-2);
 $nl-gradient-vertical: linear-gradient(to bottom, $blue-1, $blue-2, $green-2, $green-1);
 $nl-gradient-blue-vertical: linear-gradient(to bottom, $blue-1, $blue-2);
 $nl-gradient-green-vertical: linear-gradient(to bottom, $green-2, $green-1);
@@ -31,6 +32,15 @@ $navbar-bg: #004BA8;
 
 // Import the gem's SCSS styles after overriding the variables
 @import 'better_together/application';
+
+/* Custom Turbo Loading Bar Styles */
+.turbo-progress-bar {
+  height: 5px; /* Change the height of the loading bar */
+  background: $nl-gradient-blue; /* Change the color of the loading bar */
+  // box-shadow: 0 0 10px $blue-2, 0 0 5px $blue-2; /* Add a glow effect */
+  // border-radius: 5px; /* Make the ends rounded */
+  transition: width 0.2s ease-out, opacity 0.2s ease-out; /* Smooth transitions */
+}
 
 body {
   position: relative;
@@ -102,6 +112,23 @@ textarea.form-control {
     color: $dark-background-text-color;
   }
 }
+
+.navbar-nav .nav-link {
+  position: relative;
+  color: $blue-1;
+  text-decoration: none; /* Remove default text underline */
+  padding: 5px 10px;
+  border-bottom: 4px solid transparent; /* Invisible border by default */
+  transition: border-color 0.3s ease; /* Smooth transition for underline */
+}
+
+.navbar-nav .nav-link:hover,
+.navbar-nav .nav-link:focus {
+  border-bottom: 4px solid $blue-1; /* Add underline on hover/focus */
+}
+
+
+
 
 /* Animation keyframes for shrinking and growing */
 @keyframes shrink-grow {
