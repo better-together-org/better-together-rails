@@ -50,9 +50,9 @@ body {
     right: 0;
     bottom: 0;
     top: 0;
-    background-image: image-url('bg-texture.jpg');
+    background-image: image-url('low-contrast-linen.png');
     background-repeat: repeat;
-    background-size: contain;
+    // background-size: contain;
     opacity: 0.2;
     z-index: -1;
   }
