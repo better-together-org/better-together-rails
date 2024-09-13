@@ -8,8 +8,8 @@ Rails.application.routes.draw do
         locale: /#{I18n.available_locales.join('|')}/,
         defaults: { locale: I18n.locale } do
     resources :partners
-    root to: 'better_together/pages#show', defaults: { path: 'home-page' }, as: :home_page
   end
 
+  root to: redirect("/#{I18n.default_locale}")
   mount BetterTogether::Engine => '/'
 end
