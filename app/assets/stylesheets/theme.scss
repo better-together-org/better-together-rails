@@ -33,13 +33,8 @@ $navbar-bg: #004BA8;
 // Import the gem's SCSS styles after overriding the variables
 @import 'better_together/application';
 
-/* Custom Turbo Loading Bar Styles */
-.turbo-progress-bar {
-  height: 5px; /* Change the height of the loading bar */
-  background: $nl-gradient-blue; /* Change the color of the loading bar */
-  // box-shadow: 0 0 10px $blue-2, 0 0 5px $blue-2; /* Add a glow effect */
-  // border-radius: 5px; /* Make the ends rounded */
-  transition: width 0.2s ease-out, opacity 0.2s ease-out; /* Smooth transitions */
+html {
+  scroll-behavior: smooth;
 }
 
 body {
@@ -168,7 +163,26 @@ a i.fas, a i.fa {
   transition: transform 0.4s ease-in-out; /* Smooth animation for transform */
 
   &:hover {
-    animation: shrink-grow 0.4s ease-in-out forwards; /* Animates over 0.4 seconds */
-  }
+
+/* Custom Turbo Loading Bar Styles */
+.turbo-progress-bar {
+  height: 5px; /* Change the height of the loading bar */
+  background: $nl-gradient-reversed; /* Change the color of the loading bar */
+  // box-shadow: 0 0 10px $blue-2, 0 0 5px $blue-2; /* Add a glow effect */
+  // border-radius: 5px; /* Make the ends rounded */
+  transition: width 0.2s ease-out, opacity 0.2s ease-out; /* Smooth transitions */
+}
+
+/* Progress bar container (takes full width of the page) */
+#custom-progress-bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 0%; /* Initial width (will expand as page scrolls) */
+  height: 5px; /* Same height as Turbo's default bar */
+  background: $nl-gradient-reversed; /* You can adjust this color to match your theme */
+  z-index: 9999; /* Ensures it stays on top of other elements */
+  transition: width 0.2s ease; /* Smooth progress bar transitions */
+}
 }
 
