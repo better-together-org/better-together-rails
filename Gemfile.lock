@@ -1,7 +1,7 @@
 GIT
   remote: https://github.com/better-together-org/community-engine-rails.git
-  revision: d9787d689774cdf4b96f60b9676c8115772fa624
-  branch: main
+  revision: ffbe7cae121d8eb6ed028d4632df30c4e306be8c
+  branch: wip/new-to-nl-2
   specs:
     better_together (0.6.0)
       active_storage_validations
@@ -329,15 +329,30 @@ GEM
       bigdecimal
       rake (>= 13)
     hashie (5.0.0)
+    highline (3.1.1)
+      reline
     htmlentities (4.3.4)
     http-accept (1.7.0)
     http-cookie (1.0.5)
       domain_name (~> 0.5)
     i18n (1.14.6)
       concurrent-ruby (~> 1.0)
+    i18n-tasks (1.0.14)
+      activesupport (>= 4.0.2)
+      ast (>= 2.1.0)
+      erubi
+      highline (>= 2.0.0)
+      i18n
+      parser (>= 3.2.2.1)
+      rails-i18n
+      rainbow (>= 2.2.2, < 4.0)
+      terminal-table (>= 1.5.1)
     i18n-timezones (1.4.8)
       i18n (>= 0.9.3)
       rails (>= 5.1.6.2)
+    i18n_generators (2.2.2)
+      activerecord (>= 3.0.0)
+      railties (>= 3.0.0)
     ice_nine (0.11.2)
     image_processing (1.13.0)
       mini_magick (>= 4.9.5, < 5)
@@ -634,6 +649,8 @@ GEM
     sync (0.5.0)
     term-ansicolor (1.8.0)
       tins (~> 1.0)
+    terminal-table (3.0.2)
+      unicode-display_width (>= 1.1.1, < 3)
     thor (1.3.2)
     thread_safe (0.3.6)
     tilt (2.4.0)
@@ -705,6 +722,8 @@ DEPENDENCIES
   faker
   fog-aws
   fuubar
+  i18n-tasks (~> 1.0.12)
+  i18n_generators
   listen (>= 3.0.5, < 3.10)
   pg (>= 0.18, < 2.0)
   pry
