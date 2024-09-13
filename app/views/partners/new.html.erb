@@ -1,0 +1,9 @@
+<% content_for :page_title do %>
+  <%= t('.title') %> | <%= resource_class.model_name.human.pluralize %>
+<% end %>
+
+<div class="container my-3">
+  <h1 class="mb-4"><%= t('.title') %></h1>
+
+  <%= render "form", partner: @partner %>
+</div>

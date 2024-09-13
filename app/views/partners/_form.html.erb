@@ -1,0 +1,25 @@
+<div id="partner_form">
+  <%= form_with(model: partner, class: "form", multipart: true, local: false, data: { controller: "form-validation" }) do |form| %>
+    <% content_for :resource_toolbar do %>
+      <div class="btn-toolbar mb-3" role="toolbar" aria-label="Toolbar with button groups">
+        <% if policy(resource_class.new).index? %>
+          <div class="btn-group me-2" role="group" aria-label="First group">
+            <%= link_to t('globals.back_to_list'), partners_path, class: 'btn btn-secondary' %>
+          </div>
+        <% end %>
+        <div class="btn-group me-2" role="group" aria-label="Third group">
+          <%= form.submit class: 'btn btn-primary' %>
+        </div>
+        <% if partner.persisted? and policy(partner).show? %>
+          <div class="btn-group" role="group" aria-label="Third group">
+            <%= link_to t('globals.view'), partner_path(partner), class: 'btn btn-info', target: 'view-Page' %>
+          </div>
+        <% end %>
+      </div>
+    <% end %>
+
+    <%= yield :resource_toolbar if content_for? :resource_toolbar %>
+    <%= render 'community_fields', community: partner, form: %>
+    <%= yield :resource_toolbar if content_for? :resource_toolbar %>
+  <% end %>
+</div>
