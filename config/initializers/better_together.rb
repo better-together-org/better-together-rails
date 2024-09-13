@@ -13,3 +13,9 @@ ActiveSupport.on_load(:active_record) do
   ActiveRecord::ConnectionAdapters::Table.include BetterTogether::ColumnDefinitions
   ActiveRecord::ConnectionAdapters::TableDefinition.include BetterTogether::ColumnDefinitions
 end
+
+Rails.application.config.to_prepare do
+  require_dependency 'better_together/navigation_item'
+
+  BetterTogether::NavigationItem.include(NewToNlNavigationItem)
+end
