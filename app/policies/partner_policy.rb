@@ -3,6 +3,9 @@
 
 class PartnerPolicy < BetterTogether::CommunityPolicy # rubocop:todo Style/Documentation
   
+  def index?
+    true
+  end
 
   class Scope < BetterTogether::CommunityPolicy::Scope # rubocop:todo Style/Documentation
     def resolve
@@ -17,16 +20,22 @@ class PartnerPolicy < BetterTogether::CommunityPolicy # rubocop:todo Style/Docum
       person_community_memberships_table = ::BetterTogether::PersonCommunityMembership.arel_table
 
       # Only list communities that are public and where the current person is a member or a creator
-      communities_table[:privacy].eq('public').or(
-        communities_table[:id].in(
-          person_community_memberships_table
-            .where(person_community_memberships_table[:member_id]
-            .eq(agent.id))
-            .project(:joinable_id)
+      query = communities_table[:privacy].eq('public')
+      
+      if agent
+        query = query.or(
+          communities_table[:id].in(
+            person_community_memberships_table
+              .where(person_community_memberships_table[:member_id]
+              .eq(agent.id))
+              .project(:joinable_id)
+          )
+        ).or(
+          communities_table[:creator_id].eq(agent.id)
         )
-      ).or(
-        communities_table[:creator_id].eq(agent.id)
-      )
+      end
+
+      query
     end
     # rubocop:enable Metrics/MethodLength
   end
