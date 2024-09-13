@@ -1,8 +1,27 @@
 
+// New to NL colour palette
+$blue-1: #004BA8;
+$blue-2: #3E78B2;
+$beige:  #EAF0CE;
+$green-2: #70A288;
+// $green-2: #619479; // variant
+// $green-1: #214E34;
+// $green-1: #30734C; // variant
+$green-1: #406350; // variant
+
+// Assign the gradient to a variable
+$nl-gradient: linear-gradient(to right, $blue-1, $blue-2, $green-2, $green-1);
+$nl-gradient-vertical: linear-gradient(to bottom, $blue-1, $blue-2, $green-2, $green-1);
+$nl-gradient-blue-vertical: linear-gradient(to bottom, $blue-1, $blue-2);
+$nl-gradient-green-vertical: linear-gradient(to bottom, $green-2, $green-1);
+
 // Override the color variables in the host application
-$primary: #3E78B2; /* Change to a different blue */
-$secondary: #70A288; /* Change to a different green */
-$success: #70A288;
+$primary: $blue-1; /* Change to a different blue */
+$secondary: $blue-2; /* Change to a different green */
+$success: $green-2;
+$info: $beige;
+$warning: #C9B947;
+$danger: #BF4A47;
 $text-opposite-theme-color: #222; /* Darker text */
 $background-opposite-theme-color: #f0f0f0; /* Lighter background */
 $light-background-text-color: #222;
@@ -31,8 +50,21 @@ body {
   }
 }
 
+input.form-control,
+select.form-select,
+textarea.form-control {
+  background-color: lighten($beige, 10%); // #EAF0CE
+  border-color: $blue-2;     // Blue border to add structure
+}
+
+.divider {
+  border-color: $beige; // #EAF0CE
+}
+
+
+
 #main-nav {
-  background-color: $navbar-bg;
+  background: $nl-gradient;
   color: $dark-background-text-color;
 
   a {
@@ -40,16 +72,17 @@ body {
   }
 
   .dropdown-menu {
-    background-color: $navbar-bg;
+    background: $nl-gradient-blue-vertical;
 
-    .dropdown-item:hover {
-      background-color: lighten($navbar-bg, 10%);
+    .dropdown-item:hover, .dropdown-item:active {
+      color: $light-background-text-color;
+      background-color: $beige;
     }
   }
 }
 
 #app-footer {
-  background-color: $navbar-bg;
+  background: $nl-gradient;
   color: $dark-background-text-color;
 
   a {
@@ -57,10 +90,11 @@ body {
   }
 
   .dropdown-menu {
-    background-color: $navbar-bg;
+    background: $nl-gradient-blue-vertical;
 
-    .dropdown-item:hover {
-      background-color: lighten($navbar-bg, 10%);
+    .dropdown-item:hover, .dropdown-item:active {
+      color: $light-background-text-color;
+      background-color: $beige;
     }
   }
 
