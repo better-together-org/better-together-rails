@@ -3,6 +3,7 @@
 $blue-1: #004BA8;
 $blue-2: #3E78B2;
 $beige:  #EAF0CE;
+$beige-light: lighten($beige, 10%);
 $green-2: #70A288;
 // $green-2: #538068; // variant
 // $green-1: #214E34;
@@ -11,6 +12,7 @@ $green-1: #406350; // variant
 
 // Assign the gradient to a variable
 $nl-gradient: linear-gradient(to right, $blue-1, $blue-2, $green-2, $green-1);
+$nl-gradient-reversed: linear-gradient(to right, $green-1, $green-2, $blue-2, $blue-1);
 $nl-gradient-blue: linear-gradient(to right, $blue-1, $blue-2);
 $nl-gradient-vertical: linear-gradient(to bottom, $blue-1, $blue-2, $green-2, $green-1);
 $nl-gradient-blue-vertical: linear-gradient(to bottom, $blue-1, $blue-2);
@@ -39,6 +41,7 @@ html {
 
 body {
   position: relative;
+  background: linear-gradient(135deg, $beige-light, #ffffff);
 
   &:before {
     content: "";
@@ -55,10 +58,23 @@ body {
   }
 }
 
+h1, h2, h3 {
+  font-family: 'Raleway', sans-serif; /* Elegant font */
+  letter-spacing: 1.25px; /* Slight letter spacing for better readability */
+  text-transform: uppercase; /* Uppercase for headings */
+  margin-bottom: 20px;
+}
+
+p {
+  line-height: 1.7; /* Increased line height for better readability */
+  font-family: 'Roboto', sans-serif; /* Clean body text font */
+  margin-bottom: 20px;
+}
+
 input.form-control,
 select.form-select,
 textarea.form-control {
-  background-color: lighten($beige, 10%); // #EAF0CE
+  background-color: $beige-light; // #EAF0CE
   border-color: $blue-2;     // Blue border to add structure
 }
 
@@ -66,9 +82,10 @@ textarea.form-control {
   border-color: $beige; // #EAF0CE
 }
 
-
-
 #main-nav {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
   background: $nl-gradient;
   color: $dark-background-text-color;
 
@@ -122,9 +139,6 @@ textarea.form-control {
   border-bottom: 4px solid $blue-1; /* Add underline on hover/focus */
 }
 
-
-
-
 /* Animation keyframes for shrinking and growing */
 @keyframes shrink-grow {
   0% {
@@ -152,17 +166,24 @@ textarea.form-control {
 }
 
 .btn {
-  transition: transform 0.5s ease-in-out; /* Smooth animation for transform */
+  // transition: transform 0.5s ease-in-out; /* Smooth animation for transform */
+  transition: transform 0.3s ease;
 
   &:hover {
-    animation: shrink-grow-mild 0.5s ease-in-out forwards; /* Animates over 0.4 seconds */
+    // animation: shrink-grow-mild 0.5s ease-in-out forwards; /* Animates over 0.4 seconds */
+    transform: scale(1.05); /* Slightly enlarges the button */
   }
 }
 
 a i.fas, a i.fa {
-  transition: transform 0.4s ease-in-out; /* Smooth animation for transform */
+  // transition: transform 0.4s ease-in-out; /* Smooth animation for transform */
+  transition: transform 0.3s ease;
 
   &:hover {
+    // animation: shrink-grow 0.4s ease-in-out forwards; /* Animates over 0.4 seconds */
+    transform: scale(1.05); /* Slightly enlarges the button */
+  }
+}
 
 /* Custom Turbo Loading Bar Styles */
 .turbo-progress-bar {
@@ -184,5 +205,23 @@ a i.fas, a i.fa {
   z-index: 9999; /* Ensures it stays on top of other elements */
   transition: width 0.2s ease; /* Smooth progress bar transitions */
 }
+
+/* Links color fade */
+a {
+  transition: color 0.3s ease;
+}
+
+a:hover {
+  color: $green-2; /* Adjust hover color */
+}
+
+.card {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card.membership:hover,
+.card.shadow-sm:hover {
+  transform: translateY(-10px); /* Lift the card on hover */
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15); /* Add shadow */
 }
 
