@@ -1,8 +1,8 @@
 /*
- * This is a manifest file that'll be compiled into application.css, which will include all the files
- * listed below.
+ * This is a manifest file that'll be compiled into application, which will include all the files
+ * listed belo
  *
- * Any CSS and SCSS file within this directory, lib/assets/stylesheets, or any plugin's
+ * CSS and SCSS file within this directory, lib/assets/stylesheets, or any plugin's
  * vendor/assets/stylesheets directory can be referenced here using a relative path.
  *
  * You're free to add application-wide styles to this file and they'll appear at the bottom of the
@@ -14,8 +14,8 @@
  *= require_self
  */
 
- @import 'actiontext.css';
- @import 'theme.scss';
- @import 'resources.scss';
+ @import 'actiontext';
+ @import 'theme';
+ @import 'resources';
 
 
