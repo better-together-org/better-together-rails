@@ -6,39 +6,14 @@
   <div class="d-flex justify-content-between align-items-center">
     <h1><%= t('.title') %></h1>
 
-    <% if policy(Partner.new).create? %>  <!-- Policy check for create permission -->
+    <% if policy(Partner.new).create? %>
       <%= link_to t('.new_btn_text'), new_partner_path, class: 'btn btn-primary' %>
     <% end %>
   </div>
 
   <% if @partners.any? %>
     <div class="row">
-      <% @partners.each do |partner| %>
-        <div class="col-md-4 mb-4">
-          <div class="card h-100 partner">
-            <div class="card-header">
-              <% if policy(partner).show? %>
-                <%= link_to partner %> <!-- Partner name in the header -->
-              <% else %>
-                <%= partner %>
-              <% end %>
-            </div>
-            <div class="card-body">
-              <p><%= partner.description %></p> <!-- Partner description in the body -->
-            </div>
-            <% if policy(partner).edit? or policy(partner).destroy? %>
-              <div class="card-footer d-flex justify-content-between">
-                <% if policy(partner).edit? %>
-                  <%= link_to t('globals.edit'), edit_partner_path(partner), class: 'btn btn-secondary btn-sm' %>
-                <% end %>
-                <% if policy(partner).destroy? %>
-                  <%= link_to t('globals.delete'), partner_path(partner), method: :delete, data: { confirm: t('.confirm_delete') }, class: 'btn btn-danger btn-sm' %>
-                <% end %>
-              </div>
-            <% end %>
-          </div>
-        </div>
-      <% end %>
+      <%= render partial: 'partner', collection: @partners %>
     </div>
   <% else %>
     <div class="alert alert-info text-center mt-4" role="alert">
