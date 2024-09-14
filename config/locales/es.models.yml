@@ -1,0 +1,22 @@
+
+es:
+  partners:
+    index:
+      title: "Colaboradores"
+      new_btn_text: "Agregar Colaborador"
+      confirm_delete: "¿Estás seguro de que deseas eliminar este colaborador?"
+      no_partners_message: "No hay colaboradores aún. ¿Por qué no agregas uno?"
+  
+  resources:
+    actions:
+      back_to_index: "Volver a los recursos"
+      confirm_destroy: "¿Estás seguro de que quieres eliminar este recurso?"
+    index:
+      title: "Recursos"
+      new_resource: "Nuevo Recurso"
+      show_resource: "Ver este Recurso"
+      no_resources_message: "No hay recursos disponibles en este momento."
+    edit:
+      title: "Editando Recurso"
+      show_resource: "Mostrar este recurso"
+      back_to_resources: "Volver a recursos"

@@ -145,6 +145,11 @@ es:
       header:
         one: No se pudo guardar este/a %{model} porque se encontró %{count} error
         other: No se pudo guardar este/a %{model} porque se encontraron %{count} errores
+  globals:
+    attached_file: "Archivo adjunto"
+    download: "Descargar"
+    no_publish_date: "Sin fecha de publicación"
+    no_author: "Sin autor"
   helpers:
     select:
       prompt: Por favor seleccione
@@ -152,6 +157,19 @@ es:
       create: Crear %{model}
       submit: Guardar %{model}
       update: Actualizar %{model}
+  hints:
+    resource:
+      name: "Ingrese el nombre del recurso."
+      description: "Proporcione una descripción detallada del recurso."
+      slug: "Ingrese un identificador compatible con URL."
+      type: "Seleccione el tipo de recurso."
+      url: "Proporcione la URL externa para el recurso."
+      file: "Adjunte un documento relacionado con el recurso."
+      file_size: "El archivo debe ser menor de %{size} MB."
+      privacy: "Especifique el nivel de privacidad del recurso."
+      locale: "Seleccione el idioma del recurso."
+      published_at: "Establezca la fecha y hora en que se publicó el recurso. Los recursos solo serán visibles si tienen una fecha de publicación que esté en el pasado. Puede usar esto para controlar cuándo los recursos estarán disponibles seleccionando una fecha futura."
+      author: "Nombre del autor del recurso."
   number:
     currency:
       format:
@@ -215,6 +233,8 @@ es:
   time:
     am: am
     formats:
+      date_picker: "%d/%m/%Y"
+      datetime_picker: "%d/%m/%Y %H:%M" # 24-hour format
       default: "%A, %-d de %B de %Y %H:%M:%S %z"
       long: "%-d de %B de %Y %H:%M"
       short: "%-d de %b %H:%M"

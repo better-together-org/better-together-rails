@@ -1,0 +1,19 @@
+<%# app/views/resources/index.html.erb %>
+
+<div class="container my-3">
+  <div class="d-flex justify-content-between align-items-center mb-3">
+    <h1><%= t('.title') %></h1>
+    <%= link_to t('.new_resource'), new_resource_path, class: 'btn btn-primary' if policy(Resource).new? %>
+  </div>
+
+  <div id="resources">
+    <% if @resources.any? %>
+      <% @resources.each do |resource| %>
+        <%= render 'resource', resource: resource %>
+      <% end %>
+    <% else %>
+      <p><%= t('.no_resources_message') %></p>
+    <% end %>
+  </div>
+
+</div>

@@ -145,6 +145,11 @@ en:
       header:
         one: "%{count} error prohibited this %{model} from being saved"
         other: "%{count} errors prohibited this %{model} from being saved"
+  globals:
+    attached_file: "Attached file"
+    download: "Download"
+    no_publish_date: "No publish date"
+    no_author: "No author"
   helpers:
     select:
       prompt: Please select
@@ -152,6 +157,19 @@ en:
       create: Create %{model}
       submit: Save %{model}
       update: Update %{model}
+  hints:
+    resource:
+      name: "Enter the name of the resource."
+      description: "Provide a detailed description of the resource."
+      slug: "Enter a URL-friendly identifier."
+      type: "Select the type of the resource."
+      url: "Provide the external URL for the resource."
+      file: "Attach a document related to the resource."
+      file_size: "File must be less than %{size} MB."
+      privacy: "Specify the privacy level of the resource."
+      locale: "Select the language of the resource."
+      published_at: "Set the date and time when the resource was published. Resources will only be visible if they have a published date that is in the past. You can use this to control when resources become available by selecting a future date."
+      author: "Name of the author of the resource."
   number:
     currency:
       format:
@@ -203,6 +221,7 @@ en:
     precision:
       format:
         delimiter: ''
+  
   support:
     array:
       last_word_connector: ", and "
@@ -211,7 +230,9 @@ en:
   time:
     am: am
     formats:
+      date_picker: "%m/%d/%Y"
+      datetime_picker: "%m/%d/%Y %I:%M %p" # 12-hour format with AM/PM
       default: "%a, %d %b %Y %H:%M:%S %z"
-      long: "%B %d, %Y %H:%M"
-      short: "%d %b %H:%M"
+      long: "%B %d, %Y %I:%M %p"
+      short: "%d %b %I:%M %p"
     pm: pm

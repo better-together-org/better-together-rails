@@ -3,11 +3,26 @@ en:
   activerecord:
     models:
       partner: 'Partner'
+      resource: 'Resource'
+      resource/document: "Document"
+      resource/link: "Link"
   partners:
-    title: "Partners"
-    new_btn_text: "Add Partner"
-    edit: "Edit"
-    delete: "Delete"
-    confirm_delete: "Are you sure you want to delete this partner?"
-    no_partners_message: "There are no partners yet. Why not add one?"
+    index:
+      title: "Partners"
+      new_btn_text: "Add Partner"
+      confirm_delete: "Are you sure you want to delete this partner?"
+      no_partners_message: "There are no partners yet. Why not add one?"
+  resources:
+    actions:
+      back_to_index: "Back to resources"
+      confirm_destroy: "Are you sure you want to delete this resource?"
+    index:
+      title: "Resources"
+      new_resource: "New Resource"
+      show_resource: "Show this Resource"
+      no_resources_message: "There are no resources available at the moment."
+    edit:
+      title: "Editing Resource"
+      show_resource: "Show this resource"
+      back_to_resources: "Back to resources"
 

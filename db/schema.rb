@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_09_11_235743) do
+ActiveRecord::Schema[7.1].define(version: 2024_09_14_143449) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
   enable_extension "plpgsql"
@@ -595,6 +595,21 @@ ActiveRecord::Schema[7.1].define(version: 2024_09_11_235743) do
     t.datetime "updated_at", null: false
     t.index ["event_id"], name: "index_noticed_notifications_on_event_id"
     t.index ["recipient_type", "recipient_id"], name: "index_noticed_notifications_on_recipient"
+  end
+
+  create_table "resources", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.string "identifier", limit: 100, null: false
+    t.string "locale", limit: 5, default: "en", null: false
+    t.string "privacy", limit: 50, default: "public", null: false
+    t.string "slug", null: false
+    t.string "type", default: "Resource", null: false
+    t.string "url"
+    t.datetime "published_at"
+    t.string "author"
+    t.index ["identifier"], name: "index_resources_on_identifier", unique: true
+    t.index ["locale"], name: "by_resources_locale"
+    t.index ["privacy"], name: "by_resources_privacy"
+    t.index ["slug"], name: "index_resources_on_slug", unique: true
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"

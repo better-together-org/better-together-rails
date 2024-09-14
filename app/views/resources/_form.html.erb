@@ -1,0 +1,95 @@
+<%= form_with(model: resource, url: (resource.persisted? ? resource_path(resource) : resources_path), multipart: true, data: { turbo: false, controller: 'form-validation' }, class: "needs-validation") do |form| %>
+  <% if resource.errors.any? %>
+    <div class="alert alert-danger">
+      <h2><%= pluralize(resource.errors.count, "error") %> prohibited this resource from being saved:</h2>
+      <ul>
+        <% resource.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="mb-3">
+    <%= render partial: 'better_together/shared/translated_string_field', locals: { model: resource, form: form, attribute: 'name' } %>
+    <small class="form-text text-muted"><%= t('hints.resource.name') %></small>
+  </div>
+
+  <div class="mb-3">
+    <%= render partial: 'better_together/shared/translated_text_field', locals: { model: resource, form: form, attribute: 'description' } %>
+    <small class="form-text text-muted"><%= t('hints.resource.description') %></small>
+  </div>
+
+  <div class="mb-3">
+    <%= render partial: 'better_together/shared/translated_string_field', locals: { model: resource, form: form, attribute: 'slug' } %>
+    <small class="form-text text-muted"><%= t('hints.resource.slug') %></small>
+  </div>
+
+  <div data-controller="dependent-fields">
+    <div class="mb-3">
+      <%= required_label(form, :type, class: "form-label") %>
+      <%= type_select_field(form: form, model_class: Resource, data: { dependent_fields_target: "controlField" }) %>
+      <small class="form-text text-muted"><%= t('hints.resource.type') %></small>
+    </div>
+
+    <div class="hidden-field" data-dependent-fields-target="dependentField" data-show-if-value="Resource::Link">
+      <div class="mb-3">
+        <%= required_label form, :url, class_name: "Resource::Link", class: "form-label" %>
+        <%= form.url_field :url, class: "form-control", required: true %>
+        <small class="form-text text-muted"><%= t('hints.resource.url') %></small>
+      </div>
+    </div>
+
+    <div class="hidden-field" data-dependent-fields-target="dependentField" data-show-if-value="Resource::Document">
+      <div class="mb-3">
+        <%= required_label form, :file, class_name: "Resource::Document", class: "form-label" %>
+        <%= form.file_field :file, class: "form-control", required: form.object.new_record? || !form.object&.file.attached? %>
+        <small class="form-text text-muted"><%= t('hints.resource.file') %></small>
+        <small class="form-text text-muted">
+          <%= t('hints.resource.file_size', size: Resource::Document::MAX_FILE_SIZE_MB / 1.megabyte) %>
+        </small>
+
+        
+        <% if form.object.persisted? && form.object&.file&.attached? %>
+          <p class="mt-2">
+            <strong><%= t('globals.attached_file') %>:</strong> 
+            <%= form.object&.file.filename %> (<%= form.object&.file.content_type %>, <%= number_to_human_size(form.object&.file.byte_size) %>)
+          </p>
+        <% end %>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="mb-3">
+    <%= required_label form, :privacy, class: "form-label" %>
+    <%= privacy_field(form:, klass: resource_class) %>
+    <small class="form-text text-muted"><%= t('hints.resource.privacy') %></small>
+  </div>
+
+  <div class="mb-3">
+    <%= required_label(form, :locale, class: "form-label") %>
+    <%= language_select_field(form:, selected_locale: resource.locale) %>
+    <small class="form-text text-muted"><%= t('hints.resource.locale') %></small>
+  </div>
+
+  <div class="mb-3">
+    <%= localized_datetime_field(
+      form: form,
+      field: :published_at,
+      label_text: form.object.class.human_attribute_name(:published_at),
+      hint_text: t('hints.resource.published_at'),
+      include_time: true
+    ) %>
+  </div>
+
+  <div class="mb-3">
+    <%= form.label :author, class: "form-label" %>
+    <%= form.text_field :author, class: "form-control" %>
+    <small class="form-text text-muted"><%= t('hints.resource.author') %></small>
+  </div>
+
+  <div>
+    <%= form.submit nil, class: "btn btn-primary" %>
+  </div>
+<% end %>

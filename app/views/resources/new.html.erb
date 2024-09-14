@@ -1,0 +1,12 @@
+<div class="container my-3">
+  <h1><%= t('.title') %></h1>
+
+  <%= render "form", resource: @resource %>
+
+  <div class="mt-3">
+    <% if policy(Resource).index? %>
+      <%= link_to t('.back_to_resources'), resources_path, class: "btn btn-secondary" %>
+    <% end %>
+  </div>
+
+</div>

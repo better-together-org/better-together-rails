@@ -50,6 +50,9 @@ en:
       noticed/event: event  #g
       noticed/notification: notification  #g
       partner: Partner  #g
+      resource: Resource
+      resource/document: "Document"
+      resource/link: "Link"
 
     attributes:
       action_text/encrypted_rich_text:
@@ -589,3 +592,11 @@ en:
         slugs: Slugs  #g
         string_translations: String translations  #g
         text_translations: Text translations  #g
+      
+      resource:
+        type: "Type"
+        external_url: "External URL"
+        published_at: "Published At"
+        author: "Author"
+        privacy: "Privacy"
+        language: "Language"

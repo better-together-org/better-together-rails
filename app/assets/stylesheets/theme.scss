@@ -221,7 +221,7 @@ a:hover {
 
 .card.membership:hover,
 .card.partner:hover,
-.card.shadow-sm:hover {
+.card.hover-effect:hover {
   transform: translateY(-10px); /* Lift the card on hover */
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15); /* Add shadow */
 }

@@ -49,7 +49,10 @@ es:
       mobility/backends/active_record/key_value/text_translation: traducción de texto  #g
       noticed/event: evento  #g
       noticed/notification: notificación  #g
-      partner: Pareja  #g
+      partner: Colaborador  #g
+      resource: Recurso
+      resource/document: "Documento"
+      resource/link: "Enlace"
 
     attributes:
       action_text/encrypted_rich_text:
@@ -577,15 +580,23 @@ es:
 
       partner:
         creator: :activerecord.models.creator  #g
-        host: Anfitrión  #g
-        identifier: Identificador  #g
-        lock_version: Versión de bloqueo  #g
-        person_community_memberships: Membresías de la comunidad de personas  #g
-        person_members: Miembros personales  #g
-        person_roles: Roles personales  #g
-        privacy: Privacidad  #g
-        protected: Protegido  #g
-        slug: Babosa  #g
-        slugs: babosas  #g
-        string_translations: Traducciones de cadenas  #g
-        text_translations: Traducciones de texto  #g
+        host: Anfitrión
+        identifier: Identificador
+        lock_version: Versión de bloqueo
+        person_community_memberships: Membresías de la comunidad de personas
+        person_members: Miembros personales
+        person_roles: Roles personales
+        privacy: Privacidad
+        protected: Protegido
+        slug: Babosa
+        slugs: babosas
+        string_translations: Traducciones de cadenas
+        text_translations: Traducciones de texto
+
+      resource:
+        type: "Tipo"
+        external_url: "URL Externa"
+        published_at: "Publicado en"
+        author: "Autor"
+        privacy: "Privacidad"
+        language: "Idioma"

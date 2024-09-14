@@ -1,0 +1,21 @@
+<%# app/views/resources/show.html.erb %>
+
+<p class="text-success"><%= notice %></p>
+
+<div class="container my-3">
+  <%= render partial: 'resources/resource', locals: { resource: @resource } %>
+
+  <div class="d-flex justify-content-between mt-3">
+    <div>
+      <% if policy(@resource).edit? %>
+        <%= link_to t('globals.edit'), edit_resource_path(@resource), class: 'btn btn-outline-primary me-2' %>
+      <% end %>
+
+      <%= link_to t('resources.actions.back_to_index'), resources_path, class: 'btn btn-secondary' %>
+    </div>
+
+    <% if policy(@resource).destroy? %>
+      <%= button_to t('globals.delete'), resource_path(@resource), data: { turbo_confirm: t('resources.actions.confirm_destroy'), turbo_method: :delete }, class: 'btn btn-outline-danger' %>
+    <% end %>
+  </div>
+</div>

@@ -1,0 +1,53 @@
+<div id="<%= dom_id(resource) %>" class="card mb-3 resource-card shadow-sm border-0">
+  <div class="card-body d-flex align-items-center justify-content-between">
+    <!-- Left side: Resource information -->
+    <div>
+      <h5 class="card-title mb-1">
+        <% if policy(resource).show? %>
+          <%= link_to resource.name, resource_path(resource), class: "text-decoration-none" %>
+        <% else %>
+          <%= resource.name %>
+        <% end %>
+      </h5>
+      <p class="card-text text-muted mb-1">
+        <i class="fas fa-tag"></i> <strong><%= resource.class.model_name.human %></strong>
+      </p>
+      <p class="card-text text-muted mb-1">
+        <i class="fas fa-calendar-alt"></i>
+        <%= resource.published_at.present? ? l(resource.published_at) : t('globals.no_publish_date') %>
+      </p>
+      <% if resource.author.present? %>
+        <p class="card-text text-muted mb-1">
+          <i class="fas fa-user"></i> <%= resource.author %>
+        </p>
+      <% end %>
+    </div>
+
+    <!-- Right side: Actions -->
+    <div class="text-end">
+      <% if resource.is_a?(Resource::Link) %>
+        <%= link_to resource.url, target: "_blank", rel: "noopener noreferrer", class: "btn btn-link btn-sm text-decoration-none" do %>
+          <i class="fas fa-external-link-alt"></i> <%= t('globals.open') %>
+        <% end %>
+      <% elsif resource.is_a?(Resource::Document) && resource.file.attached? %>
+        <% if policy(resource).download? %>
+          <%= link_to download_resource_path(resource), class: "btn btn-outline-primary btn-sm", download: resource.file.filename.to_s do %>
+            <i class="fas fa-download"></i> <%= t('globals.download') %>
+          <% end %>
+        <% end %>
+      <% end %>
+
+      <!-- Edit and Delete Buttons -->
+      <% if policy(resource).edit? %>
+        <%= link_to edit_resource_path(resource), class: "btn btn-sm btn-outline-secondary mx-1" do %>
+          <i class="fas fa-edit"></i> <%= t('globals.edit') %>
+        <% end %>
+      <% end %>
+      <% if policy(resource).destroy? %>
+        <%= link_to resource_path(resource), data: { turbo_confirm: t('globals.confirm_delete'), turbo_method: :delete }, class: "btn btn-sm btn-outline-danger" do %>
+          <i class="fas fa-trash-alt"></i> <%= t('globals.delete') %>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+</div>
