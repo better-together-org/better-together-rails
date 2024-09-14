@@ -70,5 +70,13 @@ module NewToNl
           default_url_options
 
     config.time_zone = ENV.fetch('APP_TIME_ZONE', 'Newfoundland')
+
+    # Add engine manifest to precompile assets in production
+    initializer 'assets' do |app|
+      # Ensure we are not modifying frozen arrays
+      app.config.assets.precompile += %w[manifest.js]
+      app.config.assets.paths = [root.join('app', 'assets', 'images'),
+                                 root.join('app', 'javascript')] + app.config.assets.paths.to_a
+    end
   end
 end
