@@ -2,7 +2,7 @@
 <%# locals: (block:, content:) %>
 
 <%= content_tag :section, id: dom_id(block), class: "content-block #{dom_class(block)}" do %>
-  <div class="map-canvas beige">
+  <div class="map-canvas <%= block.stage_colour %>">
     <div class="journey-item employment">
       <h3>
         Employment
@@ -195,12 +195,7 @@
       </a>
     </div>
   
-    <%# image_tag image_url('journey_map/bg-blue.svg'), class: 'journey-bg' %>  
-    <%# image_tag image_url('journey_map/bg-green.svg'), class: 'journey-bg' %>  
-    <%= image_tag image_url('journey_map/bg-beige.svg'), class: 'journey-bg' %>
-  
-    <%# image_tag image_url('journey_map/bg-mobile-blue.svg'), class: 'journey-bg mobile' %>  
-    <%# image_tag image_url('journey_map/bg-mobile-green.svg'), class: 'journey-bg mobile' %>  
-    <%= image_tag image_url('journey_map/bg-mobile-beige.svg'), class: 'journey-bg mobile' %>
+    <%= image_tag image_url("journey_map/bg-#{block.stage_colour }.svg"), class: 'journey-bg' %>
+    <%= image_tag image_url("journey_map/bg-mobile-#{block.stage_colour }.svg"), class: 'journey-bg mobile' %>
   </div>
 <% end %>

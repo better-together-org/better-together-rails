@@ -43,6 +43,7 @@ en:
       better_together/wizard_step: Wizard Step  #g
       better_together/wizard_step_definition: Wizard Step Definition  #g
       friendly_id/slug: Slug  #g
+      journey_map: Journey Map
       mobility/backends/action_text/plain_text_translation: plain text translation  #g
       mobility/backends/action_text/rich_text_translation: rich text translation  #g
       mobility/backends/active_record/key_value/string_translation: string translation  #g
