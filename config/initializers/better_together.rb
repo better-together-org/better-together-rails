@@ -16,7 +16,9 @@ ActiveSupport.on_load(:active_record) do
 end
 
 Rails.application.config.to_prepare do
+  require_dependency 'better_together/content/template'
   require_dependency 'better_together/navigation_item'
 
+  BetterTogether::Content::Template.include(NewToNlTemplateBlock)
   BetterTogether::NavigationItem.include(NewToNlNavigationItem)
 end

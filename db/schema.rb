@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_09_14_143449) do
+ActiveRecord::Schema[7.1].define(version: 2024_09_15_150527) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
   enable_extension "plpgsql"
@@ -86,6 +86,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_09_14_143449) do
     t.jsonb "html_attributes", default: {}, null: false
     t.jsonb "layout_settings", default: {}, null: false
     t.jsonb "media_settings", default: {}, null: false
+    t.jsonb "content_data", default: {}
   end
 
   create_table "better_together_content_page_blocks", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
