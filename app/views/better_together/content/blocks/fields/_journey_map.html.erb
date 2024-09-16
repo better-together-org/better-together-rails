@@ -1,6 +1,6 @@
 
 <%- scope = local_assigns[:scope] ? local_assigns[:scope] : BetterTogether::Content::Block.block_name %>
 <div class="template-fields">
-  <%= required_label block, :stage %>
-  <%= select_tag "#{scope}[stage]", options_for_select(block.class::AVAILABLE_STAGES.map { |stage| [ I18n.t("journey_maps.stages.#{stage}"), stage] }, block.stage), class: 'form-select' %>
+  <%= required_label block, :journey_stage %>
+  <%= select_tag "#{scope}[journey_stage_id]", options_from_collection_for_select(JourneyStage.positioned.all, :id, :name, block.journey_stage_id), class: 'form-select' %>
 </div>

@@ -1,0 +1,42 @@
+
+<%# locals: (page:, journey_map:) %>
+
+<%= content_tag :div, id: dom_id(journey_map, page) do %>
+  <div class="card mb-3 page-card shadow-sm border-0">
+    <div class="card-body d-flex align-items-center justify-content-between">
+      <!-- Left side: Resource information -->
+      <div>
+        <h5 class="card-title mb-1">
+          <% if policy(page).show? %>
+            <%= link_to page.title, page_path(page), class: "text-decoration-none" %>
+          <% else %>
+            <%= page.title %>
+          <% end %>
+        </h5>
+        <p class="card-text text-muted mb-1">
+          <i class="fas fa-tag"></i> <strong><%= page.class.model_name.human %></strong>
+        </p>
+        <p class="card-text text-muted mb-1">
+          <i class="fas fa-calendar-alt"></i>
+          <%= page.published_at.present? ? l(page.published_at.to_date, format: :long) : t('globals.no_publish_date') %>
+        </p>
+      </div>
+
+      <!-- Right side: Actions -->
+      <div class="text-end">
+        <!-- Edit and Delete Buttons -->
+        <% if policy(page).edit? %>
+          <%= link_to edit_page_path(page), class: "btn btn-sm btn-outline-secondary mx-1" do %>
+            <i class="fas fa-edit"></i> <%= t('globals.edit') %>
+          <% end %>
+        <% end %>
+        <% if policy(page).destroy? %>
+          <%= link_to page_path(page), data: { turbo_confirm: t('globals.confirm_delete'), turbo_method: :delete }, class: "btn btn-sm btn-outline-danger" do %>
+            <i class="fas fa-trash-alt"></i> <%= t('globals.delete') %>
+          <% end %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+
+<% end %>

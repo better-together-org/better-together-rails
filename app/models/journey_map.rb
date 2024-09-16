@@ -1,20 +1,24 @@
 
 class JourneyMap < BetterTogether::Content::Template
+  include NewToNlJourneyStage
+
   AVAILABLE_TEMPLATES = %w[
     better_together/content/blocks/template/journey_map
   ]
 
-  AVAILABLE_STAGES = %w[
-    pre-arrival arrival settling
-  ].freeze
+  # AVAILABLE_STAGES = %w[
+  #   pre-arrival arrival settling
+  # ].freeze
 
   has_many :page_blocks, foreign_key: :block_id, dependent: :destroy
 
-  store_attributes :content_data do
-    stage String, default: 'pre-arrival'
-  end
+  # validates :stage, inclusion: { in: ->(instance) { instance.class::AVAILABLE_STAGES }}
 
-  validates :stage, inclusion: { in: ->(instance) { instance.class::AVAILABLE_STAGES }}
+  validates :journey_stage, presence: true
+
+  def self.extra_permitted_attributes
+    %i[ journey_stage_id ]
+  end
 
   def initialize(args = nil)
     super(args)
@@ -23,13 +27,15 @@ class JourneyMap < BetterTogether::Content::Template
   end
 
   def stage_colour
-    case stage
+    case journey_stage.identifier
     when 'pre-arrival'
       'green'
     when 'arrival'
       'beige'
-    when 'settling'
+    when 'settlement'
       'blue'
+    else
+      ''
     end
   end
 end
