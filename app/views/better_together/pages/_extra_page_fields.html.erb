@@ -1,0 +1,14 @@
+
+<%# locals: (page:, form:)%>
+
+<div class="row row-cols-2 extra-page-fields">
+  <div class="col mb-3 pb-3 border-bottom">
+    <%= required_label form, :journey_stage %>
+    <%= form.select :journey_stage_id, options_from_collection_for_select(JourneyStage.positioned.all, :id, :name, page.journey_stage_id), { include_blank: true }, class: 'form-select' %>
+  </div>
+
+  <div class="col mb-3 pb-3 border-bottom">
+    <%= required_label form, :topic %>
+    <%= form.select :topic_id, options_from_collection_for_select(Topic.positioned.all, :id, :name, page.topic_id), { include_blank: true }, class: 'form-select' %>
+  </div>
+</div>
