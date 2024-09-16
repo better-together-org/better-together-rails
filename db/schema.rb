@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_09_15_150527) do
+ActiveRecord::Schema[7.1].define(version: 2024_09_15_213441) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
   enable_extension "plpgsql"
@@ -53,6 +53,31 @@ ActiveRecord::Schema[7.1].define(version: 2024_09_15_150527) do
     t.uuid "blob_id", null: false
     t.string "variation_digest", null: false
     t.index ["blob_id", "variation_digest"], name: "index_active_storage_variant_records_uniqueness", unique: true
+  end
+
+  create_table "better_together_categories", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.integer "lock_version", default: 0, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "identifier", limit: 100, null: false
+    t.string "slug", null: false
+    t.integer "position", null: false
+    t.boolean "protected", default: false, null: false
+    t.string "type", default: "BetterTogether::Category", null: false
+    t.index ["identifier"], name: "index_better_together_categories_on_identifier", unique: true
+    t.index ["slug"], name: "index_better_together_categories_on_slug", unique: true
+  end
+
+  create_table "better_together_categorizations", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.integer "lock_version", default: 0, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "category_type", null: false
+    t.uuid "category_id", null: false
+    t.string "categorizable_type", null: false
+    t.uuid "categorizable_id", null: false
+    t.index ["categorizable_type", "categorizable_id"], name: "index_better_together_categorizations_on_categorizable"
+    t.index ["category_type", "category_id"], name: "index_better_together_categorizations_on_category"
   end
 
   create_table "better_together_communities", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
