@@ -10,7 +10,8 @@ class JourneyMap < BetterTogether::Content::Template
   #   pre-arrival arrival settling
   # ].freeze
 
-  has_many :page_blocks, foreign_key: :block_id, dependent: :destroy
+  has_many :page_blocks, class_name: 'BetterTogether::Content::PageBlock', foreign_key: :block_id, dependent: :destroy
+  has_many :pages, through: :page_blocks
 
   # validates :stage, inclusion: { in: ->(instance) { instance.class::AVAILABLE_STAGES }}
 
