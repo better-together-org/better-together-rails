@@ -1,9 +1,13 @@
 class Resource < ApplicationRecord
+  include ::BetterTogether::Categorizable
   include ::BetterTogether::Identifier
   include ::BetterTogether::Privacy
   include ::BetterTogether::Translatable
+  include NewToNlJourneyStage
+  include NewToNlTopic
 
-  translates :name, :description, :slug, type: :string
+  translates :name, type: :string
+  translates :description, type: :text
 
   # Common validations
   validates :name, presence: true
