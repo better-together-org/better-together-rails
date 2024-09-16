@@ -9,6 +9,8 @@ class Resource < ApplicationRecord
   translates :name, type: :string
   translates :description, type: :text
 
+  slugged :name
+
   # Common validations
   validates :name, presence: true
   validates :type, presence: true
