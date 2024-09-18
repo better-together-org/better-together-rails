@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/better-together-org/community-engine-rails.git
-  revision: 40db9519239cf2be2e28bee8a42b2fe4588fe04b
+  revision: 061be93653ad51aacac2fd1cb8e6bcdb923e510d
   branch: wip/new-to-nl-2
   specs:
     better_together (0.6.0)
@@ -285,8 +285,9 @@ GEM
       railties (>= 5.0.0)
     faker (3.4.2)
       i18n (>= 1.8.11, < 2)
-    faraday (2.11.0)
+    faraday (2.12.0)
       faraday-net_http (>= 2.0, < 3.4)
+      json
       logger
     faraday-net_http (3.3.0)
       net-http
@@ -594,7 +595,7 @@ GEM
       ffi (~> 1.12)
       logger
     rubyzip (2.3.2)
-    sass-embedded (1.78.0-x86_64-linux-gnu)
+    sass-embedded (1.79.1-x86_64-linux-gnu)
       google-protobuf (~> 4.27)
     sassc (2.4.0)
       ffi (~> 1.9)
@@ -659,9 +660,8 @@ GEM
     trailblazer-option (0.1.2)
     translate_enum (0.2.0)
       activesupport
-    turbo-rails (2.0.7)
+    turbo-rails (2.0.9)
       actionpack (>= 6.0.0)
-      activejob (>= 6.0.0)
       railties (>= 6.0.0)
     tzinfo (2.0.6)
       concurrent-ruby (~> 1.0)
