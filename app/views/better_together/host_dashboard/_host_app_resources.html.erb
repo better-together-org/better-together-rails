@@ -1,0 +1,11 @@
+
+<div class="new-to-nl-resources mt-4">
+  <h2><%= host_platform.name %></h2>
+  <div class="row mt-3 row-cols-1 row-cols-sm-2 row-cols-md-3">
+    <%= render partial: 'resource_card', locals: { collection: @partners, count: @partner_count, url_helper: :partner_path } %>
+    <%= render partial: 'resource_card', locals: { collection: @resources, count: @resource_count, url_helper: :resource_path } %>
+    <%= render partial: 'resource_card', locals: { collection: @journey_stages, count: @journey_stage_count, url_helper: :journey_stage_path } %>
+    <%= render partial: 'resource_card', locals: { collection: @topics, count: @topic_count, url_helper: :topic_path } %>
+    <%= render partial: 'resource_card', locals: { collection: @journey_maps, count: @journey_map_count, model_class: BetterTogether::Content::Block, model_name: @journey_maps.model.model_name, url_helper: :content_block_path } %>
+  </div>
+</div>

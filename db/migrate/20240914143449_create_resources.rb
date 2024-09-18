@@ -1,6 +1,6 @@
 class CreateResources < ActiveRecord::Migration[7.1]
   def change
-    create_table :resources, id: :uuid do |t|
+    create_bt_table :resources do |t|
       t.bt_identifier
       t.bt_locale('resources')
       t.bt_privacy('resources')

@@ -21,4 +21,8 @@ class Resource < ApplicationRecord
     [Document, Link].each(&:connection) # Add all known subclasses here
     # rubocop:enable Layout/LineLength
   end
+
+  def to_s
+    "[#{self.class.model_name.human}] - #{name}"
+  end
 end
