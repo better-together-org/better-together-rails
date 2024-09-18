@@ -1,10 +1,14 @@
 
 <%= content_tag :section, id: dom_id(block), class: "content-block funders-list #{dom_class(block)} container my-3" do %>
-  <h3 class="text-center">Our Funders</h3>
+  <h3 class="text-center">Funded by</h3>
 
   <div class="row justify-content-center">
     <div class="col-6 col-sm-4 col-md-4 col-lg-4 mb-3">
       <%= image_tag('funders/NL-Logo.svg', class: 'img-fluid', alt: 'Newfoundland and Labrador Logo') %>
     </div>
   </div>
+  <p class="mt-2 text-center">
+    Office of Immigration and Multiculturalism NL <br />
+    Advance the Settlement and Economic Integration of Newcomers
+  </p>
 <% end %>
