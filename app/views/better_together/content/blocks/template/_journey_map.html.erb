@@ -1,7 +1,7 @@
 
 <%# locals: (block:, content:) %>
 
-<%= content_tag :section, id: dom_id(block), class: "content-block #{dom_class(block)}", data: { controller: 'journey-map' } do %>
+<%= content_tag :div, id: dom_id(block), class: "ratio ratio-16x9 journey-map content-block #{dom_class(block)}", data: { controller: 'journey-map' } do %>
   <div class="map-canvas <%= block.stage_colour %>">
     <div class="journey-item employment">
       <h3>
