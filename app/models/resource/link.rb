@@ -5,4 +5,10 @@ class Resource::Link < Resource
   def self.model_name
     ActiveModel::Name.new(self)
   end
+
+  def self.extra_permitted_attributes
+    super + %i[
+      url
+    ]
+  end
 end

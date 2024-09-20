@@ -6,6 +6,9 @@ class Resource < ApplicationRecord
   include NewToNlJourneyStage
   include NewToNlTopic
 
+  has_many_journey_stages
+  has_many_topics
+
   translates :name, type: :string
   translates :description, type: :text
 

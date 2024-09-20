@@ -89,6 +89,8 @@
     <small class="form-text text-muted"><%= t('hints.resource.author') %></small>
   </div>
 
+  <%= render partial: 'shared/new_to_nl_category_fields', locals: { model: resource, form: } %>
+
   <div>
     <%= form.submit nil, class: "btn btn-primary" %>
   </div>

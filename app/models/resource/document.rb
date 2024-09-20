@@ -8,4 +8,10 @@ class Resource::Document < Resource
   def self.model_name
     ActiveModel::Name.new(self)
   end
+
+  def self.extra_permitted_attributes
+    super + %i[
+      file
+    ]
+  end
 end

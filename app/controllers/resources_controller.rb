@@ -43,7 +43,7 @@ class ResourcesController < BetterTogether::FriendlyResourceController
   # PATCH/PUT /resources/1
   def update
     if @resource.update(resource_params)
-      redirect_to resources_path, notice: "Resource was successfully updated.", status: :see_other
+      redirect_to edit_resource_path(@resource), notice: "Resource was successfully updated.", status: :see_other
     else
       raise
       render :edit, status: :unprocessable_entity
@@ -91,8 +91,8 @@ class ResourcesController < BetterTogether::FriendlyResourceController
 
     params.require(root_param).permit(
       :type, :published_at, :author, :privacy, :language,
-      resource_class.localized_attribute_list,
-      :url, :file
+      *resource_class.localized_attribute_list,
+      *@resource.class.extra_permitted_attributes
     )
   end
 
