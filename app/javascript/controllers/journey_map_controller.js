@@ -4,7 +4,7 @@ import { Turbo } from "@hotwired/turbo-rails"
 // Defines a Stimulus controller for managing PersonCommunityMembership entities
 export default class extends Controller {
   // Targets that the controller interacts with
-  static targets = ['pages', 'resources']
+  static targets = ['pages', 'partners', 'resources']
 
   // Lifecycle method called when the controller is connected to the DOM
   connect() {

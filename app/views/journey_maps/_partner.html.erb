@@ -1,0 +1,38 @@
+
+<%# locals: (partner:, journey_map:) %>
+
+<%= content_tag :div, id: dom_id(journey_map, partner) do %>
+  <div class="card mb-3 hover-effect partner-card shadow-sm border-0">
+    <div class="card-body d-flex align-items-center justify-content-between">
+      <!-- Left side: Resource information -->
+      <div>
+        <h6 class="card-title mb-1">
+          <% if policy(partner).show? %>
+            <%= link_to partner.name, partner_path(partner), class: "text-decoration-none" %>
+          <% else %>
+            <%= partner.name %>
+          <% end %>
+        </h6>
+        <p class="card-text text-muted mb-1">
+          <i class="fas fa-tag"></i> <strong><%= partner.class.model_name.human %></strong>
+        </p>
+      </div>
+
+      <!-- Right side: Actions -->
+      <div class="text-end">
+        <!-- Edit and Delete Buttons -->
+        <% if policy(partner).edit? %>
+          <%= link_to edit_partner_path(partner), class: "btn btn-sm btn-outline-secondary mx-1" do %>
+            <i class="fas fa-edit"></i> <%= t('globals.edit') %>
+          <% end %>
+        <% end %>
+        <% if policy(partner).destroy? %>
+          <%= link_to partner_path(partner), data: { turbo_confirm: t('globals.confirm_delete'), turbo_method: :delete }, class: "btn btn-sm btn-outline-danger" do %>
+            <i class="fas fa-trash-alt"></i> <%= t('globals.delete') %>
+          <% end %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+
+<% end %>

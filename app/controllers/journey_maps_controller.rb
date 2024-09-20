@@ -10,6 +10,9 @@ class JourneyMapsController < ApplicationController
     @resources = Resource.with_journey_stages(@journey_stage&.id)
                          .with_topics(@topic&.id)
 
+    @partners = Partner.with_journey_stages(@journey_stage&.id)
+                         .with_topics(@topic&.id)
+
     respond_to do |format|
       format.html
       format.turbo_stream {
@@ -24,6 +27,12 @@ class JourneyMapsController < ApplicationController
             helpers.dom_id(@journey_map, :resources),
             partial: 'journey_maps/resources', locals: {
               resources: @resources, journey_map: @journey_map, topic: @topic
+            }
+          ),
+          turbo_stream.replace(
+            helpers.dom_id(@journey_map, :partners),
+            partial: 'journey_maps/partners', locals: {
+              partners: @partners, journey_map: @journey_map, topic: @topic
             }
           )
         ]

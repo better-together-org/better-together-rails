@@ -42,9 +42,9 @@ class PartnersController < BetterTogether::CommunitiesController
     respond_to do |format|
       if @partner.update(partner_params)
         flash[:notice] = t('partner.updated')
-        format.html { redirect_to @partner, notice: t('partner.updated') }
+        format.html { redirect_to edit_partner_path(@partner), notice: t('partner.updated') }
         format.turbo_stream do
-          redirect_to @partner, only_path: true
+          redirect_to edit_partner_path(@partner), only_path: true
         end
       else
         flash.now[:alert] = t('partner.update_failed')

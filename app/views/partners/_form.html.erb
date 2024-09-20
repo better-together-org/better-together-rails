@@ -20,6 +20,7 @@
 
     <%= yield :resource_toolbar if content_for? :resource_toolbar %>
     <%= render 'community_fields', community: partner, form: %>
+    <%= render partial: 'shared/new_to_nl_category_fields', locals: { model: partner, form: } %>
     <%= yield :resource_toolbar if content_for? :resource_toolbar %>
   <% end %>
 </div>
