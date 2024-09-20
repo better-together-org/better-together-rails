@@ -340,7 +340,7 @@ $dark: #000;
 }
 
 @media screen and (max-width: 767px) {
-  .content-block.journey-map.ratio.ratio-16x9 {
+  .content-block.journey-map .ratio.ratio-16x9 {
     --bs-aspect-ratio: 100%;
 
     &::before {
@@ -350,7 +350,7 @@ $dark: #000;
 }
 
 @media screen and (max-width: 376px) {
-  .content-block.journey-map.ratio.ratio-16x9 {
+  .content-block.journey-map .ratio.ratio-16x9 {
 
     &::before {
       padding-top: 569px
