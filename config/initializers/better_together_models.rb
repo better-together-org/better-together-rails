@@ -9,5 +9,7 @@ Rails.application.config.to_prepare do
   BetterTogether::Content::Template.include(NewToNlContentTemplate)
   BetterTogether::NavigationItem.include(NewToNlNavigationItem)
   BetterTogether::Page.include(NewToNlJourneyStage)
+  BetterTogether::Page.public_send(:has_many_journey_stages)
   BetterTogether::Page.include(NewToNlTopic)
+  BetterTogether::Page.public_send(:has_many_topics)
 end

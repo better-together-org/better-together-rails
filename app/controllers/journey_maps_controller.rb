@@ -4,13 +4,11 @@ class JourneyMapsController < ApplicationController
   before_action :set_topic
 
   def show
-    categories = [@journey_stage&.id, @topic&.id]
+    @pages = BetterTogether::Page.with_journey_stages(@journey_stage&.id)
+                                 .with_topics(@topic&.id)
 
-    @pages = BetterTogether::Page.with_journey_stage(@journey_stage&.id)
-                                 .with_topic(@topic&.id)
-
-    @resources = Resource.with_journey_stage(@journey_stage&.id)
-                         .with_topic(@topic&.id)
+    @resources = Resource.with_journey_stages(@journey_stage&.id)
+                         .with_topics(@topic&.id)
 
     respond_to do |format|
       format.html

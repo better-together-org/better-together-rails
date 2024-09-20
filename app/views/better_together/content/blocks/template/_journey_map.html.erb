@@ -201,6 +201,8 @@
     </div>
   </div>
 
-  <turbo-frame id="<%= dom_id(block, :pages) %>" class="journey-map-pages" data-journey-map-target="pages"></turbo-frame>
-  <turbo-frame id="<%= dom_id(block, :resources) %>" class="journey-map-resources" data-journey-map-target="pages"></turbo-frame>
+  <div class="container">
+    <turbo-frame id="<%= dom_id(block, :pages) %>" class="journey-map-pages" data-journey-map-target="pages"></turbo-frame>
+    <turbo-frame id="<%= dom_id(block, :resources) %>" class="journey-map-resources" data-journey-map-target="resources"></turbo-frame>
+  </div>
 <% end %>

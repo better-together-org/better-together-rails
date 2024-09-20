@@ -2,6 +2,8 @@
 class JourneyMap < BetterTogether::Content::Template
   include NewToNlJourneyStage
 
+  has_one_journey_stage(required: true)
+
   AVAILABLE_TEMPLATES = %w[
     better_together/content/blocks/template/journey_map
   ]
@@ -14,8 +16,6 @@ class JourneyMap < BetterTogether::Content::Template
   has_many :pages, through: :page_blocks
 
   # validates :stage, inclusion: { in: ->(instance) { instance.class::AVAILABLE_STAGES }}
-
-  validates :journey_stage, presence: true
 
   def self.extra_permitted_attributes
     %i[ journey_stage_id ]
