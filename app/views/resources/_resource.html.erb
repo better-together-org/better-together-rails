@@ -2,13 +2,13 @@
   <div class="card-body d-flex align-items-center justify-content-between">
     <!-- Left side: Resource information -->
     <div>
-      <h5 class="card-title mb-1">
+      <h6 class="card-title mb-1">
         <% if policy(resource).show? %>
           <%= link_to resource.name, resource_path(resource), class: "text-decoration-none" %>
         <% else %>
           <%= resource.name %>
         <% end %>
-      </h5>
+      </h6>
       <p class="card-text text-muted mb-1">
         <i class="fas fa-tag"></i> <strong><%= resource.class.model_name.human %></strong>
       </p>

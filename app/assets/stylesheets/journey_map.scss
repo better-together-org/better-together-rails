@@ -362,6 +362,12 @@ $settlement: $blue-2;
   }
 }
 
+.content-block.journey-map {
+  .journey-map-results > * {
+    margin-bottom: 30px;
+  }
+}
+
 .card.journey-stage {
   &.pre-arrival {
     background: $pre-arrival;

@@ -1,4 +1,4 @@
-<turbo-frame id="<%= dom_id(journey_map, :resources) %>" class="journey-map-resources" data-journey-map-target="resources">
+<div id="<%= dom_id(journey_map, :resources) %>" class="journey-map-resources" data-journey-map-target="resources">
   <h4>Resources</h4>
   <% if resources.any? %>
     <%= render partial: 'resources/resource', collection: resources, locals: { journey_map: journey_map } %>
@@ -7,4 +7,4 @@
   <% else %>
     <p>No topic resources available yet.</p>
   <% end %>
-</turbo-frame>
+</div>
