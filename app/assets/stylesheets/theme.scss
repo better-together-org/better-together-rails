@@ -30,7 +30,13 @@ $background-opposite-theme-color: #f0f0f0; /* Lighter background */
 $light-background-text-color: #222;
 $dark-background-text-color: #f0f0f0;
 
-$navbar-bg: #004BA8;
+/* Define SCSS variables for common color properties */
+$slider-track-color: lighten($secondary, 10%);
+$slider-thumb-border-color: $primary;
+$slider-thumb-color: $beige;
+$slider-track-height: 6px;
+$slider-thumb-size: 15px;
+$slider-thumb-border-size: 2px;
 
 // Import the gem's SCSS styles after overriding the variables
 @import 'better_together/application';
@@ -58,7 +64,7 @@ body {
   }
 }
 
-h1, h2, h3 {
+h1, h2, h3, h4, h5, h6 {
   font-family: 'Raleway', sans-serif; /* Elegant font */
   letter-spacing: 1.25px; /* Slight letter spacing for better readability */
   text-transform: uppercase; /* Uppercase for headings */
