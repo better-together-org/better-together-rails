@@ -2,203 +2,201 @@
 <%# locals: (block:, content:) %>
 
 <%= content_tag :div, id: dom_id(block), class: "journey-map content-block #{dom_class(block)}", data: { controller: 'journey-map' } do %>
-  <div class="ratio ratio-16x9">
-    <div class="map-canvas <%= block.stage_colour %>">
-      <div class="journey-item employment">
-        <h3>
-          Employment
-        </h3>
-        <a href="<%= journey_map_topic_content_path(block, 'employment') %>" data-turbo="false" data-action="click->journey-map#loadContent">
-          <div class="icon">
-            <div class="fa-stack fa-2x mb-3" role="img" aria-label="employment icon">
-              <!-- Background icon (gray) -->
-              <i class="fas fa-circle fa-stack-2x text-dark icon-outline"></i>
-              <i class="fas fa-circle fa-stack-2x text-light icon-bg"></i>
-              <i class="fa fa-handshake fa-stack-1x icon-symbol"></i>
-            </div>
+  <div class="map-canvas <%= block.stage_colour %>">
+    <div class="journey-item employment">
+      <h3>
+        Employment
+      </h3>
+      <a href="<%= journey_map_topic_content_path(block, 'employment') %>" data-turbo="false" data-action="click->journey-map#loadContent">
+        <div class="icon">
+          <div class="fa-stack fa-2x mb-3" role="img" aria-label="employment icon">
+            <!-- Background icon (gray) -->
+            <i class="fas fa-circle fa-stack-2x text-dark icon-outline"></i>
+            <i class="fas fa-circle fa-stack-2x text-light icon-bg"></i>
+            <i class="fa fa-handshake fa-stack-1x icon-symbol"></i>
           </div>
-        </a>
-      </div>
-
-      <div class="journey-item language">
-        <h3>
-          Language
-        </h3>
-        <a href="<%= journey_map_topic_content_path(block, 'language') %>" data-turbo="false" data-action="click->journey-map#loadContent">
-          <div class="icon">
-            <div class="fa-stack fa-2x mb-3" role="img" aria-label="language icon">
-              <!-- Background icon (gray) -->
-              <i class="fas fa-circle fa-stack-2x text-dark icon-outline"></i>
-              <i class="fas fa-circle fa-stack-2x text-light icon-bg"></i>
-              <i class="fas fa-language fa-stack-1x icon-symbol"></i>
-            </div>
-          </div>
-        </a>
-      </div>
-
-      <div class="journey-item community">
-        <h3>
-          Community
-        </h3>
-        <a href="<%= journey_map_topic_content_path(block, 'community') %>" data-turbo="false" data-action="click->journey-map#loadContent">
-          <div class="icon">
-            <div class="fa-stack fa-2x mb-3" role="img" aria-label="community icon">
-              <!-- Background icon (gray) -->
-              <i class="fas fa-circle fa-stack-2x text-dark icon-outline"></i>
-              <i class="fas fa-circle fa-stack-2x text-light icon-bg"></i>
-              <i class="fas fa-people-group fa-stack-1x icon-symbol"></i>
-            </div>
-          </div>
-        </a>
-      </div>
-
-      <div class="journey-item housing">
-        <h3>
-          Housing
-        </h3>
-        <a href="<%= journey_map_topic_content_path(block, 'housing') %>" data-turbo="false" data-action="click->journey-map#loadContent">
-          <div class="icon">
-            <div class="fa-stack fa-2x mb-3" role="img" aria-label="housing icon">
-              <!-- Background icon (gray) -->
-              <i class="fas fa-circle fa-stack-2x text-dark icon-outline"></i>
-              <i class="fas fa-circle fa-stack-2x text-light icon-bg"></i>
-              <i class="fas fa-house fa-stack-1x icon-symbol"></i>
-            </div>
-          </div>
-        </a>
-      </div>
-
-      <div class="journey-item immigration">
-        <h3>
-          Immigration
-        </h3>
-        <a href="<%= journey_map_topic_content_path(block, 'immigration') %>" data-turbo="false" data-action="click->journey-map#loadContent">
-          <div class="icon">
-            <div class="fa-stack fa-2x mb-3" role="img" aria-label="immigration icon">
-              <!-- Background icon (gray) -->
-              <i class="fas fa-circle fa-stack-2x text-dark icon-outline"></i>
-              <i class="fas fa-circle fa-stack-2x text-light icon-bg"></i>
-              <i class="fas fa-passport fa-stack-1x icon-symbol"></i>
-            </div>
-          </div>
-        </a>
-      </div>
-
-      <div class="journey-item family">
-        <h3>
-          Family
-        </h3>
-        <a href="<%= journey_map_topic_content_path(block, 'family') %>" data-turbo="false" data-action="click->journey-map#loadContent">
-          <div class="icon">
-            <div class="fa-stack fa-2x mb-3" role="img" aria-label="family icon">
-              <!-- Background icon (gray) -->
-              <i class="fas fa-circle fa-stack-2x text-dark icon-outline"></i>
-              <i class="fas fa-circle fa-stack-2x text-light icon-bg"></i>
-              <i class="fas fa-people-roof fa-stack-1x icon-symbol"></i>
-            </div>
-          </div>
-        </a>
-      </div>
-
-      <div class="journey-item insurance">
-        <h3>
-          Insurance
-        </h3>
-        <a href="<%= journey_map_topic_content_path(block, 'insurance') %>" data-turbo="false" data-action="click->journey-map#loadContent">
-          <div class="icon">
-            <div class="fa-stack fa-2x mb-3" role="img" aria-label="insurance icon">
-              <!-- Background icon (gray) -->
-              <i class="fas fa-circle fa-stack-2x text-dark icon-outline"></i>
-              <i class="fas fa-circle fa-stack-2x text-light icon-bg"></i>
-              <i class="fas fa-umbrella fa-stack-1x icon-symbol"></i>
-            </div>
-          </div>
-        </a>
-      </div>
-
-      <div class="journey-item banking">
-        <h3>
-          Banking
-        </h3>
-        <a href="<%= journey_map_topic_content_path(block, 'banking') %>" data-turbo="false" data-action="click->journey-map#loadContent">
-          <div class="icon">
-            <div class="fa-stack fa-2x mb-3" role="img" aria-label="banking icon">
-              <!-- Background icon (gray) -->
-              <i class="fas fa-circle fa-stack-2x text-dark icon-outline"></i>
-              <i class="fas fa-circle fa-stack-2x text-light icon-bg"></i>
-              <i class="fas fa-building-columns fa-stack-1x icon-symbol"></i>
-            </div>
-          </div>
-        </a>
-      </div>
-
-      <div class="journey-item health">
-        <h3>
-          Health
-        </h3>
-        <a href="<%= journey_map_topic_content_path(block, 'health') %>" data-turbo="false" data-action="click->journey-map#loadContent">
-          <div class="icon">
-            <div class="fa-stack fa-2x mb-3" role="img" aria-label="health icon">
-              <!-- Background icon (gray) -->
-              <i class="fas fa-circle fa-stack-2x text-dark icon-outline"></i>
-              <i class="fas fa-circle fa-stack-2x text-light icon-bg"></i>
-              <i class="fas fa-staff-snake fa-stack-1x icon-symbol"></i>
-            </div>
-          </div>
-        </a>
-      </div>
-
-      <div class="journey-item legal">
-        <h3>
-          Legal
-        </h3>
-        <a href="<%= journey_map_topic_content_path(block, 'legal') %>" data-turbo="false" data-action="click->journey-map#loadContent">
-          <div class="icon">
-            <div class="fa-stack fa-2x mb-3" role="img" aria-label="legal icon">
-              <!-- Background icon (gray) -->
-              <i class="fas fa-circle fa-stack-2x text-dark icon-outline"></i>
-              <i class="fas fa-circle fa-stack-2x text-light icon-bg"></i>
-              <i class="fas fa-scale-balanced fa-stack-1x icon-symbol"></i>
-            </div>
-          </div>
-        </a>
-      </div>
-
-      <div class="journey-item training">
-        <h3>
-          Training
-        </h3>
-        <a href="<%= journey_map_topic_content_path(block, 'training') %>" data-turbo="false" data-action="click->journey-map#loadContent">
-          <div class="icon">
-            <div class="fa-stack fa-2x mb-3" role="img" aria-label="training icon">
-              <!-- Background icon (gray) -->
-              <i class="fas fa-circle fa-stack-2x text-dark icon-outline"></i>
-              <i class="fas fa-circle fa-stack-2x text-light icon-bg"></i>
-              <i class="fas fa-graduation-cap fa-stack-1x icon-symbol"></i>
-            </div>
-          </div>
-        </a>
-      </div>
-
-      <div class="journey-item entrepreneurship">
-        <h3>
-          Entrepreneurship
-        </h3>
-        <a href="<%= journey_map_topic_content_path(block, 'entrepreneurship') %>" data-turbo="false" data-action="click->journey-map#loadContent">
-          <div class="icon">
-            <div class="fa-stack fa-2x mb-3" role="img" aria-label="entrepreneurship icon">
-              <!-- Background icon (gray) -->
-              <i class="fas fa-circle fa-stack-2x text-dark icon-outline"></i>
-              <i class="fas fa-circle fa-stack-2x text-light icon-bg"></i>
-              <i class="fas fa-lightbulb fa-stack-1x icon-symbol"></i>
-            </div>
-          </div>
-        </a>
-      </div>
-    
-      <%= image_tag image_url("journey_map/bg-#{block.stage_colour }.svg"), class: 'journey-bg' %>
-      <%= image_tag image_url("journey_map/bg-mobile-#{block.stage_colour }.svg"), class: 'journey-bg mobile' %>
+        </div>
+      </a>
     </div>
+
+    <div class="journey-item language">
+      <h3>
+        Language
+      </h3>
+      <a href="<%= journey_map_topic_content_path(block, 'language') %>" data-turbo="false" data-action="click->journey-map#loadContent">
+        <div class="icon">
+          <div class="fa-stack fa-2x mb-3" role="img" aria-label="language icon">
+            <!-- Background icon (gray) -->
+            <i class="fas fa-circle fa-stack-2x text-dark icon-outline"></i>
+            <i class="fas fa-circle fa-stack-2x text-light icon-bg"></i>
+            <i class="fas fa-language fa-stack-1x icon-symbol"></i>
+          </div>
+        </div>
+      </a>
+    </div>
+
+    <div class="journey-item community">
+      <h3>
+        Community
+      </h3>
+      <a href="<%= journey_map_topic_content_path(block, 'community') %>" data-turbo="false" data-action="click->journey-map#loadContent">
+        <div class="icon">
+          <div class="fa-stack fa-2x mb-3" role="img" aria-label="community icon">
+            <!-- Background icon (gray) -->
+            <i class="fas fa-circle fa-stack-2x text-dark icon-outline"></i>
+            <i class="fas fa-circle fa-stack-2x text-light icon-bg"></i>
+            <i class="fas fa-people-group fa-stack-1x icon-symbol"></i>
+          </div>
+        </div>
+      </a>
+    </div>
+
+    <div class="journey-item housing">
+      <h3>
+        Housing
+      </h3>
+      <a href="<%= journey_map_topic_content_path(block, 'housing') %>" data-turbo="false" data-action="click->journey-map#loadContent">
+        <div class="icon">
+          <div class="fa-stack fa-2x mb-3" role="img" aria-label="housing icon">
+            <!-- Background icon (gray) -->
+            <i class="fas fa-circle fa-stack-2x text-dark icon-outline"></i>
+            <i class="fas fa-circle fa-stack-2x text-light icon-bg"></i>
+            <i class="fas fa-house fa-stack-1x icon-symbol"></i>
+          </div>
+        </div>
+      </a>
+    </div>
+
+    <div class="journey-item immigration">
+      <h3>
+        Immigration
+      </h3>
+      <a href="<%= journey_map_topic_content_path(block, 'immigration') %>" data-turbo="false" data-action="click->journey-map#loadContent">
+        <div class="icon">
+          <div class="fa-stack fa-2x mb-3" role="img" aria-label="immigration icon">
+            <!-- Background icon (gray) -->
+            <i class="fas fa-circle fa-stack-2x text-dark icon-outline"></i>
+            <i class="fas fa-circle fa-stack-2x text-light icon-bg"></i>
+            <i class="fas fa-passport fa-stack-1x icon-symbol"></i>
+          </div>
+        </div>
+      </a>
+    </div>
+
+    <div class="journey-item family">
+      <h3>
+        Family
+      </h3>
+      <a href="<%= journey_map_topic_content_path(block, 'family') %>" data-turbo="false" data-action="click->journey-map#loadContent">
+        <div class="icon">
+          <div class="fa-stack fa-2x mb-3" role="img" aria-label="family icon">
+            <!-- Background icon (gray) -->
+            <i class="fas fa-circle fa-stack-2x text-dark icon-outline"></i>
+            <i class="fas fa-circle fa-stack-2x text-light icon-bg"></i>
+            <i class="fas fa-people-roof fa-stack-1x icon-symbol"></i>
+          </div>
+        </div>
+      </a>
+    </div>
+
+    <div class="journey-item insurance">
+      <h3>
+        Insurance
+      </h3>
+      <a href="<%= journey_map_topic_content_path(block, 'insurance') %>" data-turbo="false" data-action="click->journey-map#loadContent">
+        <div class="icon">
+          <div class="fa-stack fa-2x mb-3" role="img" aria-label="insurance icon">
+            <!-- Background icon (gray) -->
+            <i class="fas fa-circle fa-stack-2x text-dark icon-outline"></i>
+            <i class="fas fa-circle fa-stack-2x text-light icon-bg"></i>
+            <i class="fas fa-umbrella fa-stack-1x icon-symbol"></i>
+          </div>
+        </div>
+      </a>
+    </div>
+
+    <div class="journey-item banking">
+      <h3>
+        Banking
+      </h3>
+      <a href="<%= journey_map_topic_content_path(block, 'banking') %>" data-turbo="false" data-action="click->journey-map#loadContent">
+        <div class="icon">
+          <div class="fa-stack fa-2x mb-3" role="img" aria-label="banking icon">
+            <!-- Background icon (gray) -->
+            <i class="fas fa-circle fa-stack-2x text-dark icon-outline"></i>
+            <i class="fas fa-circle fa-stack-2x text-light icon-bg"></i>
+            <i class="fas fa-building-columns fa-stack-1x icon-symbol"></i>
+          </div>
+        </div>
+      </a>
+    </div>
+
+    <div class="journey-item health">
+      <h3>
+        Health
+      </h3>
+      <a href="<%= journey_map_topic_content_path(block, 'health') %>" data-turbo="false" data-action="click->journey-map#loadContent">
+        <div class="icon">
+          <div class="fa-stack fa-2x mb-3" role="img" aria-label="health icon">
+            <!-- Background icon (gray) -->
+            <i class="fas fa-circle fa-stack-2x text-dark icon-outline"></i>
+            <i class="fas fa-circle fa-stack-2x text-light icon-bg"></i>
+            <i class="fas fa-staff-snake fa-stack-1x icon-symbol"></i>
+          </div>
+        </div>
+      </a>
+    </div>
+
+    <div class="journey-item legal">
+      <h3>
+        Legal
+      </h3>
+      <a href="<%= journey_map_topic_content_path(block, 'legal') %>" data-turbo="false" data-action="click->journey-map#loadContent">
+        <div class="icon">
+          <div class="fa-stack fa-2x mb-3" role="img" aria-label="legal icon">
+            <!-- Background icon (gray) -->
+            <i class="fas fa-circle fa-stack-2x text-dark icon-outline"></i>
+            <i class="fas fa-circle fa-stack-2x text-light icon-bg"></i>
+            <i class="fas fa-scale-balanced fa-stack-1x icon-symbol"></i>
+          </div>
+        </div>
+      </a>
+    </div>
+
+    <div class="journey-item training">
+      <h3>
+        Training
+      </h3>
+      <a href="<%= journey_map_topic_content_path(block, 'training') %>" data-turbo="false" data-action="click->journey-map#loadContent">
+        <div class="icon">
+          <div class="fa-stack fa-2x mb-3" role="img" aria-label="training icon">
+            <!-- Background icon (gray) -->
+            <i class="fas fa-circle fa-stack-2x text-dark icon-outline"></i>
+            <i class="fas fa-circle fa-stack-2x text-light icon-bg"></i>
+            <i class="fas fa-graduation-cap fa-stack-1x icon-symbol"></i>
+          </div>
+        </div>
+      </a>
+    </div>
+
+    <div class="journey-item entrepreneurship">
+      <h3>
+        Entrepreneurship
+      </h3>
+      <a href="<%= journey_map_topic_content_path(block, 'entrepreneurship') %>" data-turbo="false" data-action="click->journey-map#loadContent">
+        <div class="icon">
+          <div class="fa-stack fa-2x mb-3" role="img" aria-label="entrepreneurship icon">
+            <!-- Background icon (gray) -->
+            <i class="fas fa-circle fa-stack-2x text-dark icon-outline"></i>
+            <i class="fas fa-circle fa-stack-2x text-light icon-bg"></i>
+            <i class="fas fa-lightbulb fa-stack-1x icon-symbol"></i>
+          </div>
+        </div>
+      </a>
+    </div>
+  
+    <%= image_tag image_url("journey_map/bg-#{block.stage_colour }.svg"), class: 'journey-bg' %>
+    <%= image_tag image_url("journey_map/bg-mobile-#{block.stage_colour }.svg"), class: 'journey-bg mobile' %>
   </div>
 
   <div class="container journey-map-results">
