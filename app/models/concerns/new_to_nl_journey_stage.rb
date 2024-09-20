@@ -1,22 +1,18 @@
-
 module NewToNlJourneyStage
   extend ::ActiveSupport::Concern
 
   included do
-    
+    # Initialize an empty array for extra permitted attributes
+    class_attribute :_extra_journey_stage_permitted_attributes, default: []
   end
 
   class_methods do
-
     def has_many_journey_stages
-      has_many :journey_stage_categorizations, ->{ where(category_type: 'JourneyStage') }, class_name: 'BetterTogether::Categorization', as: :categorizable, dependent: :destroy
+      has_many :journey_stage_categorizations, -> { where(category_type: 'JourneyStage') }, class_name: 'BetterTogether::Categorization', as: :categorizable, dependent: :destroy
       has_many :journey_stages, through: :journey_stage_categorizations, source: :category, source_type: 'JourneyStage'
       
-      def self.extra_permitted_attributes
-        super + [
-          journey_stage_ids: []
-        ]
-      end
+      # Add the permitted attributes for this method dynamically
+      self._extra_journey_stage_permitted_attributes += [{ journey_stage_ids: [] }]
 
       define_method :journey_stage_ids do
         self.journey_stages.pluck(:id)
@@ -28,16 +24,13 @@ module NewToNlJourneyStage
     end
 
     def has_one_journey_stage(required: false)
-      has_one :journey_stage_categorization, ->{ where(category_type: 'JourneyStage') }, class_name: 'BetterTogether::Categorization', as: :categorizable, dependent: :destroy
+      has_one :journey_stage_categorization, -> { where(category_type: 'JourneyStage') }, class_name: 'BetterTogether::Categorization', as: :categorizable, dependent: :destroy
       has_one :journey_stage, through: :journey_stage_categorization, source: :category, source_type: 'JourneyStage'
-    
+      
       validates :journey_stage, presence: true if required
 
-      def self.extra_permitted_attributes
-        super + %i[
-          journey_stage_id
-        ]
-      end
+      # Add the permitted attributes for this method dynamically
+      self._extra_journey_stage_permitted_attributes += %i[journey_stage_id]
 
       define_method :journey_stage_id do
         self.journey_stage&.id
@@ -48,8 +41,12 @@ module NewToNlJourneyStage
       end
     end
 
+    def extra_permitted_attributes
+      super + _extra_journey_stage_permitted_attributes
+    end
+
     def with_journey_stages(journey_stage_ids)
-      journey_stage_ids = [ journey_stage_ids ] if journey_stage_ids.is_a?(String)
+      journey_stage_ids = [journey_stage_ids] if journey_stage_ids.is_a?(String)
 
       # Define Arel tables
       target = self.arel_table
@@ -57,7 +54,7 @@ module NewToNlJourneyStage
 
       # Define the join condition
       join_condition = categorization[:categorizable_id].eq(target[:id])
-                        .and(categorization[:categorizable_type].eq(self.name))
+                        .and(categorization[:categorizable_type].eq(self.base_class.name))
                         .and(categorization[:category_type].eq('JourneyStage'))
 
       # Perform the join using Arel
@@ -65,8 +62,7 @@ module NewToNlJourneyStage
         target.join(categorization)
             .on(join_condition)
             .join_sources
-      )
-      .where(categorization[:category_id].in(journey_stage_ids))
+      ).where(categorization[:category_id].in(journey_stage_ids))
     end
   end
 end
