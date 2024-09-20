@@ -3,6 +3,10 @@ $dark: #000;
 
 @import 'theme';
 
+$pre-arrival: $green-2;
+$arrival: $beige;
+$settlement: $blue-2;
+
 /* Animation keyframes for shrinking and growing */
 @keyframes shrink-grow {
   0% {
@@ -148,10 +152,10 @@ $dark: #000;
       color: white;
     }
     .icon-bg {
-      color: $blue-2 !important;
+      color: $settlement !important;
     }
     .icon-outline {
-      color: darken($blue-2, 20%) !important;
+      color: darken($settlement, 20%) !important;
     }
   }
 
@@ -160,10 +164,10 @@ $dark: #000;
       color: white;
     }
     .icon-bg {
-      color: $green-2 !important;
+      color: $pre-arrival !important;
     }
     .icon-outline {
-      color: darken($green-2, 20%) !important;
+      color: darken($pre-arrival, 20%) !important;
     }
   }
 
@@ -172,10 +176,10 @@ $dark: #000;
       color: $dark;
     }
     .icon-bg {
-      color: $beige !important;
+      color: $arrival !important;
     }
     .icon-outline {
-      color: darken($beige, 20%) !important;
+      color: darken($arrival, 20%) !important;
     }
   }
 
@@ -355,5 +359,24 @@ $dark: #000;
     &::before {
       padding-top: 569px
     }
+  }
+}
+
+.card.journey-stage {
+  &.pre-arrival {
+    background: $pre-arrival;
+  }
+  &.arrival {
+    background: $arrival;
+  }
+  &.settlement {
+    background: $settlement;
+    color: $light;
+  }
+
+  .card-body {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
   }
 }
