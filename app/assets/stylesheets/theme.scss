@@ -39,7 +39,14 @@ $slider-thumb-size: 15px;
 $slider-thumb-border-size: 2px;
 
 // Import the gem's SCSS styles after overriding the variables
-@import 'better_together/application';
+@import 'better_together/theme';
+
+@import "bootstrap/functions";
+@import "bootstrap/variables";
+@import "bootstrap/mixins";
+@import "bootstrap/maps";
+@import "bootstrap/utilities";
+@import "bootstrap/buttons";
 
 html {
   scroll-behavior: smooth;
