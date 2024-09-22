@@ -80,6 +80,8 @@
             <p class="card-text text-muted">
               <%= @resource.description.presence || 'No description available.' %>
             </p>
+
+            <%= render partial: 'better_together/contact_details/about_section', locals: { contactable: @resource } %>
           </div>
         </section>
 

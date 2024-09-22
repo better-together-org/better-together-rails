@@ -30,6 +30,15 @@ $background-opposite-theme-color: #f0f0f0; /* Lighter background */
 $light-background-text-color: #222;
 $dark-background-text-color: #f0f0f0;
 
+$colors: (
+  primary: $primary,
+  secondary: $secondary,
+  success: $success,
+  info: $info,
+  warning: $warning,
+  danger: $danger,
+);
+
 /* Define SCSS variables for common color properties */
 $slider-track-color: lighten($secondary, 10%);
 $slider-thumb-border-color: $primary;
@@ -41,11 +50,8 @@ $slider-thumb-border-size: 2px;
 // Import the gem's SCSS styles after overriding the variables
 @import 'better_together/theme';
 
-@import "bootstrap/functions";
-@import "bootstrap/variables";
-@import "bootstrap/mixins";
-@import "bootstrap/maps";
-@import "bootstrap/utilities";
+
+@import "bootstrap-utilities";
 @import "bootstrap/buttons";
 
 html {
