@@ -211,8 +211,12 @@ $settlement: $blue-2;
         inset: 15% auto auto 59.5%;
       }
 
+      &.transportation {
+        inset: 65% auto auto 62%;
+      }
+
       &.training {
-        inset: 47% auto auto 69%;
+        inset: 47% auto auto 77%;
       }
 
       &.entrepreneurship {
@@ -289,12 +293,16 @@ $settlement: $blue-2;
         inset: 62% auto auto 65.5%;
       }
 
+      &.transportation {
+        inset: 65% auto auto 26%;
+      }
+
       &.training {
-        inset: 68% auto auto 34%;
+        inset: 81% auto auto 34%;
       }
 
       &.entrepreneurship {
-        inset: 78% auto auto 60%;
+        inset: 78% auto auto 63%;
       }
     }
 
@@ -341,23 +349,12 @@ $settlement: $blue-2;
       }
     }
   }
-}
 
-@media screen and (max-width: 767px) {
-  .content-block.journey-map .ratio.ratio-16x9 {
-    --bs-aspect-ratio: 100%;
-
-    &::before {
-      padding-top: 756px
-    }
-  }
-}
-
-@media screen and (max-width: 376px) {
-  .content-block.journey-map .ratio.ratio-16x9 {
-
-    &::before {
-      padding-top: 569px
+  @media screen and (max-width: 374px) {
+    .journey-item {
+      &.entrepreneurship {
+        inset: 78% auto auto 59%;
+      }
     }
   }
 }

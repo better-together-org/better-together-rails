@@ -6,7 +6,6 @@ es:
       new_btn_text: "Agregar Colaborador"
       confirm_delete: "¿Estás seguro de que deseas eliminar este colaborador?"
       no_partners_message: "No hay colaboradores aún. ¿Por qué no agregas uno?"
-  
   resources:
     actions:
       back_to_index: "Volver a los recursos"
@@ -20,3 +19,17 @@ es:
       title: "Editando Recurso"
       show_resource: "Mostrar este recurso"
       back_to_resources: "Volver a recursos"
+  topics:
+    employment: "Empleo"
+    language: "Idioma"
+    community: "Comunidad"
+    housing: "Vivienda"
+    immigration: "Inmigración"
+    family: "Familia"
+    insurance: "Seguro"
+    banking: "Banca"
+    health: "Salud"
+    legal: "Legal"
+    training: "Formación"
+    transportation: "Transporte"
+    entrepreneurship: "Emprendimiento"

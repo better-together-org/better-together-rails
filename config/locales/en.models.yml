@@ -25,4 +25,17 @@ en:
       title: "Editing Resource"
       show_resource: "Show this resource"
       back_to_resources: "Back to resources"
-
+  topics:
+    employment: "Employment"
+    language: "Language"
+    community: "Community"
+    housing: "Housing"
+    immigration: "Immigration"
+    family: "Family"
+    insurance: "Insurance"
+    banking: "Banking"
+    health: "Health"
+    legal: "Legal"
+    training: "Training"
+    transportation: "Transportation"
+    entrepreneurship: "Entrepreneurship"
