@@ -27,6 +27,7 @@ $settlement: $blue-2;
   align-items: center;
   display: flex;
   position: relative;
+  aspect-ratio: 16 / 9;
 
   .journey-item {
     grid-column-gap: 5px;
@@ -117,6 +118,10 @@ $settlement: $blue-2;
 
     &.legal {
       inset: 15% auto auto 61.5%;
+    }
+
+    &.transportation {
+      inset: 62% auto auto 62%;
     }
 
     &.training {
@@ -251,6 +256,10 @@ $settlement: $blue-2;
   }
 
   @media screen and (max-width: 767px) {
+    & {
+      aspect-ratio: 9 / 16;
+    }
+
     .journey-item {
 
       &.employment {
