@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/better-together-org/community-engine-rails.git
-  revision: 4b331fb0515d6977ec92c889e017e2d0bb24d681
+  revision: e5b9612b5ed60aa0974ab7ac4b359ec2b4fcbeb0
   branch: wip/new-to-nl-2
   specs:
     better_together (0.6.0)
@@ -107,7 +107,7 @@ GEM
       erubi (~> 1.11)
       rails-dom-testing (~> 2.2)
       rails-html-sanitizer (~> 1.6)
-    active_storage_validations (1.1.4)
+    active_storage_validations (1.2.0)
       activejob (>= 5.2.0)
       activemodel (>= 5.2.0)
       activestorage (>= 5.2.0)
@@ -369,7 +369,7 @@ GEM
       activerecord (>= 4.1)
       concurrent-ruby
       railties (>= 4.1)
-    jwt (2.9.0)
+    jwt (2.9.1)
       base64
     language_server-protocol (3.17.0.3)
     listen (3.9.0)
