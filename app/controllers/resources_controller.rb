@@ -16,6 +16,8 @@ class ResourcesController < BetterTogether::FriendlyResourceController
 
   # GET /resources/1
   def show
+    # Dispatch the background job for tracking the page view
+    BetterTogether::Metrics::TrackPageViewJob.perform_later(@resource, I18n.locale.to_s)
   end
 
   # GET /resources/new
