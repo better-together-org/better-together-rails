@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_09_22_174126) do
+ActiveRecord::Schema[7.1].define(version: 2024_09_24_203925) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
   enable_extension "plpgsql"
@@ -328,6 +328,59 @@ ActiveRecord::Schema[7.1].define(version: 2024_09_22_174126) do
     t.index ["sender_id"], name: "index_better_together_messages_on_sender_id"
   end
 
+  create_table "better_together_metrics_downloads", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.integer "lock_version", default: 0, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "locale", limit: 5, default: "es", null: false
+    t.string "downloadable_type"
+    t.uuid "downloadable_id"
+    t.string "file_name", null: false
+    t.string "file_type", null: false
+    t.bigint "file_size", null: false
+    t.datetime "downloaded_at", null: false
+    t.index ["downloadable_type", "downloadable_id"], name: "index_better_together_metrics_downloads_on_downloadable"
+    t.index ["locale"], name: "by_better_together_metrics_downloads_locale"
+  end
+
+  create_table "better_together_metrics_link_clicks", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.integer "lock_version", default: 0, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "url", null: false
+    t.string "page_url", null: false
+    t.string "locale", null: false
+    t.boolean "internal", default: true
+    t.datetime "clicked_at", null: false
+  end
+
+  create_table "better_together_metrics_page_views", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.integer "lock_version", default: 0, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "locale", limit: 5, default: "es", null: false
+    t.string "pageable_type"
+    t.uuid "pageable_id"
+    t.datetime "viewed_at", null: false
+    t.index ["locale"], name: "by_better_together_metrics_page_views_locale"
+    t.index ["pageable_type", "pageable_id"], name: "index_better_together_metrics_page_views_on_pageable"
+  end
+
+  create_table "better_together_metrics_shares", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.integer "lock_version", default: 0, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "locale", limit: 5, default: "es", null: false
+    t.string "platform", null: false
+    t.string "url", null: false
+    t.datetime "shared_at", null: false
+    t.string "shareable_type"
+    t.uuid "shareable_id"
+    t.index ["locale"], name: "by_better_together_metrics_shares_locale"
+    t.index ["platform", "url"], name: "index_better_together_metrics_shares_on_platform_and_url"
+    t.index ["shareable_type", "shareable_id"], name: "index_better_together_metrics_shares_on_shareable"
+  end
+
   create_table "better_together_navigation_areas", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.integer "lock_version", default: 0, null: false
     t.datetime "created_at", null: false
@@ -397,8 +450,10 @@ ActiveRecord::Schema[7.1].define(version: 2024_09_22_174126) do
     t.string "slug", null: false
     t.uuid "community_id", null: false
     t.jsonb "preferences", default: {}, null: false
+    t.string "privacy", limit: 50, default: "unlisted", null: false
     t.index ["community_id"], name: "by_person_community"
     t.index ["identifier"], name: "index_better_together_people_on_identifier", unique: true
+    t.index ["privacy"], name: "by_better_together_people_privacy"
     t.index ["slug"], name: "index_better_together_people_on_slug", unique: true
   end
 
