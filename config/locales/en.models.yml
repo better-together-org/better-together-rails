@@ -12,6 +12,8 @@ en:
       new_btn_text: "Add Partner"
       confirm_delete: "Are you sure you want to delete this partner?"
       no_partners_message: "There are no partners yet. Why not add one?"
+    new:
+      title: New Partner
   resources:
     actions:
       back_to_index: "Back to resources"

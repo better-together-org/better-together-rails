@@ -6,6 +6,8 @@ es:
       new_btn_text: "Agregar Colaborador"
       confirm_delete: "¿Estás seguro de que deseas eliminar este colaborador?"
       no_partners_message: "No hay colaboradores aún. ¿Por qué no agregas uno?"
+    new:
+      title: "Nuevo Colaborador"
   resources:
     actions:
       back_to_index: "Volver a los recursos"
