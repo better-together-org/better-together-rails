@@ -5,8 +5,9 @@ development:
   <<: *default
   verbose: true
   queues:
-    - default
-    - mailers
+    - [default, 1]   # Default queue with priority 1
+    - [mailers, 2]   # Mailers queue with priority 2
+    - [metrics, 3]   # Metrics queue with priority 3 (lower priority)
 
 test:
   <<: *default
