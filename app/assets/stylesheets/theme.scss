@@ -238,3 +238,19 @@ a:hover {
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15); /* Add shadow */
 }
 
+.content-block.content_hero {
+  .hero-background .hero-content .hero-heading {
+    width: 100%;
+
+    @media screen and (max-width: 431px) {
+      font-size: 1.5em;
+    }
+  }
+}
+
+@media screen and (max-width: 431px) {
+  .content-block.content_hero .hero-background .hero-content .hero-cta,
+  .content-block.content_hero .hero-background .hero-content .hero-paragraph {
+    font-size: 1em;
+  }
+}
