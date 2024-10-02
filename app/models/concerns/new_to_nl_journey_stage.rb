@@ -10,7 +10,7 @@ module NewToNlJourneyStage
     def has_many_journey_stages
       has_many :journey_stage_categorizations, -> { where(category_type: 'JourneyStage') }, class_name: 'BetterTogether::Categorization', as: :categorizable, dependent: :destroy
       has_many :journey_stages, through: :journey_stage_categorizations, source: :category, source_type: 'JourneyStage'
-      
+
       # Add the permitted attributes for this method dynamically
       self._extra_journey_stage_permitted_attributes += [{ journey_stage_ids: [] }]
 
@@ -26,7 +26,7 @@ module NewToNlJourneyStage
     def has_one_journey_stage(required: false)
       has_one :journey_stage_categorization, -> { where(category_type: 'JourneyStage') }, class_name: 'BetterTogether::Categorization', as: :categorizable, dependent: :destroy
       has_one :journey_stage, through: :journey_stage_categorization, source: :category, source_type: 'JourneyStage'
-      
+
       validates :journey_stage, presence: true if required
 
       # Add the permitted attributes for this method dynamically
