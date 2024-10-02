@@ -16,7 +16,7 @@
   { key: 'entrepreneurship', icon: 'fa-lightbulb' }
 ] %>
 
-<%= content_tag :div, id: dom_id(block), class: "journey-map content-block #{dom_class(block)}", data: { controller: 'journey-map' } do %>
+<%= content_tag :div, class: "journey-map #{block.stage_identifier}", data: { controller: 'journey-map' } do %>
   <div class="map-canvas <%= block.stage_colour %>">
     <% topics.each do |topic| %>
       <div class="journey-item <%= topic[:key] %>">

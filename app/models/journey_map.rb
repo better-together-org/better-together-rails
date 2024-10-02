@@ -39,4 +39,8 @@ class JourneyMap < BetterTogether::Content::Template
       ''
     end
   end
+
+  def stage_identifier
+    journey_stage&.identifier
+  end
 end
