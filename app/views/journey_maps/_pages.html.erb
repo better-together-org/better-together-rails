@@ -1,7 +1,9 @@
 <div id="<%= dom_id(journey_map, :pages) %>" class="journey-map-pages" data-journey-map-target="pages">
   <h4>Pages</h4>
   <% if pages.any? %>
-    <%= render partial: 'journey_maps/page', collection: pages, locals: { journey_map: journey_map } %>
+    <div class="row row-cols-1 row-cols-sm-2 row-cols-lg-3 row-cols-xl-4">
+      <%= render partial: 'journey_maps/page', collection: pages, locals: { journey_map: journey_map } %>
+    </div>
   <% elsif @topic %>
     <p>No <%= topic.name %> pages available yet.</p>
   <% else %>
