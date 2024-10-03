@@ -1,4 +1,12 @@
-version: '3.6'
+
+# Manages the development environment for the New to NL app
+
+# The host app (built using the Better Together Community Engine),
+# a PostgreSQL db,
+# ElasticSearch 7,
+# a mail server,
+# redis,
+# Sidekiq
 
 volumes:
   bt-bundler-gems:
@@ -21,6 +29,7 @@ x-app-shared: &app-shared
   depends_on:
     - db
     - redis
+  user: $USER:$USER
 
 services:
   app: &app
@@ -40,7 +49,7 @@ services:
       - bt-db-data:/var/lib/postgresql/data
     ports:
       - "5435:5432"
-  
+
   elasticsearch:
     container_name: better-together-elasticsearch
     image: elasticsearch:7.17.23
@@ -60,16 +69,23 @@ services:
     volumes:
       - bt-elasticsearch:/usr/share/elasticsearch/data
 
-  sidekiq:
-    <<: *app-shared
-    container_name: better-together-sidekiq
-    command: bundle exec sidekiq -C config/sidekiq.yml
-    depends_on:
-      - app
+  mail-server:
+    image: mailhog/mailhog
+    container_name: new-to-nl-smtp
+    ports:
+      - '1025:1025'
+      - '8026:8025'
 
   redis:
     image: 'redis:7.2-alpine'
     container_name: better-together-redis
     command: redis-server
     volumes:
-      - bt-redis:/data
+      - redis:/data
+
+  sidekiq:
+    <<: *app-shared
+    container_name: new-to-nl-sidekiq
+    command: bundle exec sidekiq -C config/sidekiq.yml
+    depends_on:
+      - app
