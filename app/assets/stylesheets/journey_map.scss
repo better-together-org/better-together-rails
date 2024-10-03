@@ -80,55 +80,55 @@ $settlement: $blue-2;
       }
     }
 
-    &.employment {
+    &.topic-0 {
       inset: 47% auto auto 7%;
     }
 
-    &.language {
+    &.topic-1 {
       inset: 77% auto auto 12%;
     }
 
-    &.community {
+    &.topic-2 {
       inset: 20% auto auto 19%;
     }
 
-    &.housing {
+    &.topic-3 {
       inset: 51% auto auto 22.5%;
     }
 
-    &.immigration {
+    &.topic-3 {
       inset: 28% auto auto 33%;
     }
 
-    &.family {
+    &.topic-4 {
       inset: 66% auto auto 35%;
     }
 
-    &.insurance {
+    &.topic-5 {
       inset: 68% auto auto 50%;
     }
 
-    &.banking {
+    &.topic-6 {
       inset: 37% auto auto 48%;
     }
 
-    &.health {
+    &.topic-7 {
       inset: 0% auto auto 47%;
     }
 
-    &.legal {
+    &.topic-8 {
       inset: 15% auto auto 61.5%;
     }
 
-    &.transportation {
+    &.topic-9 {
       inset: 62% auto auto 62%;
     }
 
-    &.training {
+    &.topic-10 {
       inset: 47% auto auto 72%;
     }
 
-    &.entrepreneurship {
+    &.topic-11 {
       inset: 10% auto auto 80%;
 
       h3 {
@@ -192,39 +192,39 @@ $settlement: $blue-2;
     .journey-item {
       width: 80px;
 
-      &.employment {
+      &.topic-1 {
         inset: 37% auto auto 5%;
       }
 
-      &.housing {
+      &.topic-3 {
         inset: 48% auto auto 20.5%;
       }
 
-      &.family {
+      &.topic-4 {
         inset: 66% auto auto 33%;
       }
 
-      &.banking {
+      &.topic-6 {
         inset: 37% auto auto 46%;
       }
 
-      &.insurance {
+      &.topic-5 {
         inset: 68% auto auto 48%;
       }
 
-      &.legal {
+      &.topic-8 {
         inset: 15% auto auto 59.5%;
       }
 
-      &.transportation {
+      &.topic-9 {
         inset: 65% auto auto 62%;
       }
 
-      &.training {
+      &.topic-10 {
         inset: 47% auto auto 77%;
       }
 
-      &.entrepreneurship {
+      &.topic-11 {
         inset: 10% auto auto 77%;
       }
 
@@ -262,55 +262,55 @@ $settlement: $blue-2;
 
     .journey-item {
 
-      &.employment {
+      &.topic-1 {
         inset: 6% auto auto 39%;
       }
 
-      &.language {
+      &.topic-1 {
         inset: 13% auto auto 1%;
       }
 
-      &.community {
+      &.topic-2 {
         inset: 16% auto auto 64%;
       }
 
-      &.housing {
+      &.topic-3 {
         inset: 24% auto auto 31.5%;
       }
 
-      &.family {
+      &.topic-4 {
         inset: 36% auto auto 13%;
       }
 
-      &.immigration {
+      &.topic-3 {
         inset: 28% auto auto 64%;
       }
 
-      &.banking {
+      &.topic-6 {
         inset: 46% auto auto 46%;
       }
 
-      &.insurance {
+      &.topic-5 {
         inset: 52% auto auto 10%;
       }
 
-      &.health {
+      &.topic-7 {
         inset: 46% auto auto 77%;
       }
 
-      &.legal {
+      &.topic-8 {
         inset: 62% auto auto 65.5%;
       }
 
-      &.transportation {
+      &.topic-9 {
         inset: 65% auto auto 26%;
       }
 
-      &.training {
+      &.topic-10 {
         inset: 81% auto auto 34%;
       }
 
-      &.entrepreneurship {
+      &.topic-11 {
         inset: 78% auto auto 63%;
       }
     }
@@ -361,7 +361,7 @@ $settlement: $blue-2;
 
   @media screen and (max-width: 374px) {
     .journey-item {
-      &.entrepreneurship {
+      &.topic-11 {
         inset: 78% auto auto 59%;
       }
     }

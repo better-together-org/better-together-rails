@@ -1,35 +1,19 @@
 <%# locals: (block:, content:) %>
 
-<% topics = [
-  { key: 'employment', icon: 'fa-handshake' },
-  { key: 'language', icon: 'fa-language' },
-  { key: 'community', icon: 'fa-people-group' },
-  { key: 'housing', icon: 'fa-house' },
-  { key: 'immigration', icon: 'fa-passport' },
-  { key: 'family', icon: 'fa-people-roof' },
-  { key: 'insurance', icon: 'fa-umbrella' },
-  { key: 'banking', icon: 'fa-building-columns' },
-  { key: 'health', icon: 'fa-staff-snake' },
-  { key: 'legal', icon: 'fa-scale-balanced' },
-  { key: 'training', icon: 'fa-graduation-cap' },
-  { key: 'transportation', icon: 'fa-car' },
-  { key: 'entrepreneurship', icon: 'fa-lightbulb' }
-] %>
-
-<%= content_tag :div, class: "journey-map #{block.stage_identifier}", data: { controller: 'journey-map' } do %>
+<%= content_tag :div, class: "journey-map #{block.stage_identifier}" do %>
   <div class="map-canvas <%= block.stage_colour %>">
-    <% topics.each do |topic| %>
-      <div class="journey-item <%= topic[:key] %>">
+    <% block.topics.each_with_index do |topic, index| %>
+      <div class="journey-item <%= topic.identifier %> topic-<%= index %>">
         <h3>
-          <%= I18n.t("topics.#{topic[:key]}") %>
+          <%= topic.name %>
         </h3>
-        <a href="<%= journey_map_topic_content_path(block, topic[:key]) %>" data-turbo="false" data-action="click->journey-map#loadContent">
+        <a href="<%= render_page_path("#{block.journey_stage&.slug}/#{topic.slug}") %>">
           <div class="icon">
-            <div class="fa-stack fa-2x mb-3" role="img" aria-label="<%= I18n.t("topics.#{topic[:key]}") %>">
+            <div class="fa-stack fa-2x mb-3" role="img" aria-label="<%= I18n.t("topics.#{topic.identifier}") %>">
               <!-- Background icon (gray) -->
               <i class="fas fa-circle fa-stack-2x text-dark icon-outline"></i>
               <i class="fas fa-circle fa-stack-2x text-light icon-bg"></i>
-              <i class="fas <%= topic[:icon] %> fa-stack-1x icon-symbol"></i>
+              <i class="<%= topic.icon %> fa-stack-1x icon-symbol"></i>
             </div>
           </div>
         </a>
