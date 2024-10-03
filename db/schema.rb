@@ -714,6 +714,19 @@ ActiveRecord::Schema[7.1].define(version: 2024_09_24_224112) do
     t.index ["sluggable_type", "sluggable_id"], name: "by_sluggable"
   end
 
+  create_table "journey_stage_topics", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.integer "lock_version", default: 0, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.uuid "journey_stage_id"
+    t.uuid "topic_id"
+    t.integer "position", null: false
+    t.boolean "visible", default: true, null: false
+    t.index ["journey_stage_id", "topic_id"], name: "index_journey_stage_topics_on_journey_stage_id_and_topic_id", unique: true
+    t.index ["journey_stage_id"], name: "index_journey_stage_topics_on_journey_stage_id"
+    t.index ["topic_id"], name: "index_journey_stage_topics_on_topic_id"
+  end
+
   create_table "mobility_string_translations", force: :cascade do |t|
     t.string "locale", null: false
     t.string "key", null: false
@@ -831,4 +844,6 @@ ActiveRecord::Schema[7.1].define(version: 2024_09_24_224112) do
   add_foreign_key "better_together_wizard_steps", "better_together_people", column: "creator_id"
   add_foreign_key "better_together_wizard_steps", "better_together_wizard_step_definitions", column: "wizard_step_definition_id"
   add_foreign_key "better_together_wizard_steps", "better_together_wizards", column: "wizard_id"
+  add_foreign_key "journey_stage_topics", "better_together_categories", column: "journey_stage_id"
+  add_foreign_key "journey_stage_topics", "better_together_categories", column: "topic_id"
 end

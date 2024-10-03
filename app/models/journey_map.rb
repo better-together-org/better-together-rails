@@ -15,6 +15,8 @@ class JourneyMap < BetterTogether::Content::Template
   has_many :page_blocks, class_name: 'BetterTogether::Content::PageBlock', foreign_key: :block_id, dependent: :destroy
   has_many :pages, through: :page_blocks
 
+  delegate :topics, to: :journey_stage
+
   # validates :stage, inclusion: { in: ->(instance) { instance.class::AVAILABLE_STAGES }}
 
   def self.extra_permitted_attributes
@@ -28,7 +30,7 @@ class JourneyMap < BetterTogether::Content::Template
   end
 
   def stage_colour
-    case journey_stage.identifier
+    case journey_stage&.identifier
     when 'pre-arrival'
       'green'
     when 'arrival'
