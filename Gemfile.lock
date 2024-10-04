@@ -1,9 +1,10 @@
 GIT
   remote: https://github.com/better-together-org/community-engine-rails.git
-  revision: fe21dbf18101d29e8ffc545b81846caccf149071
+  revision: 4d8d283793602f938adcf755a33172965646efa4
   branch: wip/new-to-nl-2
   specs:
     better_together (0.6.0)
+      active_storage_svg_sanitizer
       active_storage_validations
       activerecord-import
       activerecord-postgis-adapter
@@ -108,6 +109,8 @@ GEM
       erubi (~> 1.11)
       rails-dom-testing (~> 2.2)
       rails-html-sanitizer (~> 1.6)
+    active_storage_svg_sanitizer (0.1.0)
+      rails (>= 5.2)
     active_storage_validations (1.2.0)
       activejob (>= 5.2.0)
       activemodel (>= 5.2.0)
@@ -372,7 +375,7 @@ GEM
       activerecord (>= 4.1)
       concurrent-ruby
       railties (>= 4.1)
-    jwt (2.9.1)
+    jwt (2.9.3)
       base64
     language_server-protocol (3.17.0.3)
     listen (3.9.0)
