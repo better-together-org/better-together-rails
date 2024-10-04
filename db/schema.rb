@@ -12,7 +12,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_10_03_014231) do
+ActiveRecord::Schema[7.1].define(version: 2024_10_03_231229) do
   # These are extensions that must be enabled in order to support this database
   enable_extension 'pgcrypto'
   enable_extension 'plpgsql'
@@ -145,6 +145,12 @@ ActiveRecord::Schema[7.1].define(version: 2024_10_03_014231) do
     t.jsonb "layout_settings", default: {}, null: false
     t.jsonb "media_settings", default: {}, null: false
     t.jsonb "content_data", default: {}
+    t.uuid "creator_id"
+    t.string "privacy", limit: 50, default: "unlisted", null: false
+    t.boolean "visible", default: true, null: false
+    t.jsonb "content_area_settings", default: {}, null: false
+    t.index ["creator_id"], name: "by_better_together_content_blocks_creator"
+    t.index ["privacy"], name: "by_better_together_content_blocks_privacy"
   end
 
   create_table "better_together_content_page_blocks", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
@@ -750,56 +756,75 @@ ActiveRecord::Schema[7.1].define(version: 2024_10_03_014231) do
     t.index %w[recipient_type recipient_id], name: 'index_noticed_notifications_on_recipient'
   end
 
-  add_foreign_key 'active_storage_attachments', 'active_storage_blobs', column: 'blob_id'
-  add_foreign_key 'active_storage_variant_records', 'active_storage_blobs', column: 'blob_id'
-  add_foreign_key 'better_together_communities', 'better_together_people', column: 'creator_id'
-  add_foreign_key 'better_together_content_page_blocks', 'better_together_content_blocks', column: 'block_id'
-  add_foreign_key 'better_together_content_page_blocks', 'better_together_pages', column: 'page_id'
-  add_foreign_key 'better_together_conversation_participants', 'better_together_conversations',
-                  column: 'conversation_id'
-  add_foreign_key 'better_together_conversation_participants', 'better_together_people', column: 'person_id'
-  add_foreign_key 'better_together_conversations', 'better_together_people', column: 'creator_id'
-  add_foreign_key 'better_together_geography_continents', 'better_together_communities', column: 'community_id'
-  add_foreign_key 'better_together_geography_countries', 'better_together_communities', column: 'community_id'
-  add_foreign_key 'better_together_geography_country_continents', 'better_together_geography_continents',
-                  column: 'continent_id'
-  add_foreign_key 'better_together_geography_country_continents', 'better_together_geography_countries',
-                  column: 'country_id'
-  add_foreign_key 'better_together_geography_region_settlements', 'better_together_geography_regions',
-                  column: 'region_id'
-  add_foreign_key 'better_together_geography_region_settlements', 'better_together_geography_settlements',
-                  column: 'settlement_id'
-  add_foreign_key 'better_together_geography_regions', 'better_together_communities', column: 'community_id'
-  add_foreign_key 'better_together_geography_regions', 'better_together_geography_countries', column: 'country_id'
-  add_foreign_key 'better_together_geography_regions', 'better_together_geography_states', column: 'state_id'
-  add_foreign_key 'better_together_geography_settlements', 'better_together_communities', column: 'community_id'
-  add_foreign_key 'better_together_geography_settlements', 'better_together_geography_countries', column: 'country_id'
-  add_foreign_key 'better_together_geography_settlements', 'better_together_geography_states', column: 'state_id'
-  add_foreign_key 'better_together_geography_states', 'better_together_communities', column: 'community_id'
-  add_foreign_key 'better_together_geography_states', 'better_together_geography_countries', column: 'country_id'
-  add_foreign_key 'better_together_messages', 'better_together_conversations', column: 'conversation_id'
-  add_foreign_key 'better_together_messages', 'better_together_people', column: 'sender_id'
-  add_foreign_key 'better_together_navigation_items', 'better_together_navigation_areas', column: 'navigation_area_id'
-  add_foreign_key 'better_together_navigation_items', 'better_together_navigation_items', column: 'parent_id'
-  add_foreign_key 'better_together_people', 'better_together_communities', column: 'community_id'
-  add_foreign_key 'better_together_person_community_memberships', 'better_together_communities', column: 'joinable_id'
-  add_foreign_key 'better_together_person_community_memberships', 'better_together_people', column: 'member_id'
-  add_foreign_key 'better_together_person_community_memberships', 'better_together_roles', column: 'role_id'
-  add_foreign_key 'better_together_person_platform_memberships', 'better_together_people', column: 'member_id'
-  add_foreign_key 'better_together_person_platform_memberships', 'better_together_platforms', column: 'joinable_id'
-  add_foreign_key 'better_together_person_platform_memberships', 'better_together_roles', column: 'role_id'
-  add_foreign_key 'better_together_platform_invitations', 'better_together_people', column: 'invitee_id'
-  add_foreign_key 'better_together_platform_invitations', 'better_together_people', column: 'inviter_id'
-  add_foreign_key 'better_together_platform_invitations', 'better_together_platforms', column: 'invitable_id'
-  add_foreign_key 'better_together_platform_invitations', 'better_together_roles', column: 'community_role_id'
-  add_foreign_key 'better_together_platform_invitations', 'better_together_roles', column: 'platform_role_id'
-  add_foreign_key 'better_together_platforms', 'better_together_communities', column: 'community_id'
-  add_foreign_key 'better_together_role_resource_permissions', 'better_together_resource_permissions',
-                  column: 'resource_permission_id'
-  add_foreign_key 'better_together_role_resource_permissions', 'better_together_roles', column: 'role_id'
-  add_foreign_key 'better_together_wizard_step_definitions', 'better_together_wizards', column: 'wizard_id'
-  add_foreign_key 'better_together_wizard_steps', 'better_together_people', column: 'creator_id'
-  add_foreign_key 'better_together_wizard_steps', 'better_together_wizard_step_definitions',
-                  column: 'wizard_step_definition_id'
-  add_foreign_key 'better_together_wizard_steps', 'better_together_wizards', column: 'wizard_id'
+  create_table "resources", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.string "identifier", limit: 100, null: false
+    t.string "locale", limit: 5, default: "en", null: false
+    t.string "privacy", limit: 50, default: "public", null: false
+    t.string "slug", null: false
+    t.string "type", default: "Resource", null: false
+    t.string "url"
+    t.datetime "published_at"
+    t.string "author"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "lock_version", default: 0, null: false
+    t.index ["identifier"], name: "index_resources_on_identifier", unique: true
+    t.index ["locale"], name: "by_resources_locale"
+    t.index ["privacy"], name: "by_resources_privacy"
+    t.index ["slug"], name: "index_resources_on_slug", unique: true
+  end
+
+  add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "better_together_addresses", "better_together_contact_details", column: "contact_detail_id"
+  add_foreign_key "better_together_communities", "better_together_people", column: "creator_id"
+  add_foreign_key "better_together_content_blocks", "better_together_people", column: "creator_id"
+  add_foreign_key "better_together_content_page_blocks", "better_together_content_blocks", column: "block_id"
+  add_foreign_key "better_together_content_page_blocks", "better_together_pages", column: "page_id"
+  add_foreign_key "better_together_conversation_participants", "better_together_conversations", column: "conversation_id"
+  add_foreign_key "better_together_conversation_participants", "better_together_people", column: "person_id"
+  add_foreign_key "better_together_conversations", "better_together_people", column: "creator_id"
+  add_foreign_key "better_together_email_addresses", "better_together_contact_details", column: "contact_detail_id"
+  add_foreign_key "better_together_geography_continents", "better_together_communities", column: "community_id"
+  add_foreign_key "better_together_geography_countries", "better_together_communities", column: "community_id"
+  add_foreign_key "better_together_geography_country_continents", "better_together_geography_continents", column: "continent_id"
+  add_foreign_key "better_together_geography_country_continents", "better_together_geography_countries", column: "country_id"
+  add_foreign_key "better_together_geography_region_settlements", "better_together_geography_regions", column: "region_id"
+  add_foreign_key "better_together_geography_region_settlements", "better_together_geography_settlements", column: "settlement_id"
+  add_foreign_key "better_together_geography_regions", "better_together_communities", column: "community_id"
+  add_foreign_key "better_together_geography_regions", "better_together_geography_countries", column: "country_id"
+  add_foreign_key "better_together_geography_regions", "better_together_geography_states", column: "state_id"
+  add_foreign_key "better_together_geography_settlements", "better_together_communities", column: "community_id"
+  add_foreign_key "better_together_geography_settlements", "better_together_geography_countries", column: "country_id"
+  add_foreign_key "better_together_geography_settlements", "better_together_geography_states", column: "state_id"
+  add_foreign_key "better_together_geography_states", "better_together_communities", column: "community_id"
+  add_foreign_key "better_together_geography_states", "better_together_geography_countries", column: "country_id"
+  add_foreign_key "better_together_messages", "better_together_conversations", column: "conversation_id"
+  add_foreign_key "better_together_messages", "better_together_people", column: "sender_id"
+  add_foreign_key "better_together_navigation_items", "better_together_navigation_areas", column: "navigation_area_id"
+  add_foreign_key "better_together_navigation_items", "better_together_navigation_items", column: "parent_id"
+  add_foreign_key "better_together_people", "better_together_communities", column: "community_id"
+  add_foreign_key "better_together_person_community_memberships", "better_together_communities", column: "joinable_id"
+  add_foreign_key "better_together_person_community_memberships", "better_together_people", column: "member_id"
+  add_foreign_key "better_together_person_community_memberships", "better_together_roles", column: "role_id"
+  add_foreign_key "better_together_person_platform_memberships", "better_together_people", column: "member_id"
+  add_foreign_key "better_together_person_platform_memberships", "better_together_platforms", column: "joinable_id"
+  add_foreign_key "better_together_person_platform_memberships", "better_together_roles", column: "role_id"
+  add_foreign_key "better_together_phone_numbers", "better_together_contact_details", column: "contact_detail_id"
+  add_foreign_key "better_together_platform_invitations", "better_together_people", column: "invitee_id"
+  add_foreign_key "better_together_platform_invitations", "better_together_people", column: "inviter_id"
+  add_foreign_key "better_together_platform_invitations", "better_together_platforms", column: "invitable_id"
+  add_foreign_key "better_together_platform_invitations", "better_together_roles", column: "community_role_id"
+  add_foreign_key "better_together_platform_invitations", "better_together_roles", column: "platform_role_id"
+  add_foreign_key "better_together_platforms", "better_together_communities", column: "community_id"
+  add_foreign_key "better_together_role_resource_permissions", "better_together_resource_permissions", column: "resource_permission_id"
+  add_foreign_key "better_together_role_resource_permissions", "better_together_roles", column: "role_id"
+  add_foreign_key "better_together_social_media_accounts", "better_together_contact_details", column: "contact_detail_id"
+  add_foreign_key "better_together_website_links", "better_together_contact_details", column: "contact_detail_id"
+  add_foreign_key "better_together_wizard_step_definitions", "better_together_wizards", column: "wizard_id"
+  add_foreign_key "better_together_wizard_steps", "better_together_people", column: "creator_id"
+  add_foreign_key "better_together_wizard_steps", "better_together_wizard_step_definitions", column: "wizard_step_definition_id"
+  add_foreign_key "better_together_wizard_steps", "better_together_wizards", column: "wizard_id"
+  add_foreign_key "journey_stage_topics", "better_together_categories", column: "journey_stage_id"
+  add_foreign_key "journey_stage_topics", "better_together_categories", column: "topic_id"
 end
