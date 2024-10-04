@@ -10,6 +10,7 @@ namespace :new_to_nl do
         JourneyStage.find_or_create_by(identifier: stage) do |js|
           js.name = stage.titleize
           js.slug = stage.parameterize
+          js.protected = true
         end
       end
     end
@@ -22,6 +23,7 @@ namespace :new_to_nl do
         Topic.find_or_create_by(identifier: identifier) do |topic|
           topic.name = identifier.to_s.titleize
           topic.slug = identifier.to_s.parameterize
+          topic.protected = true
           attributes.each do |key, value|
             topic.public_send "#{key}=", value
           end
@@ -53,6 +55,7 @@ namespace :new_to_nl do
             topic_id: topic.id
           ) do |jst|
             jst.position = index
+            jst.protected = true
           end
         end
       end
