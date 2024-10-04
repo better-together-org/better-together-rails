@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_10_03_014231) do
+ActiveRecord::Schema[7.1].define(version: 2024_10_03_231229) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
   enable_extension "plpgsql"
@@ -141,6 +141,12 @@ ActiveRecord::Schema[7.1].define(version: 2024_10_03_014231) do
     t.jsonb "layout_settings", default: {}, null: false
     t.jsonb "media_settings", default: {}, null: false
     t.jsonb "content_data", default: {}
+    t.uuid "creator_id"
+    t.string "privacy", limit: 50, default: "unlisted", null: false
+    t.boolean "visible", default: true, null: false
+    t.jsonb "content_area_settings", default: {}, null: false
+    t.index ["creator_id"], name: "by_better_together_content_blocks_creator"
+    t.index ["privacy"], name: "by_better_together_content_blocks_privacy"
   end
 
   create_table "better_together_content_page_blocks", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
@@ -797,6 +803,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_10_03_014231) do
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "better_together_addresses", "better_together_contact_details", column: "contact_detail_id"
   add_foreign_key "better_together_communities", "better_together_people", column: "creator_id"
+  add_foreign_key "better_together_content_blocks", "better_together_people", column: "creator_id"
   add_foreign_key "better_together_content_page_blocks", "better_together_content_blocks", column: "block_id"
   add_foreign_key "better_together_content_page_blocks", "better_together_pages", column: "page_id"
   add_foreign_key "better_together_conversation_participants", "better_together_conversations", column: "conversation_id"
