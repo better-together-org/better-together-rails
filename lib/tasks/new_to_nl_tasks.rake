@@ -40,7 +40,7 @@ namespace :new_to_nl do
 
       journey_stage_topics_data.each do |journey_stage_identifier, topic_identifiers|
         journey_stage = journey_stages.to_a.find { |js| js.identifier == journey_stage_identifier.to_s }
-        byebug unless journey_stage
+        # byebug unless journey_stage
         next unless journey_stage
 
         journey_stage_topics = Topic.where(identifier: topic_identifiers)
@@ -55,7 +55,6 @@ namespace :new_to_nl do
             topic_id: topic.id
           ) do |jst|
             jst.position = index
-            jst.protected = true
           end
         end
       end
@@ -73,9 +72,9 @@ namespace :new_to_nl do
         employment community-and-connections language education family
       ],
       'settlement': %w[
-        transportation immigrations housing bank-and-finance insurance employment
+        transportation immigration housing bank-and-finance insurance employment
         health-and-wellness family language laws-and-rights community-and-connections
-        training education entrepreneur
+        training education entrepreneurship
       ]
     }.freeze
   end
