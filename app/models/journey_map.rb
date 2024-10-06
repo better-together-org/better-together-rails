@@ -17,6 +17,16 @@ class JourneyMap < BetterTogether::Content::Template
 
   delegate :topics, to: :journey_stage
 
+  translates :heading, type: :string
+
+  store_attributes :content_settings do
+    heading_type String, default: 'h2'
+  end
+
+  store_attributes :layout_settings do
+    heading_position String, default: 'left'
+  end
+
   # validates :stage, inclusion: { in: ->(instance) { instance.class::AVAILABLE_STAGES }}
 
   def self.extra_permitted_attributes

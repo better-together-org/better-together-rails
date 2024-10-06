@@ -1,6 +1,23 @@
 
 <%- scope = local_assigns[:scope] ? local_assigns[:scope] : BetterTogether::Content::Block.block_name %>
-<div class="template-fields">
-  <%= required_label block, :journey_stage %>
-  <%= select_tag "#{scope}[journey_stage_id]", options_from_collection_for_select(JourneyStage.positioned.all, :id, :name, block.journey_stage_id), class: 'form-select' %>
+<div class="journey-map-fields">
+  <div class="mb-3 row row-cols-1 row-cols-sm-2">
+    <%= render partial: 'better_together/content/blocks/fields/shared/translatable_string_field', locals: { model: block, scope: scope, temp_id: temp_id, attribute: 'heading' } %>
+    <div class="col align-self-end">
+      <div class="row row-cols-1 row-cols-sm-2">
+        <div class="col">
+          <%= required_label block, :heading_type %>
+          <%= select_tag "#{scope}[heading_type]", options_for_select((1..6).map {|index| "h#{index}" }, block.heading_type), class: 'form-select' %>
+        </div>
+        <div class="col">
+          <%= required_label block, :heading_position %>
+          <%= select_tag "#{scope}[heading_position]", options_for_select(%w[left center right], block.heading_position), class: 'form-select' %>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="my-3">
+    <%= required_label block, :journey_stage %>
+    <%= select_tag "#{scope}[journey_stage_id]", options_from_collection_for_select(JourneyStage.positioned.all, :id, :name, block.journey_stage_id), class: 'form-select' %>
+  </div>
 </div>

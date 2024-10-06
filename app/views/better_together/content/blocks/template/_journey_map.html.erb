@@ -1,6 +1,9 @@
 <%# locals: (block:, content:) %>
 
 <%= content_tag :div, class: "journey-map #{block.stage_identifier}" do %>
+  <% if block.heading.present? %>
+    <%= content_tag block.heading_type, block.heading, class: "text-#{block.heading_position}" %>
+  <% end %>
   <div class="map-canvas <%= block.stage_colour %>">
     <% adjusted_indices = distribute_topic_indices(block.topics) %>
 
