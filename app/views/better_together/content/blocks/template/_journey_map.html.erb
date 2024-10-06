@@ -2,8 +2,11 @@
 
 <%= content_tag :div, class: "journey-map #{block.stage_identifier}" do %>
   <div class="map-canvas <%= block.stage_colour %>">
+    <% adjusted_indices = distribute_topic_indices(block.topics) %>
+
     <% block.topics.each_with_index do |topic, index| %>
-      <div class="journey-item <%= topic.identifier %> topic-<%= index %>">
+      <% adjusted_index = adjusted_indices[index] %>
+      <div class="journey-item <%= topic.identifier %> topic-<%= adjusted_index %>">
         <h3>
           <%= topic.name %>
         </h3>

@@ -47,6 +47,7 @@ $settlement: $blue-2;
       font-size: 10px;
       font-weight: 200;
       line-height: 12px;
+      overflow-wrap: normal;
     }
 
     a {
@@ -81,7 +82,7 @@ $settlement: $blue-2;
     }
 
     &.topic-0 {
-      inset: 47% auto auto 7%;
+      inset: 47% auto auto 5%;
     }
 
     &.topic-1 {
@@ -89,51 +90,51 @@ $settlement: $blue-2;
     }
 
     &.topic-2 {
+      inset: 47% auto auto 22%;
+    }
+
+    &.topic-3 {
       inset: 20% auto auto 19%;
     }
 
-    &.topic-3 {
-      inset: 51% auto auto 22.5%;
-    }
-
-    &.topic-3 {
+    &.topic-4 {
       inset: 28% auto auto 33%;
     }
 
-    &.topic-4 {
-      inset: 66% auto auto 35%;
-    }
-
     &.topic-5 {
-      inset: 68% auto auto 50%;
+      inset: 66% auto auto 34.5%;
     }
 
     &.topic-6 {
-      inset: 37% auto auto 48%;
+      inset: 68% auto auto 50%;
     }
 
     &.topic-7 {
-      inset: 0% auto auto 47%;
-    }
-
-    &.topic-8 {
-      inset: 15% auto auto 61.5%;
-    }
-
-    &.topic-9 {
       inset: 62% auto auto 62%;
     }
 
+    &.topic-8 {
+      inset: 30% auto auto 48%;
+    }
+
+    &.topic-9 {
+      inset: 15% auto auto 61.5%;
+    }
+
     &.topic-10 {
-      inset: 47% auto auto 72%;
+      inset: 1% auto auto 47%;
     }
 
     &.topic-11 {
-      inset: 10% auto auto 80%;
+      inset: 45% auto auto 69%;
+    }
 
-      h3 {
-        overflow-wrap: normal;
-      }
+    &.topic-12 {
+      inset: 18% auto auto 78%;
+    }
+
+    &.topic-13 {
+      inset: 46% auto auto 82%;
     }
   }
 
@@ -192,40 +193,60 @@ $settlement: $blue-2;
     .journey-item {
       width: 80px;
 
+      &.topic-0 {
+        inset: 47% auto auto 2%;
+      }
+
       &.topic-1 {
-        inset: 37% auto auto 5%;
+        inset: 77% auto auto 12%;
+      }
+
+      &.topic-2 {
+        inset: 47% auto auto 22%;
       }
 
       &.topic-3 {
-        inset: 48% auto auto 20.5%;
+        inset: 15% auto auto 19%;
       }
 
       &.topic-4 {
-        inset: 66% auto auto 33%;
-      }
-
-      &.topic-6 {
-        inset: 37% auto auto 46%;
+        inset: 28% auto auto 33%;
       }
 
       &.topic-5 {
-        inset: 68% auto auto 48%;
+        inset: 66% auto auto 34.5%;
+      }
+
+      &.topic-6 {
+        inset: 68% auto auto 50%;
+      }
+
+      &.topic-7 {
+        inset: 62% auto auto 62%;
       }
 
       &.topic-8 {
-        inset: 15% auto auto 59.5%;
+        inset: 30% auto auto 45%;
       }
 
       &.topic-9 {
-        inset: 65% auto auto 62%;
+        inset: 15% auto auto 60.5%;
       }
 
       &.topic-10 {
-        inset: 47% auto auto 77%;
+        inset: 1% auto auto 44%;
       }
 
       &.topic-11 {
-        inset: 10% auto auto 77%;
+        inset: 45% auto auto 69%;
+      }
+
+      &.topic-12 {
+        inset: 18% auto auto 78%;
+      }
+
+      &.topic-13 {
+        inset: 46% auto auto 82%;
       }
 
       a {
@@ -242,11 +263,11 @@ $settlement: $blue-2;
             font-size: 1.6em;
             transform: translateY(-1%);
           }
-          
+
           .icon-bg {
             font-size: 1.5em;
           }
-    
+
           .icon-symbol {
             font-size: 0.8em;
           }
@@ -261,8 +282,11 @@ $settlement: $blue-2;
     }
 
     .journey-item {
+      a .icon .icon-outline {
+        transform: translateY(-2%);
+      }
 
-      &.topic-1 {
+      &.topic-0 {
         inset: 6% auto auto 39%;
       }
 
@@ -271,47 +295,55 @@ $settlement: $blue-2;
       }
 
       &.topic-2 {
+        inset: 23% auto auto 31.5%;
+      }
+
+      &.topic-3 {
         inset: 16% auto auto 64%;
       }
 
-      &.topic-3 {
-        inset: 24% auto auto 31.5%;
-      }
-
       &.topic-4 {
-        inset: 36% auto auto 13%;
-      }
-
-      &.topic-3 {
-        inset: 28% auto auto 64%;
-      }
-
-      &.topic-6 {
-        inset: 46% auto auto 46%;
+        inset: 32% auto auto 61%;
       }
 
       &.topic-5 {
-        inset: 52% auto auto 10%;
+        inset: 35% auto auto 13%;
+      }
+
+      &.topic-6 {
+        inset: 52% auto auto 2%;
       }
 
       &.topic-7 {
-        inset: 46% auto auto 77%;
+        inset: 62% auto auto 17%;
       }
 
       &.topic-8 {
-        inset: 62% auto auto 65.5%;
+        inset: 46% auto auto 46%;
       }
 
       &.topic-9 {
-        inset: 65% auto auto 26%;
+        inset: 61% auto auto 65.5%;
       }
 
       &.topic-10 {
-        inset: 81% auto auto 34%;
+        inset: 44% auto auto 77%;
       }
 
       &.topic-11 {
+        inset: 71% auto auto 34%;
+      }
+
+      &.topic-12 {
         inset: 78% auto auto 63%;
+      }
+
+      &.topic-13 {
+        inset: 83% auto auto 32%;
+
+        &.entrepreneurship {
+          inset: 83% auto auto 18%;
+        }
       }
     }
 
@@ -322,7 +354,7 @@ $settlement: $blue-2;
       margin-top: 0;
       inset: 0% auto auto 0%;
       display: none;
-  
+
       &.mobile {
         display: block;
       }
@@ -332,6 +364,18 @@ $settlement: $blue-2;
   @media screen and (max-width: 376px) {
     .journey-item {
       width: 70px;
+
+      &.topic-2 {
+        inset: 24% auto auto 31.5%;
+      }
+
+      &.topic-5 {
+        inset: 37% auto auto 13%;
+      }
+
+      &.topic-9 {
+        inset: 62% auto auto 65.5%;
+      }
 
       a {
         width: 70px;
@@ -344,13 +388,12 @@ $settlement: $blue-2;
 
           .icon-outline {
             font-size: 1.1em;
-            transform: translateY(-0.5%);
           }
-          
+
           .icon-bg {
             font-size: 1em;
           }
-    
+
           .icon-symbol {
             font-size: 0.5em;
           }
@@ -359,13 +402,13 @@ $settlement: $blue-2;
     }
   }
 
-  @media screen and (max-width: 374px) {
-    .journey-item {
-      &.topic-11 {
-        inset: 78% auto auto 59%;
-      }
-    }
-  }
+  // @media screen and (max-width: 374px) {
+  //   .journey-item {
+  //     &.topic-11 {
+  //       inset: 78% auto auto 59%;
+  //     }
+  //   }
+  // }
 }
 
 .content-block.journey-map {
