@@ -1,3 +1,4 @@
 #!/usr/bin/env bash
 
-USER=$(id -u) docker compose $@
+# USER=$(id -u) docker compose $@
+docker compose $@
