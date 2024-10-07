@@ -29,7 +29,7 @@ x-app-shared: &app-shared
   depends_on:
     - db
     - redis
-  user: $USER:$USER
+  # user: $USER:$USER
 
 services:
   app: &app

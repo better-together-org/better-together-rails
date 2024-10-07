@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/better-together-org/community-engine-rails.git
-  revision: c745699d2e60bb4e975318b070d2558aa4c96288
+  revision: 601497a7d777c9113ced5fe8038b09f95805a597
   branch: wip/new-to-nl-2
   specs:
     better_together (0.6.0)
@@ -331,6 +331,8 @@ GEM
     google-protobuf (4.28.2-x86_64-linux)
       bigdecimal
       rake (>= 13)
+    groupdate (6.5.1)
+      activesupport (>= 7)
     hashie (5.0.0)
     highline (3.1.1)
       reline
