@@ -49,10 +49,10 @@
           <%= t('hints.resource.file_size', size: Resource::Document::MAX_FILE_SIZE_MB / 1.megabyte) %>
         </small>
 
-        
+
         <% if form.object.persisted? && form.object&.file&.attached? %>
           <p class="mt-2">
-            <strong><%= t('globals.attached_file') %>:</strong> 
+            <strong><%= t('globals.attached_file') %>:</strong>
             <%= form.object&.file.filename %> (<%= form.object&.file.content_type %>, <%= number_to_human_size(form.object&.file.byte_size) %>)
           </p>
         <% end %>
