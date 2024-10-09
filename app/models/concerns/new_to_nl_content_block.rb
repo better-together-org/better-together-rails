@@ -1,4 +1,4 @@
-
+require 'journeyable'
 module NewToNlContentBlock
   extend ::ActiveSupport::Concern
 

@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
-  get 'journey_pages/index'
   get 'healthcheck', to: 'healthcheck#index'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
@@ -12,6 +11,9 @@ Rails.application.routes.draw do
       get ':journey_map_id/:topic_identifier',
           to: 'journey_maps#show',
           as: :journey_map_topic_content
+    end
+    authenticated :user do
+      resources :journey_items, only: %i[ index create destroy ]
     end
     resources :partners
     resources :resources do

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_10_06_204105) do
+ActiveRecord::Schema[7.1].define(version: 2024_10_09_141227) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
   enable_extension "plpgsql"
@@ -729,6 +729,20 @@ ActiveRecord::Schema[7.1].define(version: 2024_10_06_204105) do
     t.index ["sluggable_type", "sluggable_id"], name: "by_sluggable"
   end
 
+  create_table "journey_items", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.integer "lock_version", default: 0, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.uuid "journey_id", null: false
+    t.uuid "journey_stage_id"
+    t.string "journeyable_type"
+    t.uuid "journeyable_id"
+    t.integer "position", null: false
+    t.index ["journey_id"], name: "index_journey_items_on_journey_id"
+    t.index ["journey_stage_id"], name: "index_journey_items_on_journey_stage_id"
+    t.index ["journeyable_type", "journeyable_id"], name: "index_journey_items_on_journeyable"
+  end
+
   create_table "journey_stage_topics", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.integer "lock_version", default: 0, null: false
     t.datetime "created_at", null: false
@@ -740,6 +754,14 @@ ActiveRecord::Schema[7.1].define(version: 2024_10_06_204105) do
     t.index ["journey_stage_id", "topic_id"], name: "index_journey_stage_topics_on_journey_stage_id_and_topic_id", unique: true
     t.index ["journey_stage_id"], name: "index_journey_stage_topics_on_journey_stage_id"
     t.index ["topic_id"], name: "index_journey_stage_topics_on_topic_id"
+  end
+
+  create_table "journeys", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.integer "lock_version", default: 0, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.uuid "person_id", null: false
+    t.index ["person_id"], name: "index_journeys_on_person_id"
   end
 
   create_table "mobility_string_translations", force: :cascade do |t|
@@ -862,6 +884,9 @@ ActiveRecord::Schema[7.1].define(version: 2024_10_06_204105) do
   add_foreign_key "better_together_wizard_steps", "better_together_people", column: "creator_id"
   add_foreign_key "better_together_wizard_steps", "better_together_wizard_step_definitions", column: "wizard_step_definition_id"
   add_foreign_key "better_together_wizard_steps", "better_together_wizards", column: "wizard_id"
+  add_foreign_key "journey_items", "better_together_categories", column: "journey_stage_id"
+  add_foreign_key "journey_items", "journeys"
   add_foreign_key "journey_stage_topics", "better_together_categories", column: "journey_stage_id"
   add_foreign_key "journey_stage_topics", "better_together_categories", column: "topic_id"
+  add_foreign_key "journeys", "better_together_people", column: "person_id"
 end

@@ -1,0 +1,48 @@
+
+.journey_item_toggle {
+  position: absolute;
+  top: 3%;
+  right: 2%;
+
+  /* Style for the button to remove default appearance */
+  .journey-toggle {
+    background: none;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    outline: none;
+    // transition: transform 0.3s ease, filter 0.3s ease, box-shadow 0.3s ease;
+
+    /* Adjust the icon stack size */
+    .fa-stack {
+      width: 2em;
+      height: 2em;
+      line-height: 2em;
+
+      > * {
+        transition: transform 0.3s ease, filter 0.3s ease;
+      }
+    }
+
+    /* Hover effect: scaling and rotating the icon */
+    &:hover .fa-stack-2x {
+      filter: brightness(1.15);
+      transform: scale(1.1);
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+      border-radius: 50%;
+    }
+
+    /* Hover effect: popping the icon forward slightly */
+    &:hover .fa-stack-1x {
+      transform: scale(1.1);
+    }
+  }
+
+}
+
+.content-block {
+  position: relative;
+}

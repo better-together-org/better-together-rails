@@ -3,6 +3,7 @@ class Resource < ApplicationRecord
   include ::BetterTogether::Identifier
   include ::BetterTogether::Privacy
   include ::BetterTogether::Translatable
+  include Journeyable
   include NewToNlJourneyStage
   include NewToNlTopic
 

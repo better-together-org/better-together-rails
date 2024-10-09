@@ -17,7 +17,7 @@ en:
     - Fri
     - Sat
     abbr_month_names:
-    - 
+    -
     - Jan
     - Feb
     - Mar
@@ -170,6 +170,14 @@ en:
       locale: "Select the language of the resource."
       published_at: "Set the date and time when the resource was published. Resources will only be visible if they have a published date that is in the past. You can use this to control when resources become available by selecting a future date."
       author: "Name of the author of the resource."
+  journey_items:
+    tooltips:
+      add: "Add to Journey"
+      remove: "Remove from Journey"
+    none_yet: "You haven't added any items to your Journey yet. Click on the '+' buttun on content to add it to your Journey."
+  journeys:
+    title: My Journey
+
   number:
     currency:
       format:
