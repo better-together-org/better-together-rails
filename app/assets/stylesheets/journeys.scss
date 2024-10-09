@@ -28,16 +28,19 @@
     }
 
     /* Hover effect: scaling and rotating the icon */
-    &:hover .fa-stack-2x {
+    &:hover .fa-circle {
       filter: brightness(1.15);
-      transform: scale(1.1);
       box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
       border-radius: 50%;
+
+      &::before {
+        font-weight: 900;
+      }
     }
 
     /* Hover effect: popping the icon forward slightly */
     &:hover .fa-stack-1x {
-      transform: scale(1.1);
+      color: white !important;
     }
   }
 
