@@ -9,7 +9,7 @@ module Journeyable
     def journeyable?
       case self.class.name
       when 'BetterTogether::Content::Hero',
-           'BetterTogether::Content::Css', 'BetterTogether::Content::Html',
+           'BetterTogether::Content::Css',
            'JourneyMap'
         false
       else
