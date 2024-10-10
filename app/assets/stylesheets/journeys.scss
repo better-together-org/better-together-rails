@@ -1,8 +1,8 @@
 
 .journey_item_toggle {
   position: absolute;
-  top: 3%;
-  right: 2%;
+  right: 0;
+  z-index: 1;
 
   /* Style for the button to remove default appearance */
   .journey-toggle {
@@ -14,7 +14,6 @@
     align-items: center;
     justify-content: center;
     outline: none;
-    // transition: transform 0.3s ease, filter 0.3s ease, box-shadow 0.3s ease;
 
     /* Adjust the icon stack size */
     .fa-stack {
