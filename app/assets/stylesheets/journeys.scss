@@ -2,6 +2,9 @@
 .journey_item_toggle {
   position: absolute;
   right: 0;
+  left: auto;
+  width: 2em;
+  height: 2em;
   z-index: 1;
 
   /* Style for the button to remove default appearance */
