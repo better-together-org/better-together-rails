@@ -17,8 +17,8 @@ es:
         person_roles: Roles personales
         privacy: Privacidad
         protected: Protegido
-        slug: Babosa
-        slugs: babosas
+        slug: Identificador
+        slugs: Identificadors
         string_translations: Traducciones de cadenas
         text_translations: Traducciones de texto
 
