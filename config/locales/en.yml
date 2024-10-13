@@ -29,7 +29,7 @@ en:
     tooltips:
       add: "Add to Journey"
       remove: "Remove from Journey"
-    none_yet: "You haven't added any items to your Journey yet. Click on the '+' buttun on content to add it to your Journey."
+    none_yet: "You haven't added any items to your Journey yet. Click on the '+' button on content to add it to your Journey."
   journeys:
     title: My Journey
   time:
