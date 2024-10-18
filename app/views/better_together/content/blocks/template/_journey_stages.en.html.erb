@@ -1,42 +1,35 @@
-
 <div class="container my-3">
   <h3 class="fw-light text-center mb-4">No matter the stage of your journey, we can help</h3>
-    <div class="row row-cols-1 row-cols-md-3">
-      <!-- Feature 1 -->
-      <div class="col mb-3">
-        <div class="card journey-stage pre-arrival hover-effect mb-4 shadow-sm h-100 text-center">
-          <div class="card-body">
-            <h5 class="card-title">Pre-Arrival</h5>
-            <p class="card-text">
-              Start your relocation with confidence by accessing essential resources and checklists. Learn about visa requirements, housing options, and cultural insights to ensure a smooth transition to Newfoundland and Labrador.
-            </p>
-            <a href="<%= render_page_path('pre-arrival') %>" class="btn btn-info">Prepare for Your New Journey</a>
-          </div>
-        </div>
-      </div>
-      <!-- Feature 2 -->
-      <div class="col mb-3">
-        <div class="card journey-stage arrival hover-effect mb-4 shadow-sm h-100 text-center">
-          <div class="card-body">
-            <h5 class="card-title">Arrival</h5>
-            <p class="card-text">
-              Navigate your first days with ease using our arrival guides. Find information on transportation, setting up utilities, understanding local services, and connecting with the community to make your arrival seamless and welcoming.
-            </p>
-            <a href="<%= render_page_path('arrival') %>" class="btn btn-info">Welcome to Newfoundland and Labrador</a>
-          </div>
-        </div>
-      </div>
-      <!-- Feature 3 -->
-      <div class="col mb-3">
-        <div class="card journey-stage settlement hover-effect mb-4 shadow-sm h-100 text-center">
-          <div class="card-body">
-            <h5 class="card-title">Settlement</h5>
-            <p class="card-text">
-              Establish yourself confidently with comprehensive settlement support. Access resources on employment, education, healthcare, language training, and community engagement to help you build a fulfilling life in Newfoundland and Labrador.
-            </p>
-            <a href="<%= render_page_path('settlement') %>" class="btn btn-info">Thrive in Your New Home</a>
-          </div>
+  <div class="row row-cols-1 row-cols-md-3">
+    <!-- Feature 1 -->
+    <div class="col mb-3">
+      <div class="card journey-stage pre-arrival hover-effect mb-4 shadow-sm h-100 text-center">
+        <div class="card-body">
+          <h5 class="card-title">Pre-Arrival</h5>
+          <%= image_tag 'journey_stages/pre-arrival.svg', class: 'card-img-top mb-3', alt: 'Pre-Arrival Image' %>
+          <a href="<%= render_page_path('pre-arrival') %>" class="btn btn-info">Get ready to come to NL</a>
         </div>
       </div>
     </div>
+    <!-- Feature 2 -->
+    <div class="col mb-3">
+      <div class="card journey-stage arrival hover-effect mb-4 shadow-sm h-100 text-center">
+        <div class="card-body">
+          <h5 class="card-title">Arrival</h5>
+          <%= image_tag 'journey_stages/arrival.svg', class: 'card-img-top mb-3', alt: 'Arrival Image' %>
+          <a href="<%= render_page_path('arrival') %>" class="btn btn-info">Your first steps in NL</a>
+        </div>
+      </div>
+    </div>
+    <!-- Feature 3 -->
+    <div class="col mb-3">
+      <div class="card journey-stage settlement hover-effect mb-4 shadow-sm h-100 text-center">
+        <div class="card-body">
+          <h5 class="card-title">Settlement</h5>
+          <%= image_tag 'journey_stages/settlement.svg', class: 'card-img-top mb-3', alt: 'Settlement Image' %>
+          <a href="<%= render_page_path('settlement') %>" class="btn btn-info">Ready to settle in the province</a>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>

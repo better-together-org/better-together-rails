@@ -4,7 +4,7 @@ $dark: #000;
 @import 'theme';
 
 $pre-arrival: $green-2;
-$arrival: $beige;
+$arrival: $teal;
 $settlement: $blue-2;
 
 /* Animation keyframes for shrinking and growing */
@@ -418,6 +418,8 @@ $settlement: $blue-2;
 }
 
 .card.journey-stage {
+  max-height: 50vh;
+
   &.pre-arrival {
     background: $pre-arrival;
   }
@@ -432,6 +434,10 @@ $settlement: $blue-2;
   .card-body {
     display: flex;
     flex-direction: column;
-    justify-content: space-around;
+    justify-content: space-between;
+
+    > img {
+      max-height: 50%;
+    }
   }
 }
