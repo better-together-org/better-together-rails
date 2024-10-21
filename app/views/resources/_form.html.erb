@@ -1,4 +1,4 @@
-<%= form_with(model: resource, url: (resource.persisted? ? resource_path(resource) : resources_path), multipart: true, data: { turbo: false, controller: 'form-validation' }, class: "needs-validation") do |form| %>
+<%= form_with(model: resource, url: (resource.persisted? ? resource_path(resource) : resources_path), multipart: true, data: { turbo: false, controller: 'better_together--form-validation' }, class: "needs-validation") do |form| %>
   <% if resource.errors.any? %>
     <div class="alert alert-danger">
       <h2><%= pluralize(resource.errors.count, "error") %> prohibited this resource from being saved:</h2>
@@ -25,14 +25,14 @@
     <small class="form-text text-muted"><%= t('hints.resource.slug') %></small>
   </div>
 
-  <div data-controller="dependent-fields">
+  <div data-controller="better_together--dependent-fields">
     <div class="mb-3">
       <%= required_label(form, :type, class: "form-label") %>
-      <%= type_select_field(form: form, model_class: Resource, data: { dependent_fields_target: "controlField" }) %>
+      <%= type_select_field(form: form, model_class: Resource, 'data-better_together--dependent-fields-target' => "controlField") %>
       <small class="form-text text-muted"><%= t('hints.resource.type') %></small>
     </div>
 
-    <div class="hidden-field" data-dependent-fields-target="dependentField" data-show-if-value="Resource::Link">
+    <div class="hidden-field" data-better_together--dependent-fields-target="dependentField" data-show-if-value="Resource::Link">
       <div class="mb-3">
         <%= required_label form, :url, class_name: "Resource::Link", class: "form-label" %>
         <%= form.url_field :url, class: "form-control", required: true %>
@@ -40,7 +40,7 @@
       </div>
     </div>
 
-    <div class="hidden-field" data-dependent-fields-target="dependentField" data-show-if-value="Resource::Document">
+    <div class="hidden-field" data-better_together--dependent-fields-target="dependentField" data-show-if-value="Resource::Document">
       <div class="mb-3">
         <%= required_label form, :file, class_name: "Resource::Document", class: "form-label" %>
         <%= form.file_field :file, class: "form-control", required: form.object.new_record? || !form.object&.file.attached? %>
