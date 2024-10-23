@@ -8,10 +8,10 @@ en:
       resource/link: "Link"
   partners:
     index:
-      title: "Partners"
-      new_btn_text: "Add Partner"
-      confirm_delete: "Are you sure you want to delete this partner?"
-      no_partners_message: "There are no partners yet. Why not add one?"
+      title: "Partner Organizations"
+      new_btn_text: "Add Partner Organization"
+      confirm_delete: "Are you sure you want to remove this partner?"
+      no_partners_message: "There are no partner organizations yet. Why not add one?"
     new:
       title: New Partner
   resources:

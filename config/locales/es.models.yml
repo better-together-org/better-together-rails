@@ -2,12 +2,12 @@
 es:
   partners:
     index:
-      title: "Colaboradores"
-      new_btn_text: "Agregar Colaborador"
+      title: "Organizaciones Colaboradoras"
+      new_btn_text: "Agregar organización colaboradora"
       confirm_delete: "¿Estás seguro de que deseas eliminar este colaborador?"
       no_partners_message: "No hay colaboradores aún. ¿Por qué no agregas uno?"
     new:
-      title: "Nuevo Colaborador"
+      title: "Nuevo organización colaboradora"
   resources:
     actions:
       back_to_index: "Volver a los recursos"
