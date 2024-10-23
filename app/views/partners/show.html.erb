@@ -22,25 +22,25 @@
   <!-- Profile Information Section -->
   <div class="profile-info-container container">
     <div class="row align-items-end">
-      <div class="col-auto">
-      </div>
-      <div class="col">
+      <div class="col-12">
         <h1 class="profile-name mt-3"><%= @resource.name %></h1>
         <!-- Display the slug prefixed with @ -->
         <p class="profile-username">@<%= @resource.slug %></p>
       </div>
-      <div class="col-auto">
-        <% if policy(@resource).edit? %>
-          <%= link_to edit_partner_path(@resource), class: 'btn btn-outline-primary btn-sm me-2', 'aria-label' => 'Edit Partner' do %>
-            <i class="fas fa-edit"></i> <%= t('globals.edit') %>
+      <% if policy(@resource).edit? or policy(@resource).destroy? %>
+        <div class="col-12 d-flex">
+          <% if policy(@resource).edit? %>
+            <%= link_to edit_partner_path(@resource), class: 'btn btn-outline-primary btn-sm me-2', 'aria-label' => 'Edit Partner' do %>
+              <i class="fas fa-edit"></i> <%= t('globals.edit') %>
+            <% end %>
           <% end %>
-        <% end %>
-        <% if policy(@resource).destroy? %>
-          <%= link_to partner_path(@resource), method: :delete, data: { turbo_method: :delete, confirm: t('partners.confirm_delete') }, class: 'btn btn-outline-danger btn-sm', 'aria-label' => 'Delete Partner' do %>
-            <i class="fas fa-trash-alt"></i> <%= t('globals.delete') %>
+          <% if policy(@resource).destroy? %>
+            <%= link_to partner_path(@resource), method: :delete, data: { turbo_method: :delete, confirm: t('partners.confirm_delete') }, class: 'btn btn-outline-danger btn-sm', 'aria-label' => 'Delete Partner' do %>
+              <i class="fas fa-trash-alt"></i> <%= t('globals.delete') %>
+            <% end %>
           <% end %>
-        <% end %>
-      </div>
+        </div>
+      <% end %>
     </div>
   </div>
 
@@ -66,16 +66,16 @@
         <section id="about" class="row collapse show" aria-labelledby="about-tab" aria-expanded="true" data-bs-parent="#platformTabs">
           <div class="col-md-12">
             <!-- Name Section -->
-            <h2 class="card-title text-center mb-3">
+            <h3 class="card-title profile-name text-center mb-3">
               <%= @resource.name %>
-            </h2>
-            
+            </h3>
+
             <!-- Divider Line -->
             <hr class="my-4">
 
             <!-- Description Section -->
             <p class="card-text text-muted">
-              <%= @resource.description.presence || 'No description available.' %>
+              <%= @resource.description_html.presence || @resource.description.presence || 'No description available.' %>
             </p>
 
             <%= render partial: 'better_together/contact_details/about_section', locals: { contactable: @resource } %>
