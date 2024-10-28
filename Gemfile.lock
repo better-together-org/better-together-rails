@@ -284,7 +284,7 @@ GEM
       multi_json
     erubi (1.13.0)
     excon (1.0.0)
-    execjs (2.9.1)
+    execjs (2.10.0)
     factory_bot (6.4.5)
       activesupport (>= 5.0.0)
     factory_bot_rails (6.4.3)
