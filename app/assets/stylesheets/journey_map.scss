@@ -418,7 +418,15 @@ $settlement: $blue-2;
 }
 
 .card.journey-stage {
-  max-height: 50vh;
+  text-decoration: none;
+
+  &:hover {
+    color: $dark;
+  }
+
+  > .card-body {
+    max-height: 30vh;
+  }
 
   &.pre-arrival {
     background: $pre-arrival;
