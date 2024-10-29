@@ -40,11 +40,11 @@ class JourneyMap < BetterTogether::Content::Template
   end
 
   def stage_colour
-    case journey_stage&.identifier
+    case stage_identifier
     when 'pre-arrival'
       'green'
     when 'arrival'
-      'beige'
+      'teal'
     when 'settlement'
       'blue'
     else
