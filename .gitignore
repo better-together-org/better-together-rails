@@ -52,3 +52,4 @@ node_modules/
 
 storage/
 config/master.key.dontcommit
+config/credentials/production.key
