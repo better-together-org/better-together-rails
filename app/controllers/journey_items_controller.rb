@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class JourneyItemsController < ApplicationController
   before_action :set_journey
 
@@ -11,11 +13,15 @@ class JourneyItemsController < ApplicationController
     if @journey_item.save
       respond_to do |format|
         format.turbo_stream { render turbo_stream: turbo_stream_replace(@journey_item.journeyable) }
-        format.html { redirect_back fallback_location: helpers.base_url, notice: 'Journey item was successfully created.' }
+        format.html do
+          redirect_back fallback_location: helpers.base_url, notice: 'Journey item was successfully created.'
+        end
       end
     else
       respond_to do |format|
-        format.turbo_stream { render turbo_stream: turbo_stream_replace(@journey_item.journeyable, partial: 'error_partial') }
+        format.turbo_stream do
+          render turbo_stream: turbo_stream_replace(@journey_item.journeyable, partial: 'error_partial')
+        end
         format.html { redirect_back fallback_location: helpers.base_url, alert: 'Error creating journey item.' }
       end
     end
@@ -26,17 +32,21 @@ class JourneyItemsController < ApplicationController
 
     if @journey_item.destroy
       respond_to do |format|
-        format.turbo_stream {
+        format.turbo_stream do
           render turbo_stream: [
             turbo_stream_replace(@journey_item.journeyable),
             turbo_stream.remove(helpers.dom_id(@journey_item, @journey_item.journeyable))
           ]
-        }
-        format.html { redirect_back fallback_location: helpers.base_url, notice: 'Journey item was successfully removed.' }
+        end
+        format.html do
+          redirect_back fallback_location: helpers.base_url, notice: 'Journey item was successfully removed.'
+        end
       end
     else
       respond_to do |format|
-        format.turbo_stream { render turbo_stream: turbo_stream_replace(@journey_item.journeyable, partial: 'error_partial') }
+        format.turbo_stream do
+          render turbo_stream: turbo_stream_replace(@journey_item.journeyable, partial: 'error_partial')
+        end
         format.html { redirect_back fallback_location: helpers.base_url, alert: 'Error removing journey item.' }
       end
     end
@@ -55,6 +65,7 @@ class JourneyItemsController < ApplicationController
   private
 
   def turbo_stream_replace(journeyable, partial: 'journey_items/journey_item_toggle')
-    turbo_stream.replace helpers.dom_id(journeyable, "journey_item_toggle"), partial: partial, locals: { journeyable: journeyable }
+    turbo_stream.replace helpers.dom_id(journeyable, 'journey_item_toggle'), partial:,
+                                                                             locals: { journeyable: }
   end
 end

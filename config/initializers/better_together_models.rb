@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 
 ActiveSupport::Reloader.to_prepare do
   require_dependency 'better_together/content/block'

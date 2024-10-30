@@ -1,5 +1,7 @@
+# frozen_string_literal: true
+
 class ResourcesController < BetterTogether::FriendlyResourceController
-  before_action :set_resource, only: %i[ show edit update destroy download ]
+  before_action :set_resource, only: %i[show edit update destroy download]
   before_action :authorize_resource, only: %i[show edit update destroy download]
   after_action :verify_authorized, except: :index
 
@@ -27,8 +29,7 @@ class ResourcesController < BetterTogether::FriendlyResourceController
   end
 
   # GET /resources/1/edit
-  def edit
-  end
+  def edit; end
 
   # POST /resources
   def create
@@ -36,7 +37,7 @@ class ResourcesController < BetterTogether::FriendlyResourceController
     authorize_resource
 
     if @resource.save
-      redirect_to resources_path, notice: "Resource was successfully created."
+      redirect_to resources_path, notice: 'Resource was successfully created.'
     else
       render :new, status: :unprocessable_entity
     end
@@ -45,7 +46,7 @@ class ResourcesController < BetterTogether::FriendlyResourceController
   # PATCH/PUT /resources/1
   def update
     if @resource.update(resource_params)
-      redirect_to edit_resource_path(@resource), notice: "Resource was successfully updated.", status: :see_other
+      redirect_to edit_resource_path(@resource), notice: 'Resource was successfully updated.', status: :see_other
     else
       raise
       render :edit, status: :unprocessable_entity
@@ -55,7 +56,7 @@ class ResourcesController < BetterTogether::FriendlyResourceController
   # DELETE /resources/1
   def destroy
     @resource.destroy!
-    redirect_to resources_url, notice: "Resource was successfully destroyed.", status: :see_other
+    redirect_to resources_url, notice: 'Resource was successfully destroyed.', status: :see_other
   end
 
   def download
@@ -93,12 +94,12 @@ class ResourcesController < BetterTogether::FriendlyResourceController
   # Only allow a list of trusted parameters through.
   def resource_params
     root_param = if params[:resource_document]
-      :resource_document
-    elsif params[:resource_link]
-      :resource_link
-    else
-      :resource
-    end
+                   :resource_document
+                 elsif params[:resource_link]
+                   :resource_link
+                 else
+                   :resource
+                 end
 
     params.require(root_param).permit(
       :type, :published_at, :author, :privacy, :language,

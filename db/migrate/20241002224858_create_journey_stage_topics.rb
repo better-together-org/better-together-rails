@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class CreateJourneyStageTopics < ActiveRecord::Migration[7.1]
   def change
     create_bt_table :journey_stage_topics, prefix: nil do |t|
@@ -6,7 +8,7 @@ class CreateJourneyStageTopics < ActiveRecord::Migration[7.1]
       t.bt_position
       t.bt_visible
 
-      t.index %i[ journey_stage_id topic_id ], unique: true
+      t.index %i[journey_stage_id topic_id], unique: true
     end
   end
 end

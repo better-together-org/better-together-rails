@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 
 class JourneyMapsController < ApplicationController
   before_action :set_journey_map_and_stage
@@ -11,11 +12,11 @@ class JourneyMapsController < ApplicationController
                          .with_topics(@topic&.id)
 
     @partners = Partner.with_journey_stages(@journey_stage&.id)
-                         .with_topics(@topic&.id)
+                       .with_topics(@topic&.id)
 
     respond_to do |format|
       format.html
-      format.turbo_stream {
+      format.turbo_stream do
         render turbo_stream: [
           turbo_stream.replace(
             helpers.dom_id(@journey_map, :pages),
@@ -36,7 +37,7 @@ class JourneyMapsController < ApplicationController
             }
           )
         ]
-      }
+      end
     end
   end
 

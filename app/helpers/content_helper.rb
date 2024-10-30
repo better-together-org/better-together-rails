@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 
 module ContentHelper
   def render_disclaimer_content

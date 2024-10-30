@@ -1,5 +1,6 @@
-class PartnersController < BetterTogether::CommunitiesController
+# frozen_string_literal: true
 
+class PartnersController < BetterTogether::CommunitiesController
   def index
     authorize resource_class
     @partners = policy_scope(resource_collection)
@@ -29,7 +30,7 @@ class PartnersController < BetterTogether::CommunitiesController
             turbo_stream.update('form_errors', partial: 'layouts/better_together/errors',
                                                locals: { object: @partner }),
             turbo_stream.update('partner_form', partial: 'partners/form',
-                                                       locals: { partner: @partner })
+                                                locals: { partner: @partner })
           ]
         end
       end
@@ -54,7 +55,7 @@ class PartnersController < BetterTogether::CommunitiesController
             turbo_stream.update('form_errors', partial: 'layouts/better_together/errors',
                                                locals: { object: @partner }),
             turbo_stream.update('partner_form', partial: 'partners/form',
-                                                       locals: { partner: @partner })
+                                                locals: { partner: @partner })
           ]
         end
       end
@@ -68,7 +69,7 @@ class PartnersController < BetterTogether::CommunitiesController
     authorize @partner
   end
 
-  alias_method :authorize_partner, :authorize_community
+  alias authorize_partner authorize_community
 
   def partner_params
     community_params

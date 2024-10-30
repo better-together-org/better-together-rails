@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 
 class Topic < BetterTogether::Category
   has_many :journey_stage_topics, -> { positioned }, dependent: :destroy

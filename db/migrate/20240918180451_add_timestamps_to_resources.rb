@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class AddTimestampsToResources < ActiveRecord::Migration[7.1]
   def change
     default_time = Time.zone.now

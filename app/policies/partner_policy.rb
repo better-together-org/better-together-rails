@@ -1,8 +1,6 @@
 # frozen_string_literal: true
 
-
 class PartnerPolicy < BetterTogether::CommunityPolicy # rubocop:todo Style/Documentation
-  
   def index?
     true
   end
@@ -21,7 +19,7 @@ class PartnerPolicy < BetterTogether::CommunityPolicy # rubocop:todo Style/Docum
 
       # Only list communities that are public and where the current person is a member or a creator
       query = communities_table[:privacy].eq('public')
-      
+
       if agent
         query = query.or(
           communities_table[:id].in(

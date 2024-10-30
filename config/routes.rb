@@ -4,9 +4,8 @@ Rails.application.routes.draw do
   get 'healthcheck', to: 'healthcheck#index'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
-  scope ':locale', # rubocop:todo Metrics/BlockLength
+  scope ':locale',
         locale: /#{I18n.available_locales.join('|')}/ do
-
     scope path: 'journey_map' do
       get ':journey_map_id/:topic_identifier',
           to: 'journey_maps#show',
@@ -14,7 +13,7 @@ Rails.application.routes.draw do
     end
 
     authenticated :user do
-      resources :journey_items, only: %i[ index create destroy ]
+      resources :journey_items, only: %i[index create destroy]
 
       resources :journey_stages
       resources :topics

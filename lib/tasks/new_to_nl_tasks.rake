@@ -4,7 +4,7 @@ namespace :new_to_nl do
   desc 'seed Journey Stages'
   task seed_journey_stages: :environment do
     Mobility.with_locale(:en) do
-      stages = %w[ pre-arrival arrival settlement ]
+      stages = %w[pre-arrival arrival settlement]
 
       stages.each do |stage|
         JourneyStage.find_or_create_by(identifier: stage) do |js|
@@ -20,7 +20,7 @@ namespace :new_to_nl do
   task seed_topics: :environment do
     Mobility.with_locale(:en) do
       topics_data.each do |identifier, attributes|
-        Topic.find_or_create_by(identifier: identifier) do |topic|
+        Topic.find_or_create_by(identifier:) do |topic|
           topic.name = identifier.to_s.titleize
           topic.slug = identifier.to_s.parameterize
           topic.protected = true
@@ -68,9 +68,8 @@ namespace :new_to_nl do
         community-and-connections family education travel
       ],
       'arrival': %w[ =
-        transportation arrival housing bank-and-finance insurance health-and-wellness
-        employment community-and-connections language education family
-      ],
+                     transportation arrival housing bank-and-finance insurance health-and-wellness
+                     employment community-and-connections language education family],
       'settlement': %w[
         transportation immigration housing bank-and-finance insurance employment
         health-and-wellness family language laws-and-rights community-and-connections

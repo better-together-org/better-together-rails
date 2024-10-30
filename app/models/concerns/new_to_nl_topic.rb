@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module NewToNlTopic
   extend ::ActiveSupport::Concern
 
@@ -8,14 +10,16 @@ module NewToNlTopic
 
   class_methods do
     def has_many_topics
-      has_many :topic_categorizations, -> { where(category_type: 'Topic') }, class_name: 'BetterTogether::Categorization', as: :categorizable, dependent: :destroy
+      has_many :topic_categorizations, lambda {
+        where(category_type: 'Topic')
+      }, class_name: 'BetterTogether::Categorization', as: :categorizable, dependent: :destroy
       has_many :topics, through: :topic_categorizations, source: :category, source_type: 'Topic'
 
       # Add the permitted attributes for this method dynamically
       self._extra_topic_permitted_attributes += [{ topic_ids: [] }]
 
       define_method :topic_ids do
-        self.topics.pluck(:id)
+        topics.pluck(:id)
       end
 
       define_method :topic_ids= do |arg|
@@ -24,14 +28,16 @@ module NewToNlTopic
     end
 
     def has_one_topic
-      has_one :topic_categorization, -> { where(category_type: 'Topic') }, class_name: 'BetterTogether::Categorization', as: :categorizable, dependent: :destroy
+      has_one :topic_categorization, lambda {
+        where(category_type: 'Topic')
+      }, class_name: 'BetterTogether::Categorization', as: :categorizable, dependent: :destroy
       has_one :topic, through: :topic_categorization, source: :category, source_type: 'Topic'
 
       # Add the permitted attributes for this method dynamically
       self._extra_topic_permitted_attributes += %i[topic_id]
 
       define_method :topic_id do
-        self.topic&.id
+        topic&.id
       end
 
       define_method :topic_id= do |arg|
@@ -47,13 +53,13 @@ module NewToNlTopic
       topic_ids = [topic_ids] if topic_ids.is_a?(String)
 
       # Define Arel tables
-      target = self.arel_table
+      target = arel_table
       categorization = BetterTogether::Categorization.arel_table.alias('topic_categorizations')
 
       # Define the join condition
       join_condition = categorization[:categorizable_id].eq(target[:id])
-                        .and(categorization[:categorizable_type].eq(self.base_class.name))
-                        .and(categorization[:category_type].eq('Topic'))
+                                                        .and(categorization[:categorizable_type].eq(base_class.name))
+                                                        .and(categorization[:category_type].eq('Topic'))
 
       # Perform the join using Arel
       joins(

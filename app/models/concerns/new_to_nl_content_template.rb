@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 
 module NewToNlContentTemplate
   extend ::ActiveSupport::Concern
@@ -5,7 +6,7 @@ module NewToNlContentTemplate
   included do
     new_templates = [
       'better_together/content/blocks/template/funders',
-      'better_together/content/blocks/template/journey_stages',
+      'better_together/content/blocks/template/journey_stages'
     ]
 
     self::AVAILABLE_TEMPLATES = (self::AVAILABLE_TEMPLATES + new_templates).freeze

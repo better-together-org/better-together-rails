@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 
 class JourneyMap < BetterTogether::Content::Template
   include NewToNlJourneyStage
@@ -6,7 +7,7 @@ class JourneyMap < BetterTogether::Content::Template
 
   AVAILABLE_TEMPLATES = %w[
     better_together/content/blocks/template/journey_map
-  ]
+  ].freeze
 
   # AVAILABLE_STAGES = %w[
   #   pre-arrival arrival settling
@@ -30,7 +31,7 @@ class JourneyMap < BetterTogether::Content::Template
   # validates :stage, inclusion: { in: ->(instance) { instance.class::AVAILABLE_STAGES }}
 
   def self.extra_permitted_attributes
-    %i[ journey_stage_id ]
+    %i[journey_stage_id]
   end
 
   def initialize(args = nil)

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # This migration comes from better_together (originally 20240921161849)
 class CreateBetterTogetherEmailAddresses < ActiveRecord::Migration[7.1]
   def change

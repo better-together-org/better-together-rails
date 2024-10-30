@@ -1,6 +1,6 @@
+# frozen_string_literal: true
 
 class ResourcePolicy < ApplicationPolicy
-
   def index?
     true
   end
@@ -30,6 +30,5 @@ class ResourcePolicy < ApplicationPolicy
   end
 
   class Scope < ApplicationPolicy::Scope
-
   end
 end

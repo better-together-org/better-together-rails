@@ -1,6 +1,6 @@
+# frozen_string_literal: true
 
 class TopicsController < BetterTogether::CategoriesController
-
   protected
 
   def resource_class

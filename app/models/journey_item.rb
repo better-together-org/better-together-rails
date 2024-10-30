@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class JourneyItem < ApplicationRecord
   include BetterTogether::Positioned
   belongs_to :journey

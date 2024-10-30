@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 
 module JourneyMapHelper
   def distribute_topic_indices(topics, max_slots = 14)

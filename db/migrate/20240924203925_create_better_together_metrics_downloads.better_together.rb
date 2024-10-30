@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # This migration comes from better_together (originally 20240924190511)
 class CreateBetterTogetherMetricsDownloads < ActiveRecord::Migration[7.1]
   def change

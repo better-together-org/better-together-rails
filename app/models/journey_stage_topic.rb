@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class JourneyStageTopic < ApplicationRecord
   include BetterTogether::Positioned
   include BetterTogether::Visible

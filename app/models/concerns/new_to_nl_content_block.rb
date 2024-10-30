@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'journeyable'
 module NewToNlContentBlock
   extend ::ActiveSupport::Concern

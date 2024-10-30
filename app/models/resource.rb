@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Resource < ApplicationRecord
   include ::BetterTogether::Categorizable
   include ::BetterTogether::Identifier
@@ -21,9 +23,7 @@ class Resource < ApplicationRecord
   validates :locale, presence: true
 
   def self.load_all_subclasses
-    # rubocop:todo Layout/LineLength
     [Document, Link].each(&:connection) # Add all known subclasses here
-    # rubocop:enable Layout/LineLength
   end
 
   def to_s

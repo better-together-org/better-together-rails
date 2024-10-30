@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # config/initializers/better_together_helpers.rb
 
 Rails.application.config.to_prepare do
