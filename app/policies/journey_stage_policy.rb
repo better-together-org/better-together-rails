@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
-class JourneyStagePolicy < ApplicationPolicy # rubocop:todo Style/Documentation
+class JourneyStagePolicy < BetterTogether::CategoryPolicy # rubocop:todo Style/Documentation
 
-  class Scope < ApplicationPolicy::Scope # rubocop:todo Style/Documentation
+  class Scope < BetterTogether::CategoryPolicy::Scope # rubocop:todo Style/Documentation
   end
 end

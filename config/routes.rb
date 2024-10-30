@@ -12,9 +12,14 @@ Rails.application.routes.draw do
           to: 'journey_maps#show',
           as: :journey_map_topic_content
     end
+
     authenticated :user do
       resources :journey_items, only: %i[ index create destroy ]
+
+      resources :journey_stages
+      resources :topics
     end
+
     resources :partners
     resources :resources do
       member do
