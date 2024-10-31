@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 # This file is auto-generated from the current state of the database. Instead
 # of editing this file, please use the migrations feature of Active Record to
 # incrementally modify your database, and then regenerate this schema definition.
@@ -12,51 +10,49 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_10_18_094451) do
+ActiveRecord::Schema[7.1].define(version: 2024_10_31_165500) do
   # These are extensions that must be enabled in order to support this database
-  enable_extension 'pgcrypto'
-  enable_extension 'plpgsql'
-  enable_extension 'postgis'
+  enable_extension "pgcrypto"
+  enable_extension "plpgsql"
+  enable_extension "postgis"
 
-  create_table 'action_text_rich_texts', id: :uuid, default: -> { 'gen_random_uuid()' }, force: :cascade do |t|
-    t.string 'name', null: false
-    t.text 'body'
-    t.string 'record_type', null: false
-    t.uuid 'record_id', null: false
-    t.datetime 'created_at', null: false
-    t.datetime 'updated_at', null: false
-    t.string 'locale', null: false
-    t.index %w[record_type record_id name locale], name: 'index_action_text_rich_texts_uniqueness',
-                                                   unique: true
+  create_table "action_text_rich_texts", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.string "name", null: false
+    t.text "body"
+    t.string "record_type", null: false
+    t.uuid "record_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "locale", null: false
+    t.index ["record_type", "record_id", "name", "locale"], name: "index_action_text_rich_texts_uniqueness", unique: true
   end
 
-  create_table 'active_storage_attachments', id: :uuid, default: -> { 'gen_random_uuid()' }, force: :cascade do |t|
-    t.string 'name', null: false
-    t.string 'record_type', null: false
-    t.uuid 'record_id', null: false
-    t.uuid 'blob_id', null: false
-    t.datetime 'created_at', null: false
-    t.index ['blob_id'], name: 'index_active_storage_attachments_on_blob_id'
-    t.index %w[record_type record_id name blob_id], name: 'index_active_storage_attachments_uniqueness',
-                                                    unique: true
+  create_table "active_storage_attachments", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.string "name", null: false
+    t.string "record_type", null: false
+    t.uuid "record_id", null: false
+    t.uuid "blob_id", null: false
+    t.datetime "created_at", null: false
+    t.index ["blob_id"], name: "index_active_storage_attachments_on_blob_id"
+    t.index ["record_type", "record_id", "name", "blob_id"], name: "index_active_storage_attachments_uniqueness", unique: true
   end
 
-  create_table 'active_storage_blobs', id: :uuid, default: -> { 'gen_random_uuid()' }, force: :cascade do |t|
-    t.string 'key', null: false
-    t.string 'filename', null: false
-    t.string 'content_type'
-    t.text 'metadata'
-    t.string 'service_name', null: false
-    t.bigint 'byte_size', null: false
-    t.string 'checksum'
-    t.datetime 'created_at', null: false
-    t.index ['key'], name: 'index_active_storage_blobs_on_key', unique: true
+  create_table "active_storage_blobs", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.string "key", null: false
+    t.string "filename", null: false
+    t.string "content_type"
+    t.text "metadata"
+    t.string "service_name", null: false
+    t.bigint "byte_size", null: false
+    t.string "checksum"
+    t.datetime "created_at", null: false
+    t.index ["key"], name: "index_active_storage_blobs_on_key", unique: true
   end
 
-  create_table 'active_storage_variant_records', id: :uuid, default: -> { 'gen_random_uuid()' }, force: :cascade do |t|
-    t.uuid 'blob_id', null: false
-    t.string 'variation_digest', null: false
-    t.index %w[blob_id variation_digest], name: 'index_active_storage_variant_records_uniqueness', unique: true
+  create_table "active_storage_variant_records", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.uuid "blob_id", null: false
+    t.string "variation_digest", null: false
+    t.index ["blob_id", "variation_digest"], name: "index_active_storage_variant_records_uniqueness", unique: true
   end
 
   create_table "better_together_addresses", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
@@ -78,6 +74,30 @@ ActiveRecord::Schema[7.1].define(version: 2024_10_18_094451) do
     t.index ["contact_detail_id", "primary_flag"], name: "index_bt_addresses_on_contact_detail_id_and_primary", unique: true, where: "(primary_flag IS TRUE)"
     t.index ["contact_detail_id"], name: "index_better_together_addresses_on_contact_detail_id"
     t.index ["privacy"], name: "by_better_together_addresses_privacy"
+  end
+
+  create_table "better_together_ai_log_translations", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.integer "lock_version", default: 0, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.text "request", null: false
+    t.text "response"
+    t.string "model", null: false
+    t.integer "prompt_tokens", default: 0, null: false
+    t.integer "completion_tokens", default: 0, null: false
+    t.integer "tokens_used", default: 0, null: false
+    t.decimal "estimated_cost", precision: 10, scale: 5, default: "0.0", null: false
+    t.datetime "start_time"
+    t.datetime "end_time"
+    t.string "status", default: "pending", null: false
+    t.uuid "initiator_id"
+    t.string "source_locale", null: false
+    t.string "target_locale", null: false
+    t.index ["initiator_id"], name: "index_better_together_ai_log_translations_on_initiator_id"
+    t.index ["model"], name: "index_better_together_ai_log_translations_on_model"
+    t.index ["source_locale"], name: "index_better_together_ai_log_translations_on_source_locale"
+    t.index ["status"], name: "index_better_together_ai_log_translations_on_status"
+    t.index ["target_locale"], name: "index_better_together_ai_log_translations_on_target_locale"
   end
 
   create_table "better_together_categories", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
@@ -381,6 +401,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_10_18_094451) do
     t.string "pageable_type"
     t.uuid "pageable_id"
     t.datetime "viewed_at", null: false
+    t.string "page_url"
     t.index ["locale"], name: "by_better_together_metrics_page_views_locale"
     t.index ["pageable_type", "pageable_id"], name: "index_better_together_metrics_page_views_on_pageable"
   end
@@ -478,71 +499,77 @@ ActiveRecord::Schema[7.1].define(version: 2024_10_18_094451) do
     t.index ["slug"], name: "index_better_together_people_on_slug", unique: true
   end
 
-  create_table 'better_together_person_community_memberships', id: :uuid, default: lambda {
-    'gen_random_uuid()'
-  }, force: :cascade do |t|
-    t.integer 'lock_version', default: 0, null: false
-    t.datetime 'created_at', null: false
-    t.datetime 'updated_at', null: false
-    t.uuid 'member_id', null: false
-    t.uuid 'joinable_id', null: false
-    t.uuid 'role_id', null: false
-    t.index %w[joinable_id member_id role_id], name: 'unique_person_community_membership_member_role',
-                                               unique: true
-    t.index ['joinable_id'], name: 'person_community_membership_by_joinable'
-    t.index ['member_id'], name: 'person_community_membership_by_member'
-    t.index ['role_id'], name: 'person_community_membership_by_role'
+  create_table "better_together_person_community_memberships", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.integer "lock_version", default: 0, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.uuid "member_id", null: false
+    t.uuid "joinable_id", null: false
+    t.uuid "role_id", null: false
+    t.index ["joinable_id", "member_id", "role_id"], name: "unique_person_community_membership_member_role", unique: true
+    t.index ["joinable_id"], name: "person_community_membership_by_joinable"
+    t.index ["member_id"], name: "person_community_membership_by_member"
+    t.index ["role_id"], name: "person_community_membership_by_role"
   end
 
-  create_table 'better_together_person_platform_memberships', id: :uuid, default: lambda {
-    'gen_random_uuid()'
-  }, force: :cascade do |t|
-    t.integer 'lock_version', default: 0, null: false
-    t.datetime 'created_at', null: false
-    t.datetime 'updated_at', null: false
-    t.uuid 'member_id', null: false
-    t.uuid 'joinable_id', null: false
-    t.uuid 'role_id', null: false
-    t.index %w[joinable_id member_id role_id], name: 'unique_person_platform_membership_member_role', unique: true
-    t.index ['joinable_id'], name: 'person_platform_membership_by_joinable'
-    t.index ['member_id'], name: 'person_platform_membership_by_member'
-    t.index ['role_id'], name: 'person_platform_membership_by_role'
+  create_table "better_together_person_platform_memberships", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.integer "lock_version", default: 0, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.uuid "member_id", null: false
+    t.uuid "joinable_id", null: false
+    t.uuid "role_id", null: false
+    t.index ["joinable_id", "member_id", "role_id"], name: "unique_person_platform_membership_member_role", unique: true
+    t.index ["joinable_id"], name: "person_platform_membership_by_joinable"
+    t.index ["member_id"], name: "person_platform_membership_by_member"
+    t.index ["role_id"], name: "person_platform_membership_by_role"
   end
 
-  create_table 'better_together_platform_invitations', id: :uuid, default: lambda { # rubocop:todo Metrics/BlockLength
-    'gen_random_uuid()'
-  }, force: :cascade do |t|
-    t.integer 'lock_version', default: 0, null: false
-    t.datetime 'created_at', null: false
-    t.datetime 'updated_at', null: false
-    t.uuid 'community_role_id', null: false
-    t.string 'invitee_email', null: false
-    t.uuid 'invitable_id', null: false
-    t.uuid 'invitee_id'
-    t.uuid 'inviter_id', null: false
-    t.uuid 'platform_role_id'
-    t.string 'status', limit: 20, null: false
-    t.string 'locale', limit: 5, default: 'en', null: false
-    t.string 'token', limit: 24, null: false
-    t.datetime 'valid_from', null: false
-    t.datetime 'valid_until'
-    t.datetime 'last_sent'
-    t.datetime 'accepted_at'
-    t.index ['community_role_id'], name: 'platform_invitations_by_community_role'
-    t.index %w[invitable_id status], name: 'index_platform_invitations_on_invitable_id_and_status'
-    t.index ['invitable_id'], name: 'platform_invitations_by_invitable'
-    t.index %w[invitee_email invitable_id], name: 'idx_on_invitee_email_invitable_id_5a7d642388', unique: true
-    t.index ['invitee_email'], name: 'index_pending_invitations_on_invitee_email',
-                               where: "((status)::text = 'pending'::text)"
-    t.index ['invitee_email'], name: 'platform_invitations_by_invitee_email'
-    t.index ['invitee_id'], name: 'platform_invitations_by_invitee'
-    t.index ['inviter_id'], name: 'platform_invitations_by_inviter'
-    t.index ['locale'], name: 'platform_invitations_by_locale'
-    t.index ['platform_role_id'], name: 'platform_invitations_by_platform_role'
-    t.index ['status'], name: 'platform_invitations_by_status'
-    t.index ['token'], name: 'platform_invitations_by_token', unique: true
-    t.index ['valid_from'], name: 'platform_invitations_by_valid_from'
-    t.index ['valid_until'], name: 'platform_invitations_by_valid_until'
+  create_table "better_together_phone_numbers", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.integer "lock_version", default: 0, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "number", null: false
+    t.string "label", null: false
+    t.string "privacy", limit: 50, default: "unlisted", null: false
+    t.uuid "contact_detail_id", null: false
+    t.boolean "primary_flag", default: false, null: false
+    t.index ["contact_detail_id", "primary_flag"], name: "index_bt_phone_numbers_on_contact_detail_id_and_primary", unique: true, where: "(primary_flag IS TRUE)"
+    t.index ["contact_detail_id"], name: "index_better_together_phone_numbers_on_contact_detail_id"
+    t.index ["privacy"], name: "by_better_together_phone_numbers_privacy"
+  end
+
+  create_table "better_together_platform_invitations", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.integer "lock_version", default: 0, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.uuid "community_role_id", null: false
+    t.string "invitee_email", null: false
+    t.uuid "invitable_id", null: false
+    t.uuid "invitee_id"
+    t.uuid "inviter_id", null: false
+    t.uuid "platform_role_id"
+    t.string "status", limit: 20, null: false
+    t.string "locale", limit: 5, default: "en", null: false
+    t.string "token", limit: 24, null: false
+    t.datetime "valid_from", null: false
+    t.datetime "valid_until"
+    t.datetime "last_sent"
+    t.datetime "accepted_at"
+    t.index ["community_role_id"], name: "platform_invitations_by_community_role"
+    t.index ["invitable_id", "status"], name: "index_platform_invitations_on_invitable_id_and_status"
+    t.index ["invitable_id"], name: "platform_invitations_by_invitable"
+    t.index ["invitee_email", "invitable_id"], name: "idx_on_invitee_email_invitable_id_5a7d642388", unique: true
+    t.index ["invitee_email"], name: "index_pending_invitations_on_invitee_email", where: "((status)::text = 'pending'::text)"
+    t.index ["invitee_email"], name: "platform_invitations_by_invitee_email"
+    t.index ["invitee_id"], name: "platform_invitations_by_invitee"
+    t.index ["inviter_id"], name: "platform_invitations_by_inviter"
+    t.index ["locale"], name: "platform_invitations_by_locale"
+    t.index ["platform_role_id"], name: "platform_invitations_by_platform_role"
+    t.index ["status"], name: "platform_invitations_by_status"
+    t.index ["token"], name: "platform_invitations_by_token", unique: true
+    t.index ["valid_from"], name: "platform_invitations_by_valid_from"
+    t.index ["valid_until"], name: "platform_invitations_by_valid_until"
   end
 
   create_table "better_together_platforms", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
@@ -582,17 +609,15 @@ ActiveRecord::Schema[7.1].define(version: 2024_10_18_094451) do
     t.index ["slug"], name: "index_better_together_resource_permissions_on_slug", unique: true
   end
 
-  create_table 'better_together_role_resource_permissions', id: :uuid, default: lambda {
-    'gen_random_uuid()'
-  }, force: :cascade do |t|
-    t.integer 'lock_version', default: 0, null: false
-    t.datetime 'created_at', null: false
-    t.datetime 'updated_at', null: false
-    t.uuid 'role_id', null: false
-    t.uuid 'resource_permission_id', null: false
-    t.index ['resource_permission_id'], name: 'role_resource_permissions_resource_permission'
-    t.index %w[role_id resource_permission_id], name: 'unique_role_resource_permission_index', unique: true
-    t.index ['role_id'], name: 'role_resource_permissions_role'
+  create_table "better_together_role_resource_permissions", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.integer "lock_version", default: 0, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.uuid "role_id", null: false
+    t.uuid "resource_permission_id", null: false
+    t.index ["resource_permission_id"], name: "role_resource_permissions_resource_permission"
+    t.index ["role_id", "resource_permission_id"], name: "unique_role_resource_permission_index", unique: true
+    t.index ["role_id"], name: "role_resource_permissions_role"
   end
 
   create_table "better_together_roles", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
@@ -609,31 +634,45 @@ ActiveRecord::Schema[7.1].define(version: 2024_10_18_094451) do
     t.index ["slug"], name: "index_better_together_roles_on_slug", unique: true
   end
 
-  create_table 'better_together_users', id: :uuid, default: -> { 'gen_random_uuid()' }, force: :cascade do |t|
-    t.integer 'lock_version', default: 0, null: false
-    t.datetime 'created_at', null: false
-    t.datetime 'updated_at', null: false
-    t.string 'email', default: '', null: false
-    t.string 'encrypted_password', default: '', null: false
-    t.string 'reset_password_token'
-    t.datetime 'reset_password_sent_at'
-    t.datetime 'remember_created_at'
-    t.integer 'sign_in_count', default: 0, null: false
-    t.datetime 'current_sign_in_at'
-    t.datetime 'last_sign_in_at'
-    t.string 'current_sign_in_ip'
-    t.string 'last_sign_in_ip'
-    t.string 'confirmation_token'
-    t.datetime 'confirmed_at'
-    t.datetime 'confirmation_sent_at'
-    t.string 'unconfirmed_email'
-    t.integer 'failed_attempts', default: 0, null: false
-    t.string 'unlock_token'
-    t.datetime 'locked_at'
-    t.index ['confirmation_token'], name: 'index_better_together_users_on_confirmation_token', unique: true
-    t.index ['email'], name: 'index_better_together_users_on_email', unique: true
-    t.index ['reset_password_token'], name: 'index_better_together_users_on_reset_password_token', unique: true
-    t.index ['unlock_token'], name: 'index_better_together_users_on_unlock_token', unique: true
+  create_table "better_together_social_media_accounts", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.integer "lock_version", default: 0, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "platform", null: false
+    t.string "handle", null: false
+    t.string "url"
+    t.string "privacy", limit: 50, default: "public", null: false
+    t.uuid "contact_detail_id", null: false
+    t.index ["contact_detail_id", "platform"], name: "index_bt_sma_on_contact_detail_and_platform", unique: true
+    t.index ["contact_detail_id"], name: "idx_on_contact_detail_id_6380b64b3b"
+    t.index ["privacy"], name: "by_better_together_social_media_accounts_privacy"
+  end
+
+  create_table "better_together_users", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.integer "lock_version", default: 0, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "email", default: "", null: false
+    t.string "encrypted_password", default: "", null: false
+    t.string "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
+    t.integer "sign_in_count", default: 0, null: false
+    t.datetime "current_sign_in_at"
+    t.datetime "last_sign_in_at"
+    t.string "current_sign_in_ip"
+    t.string "last_sign_in_ip"
+    t.string "confirmation_token"
+    t.datetime "confirmed_at"
+    t.datetime "confirmation_sent_at"
+    t.string "unconfirmed_email"
+    t.integer "failed_attempts", default: 0, null: false
+    t.string "unlock_token"
+    t.datetime "locked_at"
+    t.index ["confirmation_token"], name: "index_better_together_users_on_confirmation_token", unique: true
+    t.index ["email"], name: "index_better_together_users_on_email", unique: true
+    t.index ["reset_password_token"], name: "index_better_together_users_on_reset_password_token", unique: true
+    t.index ["unlock_token"], name: "index_better_together_users_on_unlock_token", unique: true
   end
 
   create_table "better_together_website_links", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
@@ -666,23 +705,22 @@ ActiveRecord::Schema[7.1].define(version: 2024_10_18_094451) do
     t.index ["wizard_id"], name: "by_step_definition_wizard"
   end
 
-  create_table 'better_together_wizard_steps', id: :uuid, default: -> { 'gen_random_uuid()' }, force: :cascade do |t|
-    t.integer 'lock_version', default: 0, null: false
-    t.datetime 'created_at', null: false
-    t.datetime 'updated_at', null: false
-    t.uuid 'wizard_id', null: false
-    t.uuid 'wizard_step_definition_id', null: false
-    t.uuid 'creator_id'
-    t.string 'identifier', limit: 100, null: false
-    t.boolean 'completed', default: false
-    t.integer 'step_number', null: false
-    t.index ['creator_id'], name: 'by_step_creator'
-    t.index ['identifier'], name: 'by_step_identifier'
-    t.index %w[wizard_id identifier creator_id], name: 'index_unique_wizard_steps', unique: true,
-                                                 where: '(completed IS FALSE)'
-    t.index %w[wizard_id step_number], name: 'index_wizard_steps_on_wizard_id_and_step_number'
-    t.index ['wizard_id'], name: 'by_step_wizard'
-    t.index ['wizard_step_definition_id'], name: 'by_step_wizard_step_definition'
+  create_table "better_together_wizard_steps", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.integer "lock_version", default: 0, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.uuid "wizard_id", null: false
+    t.uuid "wizard_step_definition_id", null: false
+    t.uuid "creator_id"
+    t.string "identifier", limit: 100, null: false
+    t.boolean "completed", default: false
+    t.integer "step_number", null: false
+    t.index ["creator_id"], name: "by_step_creator"
+    t.index ["identifier"], name: "by_step_identifier"
+    t.index ["wizard_id", "identifier", "creator_id"], name: "index_unique_wizard_steps", unique: true, where: "(completed IS FALSE)"
+    t.index ["wizard_id", "step_number"], name: "index_wizard_steps_on_wizard_id_and_step_number"
+    t.index ["wizard_id"], name: "by_step_wizard"
+    t.index ["wizard_step_definition_id"], name: "by_step_wizard_step_definition"
   end
 
   create_table "better_together_wizards", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
@@ -702,72 +740,103 @@ ActiveRecord::Schema[7.1].define(version: 2024_10_18_094451) do
     t.index ["slug"], name: "index_better_together_wizards_on_slug", unique: true
   end
 
-  create_table 'friendly_id_slugs', force: :cascade do |t|
-    t.string 'slug', null: false
-    t.uuid 'sluggable_id', null: false
-    t.string 'sluggable_type', null: false
-    t.string 'scope'
-    t.integer 'lock_version', default: 0, null: false
-    t.datetime 'created_at', null: false
-    t.datetime 'updated_at', null: false
-    t.string 'locale', null: false
-    t.index ['locale'], name: 'index_friendly_id_slugs_on_locale'
-    t.index %w[slug sluggable_type locale], name: 'index_friendly_id_slugs_on_slug_and_sluggable_type_and_locale'
-    t.index %w[slug sluggable_type scope locale], name: 'index_friendly_id_slugs_unique', unique: true
-    t.index %w[sluggable_type sluggable_id], name: 'by_sluggable'
+  create_table "friendly_id_slugs", force: :cascade do |t|
+    t.string "slug", null: false
+    t.uuid "sluggable_id", null: false
+    t.string "sluggable_type", null: false
+    t.string "scope"
+    t.integer "lock_version", default: 0, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "locale", null: false
+    t.index ["locale"], name: "index_friendly_id_slugs_on_locale"
+    t.index ["slug", "sluggable_type", "locale"], name: "index_friendly_id_slugs_on_slug_and_sluggable_type_and_locale"
+    t.index ["slug", "sluggable_type", "scope", "locale"], name: "index_friendly_id_slugs_unique", unique: true
+    t.index ["sluggable_type", "sluggable_id"], name: "by_sluggable"
   end
 
-  create_table 'mobility_string_translations', force: :cascade do |t|
-    t.string 'locale', null: false
-    t.string 'key', null: false
-    t.string 'value'
-    t.string 'translatable_type'
-    t.uuid 'translatable_id'
-    t.datetime 'created_at', null: false
-    t.datetime 'updated_at', null: false
-    t.index %w[translatable_id translatable_type key],
-            name: 'index_mobility_string_translations_on_translatable_attribute'
-    t.index %w[translatable_id translatable_type locale key],
-            name: 'index_mobility_string_translations_on_keys', unique: true
-    t.index %w[translatable_type key value locale], name: 'index_mobility_string_translations_on_query_keys'
+  create_table "journey_items", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.integer "lock_version", default: 0, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.uuid "journey_id", null: false
+    t.uuid "journey_stage_id"
+    t.string "journeyable_type"
+    t.uuid "journeyable_id"
+    t.integer "position", null: false
+    t.index ["journey_id"], name: "index_journey_items_on_journey_id"
+    t.index ["journey_stage_id"], name: "index_journey_items_on_journey_stage_id"
+    t.index ["journeyable_type", "journeyable_id"], name: "index_journey_items_on_journeyable"
   end
 
-  create_table 'mobility_text_translations', force: :cascade do |t|
-    t.string 'locale', null: false
-    t.string 'key', null: false
-    t.text 'value'
-    t.string 'translatable_type'
-    t.uuid 'translatable_id'
-    t.datetime 'created_at', null: false
-    t.datetime 'updated_at', null: false
-    t.index %w[translatable_id translatable_type key],
-            name: 'index_mobility_text_translations_on_translatable_attribute'
-    t.index %w[translatable_id translatable_type locale key],
-            name: 'index_mobility_text_translations_on_keys', unique: true
+  create_table "journey_stage_topics", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.integer "lock_version", default: 0, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.uuid "journey_stage_id"
+    t.uuid "topic_id"
+    t.integer "position", null: false
+    t.boolean "visible", default: true, null: false
+    t.index ["journey_stage_id", "topic_id"], name: "index_journey_stage_topics_on_journey_stage_id_and_topic_id", unique: true
+    t.index ["journey_stage_id"], name: "index_journey_stage_topics_on_journey_stage_id"
+    t.index ["topic_id"], name: "index_journey_stage_topics_on_topic_id"
   end
 
-  create_table 'noticed_events', id: :uuid, default: -> { 'gen_random_uuid()' }, force: :cascade do |t|
-    t.string 'type'
-    t.string 'record_type'
-    t.uuid 'record_id'
-    t.jsonb 'params'
-    t.datetime 'created_at', null: false
-    t.datetime 'updated_at', null: false
-    t.integer 'notifications_count'
-    t.index %w[record_type record_id], name: 'index_noticed_events_on_record'
+  create_table "journeys", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.integer "lock_version", default: 0, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.uuid "person_id", null: false
+    t.index ["person_id"], name: "index_journeys_on_person_id"
   end
 
-  create_table 'noticed_notifications', id: :uuid, default: -> { 'gen_random_uuid()' }, force: :cascade do |t|
-    t.string 'type'
-    t.uuid 'event_id', null: false
-    t.string 'recipient_type', null: false
-    t.uuid 'recipient_id', null: false
-    t.datetime 'read_at', precision: nil
-    t.datetime 'seen_at', precision: nil
-    t.datetime 'created_at', null: false
-    t.datetime 'updated_at', null: false
-    t.index ['event_id'], name: 'index_noticed_notifications_on_event_id'
-    t.index %w[recipient_type recipient_id], name: 'index_noticed_notifications_on_recipient'
+  create_table "mobility_string_translations", force: :cascade do |t|
+    t.string "locale", null: false
+    t.string "key", null: false
+    t.string "value"
+    t.string "translatable_type"
+    t.uuid "translatable_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["translatable_id", "translatable_type", "key"], name: "index_mobility_string_translations_on_translatable_attribute"
+    t.index ["translatable_id", "translatable_type", "locale", "key"], name: "index_mobility_string_translations_on_keys", unique: true
+    t.index ["translatable_type", "key", "value", "locale"], name: "index_mobility_string_translations_on_query_keys"
+  end
+
+  create_table "mobility_text_translations", force: :cascade do |t|
+    t.string "locale", null: false
+    t.string "key", null: false
+    t.text "value"
+    t.string "translatable_type"
+    t.uuid "translatable_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["translatable_id", "translatable_type", "key"], name: "index_mobility_text_translations_on_translatable_attribute"
+    t.index ["translatable_id", "translatable_type", "locale", "key"], name: "index_mobility_text_translations_on_keys", unique: true
+  end
+
+  create_table "noticed_events", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.string "type"
+    t.string "record_type"
+    t.uuid "record_id"
+    t.jsonb "params"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "notifications_count"
+    t.index ["record_type", "record_id"], name: "index_noticed_events_on_record"
+  end
+
+  create_table "noticed_notifications", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.string "type"
+    t.uuid "event_id", null: false
+    t.string "recipient_type", null: false
+    t.uuid "recipient_id", null: false
+    t.datetime "read_at", precision: nil
+    t.datetime "seen_at", precision: nil
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["event_id"], name: "index_noticed_notifications_on_event_id"
+    t.index ["recipient_type", "recipient_id"], name: "index_noticed_notifications_on_recipient"
   end
 
   create_table "resources", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
@@ -791,6 +860,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_10_18_094451) do
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "better_together_addresses", "better_together_contact_details", column: "contact_detail_id"
+  add_foreign_key "better_together_ai_log_translations", "better_together_people", column: "initiator_id"
   add_foreign_key "better_together_communities", "better_together_people", column: "creator_id"
   add_foreign_key "better_together_content_blocks", "better_together_people", column: "creator_id"
   add_foreign_key "better_together_content_page_blocks", "better_together_content_blocks", column: "block_id"
@@ -842,6 +912,9 @@ ActiveRecord::Schema[7.1].define(version: 2024_10_18_094451) do
   add_foreign_key "better_together_wizard_steps", "better_together_people", column: "creator_id"
   add_foreign_key "better_together_wizard_steps", "better_together_wizard_step_definitions", column: "wizard_step_definition_id"
   add_foreign_key "better_together_wizard_steps", "better_together_wizards", column: "wizard_id"
+  add_foreign_key "journey_items", "better_together_categories", column: "journey_stage_id"
+  add_foreign_key "journey_items", "journeys"
   add_foreign_key "journey_stage_topics", "better_together_categories", column: "journey_stage_id"
   add_foreign_key "journey_stage_topics", "better_together_categories", column: "topic_id"
+  add_foreign_key "journeys", "better_together_people", column: "person_id"
 end
