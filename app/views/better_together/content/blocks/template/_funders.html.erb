@@ -1,14 +1,19 @@
-
 <%= content_tag :section, id: dom_id(block), class: "content-block funders-list #{dom_class(block)} container my-3" do %>
-  <h3 class="text-center">Funded by</h3>
+  <h3 class="text-center mb-4">Funded by</h3>
 
-  <div class="row justify-content-center">
-    <div class="col-6 col-sm-4 col-md-4 col-lg-4 mb-3">
-      <%= image_tag('funders/NL-Logo.svg', class: 'img-fluid', alt: 'Newfoundland and Labrador Logo') %>
+  <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 justify-content-center">
+    <div class="d-flex flex-column align-items-center text-center mb-3">
+      <%= image_tag('funders/NL-Logo.svg', class: 'h-25', alt: 'Newfoundland and Labrador Logo') %>
+      <small class="mt-4">
+        Office of Immigration and Multiculturalism NL <br />
+        Advance the Settlement and Economic Integration of Newcomers
+      </small>
+    </div>
+    <div class="d-flex flex-column align-items-center text-center mb-3">
+      <%= image_tag('funders/collective-interchange.png', class: 'h-25', alt: 'Collective Interchange Logo') %>
+      <small class="mt-4">
+        A Non-profit Community Service Co-operative
+      </small>
     </div>
   </div>
-  <p class="mt-2 text-center">
-    Office of Immigration and Multiculturalism NL <br />
-    Advance the Settlement and Economic Integration of Newcomers
-  </p>
 <% end %>
