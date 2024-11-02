@@ -5,6 +5,10 @@ class PartnerPolicy < BetterTogether::CommunityPolicy # rubocop:todo Style/Docum
     true
   end
 
+  def destroy?
+    permitted_to?('manage_platform')
+  end
+
   class Scope < BetterTogether::CommunityPolicy::Scope # rubocop:todo Style/Documentation
     def resolve
       scope.order(:host, :identifier).includes(:string_translations).with_attached_profile_image.where(permitted_query)
