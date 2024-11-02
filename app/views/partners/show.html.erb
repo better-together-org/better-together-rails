@@ -56,28 +56,26 @@
         <%# Initialize the active tab state with accessible attributes %>
         <%= content_tag :div, id: 'communityTabs', class: 'nav nav-tabs card-header-tabs', role: 'tablist', aria_label: 'Community Sections' do %>
           <%= link_to t('globals.tabs.about'), '#about', class: 'nav-link active', id: 'about-tab', data: { bs_toggle: 'tab', bs_target: '#about', bs_parent: '#profileSections' }, role: 'tab', aria_controls: 'about', aria_selected: 'true', tabindex: '0' %>
-          <%= link_to t('globals.tabs.members'), '#members', class: 'nav-link', id: 'members-tab', data: { bs_toggle: 'tab', bs_target: '#members', bs_parent: '#communitySections' }, role: 'tab', aria_controls: 'members', aria_selected: 'false', tabindex: '-1' %>
+          <%= link_to t('globals.tabs.contact'), '#contact', class: 'nav-link', id: 'contact-tab', data: { bs_toggle: 'tab', bs_target: '#contact', bs_parent: '#profileSections' }, role: 'tab', aria_controls: 'contact', aria_selected: 'true', tabindex: '-1' %>
+          <%= link_to t('globals.tabs.members'), '#members', class: 'nav-link', id: 'members-tab', data: { bs_toggle: 'tab', bs_target: '#members', bs_parent: '#profileSections' }, role: 'tab', aria_controls: 'members', aria_selected: 'false', tabindex: '-1' %>
         <% end %>
       </div>
 
       <%# Accordion content with accessible attributes and flexbox layout %>
-      <div class="card-body" id="communitySections" role="tabpanel">
+      <div class="card-body" id="profileSections" role="tabpanel">
         <!-- Person About Section -->
         <section id="about" class="row collapse show" aria-labelledby="about-tab" aria-expanded="true" data-bs-parent="#platformTabs">
           <div class="col-md-12">
-            <!-- Name Section -->
-            <h3 class="card-title profile-name text-center mb-3">
-              <%= @resource.name %>
-            </h3>
-
-            <!-- Divider Line -->
-            <hr class="my-4">
-
             <!-- Description Section -->
             <p class="card-text text-muted">
               <%= @resource.description_html.presence || @resource.description.presence || 'No description available.' %>
             </p>
+          </div>
+        </section>
 
+        <!-- Person Contact Section -->
+        <section id="contact" class="row collapse" aria-labelledby="contact-tab" aria-expanded="true" data-bs-parent="#platformTabs">
+          <div class="col-md-12">
             <%= render partial: 'better_together/contact_details/about_section', locals: { contactable: @resource } %>
           </div>
         </section>
