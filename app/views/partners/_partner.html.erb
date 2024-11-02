@@ -1,6 +1,10 @@
-<%# app/views/partners/_partner.html.erb %>
-<div id="<%= dom_id(partner) %>" class="col">
+<div id="<%= dom_id(partner) %>" class="col mb-4">
   <div class="card mb-3 partner-card shadow-sm border-0 h-100">
+    <% if partner.profile_image.attached? %>
+      <div class="card-img-container d-flex justify-content-center align-items-center">
+        <%= image_tag rails_representation_url(partner.optimized_profile_image), class: 'card-img-top' %>
+      </div>
+    <% end %>
     <div class="card-body d-flex justify-content-between align-items-center">
       <h5 class="card-title">
         <% if policy(partner).show? %>
@@ -20,7 +24,7 @@
             <% end %>
           <% end %>
           <% if policy(partner).destroy? %>
-            <%= link_to partner_path(partner), 
+            <%= link_to partner_path(partner),
                         class: 'btn btn-outline-danger btn-sm',
                         data: { turbo_method: :delete, turbo_confirm: t('partners.confirm_delete') } do %>
               <i class="fas fa-trash-alt"></i> <%= t('globals.delete') %>

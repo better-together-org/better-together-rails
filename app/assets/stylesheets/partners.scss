@@ -1,6 +1,18 @@
-
 .partner-card {
   .card-title {
     text-transform: none;
+  }
+
+  .card-img-container {
+    height: 150px; /* Adjust height as needed */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .card-img-top {
+    width: 80%;
+    max-height: 100%; /* Ensure image does not overflow container */
+    object-fit: contain; /* Keep image aspect ratio */
   }
 }
