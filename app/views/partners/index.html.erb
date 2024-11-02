@@ -11,6 +11,20 @@
     <% end %>
   </div>
 
+  <% if I18n.locale == :en %>
+    <p>
+      In the "Partner Organizations" section, you'll find information about groups that help newcomers and immigrants in Newfoundland and Labrador. These organizations offer many different kinds of help, like finding jobs, going to school, making friends, and getting legal advice. By talking to these groups, newcomers can get help with settling in, finding good jobs, learning new things, and becoming part of their new communities. This group of organizations is here to help you every step of the way.
+    </p>
+
+    <p>These are our Partner Organizations (Alphabetical order):</p>
+  <% elsif I18n.locale == :es %>
+    <p>
+        En la sección "Organizaciones Asociadas", encontrarás información sobre grupos que ayudan a recién llegados e inmigrantes en Terranova y Labrador. Estas organizaciones ofrecen diferentes tipos de ayuda, como encontrar empleo, acceder a educación, hacer amigos y recibir asesoramiento legal. Al contactar a estos grupos, los recién llegados pueden obtener apoyo para establecerse, encontrar buenos empleos, aprender nuevas cosas y formar parte de sus nuevas comunidades. Este conjunto de organizaciones está aquí para ayudarte en cada paso del camino.
+    </p>
+
+    <p>Estas son nuestras Organizaciones Asociadas (orden alfabético):</p>
+  <% end %>
+
   <% if @partners.any? %>
     <div class="row row-cols-1 row-cols-sm-2 row-cols-md-2 row-cols-lg-3 row-cols-xl-4">
       <%= render partial: 'partner', collection: @partners %>
