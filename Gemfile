@@ -9,12 +9,12 @@ gem 'asset_sync'
 gem 'aws-sdk-s3', require: false
 
 # Use the published version of better_together for production
-# gem 'better_together', '~> 0.6.0',
-#     github: 'better-together-org/community-engine-rails',
-#     branch: 'wip/new-to-nl-2'
+gem 'better_together', '~> 0.6.0',
+    github: 'better-together-org/community-engine-rails',
+    branch: 'wip/new-to-nl-2'
 
 # Use the local development version of better_together
-gem 'better_together', path: '/community-engine'
+# gem 'better_together', path: '/community-engine'
 
 # bcrypt for secure password handling
 gem 'bcrypt', '~> 3.1.20'
