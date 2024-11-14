@@ -29,13 +29,38 @@ $settlement: $blue-2;
   position: relative;
   aspect-ratio: 16 / 9;
 
+  .map-title {
+    z-index: 1;
+    position: absolute;
+    display: inline-block;
+    inset: 0% auto auto 0%;
+    padding: 0.5em;
+    border-radius: 0.5rem;
+    color: white;
+    border: 0.17rem solid;
+  }
+
+  &.green .map-title {
+    background-color: $pre-arrival;
+    border-color: darken($pre-arrival, 20%);
+  }
+
+  &.teal .map-title {
+    background-color: $arrival;
+    border-color: darken($arrival, 20%);
+  }
+
+  &.blue .map-title {
+    background-color: $settlement;
+    border-color: darken($settlement, 20%);
+  }
+
   .journey-item {
     grid-column-gap: 5px;
     grid-row-gap: 5px;
     grid-template-columns: 3fr;
     grid-auto-columns: 1fr;
     display: grid;
-    z-index: 1;
     width: 85px;
     position: absolute;
 
@@ -281,6 +306,23 @@ $settlement: $blue-2;
       aspect-ratio: 9 / 16;
     }
 
+    .map-title {
+      transform: rotate(90deg);
+    }
+
+    &.green .map-title {
+      inset: 9% auto auto 71%;
+      text-wrap: nowrap;
+    }
+
+    &.teal .map-title {
+      inset: 5% auto auto 79%;
+    }
+
+    &.blue .map-title {
+      inset: 12% auto auto 66%;
+    }
+
     .journey-item {
       a .icon .icon-outline {
         transform: translateY(-2%);
@@ -401,14 +443,6 @@ $settlement: $blue-2;
       }
     }
   }
-
-  // @media screen and (max-width: 374px) {
-  //   .journey-item {
-  //     &.topic-11 {
-  //       inset: 78% auto auto 59%;
-  //     }
-  //   }
-  // }
 }
 
 .content-block.journey-map {

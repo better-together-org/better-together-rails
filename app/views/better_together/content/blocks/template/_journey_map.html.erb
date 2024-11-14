@@ -5,8 +5,11 @@
     <%= content_tag block.heading_type, block.heading, class: "text-#{block.heading_position}" %>
   <% end %>
   <div class="map-canvas <%= block.stage_colour %>">
-    <% adjusted_indices = distribute_topic_indices(block.topics) %>
+    <div class="map-title">
+      <%= content_tag :h5, block.journey_stage.name, class: "m-0" %>
+    </div>
 
+    <% adjusted_indices = distribute_topic_indices(block.topics) %>
     <% block.topics.each_with_index do |topic, index| %>
       <% adjusted_index = adjusted_indices[index] %>
       <div class="journey-item <%= topic.identifier %> topic-<%= adjusted_index %>">
