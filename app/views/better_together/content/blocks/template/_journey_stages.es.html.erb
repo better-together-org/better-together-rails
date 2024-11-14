@@ -3,33 +3,33 @@
   <div class="row row-cols-1 row-cols-md-3">
     <!-- Feature 1 -->
     <div class="col mb-3">
-      <div class="card journey-stage pre-arrival hover-effect shadow-sm h-100 text-center">
+      <a href="<%= render_page_path('pre-arrival') %>" class="card journey-stage pre-arrival hover-effect shadow-sm h-100 text-center">
         <div class="card-body">
           <h4 class="card-title">Pre-Arribo</h4>
           <%= image_tag 'journey_stages/pre-arrival.svg', class: 'card-img-top mb-3', alt: 'Imagen de Pre-Arribo' %>
-          <a href="<%= render_page_path('pre-arrival') %>" class="btn btn-info">Prepárate para venir a NL</a>
+          <div class="btn btn-info">Prepárate para venir a NL</div>
         </div>
-      </div>
+      </a>
     </div>
     <!-- Feature 2 -->
     <div class="col mb-3">
-      <div class="card journey-stage arrival hover-effect shadow-sm h-100 text-center">
+      <a href="<%= render_page_path('arrival') %>" class="card journey-stage arrival hover-effect shadow-sm h-100 text-center">
         <div class="card-body">
           <h4 class="card-title">Arribo</h4>
           <%= image_tag 'journey_stages/arrival.svg', class: 'card-img-top mb-3', alt: 'Imagen de Arribo' %>
-          <a href="<%= render_page_path('arrival') %>" class="btn btn-info">Tus primeros pasos en NL</a>
+          <button class="btn btn-info">Tus primeros pasos en NL</button>
         </div>
-      </div>
+      </a>
     </div>
     <!-- Feature 3 -->
     <div class="col mb-3">
-      <div class="card journey-stage settlement hover-effect shadow-sm h-100 text-center">
+      <a href="<%= render_page_path('settlement') %>" class="card journey-stage settlement hover-effect shadow-sm h-100 text-center">
         <div class="card-body">
           <h4 class="card-title">Asentamiento</h4>
           <%= image_tag 'journey_stages/settlement.svg', class: 'card-img-top mb-3', alt: 'Imagen de establecerte' %>
-          <a href="<%= render_page_path('settlement') %>" class="btn btn-info">Listo para establecerte en NL</a>
+          <button class="btn btn-info">Listo para establecerte en NL</button>
         </div>
-      </div>
+      </a>
     </div>
   </div>
 </div>
