@@ -257,3 +257,21 @@ a.active {
     font-size: 1em;
   }
 }
+
+.list-group-item.active {
+  background-color: $teal;
+  border-color: darken($teal, 10%);
+
+  a {
+    color: $dark-background-text-color;
+  }
+}
+
+.list-group-item:hover {
+  background-color: lighten($teal, 10%);
+  border-color: darken($teal, 10%);
+
+  a {
+    color: $dark-background-text-color;
+  }
+}
