@@ -25,7 +25,7 @@
     <p>Estas son nuestras Organizaciones Asociadas (orden alfabético):</p>
   <% end %>
 
-  <% if @partners.any? %>
+  <% if @partners %>
     <div class="row row-cols-1 row-cols-sm-2 row-cols-md-2 row-cols-lg-3 row-cols-xl-4">
       <%= render partial: 'partner', collection: @partners %>
     </div>
