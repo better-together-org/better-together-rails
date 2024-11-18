@@ -4,13 +4,13 @@
 <div class="row row-cols-2 new-to-nl-category-fields">
   <div class="col mb-3 pb-3 border-bottom">
     <%= required_label form, :journey_stages %>
-    <%= form.select :journey_stage_ids, options_from_collection_for_select(JourneyStage.positioned.all, :id, :name, model.journey_stage_ids), { include_blank: true, multiple: true }, class: 'form-select' %>
+    <%= form.select :journey_stage_ids, options_from_collection_for_select(JourneyStage.positioned.all.includes(:string_translations), :id, :name, model.journey_stage_ids), { include_blank: true, multiple: true }, class: 'form-select' %>
     <small class="form-text text-muted"><%= t('hints.journey_stages.select_multiple') %></small>
   </div>
 
   <div class="col mb-3 pb-3 border-bottom">
     <%= form.label :topics, class: 'form-label' %>
-    <%= form.select :topic_ids, options_from_collection_for_select(Topic.positioned.all, :id, :name, model.topic_ids), { include_blank: true, multiple: true }, class: 'form-select' %>
+    <%= form.select :topic_ids, options_from_collection_for_select(Topic.positioned.all.includes(:string_translations), :id, :name, model.topic_ids), { include_blank: true, multiple: true }, class: 'form-select' %>
     <small class="form-text text-muted"><%= t('hints.topics.select_multiple') %></small>
   </div>
 </div>
