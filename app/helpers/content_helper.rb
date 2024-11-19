@@ -2,7 +2,7 @@
 
 module ContentHelper
   def render_disclaimer_content
-    disclaimer = BetterTogether::Content::RichText.find_by(identifier: 'disclaimer-message')
+    disclaimer = BetterTogether::Content::RichText.with_rich_text_content.find_by(identifier: 'disclaimer-message')
 
     return unless disclaimer
 
