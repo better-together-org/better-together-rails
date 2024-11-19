@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/better-together-org/community-engine-rails.git
-  revision: 96e6df23e0e05f0a1b0ba66bfa9a5234f72ba8f5
+  revision: 561636c81ad812fb44803f551427ff659ea3d45d
   branch: wip/new-to-nl-2
   specs:
     better_together (0.6.0)
@@ -524,7 +524,7 @@ GEM
       ffi (>= 1.0.6)
       msgpack (>= 0.4.3)
       optimist (>= 3.0.0)
-    rdoc (6.7.0)
+    rdoc (6.8.1)
       psych (>= 4.0.0)
     redis (5.3.0)
       redis-client (>= 0.22.0)
