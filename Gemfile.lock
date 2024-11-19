@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/better-together-org/community-engine-rails.git
-  revision: e57073f294e63ade89a5f0a7af5b15aa81a33f65
+  revision: cbe0c15d214ca99a0a65c9f3c237f44fbb51986e
   branch: wip/new-to-nl-2
   specs:
     better_together (0.6.0)
