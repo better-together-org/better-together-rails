@@ -1,41 +1,43 @@
 <%# locals: (block:, content:) %>
 
-<%= content_tag :div, class: "journey-map #{block.stage_identifier}" do %>
-  <% if block.heading.present? %>
-    <%= content_tag block.heading_type, block.heading, class: "text-#{block.heading_position}" %>
-  <% end %>
-  <div class="map-canvas <%= block.stage_colour %>">
-    <div class="map-title">
-      <%= content_tag :h5, block.journey_stage.name, class: "m-0" %>
+<%= cache [block.cache_key, I18n.locale] do %>
+  <%= content_tag :div, class: "journey-map #{block.stage_identifier}" do %>
+    <% if block.heading.present? %>
+      <%= content_tag block.heading_type, block.heading, class: "text-#{block.heading_position}" %>
+    <% end %>
+    <div class="map-canvas <%= block.stage_colour %>">
+      <div class="map-title">
+        <%= content_tag :h5, block.journey_stage.name, class: "m-0" %>
+      </div>
+
+      <% adjusted_indices = distribute_topic_indices(block.topics) %>
+      <% block.topics.includes(:string_translations).each_with_index do |topic, index| %>
+        <% adjusted_index = adjusted_indices[index] %>
+        <div class="journey-item <%= topic.identifier %> topic-<%= adjusted_index %>">
+          <h3>
+            <%= topic.name %>
+          </h3>
+          <a href="<%= render_page_path("#{block.journey_stage&.slug}/#{topic.slug}") %>">
+            <div class="icon">
+              <div class="fa-stack fa-2x mb-3" role="img" aria-label="<%= I18n.t("topics.#{topic.identifier}") %>">
+                <!-- Background icon (gray) -->
+                <i class="fas fa-circle fa-stack-2x text-dark icon-outline"></i>
+                <i class="fas fa-circle fa-stack-2x text-light icon-bg"></i>
+                <i class="<%= topic.icon %> fa-stack-1x icon-symbol"></i>
+              </div>
+            </div>
+          </a>
+        </div>
+      <% end %>
+
+      <%= image_tag image_url("journey_map/bg-#{block.stage_identifier }.svg"), class: 'journey-bg' %>
+      <%= image_tag image_url("journey_map/bg-mobile-#{block.stage_identifier }.svg"), class: 'journey-bg mobile' %>
     </div>
 
-    <% adjusted_indices = distribute_topic_indices(block.topics) %>
-    <% block.topics.includes(:string_translations).each_with_index do |topic, index| %>
-      <% adjusted_index = adjusted_indices[index] %>
-      <div class="journey-item <%= topic.identifier %> topic-<%= adjusted_index %>">
-        <h3>
-          <%= topic.name %>
-        </h3>
-        <a href="<%= render_page_path("#{block.journey_stage&.slug}/#{topic.slug}") %>">
-          <div class="icon">
-            <div class="fa-stack fa-2x mb-3" role="img" aria-label="<%= I18n.t("topics.#{topic.identifier}") %>">
-              <!-- Background icon (gray) -->
-              <i class="fas fa-circle fa-stack-2x text-dark icon-outline"></i>
-              <i class="fas fa-circle fa-stack-2x text-light icon-bg"></i>
-              <i class="<%= topic.icon %> fa-stack-1x icon-symbol"></i>
-            </div>
-          </div>
-        </a>
-      </div>
-    <% end %>
-
-    <%= image_tag image_url("journey_map/bg-#{block.stage_identifier }.svg"), class: 'journey-bg' %>
-    <%= image_tag image_url("journey_map/bg-mobile-#{block.stage_identifier }.svg"), class: 'journey-bg mobile' %>
-  </div>
-
-  <div class="container journey-map-results">
-    <div id="<%= dom_id(block, :pages) %>" class="journey-map-pages" data-journey-map-target="pages"></div>
-    <div id="<%= dom_id(block, :resources) %>" class="journey-map-resources" data-journey-map-target="resources"></div>
-    <div id="<%= dom_id(block, :partners) %>" class="journey-map-partners" data-journey-map-target="partners"></div>
-  </div>
+    <div class="container journey-map-results">
+      <div id="<%= dom_id(block, :pages) %>" class="journey-map-pages" data-journey-map-target="pages"></div>
+      <div id="<%= dom_id(block, :resources) %>" class="journey-map-resources" data-journey-map-target="resources"></div>
+      <div id="<%= dom_id(block, :partners) %>" class="journey-map-partners" data-journey-map-target="partners"></div>
+    </div>
+  <% end %>
 <% end %>
