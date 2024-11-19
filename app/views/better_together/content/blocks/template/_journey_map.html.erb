@@ -10,7 +10,7 @@
     </div>
 
     <% adjusted_indices = distribute_topic_indices(block.topics) %>
-    <% block.topics.each_with_index do |topic, index| %>
+    <% block.topics.includes(:string_translations).each_with_index do |topic, index| %>
       <% adjusted_index = adjusted_indices[index] %>
       <div class="journey-item <%= topic.identifier %> topic-<%= adjusted_index %>">
         <h3>
