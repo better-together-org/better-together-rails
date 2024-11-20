@@ -1,8 +1,10 @@
 
+<%# locals: (person:, journey_items: person.journey_items.includes(:journeyable))%>
+
 <section id="journey" class="row collapse" aria-labelledby="journey-tab" aria-expanded="true">
   <div class="col-md-12">
-    <% if person.journey_items.any? %>
-      <% person.journey_items.each do |item| %>
+    <% if journey_items.size > 0 %>
+      <% journey_items.each do |item| %>
         <% next unless item.journeyable %>
         <div id="<%= dom_id(item, item.journeyable) %>" class="journey-item">
           <%= render item.journeyable %>
