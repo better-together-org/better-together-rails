@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/better-together-org/community-engine-rails.git
-  revision: 561636c81ad812fb44803f551427ff659ea3d45d
+  revision: 568a5ddbdb2e3c5756d315b37492cd8097a727dd
   branch: wip/new-to-nl-2
   specs:
     better_together (0.6.0)
@@ -382,7 +382,7 @@ GEM
       reline (>= 0.4.2)
     jmespath (1.6.2)
     json (2.8.2)
-    json-schema (5.0.1)
+    json-schema (5.1.0)
       addressable (~> 2.8)
     jsonapi-resources (0.10.7)
       activerecord (>= 4.1)
@@ -423,7 +423,7 @@ GEM
     msgpack (1.7.2)
     multi_json (1.15.0)
     multipart-post (2.4.1)
-    mutex_m (0.2.0)
+    mutex_m (0.3.0)
     net-http (0.5.0)
       uri
     net-imap (0.5.1)
