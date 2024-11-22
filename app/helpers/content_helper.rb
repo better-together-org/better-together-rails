@@ -6,7 +6,7 @@ module ContentHelper
 
     return unless disclaimer
 
-    cache [disclaimer.cache_key, I18n.locale] do
+    cache disclaimer.cache_key_with_version do
       content_tag :small, disclaimer.content, class: 'fst-italic', style: 'font-size: 0.6em;'
     end
   end
@@ -16,7 +16,7 @@ module ContentHelper
 
     return unless funder
 
-    cache [funder.cache_key, I18n.locale], expires_in: 1.day do
+    cache funder.cache_key_with_version, expires_in: 1.day do
       content_tag :div, class: 'container content my-3', id: 'new-to-nl-funder-message' do
         render partial: 'better_together/content/blocks/template', locals: { template: funder }
       end
