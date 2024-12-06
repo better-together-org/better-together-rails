@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # config/importmap.rb
 
 # Pin all controllers from the host's app/javascript/controllers directory

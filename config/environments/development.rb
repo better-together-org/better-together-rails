@@ -26,8 +26,8 @@ Rails.application.configure do # rubocop:todo Metrics/BlockLength
     config.action_controller.enable_fragment_cache_logging = true
 
     config.cache_store = :redis_cache_store, {
-      url: ENV.fetch("REDIS_URL") { "redis://localhost:6379/1" },
-      namespace: "cache_wayfinder_development"
+      url: ENV.fetch('REDIS_URL', 'redis://localhost:6379/1'),
+      namespace: 'cache_wayfinder_development'
     }
 
     config.public_file_server.headers = {

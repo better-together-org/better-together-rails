@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # This migration comes from better_together (originally 20241003180137)
 class AddCreatorPrivacyAndVisibleColumnsToBetterTogetherContentBlocks < ActiveRecord::Migration[7.1]
   def change

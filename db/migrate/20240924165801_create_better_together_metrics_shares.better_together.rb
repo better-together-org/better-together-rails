@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # This migration comes from better_together (originally 20240924165142)
 class CreateBetterTogetherMetricsShares < ActiveRecord::Migration[7.1]
   def change
@@ -8,7 +10,7 @@ class CreateBetterTogetherMetricsShares < ActiveRecord::Migration[7.1]
       t.datetime :shared_at, null: false
       t.bt_references :shareable, polymorphic: true, index: true
 
-      t.index [:platform, :url]
+      t.index %i[platform url]
     end
   end
 end
