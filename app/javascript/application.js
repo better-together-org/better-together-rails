@@ -10,6 +10,10 @@
 // Read Sprockets README (https://github.com/rails/sprockets#sprockets-directives) for details
 // about supported directives.
 //
-//= require activestorage
+// require activestorage
 //= require better_together/application
-//= require_tree .
+// require_tree .
+
+import 'controllers';
+
+console.log('initializing new to nl')

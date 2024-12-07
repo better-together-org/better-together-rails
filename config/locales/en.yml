@@ -1,33 +1,39 @@
-# Files in the config/locales directory are used for internationalization
-# and are automatically loaded by Rails. If you want to use locales other
-# than English, add the necessary files in this directory.
-#
-# To use the locales, use `I18n.t`:
-#
-#     I18n.t 'hello'
-#
-# In views, this is aliased to just `t`:
-#
-#     <%= t('hello') %>
-#
-# To use a different locale, set it with `I18n.locale`:
-#
-#     I18n.locale = :es
-#
-# This would use the information in config/locales/es.yml.
-#
-# The following keys must be escaped otherwise they will not be retrieved by
-# the default I18n backend:
-#
-# true, false, on, off, yes, no
-#
-# Instead, surround them with single quotes.
-#
-# en:
-#   'true': 'foo'
-#
-# To learn more, please read the Rails Internationalization guide
-# available at https://guides.rubyonrails.org/i18n.html.
-
+---
 en:
-  hello: "Hello world"
+  globals:
+    attached_file: "Attached file"
+    download: "Download"
+    no_publish_date: "No publish date"
+    no_author: "No author"
+  helpers:
+    select:
+      prompt: Please select
+    submit:
+      create: Create %{model}
+      submit: Save %{model}
+      update: Update %{model}
+  hints:
+    resource:
+      name: "Enter the name of the resource."
+      description: "Provide a detailed description of the resource."
+      slug: "Enter a URL-friendly identifier."
+      type: "Select the type of the resource."
+      url: "Provide the external URL for the resource."
+      file: "Attach a document related to the resource."
+      file_size: "File must be less than %{size} MB."
+      privacy: "Specify the privacy level of the resource."
+      locale: "Select the language of the resource."
+      published_at: "Set the date and time when the resource was published. Resources will only be visible if they have a published date that is in the past. You can use this to control when resources become available by selecting a future date."
+      author: "Name of the author of the resource."
+  journey_items:
+    tooltips:
+      add: "Add to Journey"
+      remove: "Remove from Journey"
+    none_yet: "You haven't added any items to your Journey yet. Click on the '+' button on content to add it to your Journey."
+  journeys:
+    title: My Journey
+  time:
+    am: am
+    formats:
+      date_picker: "%m/%d/%Y"
+      datetime_picker: "%m/%d/%Y %I:%M %p" # 12-hour format with AM/PM

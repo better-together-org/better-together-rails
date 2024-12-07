@@ -51,3 +51,5 @@ node_modules/
 .env.prod
 
 storage/
+config/master.key.dontcommit
+config/credentials/production.key

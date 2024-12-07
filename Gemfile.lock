@@ -1,9 +1,10 @@
 GIT
   remote: https://github.com/better-together-org/community-engine-rails.git
-  revision: 7f6071a4e11784bce208616402074f4dba428460
-  branch: main
+  revision: b5680d53617331101473c284b2f5b1e4b5bc0734
+  branch: wip/new-to-nl-2
   specs:
     better_together (0.6.0)
+      active_storage_svg_sanitizer
       active_storage_validations
       activerecord-import
       activerecord-postgis-adapter
@@ -17,10 +18,12 @@ GIT
       font-awesome-sass (~> 6.5)
       friendly_id (>= 5.2, < 5.6)
       friendly_id-mobility (~> 1.0.4)
+      groupdate
       i18n-timezones
       image_processing (~> 1.2)
       importmap-rails (~> 2.0)
       jsonapi-resources (>= 0.10.0)
+      memory_profiler
       mobility (>= 1.0.1, < 2.0)
       mobility-actiontext (~> 1.1)
       noticed
@@ -28,10 +31,13 @@ GIT
       pundit (>= 2.1, < 2.5)
       pundit-resources
       rack-cors (>= 1.1.1, < 2.1.0)
+      rack-mini-profiler
       rails (>= 5.2.2, < 7.2.0)
       reform-rails (~> 0.2.0)
       rswag (>= 2.3.1, < 2.17.0)
+      ruby-openai
       sprockets-rails
+      stackprof
       stimulus-rails (~> 1.3)
       storext
       translate_enum
@@ -107,6 +113,8 @@ GEM
       erubi (~> 1.11)
       rails-dom-testing (~> 2.2)
       rails-html-sanitizer (~> 1.6)
+    active_storage_svg_sanitizer (0.1.0)
+      rails (>= 5.2)
     active_storage_validations (1.3.4)
       activejob (>= 6.1.4)
       activemodel (>= 6.1.4)
@@ -234,7 +242,7 @@ GEM
       activerecord (>= 5.a)
       database_cleaner-core (~> 2.0.0)
     database_cleaner-core (2.0.1)
-    date (3.4.0)
+    date (3.4.1)
     debug_inspector (1.2.0)
     declarative (0.0.20)
     descendants_tracker (0.0.4)
@@ -282,6 +290,7 @@ GEM
       faraday (>= 1, < 3)
       multi_json
     erubi (1.13.0)
+    event_stream_parser (1.0.0)
     excon (1.0.0)
     execjs (2.10.0)
     factory_bot (6.5.0)
@@ -295,6 +304,8 @@ GEM
       faraday-net_http (>= 2.0, < 3.5)
       json
       logger
+    faraday-multipart (1.0.4)
+      multipart-post (~> 2)
     faraday-net_http (3.4.0)
       net-http (>= 0.5.0)
     ffi (1.17.0-x86_64-linux-gnu)
@@ -327,19 +338,36 @@ GEM
       ruby-progressbar (~> 1.4)
     globalid (1.2.1)
       activesupport (>= 6.1)
-    google-protobuf (4.29.0-x86_64-linux)
+    google-protobuf (4.29.1-x86_64-linux)
       bigdecimal
       rake (>= 13)
+    groupdate (6.5.1)
+      activesupport (>= 7)
     hashie (5.0.0)
+    highline (3.1.1)
+      reline
     htmlentities (4.3.4)
     http-accept (1.7.0)
     http-cookie (1.0.5)
       domain_name (~> 0.5)
     i18n (1.14.6)
       concurrent-ruby (~> 1.0)
+    i18n-tasks (1.0.14)
+      activesupport (>= 4.0.2)
+      ast (>= 2.1.0)
+      erubi
+      highline (>= 2.0.0)
+      i18n
+      parser (>= 3.2.2.1)
+      rails-i18n
+      rainbow (>= 2.2.2, < 4.0)
+      terminal-table (>= 1.5.1)
     i18n-timezones (1.4.8)
       i18n (>= 0.9.3)
       rails (>= 5.1.6.2)
+    i18n_generators (2.2.2)
+      activerecord (>= 3.0.0)
+      railties (>= 3.0.0)
     ice_nine (0.11.2)
     image_processing (1.13.0)
       mini_magick (>= 4.9.5, < 5)
@@ -354,8 +382,9 @@ GEM
       reline (>= 0.4.2)
     jmespath (1.6.2)
     json (2.9.0)
-    json-schema (5.1.0)
+    json-schema (5.1.1)
       addressable (~> 2.8)
+      bigdecimal (~> 3.1)
     jsonapi-resources (0.10.7)
       activerecord (>= 4.1)
       concurrent-ruby
@@ -377,6 +406,7 @@ GEM
       net-smtp
     marcel (1.0.4)
     matrix (0.4.2)
+    memory_profiler (1.1.0)
     method_source (1.1.0)
     mime-types (3.6.0)
       logger
@@ -385,7 +415,7 @@ GEM
     mini_magick (4.13.2)
     mini_mime (1.1.5)
     minitest (5.25.4)
-    mobility (1.2.9)
+    mobility (1.3.1)
       i18n (>= 0.6.10, < 2)
       request_store (~> 1.0)
     mobility-actiontext (1.1.1)
@@ -393,8 +423,9 @@ GEM
       mobility (~> 1.2)
     msgpack (1.7.2)
     multi_json (1.15.0)
+    multipart-post (2.4.1)
     mutex_m (0.3.0)
-    net-http (0.5.0)
+    net-http (0.6.0)
       uri
     net-imap (0.5.1)
       date
@@ -475,6 +506,9 @@ GEM
     rails-html-sanitizer (1.6.1)
       loofah (~> 2.21)
       nokogiri (>= 1.15.7, != 1.16.7, != 1.16.6, != 1.16.5, != 1.16.4, != 1.16.3, != 1.16.2, != 1.16.1, != 1.16.0.rc1, != 1.16.0)
+    rails-i18n (7.0.9)
+      i18n (>= 0.7, < 2)
+      railties (>= 6.0.0, < 8)
     railties (7.1.5)
       actionpack (= 7.1.5)
       activesupport (= 7.1.5)
@@ -549,7 +583,7 @@ GEM
       rspec-expectations (~> 3.13)
       rspec-mocks (~> 3.13)
       rspec-support (~> 3.13)
-    rspec-support (3.13.1)
+    rspec-support (3.13.2)
     rswag (2.16.0)
       rswag-api (= 2.16.0)
       rswag-specs (= 2.16.0)
@@ -579,12 +613,16 @@ GEM
       parser (>= 3.3.1.0)
     rubocop-rspec (3.2.0)
       rubocop (~> 1.61)
+    ruby-openai (7.3.1)
+      event_stream_parser (>= 0.3.0, < 2.0.0)
+      faraday (>= 1)
+      faraday-multipart (>= 1)
     ruby-progressbar (1.13.0)
     ruby-vips (2.2.2)
       ffi (~> 1.12)
       logger
     rubyzip (2.3.2)
-    sass-embedded (1.81.0-x86_64-linux-gnu)
+    sass-embedded (1.82.0-x86_64-linux-gnu)
       google-protobuf (~> 4.28)
     sassc (2.4.0)
       ffi (~> 1.9)
@@ -636,6 +674,8 @@ GEM
     sync (0.5.0)
     term-ansicolor (1.8.0)
       tins (~> 1.0)
+    terminal-table (3.0.2)
+      unicode-display_width (>= 1.1.1, < 3)
     thor (1.3.2)
     thread_safe (0.3.6)
     tilt (2.4.0)
@@ -655,9 +695,7 @@ GEM
     uglifier (4.2.1)
       execjs (>= 0.3.0, < 3)
     unf (0.2.0)
-    unicode-display_width (3.1.2)
-      unicode-emoji (~> 4.0, >= 4.0.4)
-    unicode-emoji (4.0.4)
+    unicode-display_width (2.6.0)
     uri (1.0.2)
     virtus (2.0.0)
       axiom-types (~> 0.1)
@@ -708,6 +746,8 @@ DEPENDENCIES
   faker
   fog-aws
   fuubar
+  i18n-tasks (~> 1.0.12)
+  i18n_generators
   listen (>= 3.0.5, < 3.10)
   pg (>= 0.18, < 2.0)
   pry

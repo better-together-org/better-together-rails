@@ -1,0 +1,28 @@
+en:
+  activerecord:
+    models:
+      journey_map: Journey Map
+      partner: Partner  #g
+
+    attributes:
+      partner:
+        creator: :activerecord.models.creator  #g
+        host: Host  #g
+        identifier: Identifier  #g
+        lock_version: Lock version  #g
+        person_community_memberships: Person community memberships  #g
+        person_members: Person members  #g
+        person_roles: Person roles  #g
+        privacy: Privacy  #g
+        protected: Protected  #g
+        slug: Slug  #g
+        slugs: Slugs  #g
+        string_translations: String translations  #g
+        text_translations: Text translations  #g
+      resource:
+        type: "Type"
+        external_url: "External URL"
+        published_at: "Published At"
+        author: "Author"
+        privacy: "Privacy"
+        language: "Language"
