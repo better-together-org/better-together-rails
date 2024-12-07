@@ -24,7 +24,7 @@ x-app-shared: &app-shared
   volumes:
     - .:/bt
     # - ../pundit-resources:/pundit-resources
-    - ../community-engine-rails:/community-engine
+    - ../../better-together/community-engine-rails:/community-engine
     - bt-bundler-gems:/usr/local/bundle/
   depends_on:
     - db
@@ -89,3 +89,4 @@ services:
     command: bundle exec sidekiq -C config/sidekiq.yml
     depends_on:
       - app
+      - redis
