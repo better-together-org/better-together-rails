@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/better-together-org/community-engine-rails.git
-  revision: 27f3e7dec503f362cdbd65afeac35ad948a307f1
+  revision: 42992444afac03622503c2048b97ad66729d88b0
   branch: main
   specs:
     better_together (0.6.0)
@@ -367,7 +367,7 @@ GEM
     listen (3.9.0)
       rb-fsevent (~> 0.10, >= 0.10.3)
       rb-inotify (~> 0.9, >= 0.9.10)
-    logger (1.6.2)
+    logger (1.6.3)
     loofah (2.23.1)
       crass (~> 1.0.2)
       nokogiri (>= 1.12.0)
