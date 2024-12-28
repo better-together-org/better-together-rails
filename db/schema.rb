@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 20_241_101_152_501) do
+ActiveRecord::Schema[7.1].define(version: 20_241_101_152_501) do # rubocop:todo Metrics/BlockLength
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
   enable_extension "plpgsql"
@@ -540,7 +540,7 @@ ActiveRecord::Schema[7.1].define(version: 20_241_101_152_501) do
     t.index ["privacy"], name: "by_better_together_phone_numbers_privacy"
   end
 
-  create_table 'better_together_platform_invitations', id: :uuid, default: lambda {
+  create_table 'better_together_platform_invitations', id: :uuid, default: lambda { # rubocop:todo Metrics/BlockLength
     'gen_random_uuid()'
   }, force: :cascade do |t|
     t.integer 'lock_version', default: 0, null: false

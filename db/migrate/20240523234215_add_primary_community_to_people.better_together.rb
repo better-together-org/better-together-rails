@@ -2,7 +2,7 @@
 
 # This migration comes from better_together (originally 20240522200922)
 class AddPrimaryCommunityToPeople < ActiveRecord::Migration[7.0]
-  def change
+  def change # rubocop:todo Metrics/MethodLength
     change_table :better_together_people do |t|
       unless column_exists?(:better_together_people, :community_id, :uuid)
         # Custom community reference here to allow for null references for existing records
