@@ -10,5 +10,11 @@ class AddPrimaryCommunityToPeople < ActiveRecord::Migration[7.0]
                                     index: { name: 'by_person_community' }
       end
     end
+
+    reversible do |dir|
+      dir.up do
+        BetterTogether::Person.where(community_id: nil).each(&:save!)
+      end
+    end
   end
 end
