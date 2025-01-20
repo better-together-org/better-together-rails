@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/better-together-org/community-engine-rails.git
-  revision: e8f87f2808263778b5794d53fa719b8b8719b1fd
+  revision: 7dcbbe28655eb3576ffa22b98b95207a7bd1331a
   branch: main
   specs:
     better_together (0.6.0)
@@ -335,7 +335,7 @@ GEM
     http-accept (1.7.0)
     http-cookie (1.0.5)
       domain_name (~> 0.5)
-    i18n (1.14.6)
+    i18n (1.14.7)
       concurrent-ruby (~> 1.0)
     i18n-timezones (1.4.8)
       i18n (>= 0.9.3)
@@ -408,7 +408,7 @@ GEM
       net-protocol
     netrc (0.11.0)
     nio4r (2.7.4)
-    nokogiri (1.18.1-x86_64-linux-gnu)
+    nokogiri (1.18.2-x86_64-linux-gnu)
       racc (~> 1.4)
     noticed (2.6.0)
       rails (>= 6.1.0)
@@ -431,7 +431,7 @@ GEM
     pry (0.15.2)
       coderay (~> 1.1)
       method_source (~> 1.0)
-    psych (5.2.2)
+    psych (5.2.3)
       date
       stringio
     public_suffix (6.0.1)
