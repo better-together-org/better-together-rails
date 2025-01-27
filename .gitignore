@@ -57,3 +57,5 @@ storage/
 /config/master.key
 config/master.key.dontcommit
 config/credentials/production.key
+
+/config/credentials/development.key
