@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/better-together-org/community-engine-rails.git
-  revision: e8f87f2808263778b5794d53fa719b8b8719b1fd
+  revision: 0668986a12ba2f32c7e097077ad81bd09c1b8ee8
   branch: main
   specs:
     better_together (0.6.0)
@@ -335,7 +335,7 @@ GEM
     http-accept (1.7.0)
     http-cookie (1.0.5)
       domain_name (~> 0.5)
-    i18n (1.14.6)
+    i18n (1.14.7)
       concurrent-ruby (~> 1.0)
     i18n-timezones (1.4.8)
       i18n (>= 0.9.3)
@@ -349,7 +349,8 @@ GEM
       activesupport (>= 6.0.0)
       railties (>= 6.0.0)
     io-console (0.8.0)
-    irb (1.14.3)
+    irb (1.15.1)
+      pp (>= 0.6.0)
       rdoc (>= 4.0.0)
       reline (>= 0.4.2)
     jmespath (1.6.2)
@@ -408,7 +409,7 @@ GEM
       net-protocol
     netrc (0.11.0)
     nio4r (2.7.4)
-    nokogiri (1.18.1-x86_64-linux-gnu)
+    nokogiri (1.18.2-x86_64-linux-gnu)
       racc (~> 1.4)
     noticed (2.6.0)
       rails (>= 6.1.0)
@@ -420,6 +421,8 @@ GEM
       racc
     pg (1.5.9)
     popper_js (2.11.8)
+    pp (0.6.2)
+      prettyprint
     premailer (1.27.0)
       addressable
       css_parser (>= 1.19.0)
@@ -428,10 +431,11 @@ GEM
       actionmailer (>= 3)
       net-smtp
       premailer (~> 1.7, >= 1.7.9)
+    prettyprint (0.2.0)
     pry (0.15.2)
       coderay (~> 1.1)
       method_source (~> 1.0)
-    psych (5.2.2)
+    psych (5.2.3)
       date
       stringio
     public_suffix (6.0.1)
@@ -590,7 +594,7 @@ GEM
       google-protobuf (~> 4.29)
     sassc (2.4.0)
       ffi (~> 1.9)
-    sassc-embedded (1.80.1)
+    sassc-embedded (1.80.2)
       sass-embedded (~> 1.80)
     securerandom (0.4.1)
     selenium-webdriver (4.27.0)
