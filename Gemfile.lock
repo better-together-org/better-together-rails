@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/better-together-org/community-engine-rails.git
-  revision: b6f827e26ec0368d172d8e3fd4450860836661bb
+  revision: d5150982cffd0776debb2d26690eb77132f9d71c
   branch: main
   specs:
     better_together (0.6.0)
@@ -368,7 +368,7 @@ GEM
     listen (3.9.0)
       rb-fsevent (~> 0.10, >= 0.10.3)
       rb-inotify (~> 0.9, >= 0.9.10)
-    logger (1.6.5)
+    logger (1.6.6)
     loofah (2.24.0)
       crass (~> 1.0.2)
       nokogiri (>= 1.12.0)
@@ -592,7 +592,7 @@ GEM
       ffi (~> 1.12)
       logger
     rubyzip (2.4.1)
-    sass-embedded (1.83.4-x86_64-linux-gnu)
+    sass-embedded (1.85.0-x86_64-linux-gnu)
       google-protobuf (~> 4.29)
     sassc (2.4.0)
       ffi (~> 1.9)
