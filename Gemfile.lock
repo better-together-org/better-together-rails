@@ -519,7 +519,7 @@ GEM
       optimist (>= 3.0.0)
     rdoc (6.12.0)
       psych (>= 4.0.0)
-    redis (5.3.0)
+    redis (5.4.0)
       redis-client (>= 0.22.0)
     redis-client (0.23.2)
       connection_pool
@@ -749,7 +749,7 @@ DEPENDENCIES
   rails (~> 7.1.5)
   rb-readline
   rbtrace
-  redis (~> 5.3)
+  redis (~> 5.4)
   rspec
   rspec-rails
   rubocop
