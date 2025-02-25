@@ -27,6 +27,7 @@ x-app-shared: &app-shared
     - ../community-engine-rails:/community-engine
     - bt-bundler-gems:/usr/local/bundle/
   depends_on:
+    - elasticsearch
     - db
     - redis
   # user: $USER:$USER
