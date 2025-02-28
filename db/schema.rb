@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 20_241_101_152_501) do # rubocop:todo Metrics/BlockLength
+ActiveRecord::Schema[7.1].define(version: 20_250_227_164_349) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
   enable_extension "plpgsql"
@@ -393,17 +393,32 @@ ActiveRecord::Schema[7.1].define(version: 20_241_101_152_501) do # rubocop:todo 
     t.datetime "clicked_at", null: false
   end
 
-  create_table "better_together_metrics_page_views", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
-    t.integer "lock_version", default: 0, null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.string "locale", limit: 5, default: "es", null: false
-    t.string "pageable_type"
-    t.uuid "pageable_id"
-    t.datetime "viewed_at", null: false
-    t.string "page_url"
-    t.index ["locale"], name: "by_better_together_metrics_page_views_locale"
-    t.index ["pageable_type", "pageable_id"], name: "index_better_together_metrics_page_views_on_pageable"
+  create_table 'better_together_metrics_page_view_reports', id: :uuid, default: lambda {
+    'gen_random_uuid()'
+  }, force: :cascade do |t|
+    t.integer 'lock_version', default: 0, null: false
+    t.datetime 'created_at', null: false
+    t.datetime 'updated_at', null: false
+    t.jsonb 'filters', default: {}, null: false
+    t.boolean 'sort_by_total_views', default: false, null: false
+    t.string 'file_format', default: 'csv', null: false
+    t.jsonb 'report_data', default: {}, null: false
+    t.index ['filters'], name: 'index_better_together_metrics_page_view_reports_on_filters', using: :gin
+  end
+
+  create_table 'better_together_metrics_page_views', id: :uuid, default: lambda {
+    'gen_random_uuid()'
+  }, force: :cascade do |t|
+    t.integer 'lock_version', default: 0, null: false
+    t.datetime 'created_at', null: false
+    t.datetime 'updated_at', null: false
+    t.string 'locale', limit: 5, default: 'es', null: false
+    t.string 'pageable_type'
+    t.uuid 'pageable_id'
+    t.datetime 'viewed_at', null: false
+    t.string 'page_url'
+    t.index ['locale'], name: 'by_better_together_metrics_page_views_locale'
+    t.index %w[pageable_type pageable_id], name: 'index_better_together_metrics_page_views_on_pageable'
   end
 
   create_table "better_together_metrics_shares", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
