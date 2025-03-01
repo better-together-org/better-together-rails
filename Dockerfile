@@ -66,6 +66,7 @@ RUN apt-get update -qq \
     libvips42 \
     yarn \
     curl \
+    nano \
   && curl -sL https://sentry.io/get-cli/ | bash \
   && rm -rf /var/lib/apt/lists/*
 

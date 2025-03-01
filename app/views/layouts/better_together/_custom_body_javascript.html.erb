@@ -1,0 +1,38 @@
+<script id="scroll-progress-bar" type="text/javascript">
+
+  function createProgressBar() {
+    // Create the progress bar element
+    var progressBar = document.createElement("div");
+    progressBar.id = "custom-progress-bar"; // Use your ID for styling
+
+    // Append the progress bar to the body
+    document.body.appendChild(progressBar);
+  }
+  // Function to add the progress bar if not already added
+  function addScrollProgressBar() {
+    // Check if the progress bar already exists
+    if (!document.getElementById("custom-progress-bar")) {
+      createProgressBar();
+    }
+
+    // Add scroll event listener to update progress bar width
+    window.onscroll = function() {
+      var winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+      var height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+      var scrolled = (winScroll / height) * 100;
+
+      // Update the custom progress bar width based on scroll
+      document.getElementById("custom-progress-bar").style.width = scrolled + "%";
+    };
+  }
+
+  // Run the function on initial page load
+  window.onload = function() {
+    addScrollProgressBar();
+  };
+
+  // Run the function after Turbo finishes loading new content
+  document.addEventListener('turbo:load', function() {
+    addScrollProgressBar();
+  });
+</script>

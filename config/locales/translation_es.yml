@@ -1,0 +1,31 @@
+es:
+  activerecord:
+    models:
+      partner: Colaborador  #g
+      resource: Recurso
+      resource/document: "Documento"
+      resource/link: "Enlace"
+
+    attributes:
+      partner:
+        creator: :activerecord.models.creator  #g
+        host: Anfitrión
+        identifier: Identificador
+        lock_version: Versión de bloqueo
+        person_community_memberships: Membresías de la comunidad de personas
+        person_members: Miembros personales
+        person_roles: Roles personales
+        privacy: Privacidad
+        protected: Protegido
+        slug: Babosa
+        slugs: babosas
+        string_translations: Traducciones de cadenas
+        text_translations: Traducciones de texto
+
+      resource:
+        type: "Tipo"
+        external_url: "URL Externa"
+        published_at: "Publicado en"
+        author: "Autor"
+        privacy: "Privacidad"
+        language: "Idioma"

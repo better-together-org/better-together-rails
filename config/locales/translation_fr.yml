@@ -1,0 +1,20 @@
+fr:
+  activerecord:
+    models:
+      partner: Partenaire  #g
+
+    attributes:
+      partner:
+        creator: :activerecord.models.creator  #g
+        host: Hôte  #g
+        identifier: Identifiant  #g
+        lock_version: Version verrouillable  #g
+        person_community_memberships: Adhésions de personnes à des communautés  #g
+        person_members: Membres de la personne  #g
+        person_roles: Rôles des personnes  #g
+        privacy: Confidentialité  #g
+        protected: Protégé  #g
+        slug: Limace  #g
+        slugs: Limaces  #g
+        string_translations: Traductions de chaînes  #g
+        text_translations: Traductions de textes  #g

@@ -11,7 +11,7 @@ gem 'aws-sdk-s3', require: false
 # Use the published version of better_together for production
 gem 'better_together', '~> 0.6.0',
     github: 'better-together-org/community-engine-rails',
-    branch: 'main'
+    branch: 'dev'
 
 # Use the local development version of better_together
 # gem 'better_together', path: '/community-engine'
@@ -38,6 +38,7 @@ gem 'rails', '~> 7.1.5'
 # Redis for ActionCable and background jobs
 gem 'redis', '~> 5.4'
 # Sidekiq for background processing
+
 gem 'sidekiq', '~> 7.3.9'
 
 # Error and performance monitoring with Sentry
@@ -75,6 +76,10 @@ group :development do
   gem 'brakeman', require: false
   # Bundler audit for checking gem vulnerabilities
   gem 'bundler-audit', require: false
+  # Facilitate I18n translation management
+  gem 'i18n_generators'
+  # Help with managing translation databasde
+  gem 'i18n-tasks', '~> 1.0.12'
   # Listen for file system changes
   gem 'listen', '>= 3.0.5', '< 3.10'
   # Rack mini profiler for performance profiling
