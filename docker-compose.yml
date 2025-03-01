@@ -82,7 +82,7 @@ services:
     container_name: better-together-redis
     command: redis-server
     volumes:
-      - redis:/data
+      - bt-redis:/data
 
   sidekiq:
     <<: *app-shared
