@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # This migration comes from better_together (originally 20241025150018)
 class MigrateUnencryptedMessageContentAndDropColumn < ActiveRecord::Migration[7.1]
   def change

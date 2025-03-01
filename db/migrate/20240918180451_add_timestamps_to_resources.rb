@@ -1,4 +1,6 @@
-class AddTimestampsToResources < ActiveRecord::Migration[7.1]
+# frozen_string_literal: true
+
+class AddTimestampsToResources < ActiveRecord::Migration[7.1] # rubocop:todo Style/Documentation
   def change
     default_time = Time.zone.now
     add_timestamps :resources, null: false, default: default_time, if_not_exists: true
