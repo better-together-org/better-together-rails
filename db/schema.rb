@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 20_250_227_164_349) do
+ActiveRecord::Schema[7.1].define(version: 20_250_228_160_427) do # rubocop:todo Metrics/BlockLength
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
   enable_extension "plpgsql"
@@ -131,7 +131,7 @@ ActiveRecord::Schema[7.1].define(version: 20_250_227_164_349) do
     t.string 'identifier', limit: 100, null: false
     t.boolean 'host', default: false, null: false
     t.boolean 'protected', default: false, null: false
-    t.string 'privacy', limit: 50, default: 'unlisted', null: false
+    t.string 'privacy', limit: 50, default: 'public', null: false
     t.string 'slug'
     t.uuid 'creator_id'
     t.string 'type', default: 'BetterTogether::Community', null: false
@@ -382,15 +382,30 @@ ActiveRecord::Schema[7.1].define(version: 20_250_227_164_349) do
     t.index ["locale"], name: "by_better_together_metrics_downloads_locale"
   end
 
-  create_table "better_together_metrics_link_clicks", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
-    t.integer "lock_version", default: 0, null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.string "url", null: false
-    t.string "page_url", null: false
-    t.string "locale", null: false
-    t.boolean "internal", default: true
-    t.datetime "clicked_at", null: false
+  create_table 'better_together_metrics_link_click_reports', id: :uuid, default: lambda {
+    'gen_random_uuid()'
+  }, force: :cascade do |t|
+    t.integer 'lock_version', default: 0, null: false
+    t.datetime 'created_at', null: false
+    t.datetime 'updated_at', null: false
+    t.jsonb 'filters', default: {}, null: false
+    t.boolean 'sort_by_total_clicks', default: false, null: false
+    t.string 'file_format', default: 'csv', null: false
+    t.jsonb 'report_data', default: {}, null: false
+    t.index ['filters'], name: 'index_better_together_metrics_link_click_reports_on_filters', using: :gin
+  end
+
+  create_table 'better_together_metrics_link_clicks', id: :uuid, default: lambda {
+    'gen_random_uuid()'
+  }, force: :cascade do |t|
+    t.integer 'lock_version', default: 0, null: false
+    t.datetime 'created_at', null: false
+    t.datetime 'updated_at', null: false
+    t.string 'url', null: false
+    t.string 'page_url', null: false
+    t.string 'locale', null: false
+    t.boolean 'internal', default: true
+    t.datetime 'clicked_at', null: false
   end
 
   create_table 'better_together_metrics_page_view_reports', id: :uuid, default: lambda {
