@@ -1,6 +1,5 @@
 GIT
   remote: https://github.com/better-together-org/community-engine-rails.git
-
   revision: dbaec3b3fedee9998f3abd9ffb890a07add42628
   branch: dev
   specs:
@@ -116,7 +115,6 @@ GEM
       rails-html-sanitizer (~> 1.6)
     active_storage_svg_sanitizer (0.1.0)
       rails (>= 5.2)
-
     active_storage_validations (2.0.2)
       activejob (>= 6.1.4)
       activemodel (>= 6.1.4)
@@ -480,7 +478,7 @@ GEM
     pundit (2.4.0)
       activesupport (>= 3.0.0)
     racc (1.8.1)
-    rack (3.1.10)
+    rack (3.1.11)
     rack-cors (2.0.2)
       rack (>= 2.0.0)
     rack-mini-profiler (3.3.1)
@@ -542,7 +540,7 @@ GEM
       psych (>= 4.0.0)
     redis (5.4.0)
       redis-client (>= 0.22.0)
-    redis-client (0.23.2)
+    redis-client (0.24.0)
       connection_pool
     reform (2.6.2)
       disposable (>= 0.5.0, < 1.0.0)
@@ -658,12 +656,12 @@ GEM
       activesupport (>= 3)
     shoulda-matchers (6.4.0)
       activesupport (>= 5.2.0)
-    sidekiq (7.3.9)
-      base64
-      connection_pool (>= 2.3.0)
-      logger
-      rack (>= 2.2.4)
-      redis-client (>= 0.22.2)
+    sidekiq (8.0.0)
+      connection_pool (>= 2.5.0)
+      json (>= 2.9.0)
+      logger (>= 1.6.2)
+      rack (>= 3.1.0)
+      redis-client (>= 0.23.2)
     simplecov (0.22.0)
       docile (~> 1.1)
       simplecov-html (~> 0.11)
@@ -688,8 +686,8 @@ GEM
     sync (0.5.0)
     term-ansicolor (1.8.0)
       tins (~> 1.0)
-    terminal-table (3.0.2)
-      unicode-display_width (>= 1.1.1, < 3)
+    terminal-table (4.0.0)
+      unicode-display_width (>= 1.1.1, < 4)
     thor (1.3.2)
     thread_safe (0.3.6)
     tilt (2.6.0)
@@ -733,7 +731,6 @@ GEM
       nokogiri (~> 1.6)
       rubyzip (>= 1.3.0)
       selenium-webdriver (~> 4.0)
-    webrick (1.9.0)
     websocket (1.2.11)
     websocket-driver (0.7.7)
       base64
@@ -786,7 +783,7 @@ DEPENDENCIES
   sentry-ruby
   shoulda-callback-matchers
   shoulda-matchers
-  sidekiq (~> 7.3.9)
+  sidekiq (~> 8.0.0)
   simplecov
   spring
   spring-watcher-listen (~> 2.1.0)
