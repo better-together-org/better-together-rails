@@ -11,7 +11,7 @@ x-env-info: &env-info
 
 x-app-shared: &app-shared
   <<: *env-info
-  image: better-together/better-together-rails:latest
+  image: better-together/nl-venues-rails:latest
 
 services:
   app: &app

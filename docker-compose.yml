@@ -9,10 +9,10 @@
 # Sidekiq
 
 volumes:
-  bt-bundler-gems:
-  bt-db-data:
-  bt-elasticsearch:
-  bt-redis:
+  nl-venues-bundler-gems:
+  nl-venues-db-data:
+  nl-venues-elasticsearch:
+  nl-venues-redis:
 
 x-env-info: &env-info
   env_file:
@@ -20,12 +20,12 @@ x-env-info: &env-info
 
 x-app-shared: &app-shared
   <<: *env-info
-  image: better-together/better-together-rails:dev
+  image: nl-venues/nl-venues-rails:dev
   volumes:
     - .:/bt
     # - ../pundit-resources:/pundit-resources
     - ../community-engine-rails:/community-engine
-    - bt-bundler-gems:/usr/local/bundle/
+    - nl-venues-bundler-gems:/usr/local/bundle/
   depends_on:
     - elasticsearch
     - db
@@ -35,7 +35,7 @@ x-app-shared: &app-shared
 services:
   app: &app
     <<: *app-shared
-    container_name: better-together-app
+    container_name: nl-venues-app
     build: # "context" and "dockerfile" fields have to be under "build"
       context: .
       dockerfile: ./Dockerfile.dev
@@ -44,45 +44,45 @@ services:
       - "3001:3001"
   db:
     <<: *env-info
-    container_name: better-together-db
+    container_name: nl-venues-db
     image: postgis/postgis:latest
     volumes:
-      - bt-db-data:/var/lib/postgresql/data
+      - nl-venues-db-data:/var/lib/postgresql/data
     ports:
-      - "5435:5432"
+      - "5437:5432"
 
   elasticsearch:
-    container_name: better-together-elasticsearch
+    container_name: nl-venues-elasticsearch
     image: elasticsearch:7.17.23
     environment:
       - node.name=elasticsearch
-      - cluster.name=better-together-es
+      - cluster.name=nl-venues-es
       - discovery.seed_hosts=elasticsearch
       - discovery.type=single-node
       - bootstrap.memory_lock=true
       - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
     ports:
-      - 9202:9200
+      - 9207:9200
     ulimits:
       memlock:
         soft: -1
         hard: -1
     volumes:
-      - bt-elasticsearch:/usr/share/elasticsearch/data
+      - nl-venues-elasticsearch:/usr/share/elasticsearch/data
 
   mail-server:
     image: mailhog/mailhog
     container_name: new-to-nl-smtp
     ports:
-      - '1025:1025'
-      - '8026:8025'
+      - '1027:1025'
+      - '8027:8025'
 
   redis:
     image: 'redis:7.2-alpine'
-    container_name: better-together-redis
+    container_name: nl-venues-redis
     command: redis-server
     volumes:
-      - bt-redis:/data
+      - nl-venues-redis:/data
 
   sidekiq:
     <<: *app-shared

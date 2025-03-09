@@ -24,7 +24,7 @@ jobs:
           - "9200:9200"
         env:
           "node.name": elasticsearch
-          "cluster.name": better-together-es
+          "cluster.name": nl-venues-es
           "discovery.seed_hosts": elasticsearch
           "discovery.type": single-node
           "bootstrap.memory_lock": true

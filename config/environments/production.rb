@@ -65,7 +65,7 @@ Rails.application.configure do # rubocop:todo Metrics/BlockLength
 
   # Use a real queuing backend for Active Job (and separate queues per environment).
   # config.active_job.queue_adapter     = :resque
-  # config.active_job.queue_name_prefix = "better_together_production"
+  # config.active_job.queue_name_prefix = "nl_venues_production"
 
   config.action_mailer.perform_caching = false
 
@@ -99,11 +99,11 @@ Rails.application.configure do # rubocop:todo Metrics/BlockLength
   config.active_record.dump_schema_after_migration = false
 
   # Ensure that secure cookies are used
-  config.session_store :cookie_store, key: '_better_together_session', secure: Rails.env.production?
+  config.session_store :cookie_store, key: '_nl_venues_session', secure: Rails.env.production?
 
   # Use a real queuing backend for Active Job (and separate queues per environment).
   config.active_job.queue_adapter     = :sidekiq
-  config.active_job.queue_name_prefix = 'better_together_production'
+  config.active_job.queue_name_prefix = 'nl_venues_production'
 
   # Force all access to the app over SSL, use Strict-Transport-Security, and use secure cookies.
   # Ensure requests are considered secure if they come through a reverse proxy with the correct headers
