@@ -1,14 +1,13 @@
 GIT
   remote: https://github.com/better-together-org/community-engine-rails.git
-  revision: b7c0c68472a64bf82c0050f8908185ce371c860c
-  branch: dev
+  revision: d9187f2b7c3eb92214561138937f4081f62b62f6
+  branch: main
   specs:
     better_together (0.6.0)
       active_storage_svg_sanitizer
       active_storage_validations
       activerecord-import
       activerecord-postgis-adapter
-      acts_as_tenant
       bootstrap (~> 5.3.2)
       dartsass-sprockets (~> 3.1)
       devise
@@ -29,7 +28,7 @@ GIT
       mobility-actiontext (~> 1.1)
       noticed
       premailer-rails
-      pundit (>= 2.1, < 2.5)
+      pundit (>= 2.1, < 2.6)
       pundit-resources
       rack-cors (>= 1.1.1, < 2.1.0)
       rack-mini-profiler
@@ -155,8 +154,6 @@ GEM
       mutex_m
       securerandom (>= 0.3)
       tzinfo (~> 2.0)
-    acts_as_tenant (1.0.1)
-      rails (>= 6.0)
     addressable (2.8.7)
       public_suffix (>= 2.0.2, < 7.0)
     asset_sync (2.19.2)
