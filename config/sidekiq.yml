@@ -15,6 +15,13 @@ test:
     - default
     - mailers
 
+staging:
+  <<: *default
+  queues:
+    - [nl_venues_staging_default, 1]   # Default queue with priority 1
+    - [nl_venues_staging_mailers, 2]   # Mailers queue with priority 2
+    - [nl_venues_staging_metrics, 3]   # Metrics queue with priority 3 (lower priority)
+
 production:
   <<: *default
   queues:

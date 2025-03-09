@@ -17,6 +17,7 @@ volumes:
 x-env-info: &env-info
   env_file:
     - './.env.dev'
+    # - './.env'
 
 x-app-shared: &app-shared
   <<: *env-info
@@ -24,7 +25,7 @@ x-app-shared: &app-shared
   volumes:
     - .:/bt
     # - ../pundit-resources:/pundit-resources
-    - ../community-engine-rails:/community-engine
+    - ../../better-together/community-engine-rails:/community-engine
     - nl-venues-bundler-gems:/usr/local/bundle/
   depends_on:
     - elasticsearch
@@ -72,7 +73,7 @@ services:
 
   mail-server:
     image: mailhog/mailhog
-    container_name: new-to-nl-smtp
+    container_name: nl-venues-smtp
     ports:
       - '1027:1025'
       - '8027:8025'
@@ -86,7 +87,7 @@ services:
 
   sidekiq:
     <<: *app-shared
-    container_name: new-to-nl-sidekiq
+    container_name: nl-venues-sidekiq
     command: bundle exec sidekiq -C config/sidekiq.yml
     depends_on:
       - app
