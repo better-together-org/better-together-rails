@@ -1,9 +1,9 @@
 GIT
   remote: https://github.com/better-together-org/community-engine-rails.git
-  revision: d9187f2b7c3eb92214561138937f4081f62b62f6
+  revision: 5a0a856bdfeb45277d5fa3e981b85a4bb158c3e3
   branch: main
   specs:
-    better_together (0.6.0)
+    better_together (0.7.1)
       active_storage_svg_sanitizer
       active_storage_validations
       activerecord-import
@@ -229,7 +229,7 @@ GEM
       term-ansicolor
       thor
     crass (1.0.6)
-    css_parser (1.21.0)
+    css_parser (1.21.1)
       addressable
     dartsass-sprockets (3.2.0)
       railties (>= 4.0.0)
@@ -254,8 +254,9 @@ GEM
       railties (>= 4.1.0)
       responders
       warden (~> 1.2.3)
-    devise-i18n (1.12.1)
+    devise-i18n (1.13.0)
       devise (>= 4.9.0)
+      rails-i18n
     devise-jwt (0.12.1)
       devise (~> 4.0)
       warden-jwt_auth (~> 0.10)
@@ -476,7 +477,7 @@ GEM
     public_suffix (6.0.1)
     puma (6.6.0)
       nio4r (~> 2.0)
-    pundit (2.4.0)
+    pundit (2.5.0)
       activesupport (>= 3.0.0)
     racc (1.8.1)
     rack (3.1.11)
@@ -749,7 +750,7 @@ DEPENDENCIES
   aws-sdk-s3
   bcrypt (~> 3.1.20)
   better_errors
-  better_together (~> 0.6.0)!
+  better_together (~> 0.7.1)!
   binding_of_caller
   bootsnap (>= 1.7.0)
   brakeman
