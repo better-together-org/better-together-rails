@@ -12,7 +12,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 20_250_309_023_156) do # rubocop:todo Metrics/BlockLength
+ActiveRecord::Schema[7.1].define(version: 20_250_311_202_527) do # rubocop:todo Metrics/BlockLength
   # These are extensions that must be enabled in order to support this database
   enable_extension 'pgcrypto'
   enable_extension 'plpgsql'
@@ -666,7 +666,7 @@ ActiveRecord::Schema[7.1].define(version: 20_250_309_023_156) do # rubocop:todo 
     t.datetime 'created_at', null: false
     t.datetime 'updated_at', null: false
     t.uuid 'community_role_id', null: false
-    t.string 'invitee_email', null: false
+    t.string 'invitee_email'
     t.uuid 'invitable_id', null: false
     t.uuid 'invitee_id'
     t.uuid 'inviter_id', null: false
@@ -678,6 +678,8 @@ ActiveRecord::Schema[7.1].define(version: 20_250_309_023_156) do # rubocop:todo 
     t.datetime 'valid_until'
     t.datetime 'last_sent'
     t.datetime 'accepted_at'
+    t.string 'type', default: 'BetterTogether::PlatformInvitation', null: false
+    t.integer 'session_duration_mins', default: 30, null: false
     t.index ['community_role_id'], name: 'platform_invitations_by_community_role'
     t.index %w[invitable_id status], name: 'index_platform_invitations_on_invitable_id_and_status'
     t.index ['invitable_id'], name: 'platform_invitations_by_invitable'
