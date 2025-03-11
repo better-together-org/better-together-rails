@@ -1,25 +1,28 @@
 
 // Better Together colour palette
 
-$brand-accent: #42b983;
+$brand-accent: #FFB802;
+$brand-text-dark: #00547E;
+$brand-text-light: #f0f0f0;
 
-$header-footer-bg: lighten($brand-accent, 30%);
+$header-footer-bg: #FFF;
 
 // Override the color variables in the host application
-$primary: $brand-accent;
+$primary: $brand-text-dark;
+$secondary: $brand-accent;
 // $secondary: $blue-2; /* Change to a different green */
 // $success: $green-2;
 // $info: $green-1;
 // $warning: #C9B947;
 // $danger: #BF4A47;
-$text-opposite-theme-color: #222; /* Darker text */
-$background-opposite-theme-color: #f0f0f0; /* Lighter background */
-$light-background-text-color: #222;
-$dark-background-text-color: #f0f0f0;
+$text-opposite-theme-color: $brand-text-dark; /* Darker text */
+$background-opposite-theme-color: $brand-text-light; /* Lighter background */
+$light-background-text-color: $brand-text-dark;
+$dark-background-text-color: $brand-text-light;
 
 /* Define SCSS variables for common color properties */
-// $slider-track-color: lighten($secondary, 10%);
-// $slider-thumb-border-color: $primary;
+$slider-track-color: lighten($secondary, 10%);
+$slider-thumb-border-color: $primary;
 // $slider-thumb-color: $beige;
 $slider-track-height: 6px;
 $slider-thumb-size: 15px;
@@ -99,7 +102,7 @@ textarea.form-control {
 
     .dropdown-item:hover, .dropdown-item:active {
       color: $light-background-text-color;
-      // background-color: $beige;
+      // background-color: $header-footer-bg;
     }
   }
 }
@@ -138,7 +141,7 @@ textarea.form-control {
 .navbar-nav .nav-link.active,
 .navbar-nav .nav-link:hover,
 .navbar-nav .nav-link:focus {
-  border-bottom: 4px solid $primary; /* Add underline on hover/focus */
+  border-bottom: 4px solid $secondary; /* Add underline on hover/focus */
 }
 
 /* Animation keyframes for shrinking and growing */
@@ -190,7 +193,7 @@ a i.fas, a i.fa {
 /* Custom Turbo Loading Bar Styles */
 .turbo-progress-bar {
   height: 5px; /* Change the height of the loading bar */
-  background: $header-footer-bg; /* Change the color of the loading bar */
+  background: $secondary; /* Change the color of the loading bar */
   transition: width 0.2s ease-out, opacity 0.2s ease-out; /* Smooth transitions */
 }
 
@@ -201,7 +204,7 @@ a i.fas, a i.fa {
   left: 0;
   width: 0%; /* Initial width (will expand as page scrolls) */
   height: 5px; /* Same height as Turbo's default bar */
-  background: $header-footer-bg; /* You can adjust this color to match your theme */
+  background: $secondary; /* You can adjust this color to match your theme */
   z-index: 9999; /* Ensures it stays on top of other elements */
   transition: width 0.2s ease; /* Smooth progress bar transitions */
 }
@@ -213,7 +216,7 @@ a {
 
 a:hover,
 a.active {
-  color: $success; /* Adjust hover color */
+  color: lighten($primary, 20%); /* Adjust hover color */
 }
 
 .card {
@@ -221,7 +224,7 @@ a.active {
 }
 
 .card.membership:hover,
-.card.shadow-sm:hover {
+.card.hover-effect:hover {
   transform: translateY(-10px); /* Lift the card on hover */
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15); /* Add shadow */
 }
