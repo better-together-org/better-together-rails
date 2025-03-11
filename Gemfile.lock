@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/better-together-org/community-engine-rails.git
-  revision: 5a0a856bdfeb45277d5fa3e981b85a4bb158c3e3
+  revision: 786d77e772eddb3ab3450ede751e52befd7d5adf
   branch: main
   specs:
     better_together (0.7.1)
@@ -229,7 +229,7 @@ GEM
       term-ansicolor
       thor
     crass (1.0.6)
-    css_parser (1.21.0)
+    css_parser (1.21.1)
       addressable
     dartsass-sprockets (3.2.0)
       railties (>= 4.0.0)
@@ -480,7 +480,7 @@ GEM
     pundit (2.5.0)
       activesupport (>= 3.0.0)
     racc (1.8.1)
-    rack (3.1.11)
+    rack (3.1.12)
     rack-cors (2.0.2)
       rack (>= 2.0.0)
     rack-mini-profiler (3.3.1)
