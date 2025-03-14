@@ -49,7 +49,7 @@ services:
     volumes:
       - bt-db-data:/var/lib/postgresql/data
     ports:
-      - "5435:5432"
+      - "5431:5432"
 
   elasticsearch:
     container_name: better-together-elasticsearch
@@ -62,7 +62,7 @@ services:
       - bootstrap.memory_lock=true
       - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
     ports:
-      - 9202:9200
+      - 9203:9200
     ulimits:
       memlock:
         soft: -1
