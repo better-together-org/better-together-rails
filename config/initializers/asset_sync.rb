@@ -4,16 +4,16 @@ if defined?(AssetSync)
   AssetSync.configure do |config|
     config.fog_provider = 'AWS'
 
-    config.aws_access_key_id = Rails.application.credentials.dig(:aws, :access_key_id)
-    config.aws_secret_access_key = Rails.application.credentials.dig(:aws, :secret_access_key)
+    config.aws_access_key_id = ENV['AWS_ACCESS_KEY_ID']
+    config.aws_secret_access_key = ENV['AWS_SECRET_ACCESS_KEY']
 
     config.aws_session_token = ENV['AWS_SESSION_TOKEN'] if ENV.key?('AWS_SESSION_TOKEN')
 
     # Ensure that aws_iam_roles is set to false if not explicitly required
     config.aws_iam_roles = ENV['AWS_IAM_ROLES'] == 'true'
 
-    config.fog_directory = ENV['S3_BUCKET']
-    config.fog_region = ENV['S3_REGION']
+    config.fog_directory = ENV['FOG_DIRECTORY']
+    config.fog_region = ENV['FOG_REGION']
 
     # Additional configurations (commented out by default)
     # config.aws_reduced_redundancy = true
@@ -22,7 +22,7 @@ if defined?(AssetSync)
     # config.fog_host = "s3.amazonaws.com"
     # config.fog_port = "9000"
     config.fog_scheme = 'https'
-    # config.cdn_distribution_id = ENV['CDN_DISTRIBUTION_ID'] if ENV.key?('CDN_DISTRIBUTION_ID')
+    config.cdn_distribution_id = ENV['CDN_DISTRIBUTION_ID'] if ENV.key?('CDN_DISTRIBUTION_ID')
     # config.invalidate = ['file1.js']
     # config.existing_remote_files = "keep"
     # config.gzip_compression = true
