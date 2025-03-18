@@ -18,6 +18,6 @@ test:
 production:
   <<: *default
   queues:
-    - [new_to_nl_production_default, 1]   # Default queue with priority 1
-    - [new_to_nl_production_mailers, 2]   # Mailers queue with priority 2
-    - [new_to_nl_production_metrics, 3]   # Metrics queue with priority 3 (lower priority)
+    - [better_together_production_default, 1]   # Default queue with priority 1
+    - [better_together_production_mailers, 2]   # Mailers queue with priority 2
+    - [better_together_production_metrics, 3]   # Metrics queue with priority 3 (lower priority)
