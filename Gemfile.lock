@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/better-together-org/community-engine-rails.git
-  revision: 88310b82856b8dfd53b410e12a7e7f58c6ab8fc5
+  revision: c8a8f4c4b1d9e856de7a11542be131e89cb0db8c
   branch: enhancement/credentials
   specs:
     better_together (0.7.1)
@@ -626,7 +626,7 @@ GEM
     rubocop-rspec (3.5.0)
       lint_roller (~> 1.1)
       rubocop (~> 1.72, >= 1.72.1)
-    ruby-openai (7.4.0)
+    ruby-openai (8.0.0)
       event_stream_parser (>= 0.3.0, < 2.0.0)
       faraday (>= 1)
       faraday-multipart (>= 1)
@@ -635,8 +635,8 @@ GEM
       ffi (~> 1.12)
       logger
     rubyzip (2.4.1)
-    sass-embedded (1.85.1-x86_64-linux-gnu)
-      google-protobuf (~> 4.29)
+    sass-embedded (1.86.0-x86_64-linux-gnu)
+      google-protobuf (~> 4.30)
     sassc (2.4.0)
       ffi (~> 1.9)
     sassc-embedded (1.80.4)
