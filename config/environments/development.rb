@@ -50,7 +50,7 @@ Rails.application.configure do # rubocop:todo Metrics/BlockLength
   # Local MailHog config
   config.action_mailer.smtp_settings = {
     address: 'mail-server', # This matches the service name in docker-compose
-    port: 1025,
+    port: 1026,
     domain: 'localhost',
     enable_starttls_auto: false
   }
