@@ -12,7 +12,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 20_250_311_203_843) do # rubocop:todo Metrics/BlockLength
+ActiveRecord::Schema[7.1].define(version: 20_250_322_215_751) do # rubocop:todo Metrics/BlockLength
   # These are extensions that must be enabled in order to support this database
   enable_extension 'pgcrypto'
   enable_extension 'plpgsql'
@@ -117,6 +117,23 @@ ActiveRecord::Schema[7.1].define(version: 20_250_311_203_843) do # rubocop:todo 
     t.uuid 'author_id', null: false
     t.index ['author_id'], name: 'by_authorship_author'
     t.index %w[authorable_type authorable_id], name: 'by_authorship_authorable'
+  end
+
+  create_table 'better_together_calendars', id: :uuid, default: -> { 'gen_random_uuid()' }, force: :cascade do |t|
+    t.integer 'lock_version', default: 0, null: false
+    t.datetime 'created_at', null: false
+    t.datetime 'updated_at', null: false
+    t.uuid 'community_id', null: false
+    t.uuid 'creator_id'
+    t.string 'identifier', limit: 100, null: false
+    t.string 'locale', limit: 5, default: 'en', null: false
+    t.string 'privacy', limit: 50, default: 'private', null: false
+    t.boolean 'protected', default: false, null: false
+    t.index ['community_id'], name: 'by_better_together_calendars_community'
+    t.index ['creator_id'], name: 'by_better_together_calendars_creator'
+    t.index ['identifier'], name: 'index_better_together_calendars_on_identifier', unique: true
+    t.index ['locale'], name: 'by_better_together_calendars_locale'
+    t.index ['privacy'], name: 'by_better_together_calendars_privacy'
   end
 
   create_table 'better_together_categories', id: :uuid, default: -> { 'gen_random_uuid()' }, force: :cascade do |t|
@@ -298,6 +315,26 @@ ActiveRecord::Schema[7.1].define(version: 20_250_311_203_843) do # rubocop:todo 
     t.index ['continent_id'], name: 'country_continent_by_continent'
     t.index %w[country_id continent_id], name: 'index_country_continents_on_country_and_continent', unique: true
     t.index ['country_id'], name: 'country_continent_by_country'
+  end
+
+  create_table 'better_together_geography_maps', id: :uuid, default: -> { 'gen_random_uuid()' }, force: :cascade do |t|
+    t.integer 'lock_version', default: 0, null: false
+    t.datetime 'created_at', null: false
+    t.datetime 'updated_at', null: false
+    t.uuid 'creator_id'
+    t.string 'identifier', limit: 100, null: false
+    t.string 'locale', limit: 5, default: 'en', null: false
+    t.string 'privacy', limit: 50, default: 'private', null: false
+    t.boolean 'protected', default: false, null: false
+    t.geography 'center', limit: { srid: 4326, type: 'st_point', geographic: true },
+                          default: 'POINT (-57.9474 48.9517)', null: false
+    t.integer 'zoom', default: 13, null: false
+    t.geography 'viewport', limit: { srid: 4326, type: 'st_polygon', geographic: true }
+    t.jsonb 'metadata', default: {}, null: false
+    t.index ['creator_id'], name: 'by_better_together_geography_maps_creator'
+    t.index ['identifier'], name: 'index_better_together_geography_maps_on_identifier', unique: true
+    t.index ['locale'], name: 'by_better_together_geography_maps_locale'
+    t.index ['privacy'], name: 'by_better_together_geography_maps_privacy'
   end
 
   create_table 'better_together_geography_region_settlements', id: :uuid, default: lambda {
@@ -965,6 +1002,8 @@ ActiveRecord::Schema[7.1].define(version: 20_250_311_203_843) do # rubocop:todo 
   add_foreign_key 'better_together_addresses', 'better_together_contact_details', column: 'contact_detail_id'
   add_foreign_key 'better_together_ai_log_translations', 'better_together_people', column: 'initiator_id'
   add_foreign_key 'better_together_authorships', 'better_together_people', column: 'author_id'
+  add_foreign_key 'better_together_calendars', 'better_together_communities', column: 'community_id'
+  add_foreign_key 'better_together_calendars', 'better_together_people', column: 'creator_id'
   add_foreign_key 'better_together_communities', 'better_together_people', column: 'creator_id'
   add_foreign_key 'better_together_content_blocks', 'better_together_people', column: 'creator_id'
   add_foreign_key 'better_together_content_page_blocks', 'better_together_content_blocks', column: 'block_id'
@@ -982,6 +1021,7 @@ ActiveRecord::Schema[7.1].define(version: 20_250_311_203_843) do # rubocop:todo 
                   column: 'continent_id'
   add_foreign_key 'better_together_geography_country_continents', 'better_together_geography_countries',
                   column: 'country_id'
+  add_foreign_key 'better_together_geography_maps', 'better_together_people', column: 'creator_id'
   add_foreign_key 'better_together_geography_region_settlements', 'better_together_geography_regions',
                   column: 'region_id'
   add_foreign_key 'better_together_geography_region_settlements', 'better_together_geography_settlements',
