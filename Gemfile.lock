@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/better-together-org/community-engine-rails.git
-  revision: 558781f2e74ee92ccbb470a043c20281d2f48f28
+  revision: e3e7815907433b716fa441a3852a562294814d6e
   branch: main
   specs:
     better_together (0.7.1)
@@ -445,7 +445,7 @@ GEM
       net-protocol
     netrc (0.11.0)
     nio4r (2.7.4)
-    nokogiri (1.18.5-x86_64-linux-gnu)
+    nokogiri (1.18.6-x86_64-linux-gnu)
       racc (~> 1.4)
     noticed (2.6.0)
       rails (>= 6.1.0)
