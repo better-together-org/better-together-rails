@@ -1,0 +1,112 @@
+<div class="container mt-4">
+  <header class="mb-4 text-center">
+    <h2 class="fw-bold"><%= @venue.name %></h2>
+    <p class="">
+      59 Main St, Pasadena, NL A0L 1K0 | <a href="#map" class="text-decoration-none">View on Map</a>
+    </p>
+    <p class=" share-label">Share venue:</p>
+    <div class="d-flex justify-content-center gap-2">
+      <a href="#" aria-label="Share on Facebook" class="btn btn-outline-primary btn-sm"><i class="fab fa-facebook"></i></a>
+      <a href="#" aria-label="Share on Twitter" class="btn btn-outline-info btn-sm"><i class="fab fa-twitter"></i></a>
+      <a href="#" aria-label="Share on LinkedIn" class="btn btn-outline-secondary btn-sm"><i class="fab fa-linkedin"></i></a>
+      <a href="#" aria-label="Share on Reddit" class="btn btn-outline-danger btn-sm"><i class="fab fa-reddit"></i></a>
+    </div>
+  </header>
+
+  <section class="images mb-4">
+    <div class="row g-3">
+      <div class="col-12 col-sm-6">
+        <img src="https://nlvenues.com/wp-content/uploads/2023/09/359237403_592820606333791_7551002784846150677_n-Lori-Lee-Pike-1024x768.jpeg" alt="Café 59" class="img-fluid rounded mb-3">
+      </div>
+      <div class="col-6 col-sm-3 d-flex flex-wrap">
+        <a href="https://nlvenues.com/wp-content/uploads/2023/09/343480198_1271109660509629_2381931045303721756_n-Lori-Lee-Pike.jpeg" class="mb-2"></a>
+          <img src="https://nlvenues.com/wp-content/uploads/2023/09/343480198_1271109660509629_2381931045303721756_n-Lori-Lee-Pike.jpeg" alt="Café 59" class="img-thumbnail">
+        </a>
+        <a href="https://nlvenues.com/wp-content/uploads/2023/09/343462900_561753222610444_4647673567191326510_n-Lori-Lee-Pike.jpeg" class="mb-2"></a>
+          <img src="https://nlvenues.com/wp-content/uploads/2023/09/343462900_561753222610444_4647673567191326510_n-Lori-Lee-Pike.jpeg" alt="Café 59" class="img-thumbnail">
+        </a>
+      </div>
+      <div class="col-6 col-sm-3 d-flex flex-wrap">
+        <a href="https://nlvenues.com/wp-content/uploads/2023/09/375656575_620401760242342_2811504586947600514_n-Lori-Lee-Pike.jpeg" class="mb-2">
+          <img src="https://nlvenues.com/wp-content/uploads/2023/09/375656575_620401760242342_2811504586947600514_n-Lori-Lee-Pike.jpeg" alt="Café 59" class="img-thumbnail">
+        </a>
+        <a href="https://nlvenues.com/wp-content/uploads/2023/09/359466688_593295312952987_6224543849179298349_n-Lori-Lee-Pike.jpeg" class="mb-2">
+          <img src="https://nlvenues.com/wp-content/uploads/2023/09/359466688_593295312952987_6224543849179298349_n-Lori-Lee-Pike.jpeg" alt="Café 59" class="img-thumbnail">
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section class="description mb-4">
+    <div class="row">
+      <div class="col-md-8">
+        <h3 class="mb-3"><i class="fas fa-info-circle text-warning"></i> Venue Description</h3>
+        <%= @venue.description.presence || 'Nothing yet' %>
+
+        <h3 class="mt-4 mb-3"><i class="fas fa-address-book text-warning"></i> Contacts</h3>
+        <ul class="list-unstyled">
+          <li><strong>Lori Lee Pike</strong> - lorileepike@gmail.com - +1 (709) 660-4855</li>
+          <li><strong>Steve Morton</strong> - steve@cafe59.ca - +1 (709) 394-5959</li>
+        </ul>
+      </div>
+      <div class="col-md-4">
+        <div class="card shadow-sm">
+          <div class="card-body">
+            <h3 class="card-title"><i class="fas fa-list text-warning"></i> Quick Facts</h3>
+            <ul class="list-group list-group-flush">
+              <li class="list-group-item"><strong>Capacity:</strong> 52</li>
+              <li class="list-group-item"><strong>Sound Tech:</strong> No</li>
+              <li class="list-group-item"><strong>Lighting Tech:</strong> No</li>
+              <li class="list-group-item"><strong>Accessible:</strong> Yes</li>
+              <li class="list-group-item"><strong>Box Office:</strong> No</li>
+              <li class="list-group-item"><strong>Ticket Sales:</strong> Advance</li>
+            </ul>
+            <div class="mt-3">
+              <h3 class="mb-2"><i class="fas fa-globe text-warning"></i> Online</h3>
+              <p><a href="http://www.cafe59.ca" target="_blank" class="btn btn-primary btn-sm">Venue Website</a></p>
+              <div class="d-flex gap-2">
+                <a href="https://www.facebook.com/cafe59pasadena" class="btn btn-outline-primary btn-sm"><i class="fab fa-facebook"></i></a>
+                <a href="https://www.instagram.com/cafe59pasadena" class="btn btn-outline-danger btn-sm"><i class="fab fa-instagram"></i></a>
+                <a href="#" class="btn btn-outline-info btn-sm"><i class="fab fa-twitter"></i></a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="financial">
+    <h3>Financial</h3>
+    <p><strong>Types of deals:</strong> Guarantee</p>
+    <p><strong>Accommodations provided:</strong> No</p>
+    <p><strong>Additional Information:</strong> $200 for solo artist; $300 for duo artist...</p>
+
+    <h3>Marketing</h3>
+    <p>Posters, social media posts, in house TV screens</p>
+
+    <h3>Tech & Equipment</h3>
+    <p>Soundboard, 4 Yamaha speakers, monitor, 2 mic stands, music stand</p>
+
+    <h3>Resources & Downloads</h3>
+    <a href="#"><i class="fas fa-arrow-alt-circle-down"></i> Tech Info</a><br>
+    <a href="#"><i class="fas fa-arrow-alt-circle-down"></i> Stage Info</a><br>
+    <a href="#"><i class="fas fa-arrow-alt-circle-down"></i> Seating Chart</a>
+  </section>
+
+  <section class="map">
+    <h3>Location Map</h3>
+    <% map = BetterTogether::Geography::Map.new %>
+    <div class="map" id="<%= dom_id(@venue, :map) %>"
+        data-controller="better_together--map"
+        data-better_together--map-center-value="<%= map.center_for_leaflet %>"
+        data-better_together--map-zoom-value="<%= map.zoom %>"
+        data-better_together--map-extent-value="<%= map.viewport %>">
+      <div class="map-controls">
+        <button data-action="better_together--map#switchToOSM">OpenStreetMap</button>
+        <button data-action="better_together--map#switchToSatellite">Satellite</button>
+        <button data-action="better_together--map#enableGeolocation">Geolocate Me</button>
+      </div>
+    </div>
+  </section>
+</div>

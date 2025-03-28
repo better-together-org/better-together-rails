@@ -8,6 +8,8 @@ Rails.application.routes.draw do
         locale: /#{I18n.available_locales.join('|')}/ do
     authenticated :user do
     end
+
+    resources :venues
   end
 
   root to: redirect("/#{I18n.default_locale}")

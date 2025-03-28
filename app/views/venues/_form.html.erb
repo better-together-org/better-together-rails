@@ -1,0 +1,74 @@
+<%= form_with(model: venue, class: 'form', multipart: true, id: dom_id(venue, 'form'), data: { controller: "form-validation" }) do |form| %>
+  <% content_for :resource_toolbar do %>
+    <div class="btn-toolbar mb-3" role="toolbar" aria-label="Toolbar with button groups">
+      <div class="btn-group me-2" role="group">
+        <%= link_to "Back to Venues", venues_path, class: 'btn btn-secondary' %>
+      </div>
+      <div class="btn-group me-2" role="group">
+        <%= form.submit "Save Venue", class: 'btn btn-primary' %>
+      </div>
+    </div>
+  <% end %>
+
+  <%= yield :resource_toolbar %>
+
+  <% if venue.errors.any? %>
+    <div class="alert alert-danger">
+      <h4>Please correct the following errors:</h4>
+      <ul>
+        <% venue.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="row mb-3 row-cols-1 row-cols-sm-2">
+    <!-- Translatable Name Field -->
+    <div class="col mb-3 pb-3 border-bottom">
+      <%= render partial: 'better_together/shared/translated_string_field', locals: { model: venue, form: form, attribute: 'name' } %>
+      <small class="form-text text-muted mt-2">Enter the venue name.</small>
+    </div>
+
+    <!-- Translatable Description Field -->
+    <div class="col mb-3 pb-3 border-bottom">
+      <%= render partial: 'better_together/shared/translated_rich_text_field', locals: { model: venue, form: form, attribute: 'description' } %>
+      <small class="form-text text-muted mt-2">Enter a description for the venue.</small>
+    </div>
+
+    <!-- Privacy Field -->
+    <div class="col mb-3 pb-3 border-bottom">
+      <%= form.label :privacy %>
+      <%= privacy_field(form:, klass: Venue) %>
+      <% if venue.errors[:privacy].any? %>
+        <div class="invalid-feedback">
+          <%= venue.errors[:privacy].join(", ") %>
+        </div>
+      <% end %>
+    </div>
+
+    <!-- Building Association Field -->
+    <div class="col mb-3 pb-3 border-bottom">
+      <%= form.label :building_id, 'Building' %>
+      <%= form.collection_select :building_id, BetterTogether::Infrastructure::Building.all, :id, :name, { include_blank: true }, { class: "form-select#{' is-invalid' if venue.errors[:building_id].any?}" } %>
+      <% if venue.errors[:building_id].any? %>
+        <div class="invalid-feedback">
+          <%= venue.errors[:building_id].join(", ") %>
+        </div>
+      <% end %>
+    </div>
+
+    <!-- Featured Image Field -->
+    <div class="col mb-3 pb-3 border-bottom">
+      <%= form.label :featured_image, 'Featured Image' %>
+      <%= form.file_field :featured_image, class: "form-control#{' is-invalid' if venue.errors[:featured_image].any?}" %>
+      <% if venue.errors[:featured_image].any? %>
+        <div class="invalid-feedback">
+          <%= venue.errors[:featured_image].join(", ") %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+
+  <%= yield :resource_toolbar %>
+<% end %>
