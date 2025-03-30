@@ -1,3 +1,6 @@
+
+<% content_for :page_title, @venue %>
+
 <div class="container mt-4">
   <header class="mb-4 text-center">
     <h2 class="fw-bold"><%= @venue.name %></h2>
@@ -18,13 +21,8 @@
     <p class="">
       <%= @venue.primary_address.to_formatted_s(excluded: %i[postal_code country_name]) %> | <a href="#map" class="text-decoration-none">View on Map</a>
     </p>
-    <p class=" share-label">Share venue:</p>
-    <div class="d-flex justify-content-center gap-2">
-      <a href="#" aria-label="Share on Facebook" class="btn btn-outline-primary btn-sm"><i class="fab fa-facebook"></i></a>
-      <a href="#" aria-label="Share on Twitter" class="btn btn-outline-info btn-sm"><i class="fab fa-twitter"></i></a>
-      <a href="#" aria-label="Share on LinkedIn" class="btn btn-outline-secondary btn-sm"><i class="fab fa-linkedin"></i></a>
-      <a href="#" aria-label="Share on Reddit" class="btn btn-outline-danger btn-sm"><i class="fab fa-reddit"></i></a>
-    </div>
+
+    <%= share_buttons(shareable: @venue) %>
   </header>
 
   <section class="images mb-4">

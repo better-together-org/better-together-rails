@@ -12,7 +12,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 20_250_329_183_609) do
+ActiveRecord::Schema[7.1].define(version: 20_250_330_131_920) do
   # These are extensions that must be enabled in order to support this database
   enable_extension 'pgcrypto'
   enable_extension 'plpgsql'
@@ -471,6 +471,8 @@ ActiveRecord::Schema[7.1].define(version: 20_250_329_183_609) do
     t.string 'privacy', limit: 50, default: 'private', null: false
     t.integer 'floors_count', default: 0, null: false
     t.integer 'rooms_count', default: 0, null: false
+    t.uuid 'address_id'
+    t.index ['address_id'], name: 'index_better_together_infrastructure_buildings_on_address_id'
     t.index ['community_id'], name: 'by_better_together_infrastructure_buildings_community'
     t.index ['creator_id'], name: 'by_better_together_infrastructure_buildings_creator'
     t.index ['identifier'], name: 'index_better_together_infrastructure_buildings_on_identifier', unique: true
