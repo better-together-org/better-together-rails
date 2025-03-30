@@ -1,4 +1,4 @@
-<%= form_with(model: venue, class: 'form', multipart: true, id: dom_id(venue, 'form'), data: { controller: "form-validation" }) do |form| %>
+<%= form_with(model: venue, class: 'form', multipart: true, id: dom_id(venue, 'form'), data: { controller: "better_together--form-validation" }) do |form| %>
   <% content_for :resource_toolbar do %>
     <div class="btn-toolbar mb-3" role="toolbar" aria-label="Toolbar with button groups">
       <div class="btn-group me-2" role="group">
@@ -23,50 +23,65 @@
     </div>
   <% end %>
 
-  <div class="row mb-3 row-cols-1 row-cols-sm-2">
-    <!-- Translatable Name Field -->
-    <div class="col mb-3 pb-3 border-bottom">
-      <%= render partial: 'better_together/shared/translated_string_field', locals: { model: venue, form: form, attribute: 'name' } %>
-      <small class="form-text text-muted mt-2">Enter the venue name.</small>
+  <div class="row">
+    <!-- Vertical Pills Navigation -->
+    <div class="col-md-3">
+      <div class="nav flex-column nav-pills" id="venue-form-tabs" role="tablist" aria-orientation="vertical">
+        <button class="nav-link active" id="venue-details-tab" data-bs-toggle="pill" data-bs-target="#venue-details" type="button" role="tab" aria-controls="venue-details" aria-selected="true">
+          Venue Details
+        </button>
+        <button class="nav-link" id="venue-buildings-tab" data-bs-toggle="pill" data-bs-target="#venue-buildings" type="button" role="tab" aria-controls="venue-buildings" aria-selected="false">
+          Buildings
+        </button>
+      </div>
     </div>
 
-    <!-- Translatable Description Field -->
-    <div class="col mb-3 pb-3 border-bottom">
-      <%= render partial: 'better_together/shared/translated_rich_text_field', locals: { model: venue, form: form, attribute: 'description' } %>
-      <small class="form-text text-muted mt-2">Enter a description for the venue.</small>
-    </div>
+    <!-- Tab Content -->
+    <div class="col-md-9">
+      <div class="tab-content" id="venue-form-tabs-content">
+        <!-- Venue Details Tab -->
+        <div class="tab-pane fade show active" id="venue-details" role="tabpanel" aria-labelledby="venue-details-tab">
+          <div class="row mb-3 row-cols-1 row-cols-sm-2">
+            <!-- Translatable Name Field -->
+            <div class="col mb-3 pb-3 border-bottom">
+              <%= render partial: 'better_together/shared/translated_string_field', locals: { model: venue, form: form, attribute: 'name' } %>
+              <small class="form-text text-muted mt-2">Enter the venue name.</small>
+            </div>
 
-    <!-- Privacy Field -->
-    <div class="col mb-3 pb-3 border-bottom">
-      <%= form.label :privacy %>
-      <%= privacy_field(form:, klass: Venue) %>
-      <% if venue.errors[:privacy].any? %>
-        <div class="invalid-feedback">
-          <%= venue.errors[:privacy].join(", ") %>
+            <!-- Translatable Slug Field -->
+            <div class="col mb-3 pb-3 border-bottom">
+              <%= render partial: 'better_together/shared/translated_string_field', locals: { model: venue, form: form, attribute: 'slug' } %>
+              <small class="form-text text-muted mt-2">Enter the venue username.</small>
+            </div>
+
+            <!-- Privacy Field -->
+            <div class="col mb-3 pb-3 border-bottom">
+              <%= form.label :privacy %>
+              <%= privacy_field(form:, klass: Venue) %>
+              <% if venue.errors[:privacy].any? %>
+                <div class="invalid-feedback">
+                  <%= venue.errors[:privacy].join(", ") %>
+                </div>
+              <% end %>
+            </div>
+          </div>
+
+          <div class="row">
+            <!-- Translatable Description Field -->
+            <div class="col mb-3 pb-3 border-bottom">
+              <%= render partial: 'better_together/shared/translated_rich_text_field', locals: { model: venue, form: form, attribute: 'description' } %>
+              <small class="form-text text-muted mt-2">Enter a description for the venue.</small>
+            </div>
+          </div>
         </div>
-      <% end %>
-    </div>
 
-    <!-- Building Association Field -->
-    <div class="col mb-3 pb-3 border-bottom">
-      <%= form.label :building_id, 'Building' %>
-      <%= form.collection_select :building_id, BetterTogether::Infrastructure::Building.all, :id, :name, { include_blank: true }, { class: "form-select#{' is-invalid' if venue.errors[:building_id].any?}" } %>
-      <% if venue.errors[:building_id].any? %>
-        <div class="invalid-feedback">
-          <%= venue.errors[:building_id].join(", ") %>
+        <!-- Venue Buildings Tab -->
+        <div class="tab-pane fade" id="venue-buildings" role="tabpanel" aria-labelledby="venue-buildings-tab">
+          <div class="mb-3">
+            <%= render partial: 'venue_buildings/venue_buildings', locals: { form: } if venue.persisted? %>
+          </div>
         </div>
-      <% end %>
-    </div>
-
-    <!-- Featured Image Field -->
-    <div class="col mb-3 pb-3 border-bottom">
-      <%= form.label :featured_image, 'Featured Image' %>
-      <%= form.file_field :featured_image, class: "form-control#{' is-invalid' if venue.errors[:featured_image].any?}" %>
-      <% if venue.errors[:featured_image].any? %>
-        <div class="invalid-feedback">
-          <%= venue.errors[:featured_image].join(", ") %>
-        </div>
-      <% end %>
+      </div>
     </div>
   </div>
 

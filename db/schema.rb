@@ -12,7 +12,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 20_250_328_002_352) do # rubocop:todo Metrics/BlockLength
+ActiveRecord::Schema[7.1].define(version: 20_250_329_183_609) do
   # These are extensions that must be enabled in order to support this database
   enable_extension 'pgcrypto'
   enable_extension 'plpgsql'
@@ -73,7 +73,7 @@ ActiveRecord::Schema[7.1].define(version: 20_250_328_002_352) do # rubocop:todo 
     t.string 'postal_code'
     t.string 'country_name'
     t.string 'privacy', limit: 50, default: 'private', null: false
-    t.uuid 'contact_detail_id', null: false
+    t.uuid 'contact_detail_id'
     t.boolean 'primary_flag', default: false, null: false
     t.index %w[contact_detail_id primary_flag], name: 'index_bt_addresses_on_contact_detail_id_and_primary',
                                                 unique: true, where: '(primary_flag IS TRUE)'
@@ -1105,18 +1105,28 @@ ActiveRecord::Schema[7.1].define(version: 20_250_328_002_352) do # rubocop:todo 
     t.index %w[recipient_type recipient_id], name: 'index_noticed_notifications_on_recipient'
   end
 
+  create_table 'venue_buildings', id: :uuid, default: -> { 'gen_random_uuid()' }, force: :cascade do |t|
+    t.integer 'lock_version', default: 0, null: false
+    t.datetime 'created_at', null: false
+    t.datetime 'updated_at', null: false
+    t.uuid 'building_id', null: false
+    t.uuid 'venue_id', null: false
+    t.integer 'position', null: false
+    t.boolean 'primary_flag', default: false, null: false
+    t.index ['building_id'], name: 'index_venue_buildings_on_building_id'
+    t.index %w[venue_id primary_flag], name: 'index_venue_buildings_on_venue_id_and_primary', unique: true,
+                                       where: '(primary_flag IS TRUE)'
+    t.index ['venue_id'], name: 'index_venue_buildings_on_venue_id'
+  end
+
   create_table 'venues', id: :uuid, default: -> { 'gen_random_uuid()' }, force: :cascade do |t|
     t.integer 'lock_version', default: 0, null: false
     t.datetime 'created_at', null: false
     t.datetime 'updated_at', null: false
-    t.uuid 'building_id'
     t.uuid 'community_id', null: false
     t.uuid 'creator_id'
     t.string 'identifier', limit: 100, null: false
     t.string 'privacy', limit: 50, default: 'private', null: false
-    t.integer 'floors_count', default: 0, null: false
-    t.integer 'rooms_count', default: 0, null: false
-    t.index ['building_id'], name: 'index_venues_on_building_id'
     t.index ['community_id'], name: 'by_venues_community'
     t.index ['creator_id'], name: 'by_venues_creator'
     t.index ['identifier'], name: 'index_venues_on_identifier', unique: true
@@ -1162,6 +1172,7 @@ ActiveRecord::Schema[7.1].define(version: 20_250_328_002_352) do # rubocop:todo 
   add_foreign_key 'better_together_geography_spaces', 'better_together_people', column: 'creator_id'
   add_foreign_key 'better_together_geography_states', 'better_together_communities', column: 'community_id'
   add_foreign_key 'better_together_geography_states', 'better_together_geography_countries', column: 'country_id'
+  add_foreign_key 'better_together_infrastructure_buildings', 'better_together_addresses', column: 'address_id'
   add_foreign_key 'better_together_infrastructure_buildings', 'better_together_communities', column: 'community_id'
   add_foreign_key 'better_together_infrastructure_buildings', 'better_together_people', column: 'creator_id'
   add_foreign_key 'better_together_infrastructure_floors', 'better_together_communities', column: 'community_id'
@@ -1205,7 +1216,8 @@ ActiveRecord::Schema[7.1].define(version: 20_250_328_002_352) do # rubocop:todo 
   add_foreign_key 'better_together_wizard_steps', 'better_together_wizard_step_definitions',
                   column: 'wizard_step_definition_id'
   add_foreign_key 'better_together_wizard_steps', 'better_together_wizards', column: 'wizard_id'
+  add_foreign_key 'venue_buildings', 'better_together_infrastructure_buildings', column: 'building_id'
+  add_foreign_key 'venue_buildings', 'venues'
   add_foreign_key 'venues', 'better_together_communities', column: 'community_id'
-  add_foreign_key 'venues', 'better_together_infrastructure_buildings', column: 'building_id'
   add_foreign_key 'venues', 'better_together_people', column: 'creator_id'
 end

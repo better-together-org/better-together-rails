@@ -1,8 +1,22 @@
 <div class="container mt-4">
   <header class="mb-4 text-center">
     <h2 class="fw-bold"><%= @venue.name %></h2>
+    <% if policy(@venue).edit? || policy(@venue).destroy? %>
+      <div class="btn-toolbar justify-content-center mb-3" role="toolbar">
+      <% if policy(@venue).edit? %>
+        <div class="btn-group me-2" role="group">
+        <%= link_to 'Edit', edit_venue_path(@venue), class: 'btn btn-warning btn-sm' %>
+        </div>
+      <% end %>
+      <% if policy(@venue).destroy? %>
+        <div class="btn-group" role="group">
+        <%= link_to 'Delete', @venue, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger btn-sm' %>
+        </div>
+      <% end %>
+      </div>
+    <% end %>
     <p class="">
-      59 Main St, Pasadena, NL A0L 1K0 | <a href="#map" class="text-decoration-none">View on Map</a>
+      <%= @venue.primary_address.to_formatted_s(excluded: %i[postal_code country_name]) %> | <a href="#map" class="text-decoration-none">View on Map</a>
     </p>
     <p class=" share-label">Share venue:</p>
     <div class="d-flex justify-content-center gap-2">
@@ -94,7 +108,7 @@
     <a href="#"><i class="fas fa-arrow-alt-circle-down"></i> Seating Chart</a>
   </section>
 
-  <section class="map">
+  <section id="map">
     <h3>Location Map</h3>
     <% map = BetterTogether::Geography::Map.new %>
     <div class="map" id="<%= dom_id(@venue, :map) %>"
