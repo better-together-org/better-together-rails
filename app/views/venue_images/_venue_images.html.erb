@@ -1,0 +1,24 @@
+
+<%# locals: (form: nil) %>
+
+<div class="venue-images mb-4" data-controller="better_together--dynamic-fields">
+  <h3><%= VenueImage.name.humanize.pluralize %></h3>
+
+  <div id="<%= dom_id(form.object, :venue_images) %>" class="mb-3" data-better_together--dynamic-fields-target="container">
+    <%= form.fields_for :venue_images do |venue_image_form| %>
+      <%= render 'venue_images/fields', form: venue_image_form %>
+    <% end %>
+  </div>
+
+  <!-- Hidden template -->
+  <template data-better_together--dynamic-fields-target="template">
+    <%# Build a new PhoneNumber instance %>
+    <%= form.fields_for :venue_images, form.object.venue_images.build, child_index: 'NEW_RECORD' do |venue_image_form| %>
+      <%= render 'venue_images/fields', form: venue_image_form %>
+    <% end %>
+  </template>
+
+  <%= link_to '#', class: 'btn btn-outline-primary btn-sm', data: { action: 'click->better_together--dynamic-fields#add' } do %>
+    <i class="fas fa-plus"></i> <%= t('better_together.global.add') %>
+  <% end %>
+</div>

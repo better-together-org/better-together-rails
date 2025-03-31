@@ -1,4 +1,3 @@
-
 <% content_for :page_title, @venue %>
 
 <div class="container mt-4">
@@ -21,33 +20,9 @@
     <p class="">
       <%= @venue.primary_address.to_formatted_s(excluded: %i[postal_code country_name]) %> | <a href="#map" class="text-decoration-none">View on Map</a>
     </p>
-
-    <%= share_buttons(shareable: @venue) %>
   </header>
 
-  <section class="images mb-4">
-    <div class="row g-3">
-      <div class="col-12 col-sm-6">
-        <img src="https://nlvenues.com/wp-content/uploads/2023/09/359237403_592820606333791_7551002784846150677_n-Lori-Lee-Pike-1024x768.jpeg" alt="Café 59" class="img-fluid rounded mb-3">
-      </div>
-      <div class="col-6 col-sm-3 d-flex flex-wrap">
-        <a href="https://nlvenues.com/wp-content/uploads/2023/09/343480198_1271109660509629_2381931045303721756_n-Lori-Lee-Pike.jpeg" class="mb-2"></a>
-          <img src="https://nlvenues.com/wp-content/uploads/2023/09/343480198_1271109660509629_2381931045303721756_n-Lori-Lee-Pike.jpeg" alt="Café 59" class="img-thumbnail">
-        </a>
-        <a href="https://nlvenues.com/wp-content/uploads/2023/09/343462900_561753222610444_4647673567191326510_n-Lori-Lee-Pike.jpeg" class="mb-2"></a>
-          <img src="https://nlvenues.com/wp-content/uploads/2023/09/343462900_561753222610444_4647673567191326510_n-Lori-Lee-Pike.jpeg" alt="Café 59" class="img-thumbnail">
-        </a>
-      </div>
-      <div class="col-6 col-sm-3 d-flex flex-wrap">
-        <a href="https://nlvenues.com/wp-content/uploads/2023/09/375656575_620401760242342_2811504586947600514_n-Lori-Lee-Pike.jpeg" class="mb-2">
-          <img src="https://nlvenues.com/wp-content/uploads/2023/09/375656575_620401760242342_2811504586947600514_n-Lori-Lee-Pike.jpeg" alt="Café 59" class="img-thumbnail">
-        </a>
-        <a href="https://nlvenues.com/wp-content/uploads/2023/09/359466688_593295312952987_6224543849179298349_n-Lori-Lee-Pike.jpeg" class="mb-2">
-          <img src="https://nlvenues.com/wp-content/uploads/2023/09/359466688_593295312952987_6224543849179298349_n-Lori-Lee-Pike.jpeg" alt="Café 59" class="img-thumbnail">
-        </a>
-      </div>
-    </div>
-  </section>
+  <%= render_image_gallery(@venue.images, @venue.name) if @venue.venue_images.any? %>
 
   <section class="description mb-4">
     <div class="row">
@@ -56,10 +31,7 @@
         <%= @venue.description.presence || 'Nothing yet' %>
 
         <h3 class="mt-4 mb-3"><i class="fas fa-address-book text-warning"></i> Contacts</h3>
-        <ul class="list-unstyled">
-          <li><strong>Lori Lee Pike</strong> - lorileepike@gmail.com - +1 (709) 660-4855</li>
-          <li><strong>Steve Morton</strong> - steve@cafe59.ca - +1 (709) 394-5959</li>
-        </ul>
+        <%= render partial: 'better_together/contact_details/about_section', locals: { contactable: @venue, include_heading: false } %>
       </div>
       <div class="col-md-4">
         <div class="card shadow-sm">

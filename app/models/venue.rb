@@ -11,11 +11,13 @@ class Venue < ApplicationRecord
 
   has_many :venue_buildings,
            -> { order(:primary_flag, :position) }, dependent: :destroy
-  has_many :buildings, through: :venue_buildings
 
-  has_many :addresses, through: :buildings
+  has_many :venue_images,
+           -> { order({ primary_flag: :desc }, { position: :asc }) }, dependent: :destroy
 
-  accepts_nested_attributes_for :venue_buildings, allow_destroy: true, reject_if: :all_blank
+  has_many :images, through: :venue_images
+
+  accepts_nested_attributes_for :venue_buildings, :venue_images, allow_destroy: true, reject_if: :all_blank
 
   translates :name
   translates :description, backend: :action_text
@@ -33,16 +35,11 @@ class Venue < ApplicationRecord
     end
   end
 
-  def self.extra_permitted_attributes
-    super + [
-      venue_buildings_attributes: [
-        :venue_id,
-        *VenueBuilding.permitted_attributes(id: true, destroy: true),
-        {
-          building_attributes: ::BetterTogether::Infrastructure::Building.permitted_attributes(id: true)
-        }
-      ]
-    ]
+  def self.permitted_attributes(id: false, destroy: false)
+    [
+      venue_buildings_attributes: VenueBuilding.permitted_attributes(id: true, destroy: true),
+      venue_images_attributes: VenueImage.permitted_attributes(id: true, destroy: true)
+    ] + super
   end
 
   def primary_building

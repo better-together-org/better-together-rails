@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 module NlVenues
+  # Extends BetterTogether::Building
   module Building
     extend ActiveSupport::Concern
 

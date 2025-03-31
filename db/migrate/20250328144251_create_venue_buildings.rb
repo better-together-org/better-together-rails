@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+# Join table between Venue and BetterTogether::Infrastructure::Building
 class CreateVenueBuildings < ActiveRecord::Migration[7.1]
   def change
     create_bt_table :venue_buildings, prefix: nil do |t|

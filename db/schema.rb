@@ -12,7 +12,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 20_250_330_131_920) do
+ActiveRecord::Schema[7.1].define(version: 20_250_330_220_409) do
   # These are extensions that must be enabled in order to support this database
   enable_extension 'pgcrypto'
   enable_extension 'plpgsql'
@@ -184,6 +184,9 @@ ActiveRecord::Schema[7.1].define(version: 20_250_330_131_920) do
     t.datetime 'updated_at', null: false
     t.string 'contactable_type', null: false
     t.uuid 'contactable_id', null: false
+    t.string 'type', default: 'BetterTogether::ContactDetail', null: false
+    t.string 'name'
+    t.string 'role'
     t.index %w[contactable_type contactable_id], name: 'index_better_together_contact_details_on_contactable'
   end
 
@@ -922,6 +925,7 @@ ActiveRecord::Schema[7.1].define(version: 20_250_330_131_920) do
     t.integer 'position', null: false
     t.string 'resource_type', null: false
     t.string 'slug'
+    t.string 'type', default: 'BetterTogether::Role', null: false
     t.index ['identifier'], name: 'index_better_together_roles_on_identifier', unique: true
     t.index %w[resource_type position], name: 'index_roles_on_resource_type_and_position', unique: true
     t.index ['slug'], name: 'index_better_together_roles_on_slug', unique: true
@@ -1121,6 +1125,20 @@ ActiveRecord::Schema[7.1].define(version: 20_250_330_131_920) do
     t.index ['venue_id'], name: 'index_venue_buildings_on_venue_id'
   end
 
+  create_table 'venue_images', id: :uuid, default: -> { 'gen_random_uuid()' }, force: :cascade do |t|
+    t.integer 'lock_version', default: 0, null: false
+    t.datetime 'created_at', null: false
+    t.datetime 'updated_at', null: false
+    t.uuid 'image_id', null: false
+    t.uuid 'venue_id', null: false
+    t.integer 'position', null: false
+    t.boolean 'primary_flag', default: false, null: false
+    t.index ['image_id'], name: 'index_venue_images_on_image_id'
+    t.index %w[venue_id primary_flag], name: 'index_venue_images_on_venue_id_and_primary', unique: true,
+                                       where: '(primary_flag IS TRUE)'
+    t.index ['venue_id'], name: 'index_venue_images_on_venue_id'
+  end
+
   create_table 'venues', id: :uuid, default: -> { 'gen_random_uuid()' }, force: :cascade do |t|
     t.integer 'lock_version', default: 0, null: false
     t.datetime 'created_at', null: false
@@ -1220,6 +1238,8 @@ ActiveRecord::Schema[7.1].define(version: 20_250_330_131_920) do
   add_foreign_key 'better_together_wizard_steps', 'better_together_wizards', column: 'wizard_id'
   add_foreign_key 'venue_buildings', 'better_together_infrastructure_buildings', column: 'building_id'
   add_foreign_key 'venue_buildings', 'venues'
+  add_foreign_key 'venue_images', 'better_together_content_blocks', column: 'image_id'
+  add_foreign_key 'venue_images', 'venues'
   add_foreign_key 'venues', 'better_together_communities', column: 'community_id'
   add_foreign_key 'venues', 'better_together_people', column: 'creator_id'
 end
