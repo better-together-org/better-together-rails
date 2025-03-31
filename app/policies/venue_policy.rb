@@ -18,6 +18,10 @@ class VenuePolicy < ApplicationPolicy
     create?
   end
 
+  def destroy?
+    create?
+  end
+
   class Scope < ApplicationPolicy::Scope
   end
 end

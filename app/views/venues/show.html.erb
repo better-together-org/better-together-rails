@@ -18,7 +18,7 @@
       </div>
     <% end %>
     <p class="">
-      <%= @venue.primary_address.to_formatted_s(excluded: %i[postal_code country_name]) %> | <a href="#map" class="text-decoration-none">View on Map</a>
+      <%= @venue.primary_address&.to_formatted_s(excluded: %i[postal_code country_name]) %> | <a href="#map" class="text-decoration-none">View on Map</a>
     </p>
   </header>
 
