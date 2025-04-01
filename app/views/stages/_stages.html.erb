@@ -1,0 +1,24 @@
+
+<%# locals: (form: nil) %>
+
+<div class="stages mb-4" data-controller="better_together--dynamic-fields">
+  <h3><%= Stage.name.humanize.pluralize %></h3>
+
+  <div id="<%= dom_id(form.object, :stages) %>" class="mb-3" data-better_together--dynamic-fields-target="container">
+    <%= form.fields_for :stages do |stage_form| %>
+      <%= render 'stages/fields', form: stage_form %>
+    <% end %>
+  </div>
+
+  <!-- Hidden template -->
+  <template data-better_together--dynamic-fields-target="template">
+    <%# Build a new Stage instance %>
+    <%= form.fields_for :stages, Stage.new(venue_id: form.object.id), child_index: 'NEW_RECORD' do |stage_form| %>
+      <%= render 'stages/fields', form: stage_form %>
+    <% end %>
+  </template>
+
+  <%= link_to '#', class: 'btn btn-outline-primary btn-sm', data: { action: 'click->better_together--dynamic-fields#add' } do %>
+    <i class="fas fa-plus"></i> <%= t('better_together.global.add') %>
+  <% end %>
+</div>

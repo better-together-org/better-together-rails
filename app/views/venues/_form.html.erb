@@ -39,6 +39,12 @@
         <button id="#contacts-tab" class="nav-link" id="contacts-tab" data-bs-toggle="pill" data-bs-target="#contacts" type="button" role="tab" aria-controls="contacts" aria-selected="false" data-better_together--tabs-target="tab">
           Contacts
         </button>
+        <button id="#stages-tab" class="nav-link" id="stages-tab" data-bs-toggle="pill" data-bs-target="#stages" type="button" role="tab" aria-controls="stages" aria-selected="false" data-better_together--tabs-target="tab">
+          Stages
+        </button>
+        <button id="#venue-offers-tab" class="nav-link" id="venue-offers-tab" data-bs-toggle="pill" data-bs-target="#venue-offers" type="button" role="tab" aria-controls="venue-offers" aria-selected="false" data-better_together--tabs-target="tab">
+          Offers
+        </button>
       </div>
     </div>
 
@@ -98,6 +104,20 @@
       <div class="nav-tab-pane tab-pane fade" id="contacts" role="tabpanel" aria-labelledby="contacts-tab">
         <div class="mb-3">
           <%= render partial: 'better_together/contact_details/contacts', locals: { form: } if venue.persisted? %>
+        </div>
+      </div>
+
+      <!-- Stages Tab -->
+      <div class="nav-tab-pane tab-pane fade" id="stages" role="tabpanel" aria-labelledby="stages-tab">
+        <div class="mb-3">
+          <%= render partial: 'stages/stages', locals: { form: } if venue.persisted? %>
+        </div>
+      </div>
+
+      <!-- Venue Offers Tab -->
+      <div class="nav-tab-pane tab-pane fade" id="venue-offers" role="tabpanel" aria-labelledby="venue-offers-tab">
+        <div class="mb-3">
+          <%= render partial: 'venue_offers/venue_offers', locals: { form: } if venue.persisted? %>
         </div>
       </div>
     </div>

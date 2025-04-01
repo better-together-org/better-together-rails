@@ -17,9 +17,14 @@
       <% end %>
       </div>
     <% end %>
-    <p class="">
-      <%= @venue.primary_address&.to_formatted_s(excluded: %i[postal_code country_name]) %> | <a href="#map" class="text-decoration-none">View on Map</a>
-    </p>
+
+    <% if @venue.primary_address %>
+      <p class="">
+        <%= @venue.primary_address.to_formatted_s(excluded: %i[postal_code country_name]) %> | <a href="#map" class="text-decoration-none">View on Map</a>
+      </p>
+    <% end %>
+
+    <%= share_buttons(shareable: @venue) %>
   </header>
 
   <%= render_image_gallery(@venue.images, @venue.name) if @venue.venue_images.any? %>
@@ -38,22 +43,13 @@
           <div class="card-body">
             <h3 class="card-title"><i class="fas fa-list text-warning"></i> Quick Facts</h3>
             <ul class="list-group list-group-flush">
-              <li class="list-group-item"><strong>Capacity:</strong> 52</li>
-              <li class="list-group-item"><strong>Sound Tech:</strong> No</li>
-              <li class="list-group-item"><strong>Lighting Tech:</strong> No</li>
-              <li class="list-group-item"><strong>Accessible:</strong> Yes</li>
-              <li class="list-group-item"><strong>Box Office:</strong> No</li>
-              <li class="list-group-item"><strong>Ticket Sales:</strong> Advance</li>
+              <li class="list-group-item"><strong>Capacity:</strong> <%= @venue.capacity %></li>
+              <li class="list-group-item"><strong>Sound Tech:</strong> <%= @venue.sound_tech %></li>
+              <li class="list-group-item"><strong>Lighting Tech:</strong> <%= @venue.lighting_tech %></li>
+              <li class="list-group-item"><strong>Accessible:</strong> <%= @venue.accessible %></li>
+              <li class="list-group-item"><strong>Box Office:</strong> <%= @venue.box_office %></li>
+              <li class="list-group-item"><strong>Ticket Sales:</strong> <%= 'not-implemented-yet' %></li>
             </ul>
-            <div class="mt-3">
-              <h3 class="mb-2"><i class="fas fa-globe text-warning"></i> Online</h3>
-              <p><a href="http://www.cafe59.ca" target="_blank" class="btn btn-primary btn-sm">Venue Website</a></p>
-              <div class="d-flex gap-2">
-                <a href="https://www.facebook.com/cafe59pasadena" class="btn btn-outline-primary btn-sm"><i class="fab fa-facebook"></i></a>
-                <a href="https://www.instagram.com/cafe59pasadena" class="btn btn-outline-danger btn-sm"><i class="fab fa-instagram"></i></a>
-                <a href="#" class="btn btn-outline-info btn-sm"><i class="fab fa-twitter"></i></a>
-              </div>
-            </div>
           </div>
         </div>
       </div>
@@ -62,15 +58,16 @@
 
   <section class="financial">
     <h3>Financial</h3>
-    <p><strong>Types of deals:</strong> Guarantee</p>
-    <p><strong>Accommodations provided:</strong> No</p>
-    <p><strong>Additional Information:</strong> $200 for solo artist; $300 for duo artist...</p>
+    <p><strong>Types of deals:</strong> not implemented yet</p>
+    <p><strong>Accommodations provided:</strong> <%= @venue.accommodations_provided %></p>
+    <p><strong>Additional Accomodation Information:</strong> <%= @venue.accomodations_notes %></p>
+    <p><strong>Additional Financial Information:</strong> <%= @venue.financial_notes %></p>
 
     <h3>Marketing</h3>
-    <p>Posters, social media posts, in house TV screens</p>
+    <p><%= @venue.marketing_support %></p>
 
     <h3>Tech & Equipment</h3>
-    <p>Soundboard, 4 Yamaha speakers, monitor, 2 mic stands, music stand</p>
+    <p><%= @venue.equipment_list %></p>
 
     <h3>Resources & Downloads</h3>
     <a href="#"><i class="fas fa-arrow-alt-circle-down"></i> Tech Info</a><br>

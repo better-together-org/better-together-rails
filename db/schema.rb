@@ -12,7 +12,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 20_250_330_220_409) do
+ActiveRecord::Schema[7.1].define(version: 20_250_331_141_453) do
   # These are extensions that must be enabled in order to support this database
   enable_extension 'pgcrypto'
   enable_extension 'plpgsql'
@@ -1043,6 +1043,14 @@ ActiveRecord::Schema[7.1].define(version: 20_250_330_220_409) do
     t.index ['slug'], name: 'index_better_together_wizards_on_slug', unique: true
   end
 
+  create_table 'deal_types', id: :uuid, default: -> { 'gen_random_uuid()' }, force: :cascade do |t|
+    t.integer 'lock_version', default: 0, null: false
+    t.datetime 'created_at', null: false
+    t.datetime 'updated_at', null: false
+    t.string 'identifier', limit: 100, null: false
+    t.index ['identifier'], name: 'index_deal_types_on_identifier', unique: true
+  end
+
   create_table 'friendly_id_slugs', force: :cascade do |t|
     t.string 'slug', null: false
     t.uuid 'sluggable_id', null: false
@@ -1111,6 +1119,38 @@ ActiveRecord::Schema[7.1].define(version: 20_250_330_220_409) do
     t.index %w[recipient_type recipient_id], name: 'index_noticed_notifications_on_recipient'
   end
 
+  create_table 'stages', id: :uuid, default: -> { 'gen_random_uuid()' }, force: :cascade do |t|
+    t.integer 'lock_version', default: 0, null: false
+    t.datetime 'created_at', null: false
+    t.datetime 'updated_at', null: false
+    t.uuid 'creator_id'
+    t.string 'identifier', limit: 100, null: false
+    t.integer 'position', null: false
+    t.string 'privacy', limit: 50, default: 'private', null: false
+    t.boolean 'primary_flag', default: false, null: false
+    t.boolean 'accessible', default: false, null: false
+    t.integer 'capacity'
+    t.text 'equipment_list'
+    t.string 'location'
+    t.boolean 'lighting_tech', default: false, null: false
+    t.boolean 'sound_tech', default: false, null: false
+    t.uuid 'venue_id'
+    t.index ['creator_id'], name: 'by_stages_creator'
+    t.index ['identifier'], name: 'index_stages_on_identifier', unique: true
+    t.index ['privacy'], name: 'by_stages_privacy'
+    t.index %w[venue_id primary_flag], name: 'index_stages_on_venue_id_and_primary', unique: true,
+                                       where: '(primary_flag IS TRUE)'
+    t.index ['venue_id'], name: 'index_stages_on_venue_id'
+  end
+
+  create_table 'ticket_sale_options', id: :uuid, default: -> { 'gen_random_uuid()' }, force: :cascade do |t|
+    t.integer 'lock_version', default: 0, null: false
+    t.datetime 'created_at', null: false
+    t.datetime 'updated_at', null: false
+    t.string 'identifier', limit: 100, null: false
+    t.index ['identifier'], name: 'index_ticket_sale_options_on_identifier', unique: true
+  end
+
   create_table 'venue_buildings', id: :uuid, default: -> { 'gen_random_uuid()' }, force: :cascade do |t|
     t.integer 'lock_version', default: 0, null: false
     t.datetime 'created_at', null: false
@@ -1137,6 +1177,55 @@ ActiveRecord::Schema[7.1].define(version: 20_250_330_220_409) do
     t.index %w[venue_id primary_flag], name: 'index_venue_images_on_venue_id_and_primary', unique: true,
                                        where: '(primary_flag IS TRUE)'
     t.index ['venue_id'], name: 'index_venue_images_on_venue_id'
+  end
+
+  create_table 'venue_offer_deal_types', id: :uuid, default: -> { 'gen_random_uuid()' }, force: :cascade do |t|
+    t.integer 'lock_version', default: 0, null: false
+    t.datetime 'created_at', null: false
+    t.datetime 'updated_at', null: false
+    t.integer 'position', null: false
+    t.uuid 'deal_type_id'
+    t.uuid 'venue_offer_id'
+    t.index ['deal_type_id'], name: 'index_venue_offer_deal_types_on_deal_type_id'
+    t.index ['venue_offer_id'], name: 'index_venue_offer_deal_types_on_venue_offer_id'
+  end
+
+  create_table 'venue_offer_ticket_sale_options', id: :uuid, default: -> { 'gen_random_uuid()' }, force: :cascade do |t|
+    t.integer 'lock_version', default: 0, null: false
+    t.datetime 'created_at', null: false
+    t.datetime 'updated_at', null: false
+    t.integer 'position', null: false
+    t.uuid 'deal_type_id'
+    t.uuid 'ticket_sale_option_id'
+    t.uuid 'venue_offer_id'
+    t.index ['deal_type_id'], name: 'index_venue_offer_ticket_sale_options_on_deal_type_id'
+    t.index ['ticket_sale_option_id'], name: 'index_venue_offer_ticket_sale_options_on_ticket_sale_option_id'
+    t.index ['venue_offer_id'], name: 'index_venue_offer_ticket_sale_options_on_venue_offer_id'
+  end
+
+  create_table 'venue_offers', id: :uuid, default: -> { 'gen_random_uuid()' }, force: :cascade do |t|
+    t.integer 'lock_version', default: 0, null: false
+    t.datetime 'created_at', null: false
+    t.datetime 'updated_at', null: false
+    t.uuid 'creator_id'
+    t.string 'identifier', limit: 100, null: false
+    t.integer 'position', null: false
+    t.boolean 'primary_flag', default: false, null: false
+    t.string 'privacy', limit: 50, default: 'private', null: false
+    t.boolean 'accommodations_provided', default: false, null: false
+    t.text 'accomodations_notes'
+    t.boolean 'box_office', default: false, null: false
+    t.text 'financial_notes'
+    t.text 'marketing_support'
+    t.uuid 'stage_id'
+    t.uuid 'venue_id'
+    t.index ['creator_id'], name: 'by_venue_offers_creator'
+    t.index ['identifier'], name: 'index_venue_offers_on_identifier', unique: true
+    t.index ['privacy'], name: 'by_venue_offers_privacy'
+    t.index ['stage_id'], name: 'index_venue_offers_on_stage_id'
+    t.index %w[venue_id primary_flag], name: 'index_venue_offers_on_venue_id_and_primary', unique: true,
+                                       where: '(primary_flag IS TRUE)'
+    t.index ['venue_id'], name: 'index_venue_offers_on_venue_id'
   end
 
   create_table 'venues', id: :uuid, default: -> { 'gen_random_uuid()' }, force: :cascade do |t|
@@ -1236,10 +1325,20 @@ ActiveRecord::Schema[7.1].define(version: 20_250_330_220_409) do
   add_foreign_key 'better_together_wizard_steps', 'better_together_wizard_step_definitions',
                   column: 'wizard_step_definition_id'
   add_foreign_key 'better_together_wizard_steps', 'better_together_wizards', column: 'wizard_id'
+  add_foreign_key 'stages', 'better_together_people', column: 'creator_id'
+  add_foreign_key 'stages', 'venues'
   add_foreign_key 'venue_buildings', 'better_together_infrastructure_buildings', column: 'building_id'
   add_foreign_key 'venue_buildings', 'venues'
   add_foreign_key 'venue_images', 'better_together_content_blocks', column: 'image_id'
   add_foreign_key 'venue_images', 'venues'
+  add_foreign_key 'venue_offer_deal_types', 'deal_types'
+  add_foreign_key 'venue_offer_deal_types', 'venue_offers'
+  add_foreign_key 'venue_offer_ticket_sale_options', 'deal_types'
+  add_foreign_key 'venue_offer_ticket_sale_options', 'ticket_sale_options'
+  add_foreign_key 'venue_offer_ticket_sale_options', 'venue_offers'
+  add_foreign_key 'venue_offers', 'better_together_people', column: 'creator_id'
+  add_foreign_key 'venue_offers', 'stages'
+  add_foreign_key 'venue_offers', 'venues'
   add_foreign_key 'venues', 'better_together_communities', column: 'community_id'
   add_foreign_key 'venues', 'better_together_people', column: 'creator_id'
 end
