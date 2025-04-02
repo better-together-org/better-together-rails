@@ -9,25 +9,6 @@
 
   <!-- Venues Grid -->
   <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
-    <% @venues.each do |venue| %>
-      <div class="col">
-        <div class="card h-100 shadow-sm">
-          <% if false && venue.featured_image.attached? %>
-            <%= image_tag venue.featured_image, class: "card-img-top", alt: "#{venue.name} featured image" %>
-          <% else %>
-            <%= image_tag "https://placehold.co/600x400", class: "card-img-top", alt: "Placeholder image" %>
-          <% end %>
-          <div class="card-body">
-            <h5 class="card-title"><%= venue.name %></h5>
-            <p class="card-text">
-              <strong>Location:</strong> <%= false ? venue.location : 'location' %>
-            </p>
-          </div>
-          <div class="card-footer text-end">
-            <%= link_to "View Details", venue_path(venue), class: "btn btn-primary btn-sm" %>
-          </div>
-        </div>
-      </div>
-    <% end %>
+    <%= render @venues %>
   </div>
 </div>
