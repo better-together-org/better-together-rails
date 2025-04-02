@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
 class VenueOfferDealType < ApplicationRecord
-  include BetterTogether::Identifier
   include BetterTogether::Positioned
   include BetterTogether::Translatable
 

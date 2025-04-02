@@ -1,0 +1,15 @@
+<%# filepath: /home/rob/projects/nlvenues/nl-venues/app/views/ticket_sale_options/index.html.erb %>
+<div class="container mt-4">
+  <!-- Page Heading -->
+  <div class="d-flex justify-content-between align-items-center mb-4">
+    <h1 class="text-primary"><i class="fas fa-ticket"></i> Ticket Sale Options</h1>
+    <% if policy(TicketSaleOption).create? %>
+      <%= link_to "New Ticket Sale Option", new_ticket_sale_option_path, class: "btn btn-success" %>
+    <% end %>
+  </div>
+
+  <!-- Ticket Sale Options Grid -->
+  <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+    <%= render @ticket_sale_options %>
+  </div>
+</div>

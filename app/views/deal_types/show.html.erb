@@ -1,0 +1,26 @@
+<div class="container mt-4">
+  <header class="mb-4 text-center"></header>
+    <h2 class="fw-bold">Deal Type: <%= @deal_type.name %></h2>
+  </header>
+
+  <section class="mb-4">
+    <div class="card shadow-sm">
+      <div class="card-body">
+        <h3 class="card-title"><i class="fas fa-info-circle text-warning"></i> Deal Type Details</h3>
+        <%= render @deal_type %>
+      </div>
+    </div>
+  </section>
+
+  <div class="btn-toolbar justify-content-center" role="toolbar">
+    <div class="btn-group me-2" role="group">
+      <%= link_to "Edit this deal type", edit_deal_type_path(@deal_type), class: "btn btn-primary btn-sm" %>
+    </div>
+    <div class="btn-group me-2" role="group">
+      <%= link_to "Back to deal types", deal_types_path, class: "btn btn-secondary btn-sm" %>
+    </div>
+    <div class="btn-group" role="group">
+      <%= button_to "Destroy this deal type", @deal_type, method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-danger btn-sm" %>
+    </div>
+  </div>
+</div>

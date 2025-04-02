@@ -1,0 +1,20 @@
+<div class="container mt-4">
+  <header class="mb-4 text-center">
+    <h2 class="fw-bold">New Ticket Sale Option</h2>
+  </header>
+
+  <section class="mb-4">
+    <div class="card shadow-sm">
+      <div class="card-body">
+        <h3 class="card-title"><i class="fas fa-plus text-success"></i> Create New Ticket Sale Option</h3>
+        <%= render "form", ticket_sale_option: @ticket_sale_option %>
+      </div>
+    </div>
+  </section>
+
+  <div class="btn-toolbar justify-content-center" role="toolbar">
+    <div class="btn-group" role="group">
+      <%= link_to "Back to ticket sale options", ticket_sale_options_path, class: "btn btn-secondary btn-sm" %>
+    </div>
+  </div>
+</div>

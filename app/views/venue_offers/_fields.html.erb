@@ -5,23 +5,37 @@
   <%= form.hidden_field :_destroy %>
   <%= form.hidden_field :venue_id, value: form.object.venue_id %>
 
-  <div class="col-md-12">
-    <%= render 'venue_offer_deal_types/venue_offer_deal_types', form: %>
+  <div class="col-md-12 mb-3">
+    <%= form.label :deal_type_ids, t('activerecord.attributes.venue_offer_deal_type.deal_type'), class: 'me-3' %>
+    <% DealType.all.each do |deal_type| %>
+      <div class="form-check form-check-inline">
+        <%= form.check_box :deal_type_ids, { multiple: true, class: 'form-check-input' }, deal_type.id, nil %>
+        <%= form.label :deal_type_ids, deal_type.name, class: 'form-check-label' %>
+      </div>
+    <% end %>
   </div>
-  <div class="col-md-12">
-    <%= render 'venue_offer_ticket_sale_options/venue_offer_ticket_sale_options', form: %>
+
+  <div class="col-md-12 mb-3">
+    <%= form.label :ticket_sale_option_ids, t('activerecord.attributes.venue_offer_ticket_sale_option.ticket_sale_option'), class: 'me-3' %>
+    <% TicketSaleOption.all.each do |option| %>
+      <div class="form-check form-check-inline">
+        <%= form.check_box :ticket_sale_option_ids, { multiple: true, class: 'form-check-input' }, option.id, nil %>
+        <%= form.label :ticket_sale_option_ids, option.name, class: 'form-check-label' %>
+      </div>
+    <% end %>
   </div>
-  <div class="col-md-12">
+
+  <div class="col-md-12 mb-3">
     <%= form.label :accomodations_notes %>
     <%= form.text_area :accomodations_notes, class: 'form-control' %>
   </div>
 
-  <div class="col-md-12">
+  <div class="col-md-12 mb-3">
     <%= form.label :financial_notes %>
     <%= form.text_area :financial_notes, class: 'form-control' %>
   </div>
 
-  <div class="col-md-12">
+  <div class="col-md-12 mb-3">
     <%= form.label :marketing_support %>
     <%= form.text_area :marketing_support, class: 'form-control' %>
   </div>

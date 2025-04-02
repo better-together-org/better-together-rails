@@ -1,0 +1,56 @@
+<%= form_with(model: ticket_sale_option, class: 'form', id: dom_id(ticket_sale_option, 'form'), data: { controller: "better_together--form-validation" }) do |form| %>
+  <% content_for :resource_toolbar do %>
+    <div class="btn-toolbar mb-3" role="toolbar" aria-label="Toolbar with button groups">
+      <div class="btn-group me-2" role="group">
+        <%= link_to "Back to Ticket Sale Options", ticket_sale_options_path, class: 'btn btn-secondary' %>
+      </div>
+      <div class="btn-group me-2" role="group">
+        <%= form.submit "Save Ticket Sale Option", class: 'btn btn-primary' %>
+      </div>
+    </div>
+  <% end %>
+
+  <%= yield :resource_toolbar %>
+
+  <% if ticket_sale_option.errors.any? %>
+    <div class="alert alert-danger">
+      <h4>Please correct the following errors:</h4>
+      <ul>
+        <% ticket_sale_option.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="row">
+    <!-- Identifier text field -->
+    <div class="col-12 mb-3">
+      <%= form.label :identifier, "Identifier" %>
+      <%= form.text_field :identifier, class: "form-control#{' is-invalid' if form.object.errors[:identifier].any?}", maxlength: 100, placeholder: '(optional)' %>
+
+      <% if form.object.errors[:identifier].any? %>
+        <div class="invalid-feedback">
+          <%= form.object.errors[:identifier].join(", ") %>
+        </div>
+      <% end %>
+      <small class="form-text text-muted mt-2">
+        You can enter an optional identifier to make it easier to identify the ticket sale option later. It should not contain spaces and should be under 100 characters.
+      </small>
+    </div>
+
+    <!-- Ticket Sale Option Name Field -->
+    <div class="col col-sm-6 mb-3 pb-3 border-bottom">
+      <%= render partial: 'better_together/shared/translated_string_field', locals: { model: ticket_sale_option, form: form, attribute: 'name' } %>
+      <small class="form-text text-muted mt-2">Enter the ticket sale option name.</small>
+    </div>
+
+    <!-- Ticket Sale Option Description Field -->
+    <div class="col col-sm-6 mb-3 pb-3 border-bottom">
+      <%= render partial: 'better_together/shared/translated_rich_text_field', locals: { model: ticket_sale_option, form: form, attribute: 'description' } %>
+      <small class="form-text text-muted mt-2">Enter a description for the ticket sale option.</small>
+    </div>
+  </div>
+
+  <%= yield :resource_toolbar %>
+<% end %>

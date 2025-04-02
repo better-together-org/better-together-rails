@@ -1,0 +1,14 @@
+<div class="container mt-4">
+  <!-- Page Heading -->
+  <div class="d-flex justify-content-between align-items-center mb-4">
+    <h1 class="text-primary"><i class="fas fa-tags"></i> Deal Types</h1>
+    <% if policy(DealType).create? %>
+      <%= link_to "New Deal Type", new_deal_type_path, class: "btn btn-success" %>
+    <% end %>
+  </div>
+
+  <!-- Deal Types Grid -->
+  <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+    <%= render @deal_types %>
+  </div>
+</div>

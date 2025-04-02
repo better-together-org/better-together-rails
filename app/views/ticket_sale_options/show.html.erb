@@ -1,0 +1,26 @@
+<div class="container mt-4">
+  <header class="mb-4 text-center"></header>
+    <h2 class="fw-bold">Ticket Sale Option: <%= @ticket_sale_option.name %></h2>
+  </header>
+
+  <section class="mb-4">
+    <div class="card shadow-sm">
+      <div class="card-body">
+        <h3 class="card-title"><i class="fas fa-info-circle text-warning"></i> Ticket Sale Option Details</h3>
+        <%= render @ticket_sale_option %>
+      </div>
+    </div>
+  </section>
+
+  <div class="btn-toolbar justify-content-center" role="toolbar">
+    <div class="btn-group me-2" role="group">
+      <%= link_to "Edit this ticket sale option", edit_ticket_sale_option_path(@ticket_sale_option), class: "btn btn-primary btn-sm" %>
+    </div>
+    <div class="btn-group me-2" role="group">
+      <%= link_to "Back to ticket sale options", ticket_sale_options_path, class: "btn btn-secondary btn-sm" %>
+    </div>
+    <div class="btn-group" role="group">
+      <%= button_to "Destroy this ticket sale option", @ticket_sale_option, method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-danger btn-sm" %>
+    </div>
+  </div>
+</div></div>

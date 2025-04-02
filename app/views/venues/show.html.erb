@@ -44,11 +44,11 @@
             <h3 class="card-title"><i class="fas fa-list text-warning"></i> Quick Facts</h3>
             <ul class="list-group list-group-flush">
               <li class="list-group-item"><strong>Capacity:</strong> <%= @venue.capacity %></li>
-              <li class="list-group-item"><strong>Sound Tech:</strong> <%= @venue.sound_tech %></li>
-              <li class="list-group-item"><strong>Lighting Tech:</strong> <%= @venue.lighting_tech %></li>
-              <li class="list-group-item"><strong>Accessible:</strong> <%= @venue.accessible %></li>
-              <li class="list-group-item"><strong>Box Office:</strong> <%= @venue.box_office %></li>
-              <li class="list-group-item"><strong>Ticket Sales:</strong> <%= 'not-implemented-yet' %></li>
+              <li class="list-group-item"><strong>Sound Tech:</strong> <%= @venue.sound_tech.humanize %></li>
+              <li class="list-group-item"><strong>Lighting Tech:</strong> <%= @venue.lighting_tech.humanize %></li>
+              <li class="list-group-item"><strong>Accessible:</strong> <%= @venue.accessible.humanize %></li>
+              <li class="list-group-item"><strong>Box Office:</strong> <%= @venue.box_office.humanize %></li>
+              <li class="list-group-item"><strong>Ticket Sales:</strong> <%= @venue.ticket_sale_options.join(', ') %></li>
             </ul>
           </div>
         </div>
@@ -58,8 +58,8 @@
 
   <section class="financial">
     <h3>Financial</h3>
-    <p><strong>Types of deals:</strong> not implemented yet</p>
-    <p><strong>Accommodations provided:</strong> <%= @venue.accommodations_provided %></p>
+    <p><strong>Types of deals:</strong> <%= @venue.deal_types.join(', ') %></p>
+    <p><strong>Accommodations provided:</strong> <%= @venue.accommodations_provided.humanize %></p>
     <p><strong>Additional Accomodation Information:</strong> <%= @venue.accomodations_notes %></p>
     <p><strong>Additional Financial Information:</strong> <%= @venue.financial_notes %></p>
 

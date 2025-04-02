@@ -5,12 +5,27 @@
   <%= form.hidden_field :_destroy %>
   <%= form.hidden_field :venue_id, value: form.object.venue_id %>
 
-  <div class="col-md-12">
+  <!-- Identifier text field -->
+  <div class="col-12 mb-3">
+    <%= form.label :identifier, "Identifier" %>
+    <%= form.text_field :identifier, class: "form-control#{' is-invalid' if form.object.errors[:identifier].any?}", maxlength: 100, placeholder: '(optional)' %>
+
+    <% if form.object.errors[:identifier].any? %>
+      <div class="invalid-feedback">
+        <%= form.object.errors[:identifier].join(", ") %>
+      </div>
+    <% end %>
+    <small class="form-text text-muted mt-2">
+      You can enter an optional identifier to make it easier to identify the stage later. Should be not contain spaces and should be under 100 characters.
+    </small>
+  </div>
+
+  <div class="col col-md-6 mb-3">
     <%= form.label :capacity %>
     <%= form.number_field :capacity, class: 'form-control' %>
   </div>
 
-  <div class="col-md-12">
+  <div class="col col-md-6 mb-3">
     <%= form.label :equipment_list %>
     <%= form.text_area :equipment_list, class: 'form-control' %>
   </div>

@@ -1,0 +1,20 @@
+<div class="container mt-4">
+  <header class="mb-4 text-center">
+    <h2 class="fw-bold">New Deal Type</h2>
+  </header>
+
+  <section class="mb-4">
+    <div class="card shadow-sm">
+      <div class="card-body">
+        <h3 class="card-title"><i class="fas fa-plus text-success"></i> Create New Deal Type</h3>
+        <%= render "form", deal_type: @deal_type %>
+      </div>
+    </div>
+  </section>
+
+  <div class="btn-toolbar justify-content-center" role="toolbar">
+    <div class="btn-group" role="group">
+      <%= link_to "Back to deal types", deal_types_path, class: "btn btn-secondary btn-sm" %>
+    </div>
+  </div>
+</div>

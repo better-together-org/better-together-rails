@@ -1,0 +1,23 @@
+<div class="container mt-4">
+  <header class="mb-4 text-center">
+    <h2 class="fw-bold">Editing Deal Type: <%= @deal_type.name %></h2>
+  </header>
+
+  <section class="mb-4">
+    <div class="card shadow-sm">
+      <div class="card-body">
+        <h3 class="card-title"><i class="fas fa-edit text-primary"></i> Edit Deal Type</h3>
+        <%= render "form", deal_type: @deal_type %>
+      </div>
+    </div>
+  </section>
+
+  <div class="btn-toolbar justify-content-center" role="toolbar">
+    <div class="btn-group me-2" role="group">
+      <%= link_to "Show this deal type", @deal_type, class: "btn btn-info btn-sm" %>
+    </div>
+    <div class="btn-group" role="group">
+      <%= link_to "Back to deal types", deal_types_path, class: "btn btn-secondary btn-sm" %>
+    </div>
+  </div>
+</div>

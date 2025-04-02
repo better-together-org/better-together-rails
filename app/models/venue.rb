@@ -69,6 +69,12 @@ class Venue < ApplicationRecord
     @primary_address ||= primary_building&.address
   end
 
+  def primary_image
+    return if images.empty?
+
+    @primary_image ||= venue_images.primary_record(id)&.image
+  end
+
   def primary_stage
     return if stages.empty?
 

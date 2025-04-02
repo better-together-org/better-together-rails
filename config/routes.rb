@@ -7,9 +7,12 @@ Rails.application.routes.draw do
   scope ':locale',
         locale: /#{I18n.available_locales.join('|')}/ do
     authenticated :user do
+      resources :deal_types
+      resources :ticket_sale_options
+      resources :venues, only: %i[create update destroy]
     end
 
-    resources :venues
+    resources :venues, except: %i[create update destroy]
   end
 
   root to: redirect("/#{I18n.default_locale}")

@@ -20,15 +20,17 @@ class VenueOffer < ApplicationRecord
 
   belongs_to :stage, optional: true
 
-  accepts_nested_attributes_for :venue_offer_deal_types, :venue_offer_ticket_sale_options,
-                                allow_destroy: true, reject_if: :all_blank
-
   translates :name
   translates :description, backend: :action_text
 
   def self.permitted_attributes(id: false, destroy: false)
     %i[
       accomodations_notes financial_notes marketing_support venue_id
+    ] + [
+      {
+        deal_type_ids: [],
+        ticket_sale_option_ids: []
+      }
     ] + super
   end
 end
