@@ -12,7 +12,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 20_250_331_141_453) do
+ActiveRecord::Schema[7.1].define(version: 20_250_407_173_920) do
   # These are extensions that must be enabled in order to support this database
   enable_extension 'pgcrypto'
   enable_extension 'plpgsql'
@@ -273,6 +273,19 @@ ActiveRecord::Schema[7.1].define(version: 20_250_331_141_453) do
                                                 unique: true, where: '(primary_flag IS TRUE)'
     t.index ['contact_detail_id'], name: 'index_better_together_email_addresses_on_contact_detail_id'
     t.index ['privacy'], name: 'by_better_together_email_addresses_privacy'
+  end
+
+  create_table 'better_together_files', id: :uuid, default: -> { 'gen_random_uuid()' }, force: :cascade do |t|
+    t.integer 'lock_version', default: 0, null: false
+    t.datetime 'created_at', null: false
+    t.datetime 'updated_at', null: false
+    t.uuid 'creator_id'
+    t.string 'identifier', limit: 100, null: false
+    t.string 'privacy', limit: 50, default: 'private', null: false
+    t.string 'type', default: 'BetterTogether::File', null: false
+    t.index ['creator_id'], name: 'by_better_together_files_creator'
+    t.index ['identifier'], name: 'index_better_together_files_on_identifier', unique: true
+    t.index ['privacy'], name: 'by_better_together_files_privacy'
   end
 
   create_table 'better_together_geography_continents', id: :uuid, default: lambda {
@@ -1135,9 +1148,15 @@ ActiveRecord::Schema[7.1].define(version: 20_250_331_141_453) do
     t.boolean 'lighting_tech', default: false, null: false
     t.boolean 'sound_tech', default: false, null: false
     t.uuid 'venue_id'
+    t.uuid 'seating_chart_id'
+    t.uuid 'stage_plot_id'
+    t.uuid 'tech_specs_id'
     t.index ['creator_id'], name: 'by_stages_creator'
     t.index ['identifier'], name: 'index_stages_on_identifier', unique: true
     t.index ['privacy'], name: 'by_stages_privacy'
+    t.index ['seating_chart_id'], name: 'index_stages_on_seating_chart_id'
+    t.index ['stage_plot_id'], name: 'index_stages_on_stage_plot_id'
+    t.index ['tech_specs_id'], name: 'index_stages_on_tech_specs_id'
     t.index %w[venue_id primary_flag], name: 'index_stages_on_venue_id_and_primary', unique: true,
                                        where: '(primary_flag IS TRUE)'
     t.index ['venue_id'], name: 'index_stages_on_venue_id'
@@ -1260,6 +1279,7 @@ ActiveRecord::Schema[7.1].define(version: 20_250_331_141_453) do
   add_foreign_key 'better_together_conversation_participants', 'better_together_people', column: 'person_id'
   add_foreign_key 'better_together_conversations', 'better_together_people', column: 'creator_id'
   add_foreign_key 'better_together_email_addresses', 'better_together_contact_details', column: 'contact_detail_id'
+  add_foreign_key 'better_together_files', 'better_together_people', column: 'creator_id'
   add_foreign_key 'better_together_geography_continents', 'better_together_communities', column: 'community_id'
   add_foreign_key 'better_together_geography_countries', 'better_together_communities', column: 'community_id'
   add_foreign_key 'better_together_geography_country_continents', 'better_together_geography_continents',
@@ -1325,6 +1345,9 @@ ActiveRecord::Schema[7.1].define(version: 20_250_331_141_453) do
   add_foreign_key 'better_together_wizard_steps', 'better_together_wizard_step_definitions',
                   column: 'wizard_step_definition_id'
   add_foreign_key 'better_together_wizard_steps', 'better_together_wizards', column: 'wizard_id'
+  add_foreign_key 'stages', 'better_together_files', column: 'seating_chart_id', on_delete: :nullify
+  add_foreign_key 'stages', 'better_together_files', column: 'stage_plot_id', on_delete: :nullify
+  add_foreign_key 'stages', 'better_together_files', column: 'tech_specs_id', on_delete: :nullify
   add_foreign_key 'stages', 'better_together_people', column: 'creator_id'
   add_foreign_key 'stages', 'venues'
   add_foreign_key 'venue_buildings', 'better_together_infrastructure_buildings', column: 'building_id'

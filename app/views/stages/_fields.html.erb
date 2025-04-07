@@ -7,7 +7,7 @@
 
   <!-- Identifier text field -->
   <div class="col-12 mb-3">
-    <%= form.label :identifier, "Identifier" %>
+    <%= form.label :identifier, "Identifier", class: "form-label" %>
     <%= form.text_field :identifier, class: "form-control#{' is-invalid' if form.object.errors[:identifier].any?}", maxlength: 100, placeholder: '(optional)' %>
 
     <% if form.object.errors[:identifier].any? %>
@@ -21,13 +21,29 @@
   </div>
 
   <div class="col col-md-6 mb-3">
-    <%= form.label :capacity %>
+    <%= form.label :capacity, class: "form-label" %>
     <%= form.number_field :capacity, class: 'form-control' %>
   </div>
 
   <div class="col col-md-6 mb-3">
-    <%= form.label :equipment_list %>
+    <%= form.label :equipment_list, class: "form-label" %>
     <%= form.text_area :equipment_list, class: 'form-control' %>
+  </div>
+
+  <div class="col-12">
+    <div class="row">
+      <%= form.fields_for :tech_specs do |tech_specs_fields| %>
+        <%= render partial: 'better_together/files/fields', locals: { form: tech_specs_fields, label: 'Tech Specs' } %>
+      <% end %>
+
+      <%= form.fields_for :stage_plot do |stage_plot_fields| %>
+        <%= render partial: 'better_together/files/fields', locals: { form: stage_plot_fields, label: 'Stage Plot' } %>
+      <% end %>
+
+      <%= form.fields_for :seating_chart do |seating_chart_fields| %>
+        <%= render partial: 'better_together/files/fields', locals: { form: seating_chart_fields, label: 'Tech Specs' } %>
+      <% end %>
+    </div>
   </div>
 
   <div class="col-4 col-md-2">

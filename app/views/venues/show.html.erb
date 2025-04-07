@@ -56,7 +56,7 @@
     </div>
   </section>
 
-  <section class="financial">
+  <section class="financial mb-3">
     <h3>Financial</h3>
     <p><strong>Types of deals:</strong> <%= @venue.deal_types.join(', ') %></p>
     <p><strong>Accommodations provided:</strong> <%= @venue.accommodations_provided.humanize %></p>
@@ -69,10 +69,32 @@
     <h3>Tech & Equipment</h3>
     <p><%= @venue.equipment_list %></p>
 
-    <h3>Resources & Downloads</h3>
-    <a href="#"><i class="fas fa-arrow-alt-circle-down"></i> Tech Info</a><br>
-    <a href="#"><i class="fas fa-arrow-alt-circle-down"></i> Stage Info</a><br>
-    <a href="#"><i class="fas fa-arrow-alt-circle-down"></i> Seating Chart</a>
+    <% if policy(@venue.tech_specs).download? || policy(@venue.stage_plot).download? || policy(@venue.seating_chart).download? %>
+      <h3>Resources & Downloads</h3>
+      <ul class="list-inline">
+      <% if policy(@venue.tech_specs).download? %>
+        <li class="list-inline-item">
+        <a href="<%= download_file_url(@venue.tech_specs) %>" class="text-decoration-none">
+          <i class="fas fa-arrow-alt-circle-down"></i> Tech Info
+        </a>
+        </li>
+      <% end %>
+      <% if policy(@venue.stage_plot).download? %>
+        <li class="list-inline-item">
+        <a href="<%= download_file_url(@venue.stage_plot) %>" class="text-decoration-none">
+          <i class="fas fa-arrow-alt-circle-down"></i> Stage Info
+        </a>
+        </li>
+      <% end %>
+      <% if policy(@venue.seating_chart).download? %>
+        <li class="list-inline-item">
+        <a href="<%= download_file_url(@venue.seating_chart) %>" class="text-decoration-none">
+          <i class="fas fa-arrow-alt-circle-down"></i> Seating Chart
+        </a>
+        </li>
+      <% end %>
+      </ul>
+    <% end %>
   </section>
 
   <section id="map">
