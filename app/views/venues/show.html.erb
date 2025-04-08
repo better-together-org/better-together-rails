@@ -99,17 +99,6 @@
 
   <section id="map">
     <h3>Location Map</h3>
-    <% map = BetterTogether::Geography::Map.new %>
-    <div class="map" id="<%= dom_id(@venue, :map) %>"
-        data-controller="better_together--map"
-        data-better_together--map-center-value="<%= map.center_for_leaflet %>"
-        data-better_together--map-zoom-value="<%= map.zoom %>"
-        data-better_together--map-extent-value="<%= map.viewport %>">
-      <div class="map-controls">
-        <button data-action="better_together--map#switchToOSM">OpenStreetMap</button>
-        <button data-action="better_together--map#switchToSatellite">Satellite</button>
-        <button data-action="better_together--map#enableGeolocation">Geolocate Me</button>
-      </div>
-    </div>
+    <%= render partial: 'better_together/shared/mappable_map', locals: { mappable: @venue } %>
   </section>
 </div>

@@ -12,6 +12,8 @@ class Venue < ApplicationRecord
   has_many :venue_buildings,
            -> { order(:primary_flag, :position) }, dependent: :destroy
 
+  has_many :buildings, through: :venue_buildings
+
   has_many :venue_images,
            -> { order({ primary_flag: :desc }, { position: :asc }) }, dependent: :destroy
 
@@ -27,6 +29,8 @@ class Venue < ApplicationRecord
 
   has_many :ticket_sale_options, through: :venue_offers
 
+  has_one :map, class_name: 'BetterTogether::Geography::Map', as: :mappable, dependent: :destroy
+
   accepts_nested_attributes_for :venue_buildings, :venue_images, :venue_offers, :stages,
                                 allow_destroy: true, reject_if: :all_blank
 
@@ -34,6 +38,8 @@ class Venue < ApplicationRecord
            :tech_specs, to: :primary_stage, allow_nil: true
   delegate :box_office, :accommodations_provided, :accomodations_notes, :financial_notes, :marketing_support,
            to: :primary_venue_offer, allow_nil: true
+
+  before_validation :create_map, if: ->(obj) { obj.map.nil? }
 
   translates :name
   translates :description, backend: :action_text
@@ -86,6 +92,14 @@ class Venue < ApplicationRecord
     return if venue_offers.empty?
 
     @primary_venue_offer ||= venue_offers.primary_record(id)
+  end
+
+  def spaces
+    @spaces ||= buildings.includes(:space).map(&:space).flatten.uniq
+  end
+
+  def leaflet_points
+    buildings.includes(:space).map(&:to_leaflet_point).compact.to_json
   end
 
   def to_s
