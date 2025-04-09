@@ -65,10 +65,16 @@
   <% if @venue.deal_types.any? || @venue.accommodations_provided.present? || @venue.accomodations_notes.present? || @venue.financial_notes.present? %>
     <section class="financial my-4 pb-2">
       <h3><i class="fas fa-dollar-sign text-warning"></i> Financial</h3>
-      <p><strong>Types of deals:</strong> <%= @venue.deal_types.join(', ') %></p>
+      <% if @venue.deal_types.any? %>
+        <p><strong>Types of deals:</strong> <%= @venue.deal_types.join(', ') %></p>
+      <% end %>
       <p><strong>Accommodations provided:</strong> <%= @venue.accommodations_provided.humanize %></p>
-      <p><strong>Additional Accomodation Information:</strong> <%= @venue.accomodations_notes %></p>
-      <p><strong>Additional Financial Information:</strong> <%= @venue.financial_notes %></p>
+      <% if @venue.accomodations_notes.present? %>
+        <p><strong>Additional Accomodation Information:</strong> <%= @venue.accomodations_notes %></p>
+      <% end %>
+      <% if @venue.accomodations_notes.present? %>
+        <p><strong>Additional Financial Information:</strong> <%= @venue.financial_notes %></p>
+      <% end %>
     </section>
   <% end %>
 
@@ -116,7 +122,7 @@
   <% end %>
 
   <% if @venue.map %>
-    <section id="map my-4 pb-2">
+    <section id="map" class="my-4 pb-2">
       <h3><i class="fas fa-map-marker-alt text-warning"></i> Location Map</h3>
       <%= render partial: 'better_together/shared/mappable_map', locals: { mappable: @venue } %>
     </section>
