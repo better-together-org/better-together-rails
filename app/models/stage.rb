@@ -12,11 +12,11 @@ class Stage < ApplicationRecord
 
   belongs_to :venue
 
-  belongs_to :tech_specs, class_name: 'BetterTogether::File', dependent: :destroy
+  belongs_to :tech_specs, class_name: 'BetterTogether::Upload', dependent: :destroy
 
-  belongs_to :stage_plot, class_name: 'BetterTogether::File', dependent: :destroy
+  belongs_to :stage_plot, class_name: 'BetterTogether::Upload', dependent: :destroy
 
-  belongs_to :seating_chart, class_name: 'BetterTogether::File', dependent: :destroy
+  belongs_to :seating_chart, class_name: 'BetterTogether::Upload', dependent: :destroy
 
   translates :name
   translates :description, backend: :action_text
@@ -26,12 +26,12 @@ class Stage < ApplicationRecord
 
   def self.permitted_attributes(id: false, destroy: false)
     %i[
-      capacity equipment_list venue_id
+      capacity equipment_list venue_id accessible lighting_tech sound_tech
     ] + [
       {
-        tech_specs_attributes: BetterTogether::File.permitted_attributes(id: true, destroy: true),
-        stage_plot_attributes: BetterTogether::File.permitted_attributes(id: true, destroy: true),
-        seating_chart_attributes: BetterTogether::File.permitted_attributes(id: true, destroy: true)
+        tech_specs_attributes: BetterTogether::Upload.permitted_attributes(id: true, destroy: true),
+        stage_plot_attributes: BetterTogether::Upload.permitted_attributes(id: true, destroy: true),
+        seating_chart_attributes: BetterTogether::Upload.permitted_attributes(id: true, destroy: true)
       }
     ] + super
   end

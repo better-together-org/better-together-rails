@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/better-together-org/community-engine-rails.git
-  revision: c5407f5e2b14165c7866cb2f24d88916801e15f1
+  revision: 5e47c5a3a28d97cae74b8c19d5db16a223b8f44c
   branch: geospatial/places-and-spaces
   specs:
     better_together (0.7.1)
@@ -306,7 +306,7 @@ GEM
       railties (>= 5.0.0)
     faker (3.5.1)
       i18n (>= 1.8.11, < 2)
-    faraday (2.12.3)
+    faraday (2.13.0)
       faraday-net_http (>= 2.0, < 3.5)
       json
       logger

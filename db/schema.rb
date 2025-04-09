@@ -12,7 +12,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 20_250_407_210_122) do
+ActiveRecord::Schema[7.1].define(version: 20_250_409_012_255) do
   # These are extensions that must be enabled in order to support this database
   enable_extension 'pgcrypto'
   enable_extension 'plpgsql'
@@ -273,19 +273,6 @@ ActiveRecord::Schema[7.1].define(version: 20_250_407_210_122) do
                                                 unique: true, where: '(primary_flag IS TRUE)'
     t.index ['contact_detail_id'], name: 'index_better_together_email_addresses_on_contact_detail_id'
     t.index ['privacy'], name: 'by_better_together_email_addresses_privacy'
-  end
-
-  create_table 'better_together_files', id: :uuid, default: -> { 'gen_random_uuid()' }, force: :cascade do |t|
-    t.integer 'lock_version', default: 0, null: false
-    t.datetime 'created_at', null: false
-    t.datetime 'updated_at', null: false
-    t.uuid 'creator_id'
-    t.string 'identifier', limit: 100, null: false
-    t.string 'privacy', limit: 50, default: 'private', null: false
-    t.string 'type', default: 'BetterTogether::File', null: false
-    t.index ['creator_id'], name: 'by_better_together_files_creator'
-    t.index ['identifier'], name: 'index_better_together_files_on_identifier', unique: true
-    t.index ['privacy'], name: 'by_better_together_files_privacy'
   end
 
   create_table 'better_together_geography_continents', id: :uuid, default: lambda {
@@ -963,6 +950,19 @@ ActiveRecord::Schema[7.1].define(version: 20_250_407_210_122) do
     t.index ['privacy'], name: 'by_better_together_social_media_accounts_privacy'
   end
 
+  create_table 'better_together_uploads', id: :uuid, default: -> { 'gen_random_uuid()' }, force: :cascade do |t|
+    t.integer 'lock_version', default: 0, null: false
+    t.datetime 'created_at', null: false
+    t.datetime 'updated_at', null: false
+    t.uuid 'creator_id'
+    t.string 'identifier', limit: 100, null: false
+    t.string 'privacy', limit: 50, default: 'private', null: false
+    t.string 'type', default: 'BetterTogether::Upload', null: false
+    t.index ['creator_id'], name: 'by_better_together_files_creator'
+    t.index ['identifier'], name: 'index_better_together_uploads_on_identifier', unique: true
+    t.index ['privacy'], name: 'by_better_together_files_privacy'
+  end
+
   create_table 'better_together_users', id: :uuid, default: -> { 'gen_random_uuid()' }, force: :cascade do |t|
     t.integer 'lock_version', default: 0, null: false
     t.datetime 'created_at', null: false
@@ -1282,7 +1282,6 @@ ActiveRecord::Schema[7.1].define(version: 20_250_407_210_122) do
   add_foreign_key 'better_together_conversation_participants', 'better_together_people', column: 'person_id'
   add_foreign_key 'better_together_conversations', 'better_together_people', column: 'creator_id'
   add_foreign_key 'better_together_email_addresses', 'better_together_contact_details', column: 'contact_detail_id'
-  add_foreign_key 'better_together_files', 'better_together_people', column: 'creator_id'
   add_foreign_key 'better_together_geography_continents', 'better_together_communities', column: 'community_id'
   add_foreign_key 'better_together_geography_countries', 'better_together_communities', column: 'community_id'
   add_foreign_key 'better_together_geography_country_continents', 'better_together_geography_continents',
@@ -1342,16 +1341,17 @@ ActiveRecord::Schema[7.1].define(version: 20_250_407_210_122) do
   add_foreign_key 'better_together_role_resource_permissions', 'better_together_roles', column: 'role_id'
   add_foreign_key 'better_together_social_media_accounts', 'better_together_contact_details',
                   column: 'contact_detail_id'
+  add_foreign_key 'better_together_uploads', 'better_together_people', column: 'creator_id'
   add_foreign_key 'better_together_website_links', 'better_together_contact_details', column: 'contact_detail_id'
   add_foreign_key 'better_together_wizard_step_definitions', 'better_together_wizards', column: 'wizard_id'
   add_foreign_key 'better_together_wizard_steps', 'better_together_people', column: 'creator_id'
   add_foreign_key 'better_together_wizard_steps', 'better_together_wizard_step_definitions',
                   column: 'wizard_step_definition_id'
   add_foreign_key 'better_together_wizard_steps', 'better_together_wizards', column: 'wizard_id'
-  add_foreign_key 'stages', 'better_together_files', column: 'seating_chart_id', on_delete: :nullify
-  add_foreign_key 'stages', 'better_together_files', column: 'stage_plot_id', on_delete: :nullify
-  add_foreign_key 'stages', 'better_together_files', column: 'tech_specs_id', on_delete: :nullify
   add_foreign_key 'stages', 'better_together_people', column: 'creator_id'
+  add_foreign_key 'stages', 'better_together_uploads', column: 'seating_chart_id', on_delete: :nullify
+  add_foreign_key 'stages', 'better_together_uploads', column: 'stage_plot_id', on_delete: :nullify
+  add_foreign_key 'stages', 'better_together_uploads', column: 'tech_specs_id', on_delete: :nullify
   add_foreign_key 'stages', 'venues'
   add_foreign_key 'venue_buildings', 'better_together_infrastructure_buildings', column: 'building_id'
   add_foreign_key 'venue_buildings', 'venues'
