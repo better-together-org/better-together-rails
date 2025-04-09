@@ -1,6 +1,6 @@
 
 <%# locals: (form:) %>
-<div class="venue-buildings-fields nested-fields my-3 row align-items-end" data-new-record="<%= form.object.new_record? %>">
+<div class="venue-buildings-fields nested-fields border-top py-3 my-3 row align-items-end" data-new-record="<%= form.object.new_record? %>">
   <h4><%= BetterTogether::Infrastructure::Building.name.humanize %></h4>
   <%= form.hidden_field :_destroy %>
 

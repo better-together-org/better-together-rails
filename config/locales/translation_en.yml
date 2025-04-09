@@ -1,28 +1,91 @@
 en:
   activerecord:
     models:
-      journey_map: Journey Map
-      partner: Partner  #g
+      venue: "Venue"
+      stage: "Stage"
+      venue_offer: "Venue Offer"
 
     attributes:
-      partner:
-        creator: :activerecord.models.creator  #g
-        host: Host  #g
-        identifier: Identifier  #g
-        lock_version: Lock version  #g
-        person_community_memberships: Person community memberships  #g
-        person_members: Person members  #g
-        person_roles: Person roles  #g
-        privacy: Privacy  #g
-        protected: Protected  #g
-        slug: Slug  #g
-        slugs: Slugs  #g
-        string_translations: String translations  #g
-        text_translations: Text translations  #g
-      resource:
-        type: "Type"
-        external_url: "External URL"
-        published_at: "Published At"
-        author: "Author"
-        privacy: "Privacy"
-        language: "Language"
+      better_together:
+        common:
+          primary_flag: "Primary"
+          privacy: "Privacy"
+          identifier: "Identifier"
+          position: "Position"
+          protected: "Protected"
+          host: "Host"
+          name: "Name"
+          description: "Description"
+          slug: "Slug"
+          visible: "Visible"
+          locale: "Locale"
+          creator: "Creator"
+          community: "Community"
+
+      venue:
+        identifier: :activerecord.attributes.better_together.common.identifier
+        privacy: :activerecord.attributes.better_together.common.privacy
+        community: :activerecord.attributes.better_together.common.community
+        creator: :activerecord.attributes.better_together.common.creator
+
+      stage:
+        identifier: :activerecord.attributes.better_together.common.identifier
+        privacy: :activerecord.attributes.better_together.common.privacy
+        primary_flag: :activerecord.attributes.better_together.common.primary_flag
+        capacity: "Capacity"
+        equipment_list: "Equipment List"
+        accessible: "Accessible"
+        lighting_tech: "Lighting Tech"
+        sound_tech: "Sound Tech"
+        venue_id: "Venue"
+        tech_specs_id: "Tech Specs"
+        stage_plot_id: "Stage Plot"
+        seating_chart_id: "Seating Chart"
+
+      venue_offer:
+        identifier: :activerecord.attributes.better_together.common.identifier
+        privacy: :activerecord.attributes.better_together.common.privacy
+        primary_flag: :activerecord.attributes.better_together.common.primary_flag
+        accommodations_provided: "Accommodations Provided"
+        accomodations_notes: "Accommodations Notes"
+        box_office: "Box Office"
+        financial_notes: "Financial Notes"
+        marketing_support: "Marketing Support"
+        venue_id: "Venue"
+        stage_id: "Stage"
+        deal_type_ids: "Deal Types"
+        ticket_sale_option_ids: "Ticket Sale Options"
+
+      better_together/contact_detail:
+        name: "Name"
+        role: "Role"
+
+  placeholders:
+    stage:
+      identifier: "(optional)"
+
+  hints:
+    stage:
+      identifier: "Enter a unique identifier for the stage. Should not contain spaces and must be under 100 characters."
+      capacity: "Specify the maximum capacity of the stage."
+      equipment_list: "List the equipment available on the stage."
+      tech_specs_id: "Upload the technical specifications for the stage."
+      stage_plot_id: "Upload the stage plot file."
+      seating_chart_id: "Upload the seating chart file."
+
+      accessible: "Indicate if the stage is accessible for individuals with disabilities."
+      lighting_tech: "Specify if lighting technology is available for the stage."
+      sound_tech: "Specify if sound technology is available for the stage."
+
+    venue_offer:
+      accommodations_provided: "Indicate if accommodations are provided as part of the offer."
+      accomodations_notes: "Provide additional details about the accommodations."
+      financial_notes: "Add any financial notes or considerations for the offer."
+      marketing_support: "Specify if marketing support is available for the offer."
+      deal_type_ids: "Select one or more deal types applicable to this venue offer."
+      ticket_sale_option_ids: "Select one or more ticket sale options available for this venue offer."
+
+    better_together/contact_detail:
+      name: "Enter the contact's name."
+      role: "Specify the role of the contact."
+

@@ -1,31 +1,88 @@
 es:
   activerecord:
     models:
-      partner: Colaborador  #g
-      resource: Recurso
-      resource/document: "Documento"
-      resource/link: "Enlace"
+      venue: "Lugar"
+      stage: "Escenario"
+      venue_offer: "Oferta del Lugar"
 
     attributes:
-      partner:
-        creator: :activerecord.models.creator  #g
-        host: Anfitrión
-        identifier: Identificador
-        lock_version: Versión de bloqueo
-        person_community_memberships: Membresías de la comunidad de personas
-        person_members: Miembros personales
-        person_roles: Roles personales
-        privacy: Privacidad
-        protected: Protegido
-        slug: Babosa
-        slugs: babosas
-        string_translations: Traducciones de cadenas
-        text_translations: Traducciones de texto
+      better_together:
+        common:
+          primary_flag: "Principal"
+          privacy: "Privacidad"
+          identifier: "Identificador"
+          position: "Posición"
+          protected: "Protegido"
+          host: "Anfitrión"
+          name: "Nombre"
+          description: "Descripción"
+          slug: "Slug"
+          visible: "Visible"
+          locale: "Idioma"
+          creator: "Creador"
+          community: "Comunidad"
 
-      resource:
-        type: "Tipo"
-        external_url: "URL Externa"
-        published_at: "Publicado en"
-        author: "Autor"
-        privacy: "Privacidad"
-        language: "Idioma"
+      venue:
+        identifier: :activerecord.attributes.better_together.common.identifier
+        privacy: :activerecord.attributes.better_together.common.privacy
+        community: :activerecord.attributes.better_together.common.community
+        creator: :activerecord.attributes.better_together.common.creator
+
+      stage:
+        identifier: :activerecord.attributes.better_together.common.identifier
+        privacy: :activerecord.attributes.better_together.common.privacy
+        primary_flag: :activerecord.attributes.better_together.common.primary_flag
+        capacity: "Capacidad"
+        equipment_list: "Lista de Equipos"
+        accessible: "Accesible"
+        lighting_tech: "Técnica de Iluminación"
+        sound_tech: "Técnica de Sonido"
+        venue_id: "Lugar"
+        tech_specs_id: "Especificaciones Técnicas"
+        stage_plot_id: "Plano del Escenario"
+        seating_chart_id: "Plano de Asientos"
+
+      venue_offer:
+        identifier: :activerecord.attributes.better_together.common.identifier
+        privacy: :activerecord.attributes.better_together.common.privacy
+        primary_flag: :activerecord.attributes.better_together.common.primary_flag
+        accommodations_provided: "Alojamientos Proporcionados"
+        accomodations_notes: "Notas de Alojamiento"
+        box_office: "Taquilla"
+        financial_notes: "Notas Financieras"
+        marketing_support: "Soporte de Marketing"
+        venue_id: "Lugar"
+        stage_id: "Escenario"
+        deal_type_ids: "Tipos de Acuerdo"
+        ticket_sale_option_ids: "Opciones de Venta de Entradas"
+
+      better_together/contact_detail:
+        name: "Nombre"
+        role: "Rol"
+
+  placeholders:
+    stage:
+      identifier: "(opcional)"
+  hints:
+    stage:
+      identifier: "Ingrese un identificador único para el escenario. No debe contener espacios y debe tener menos de 100 caracteres."
+      capacity: "Especifique la capacidad máxima del escenario."
+      equipment_list: "Enumere el equipo disponible en el escenario."
+      accessible: "Indique si el escenario es accesible para personas con discapacidades."
+      lighting_tech: "Especifique si hay tecnología de iluminación disponible para el escenario."
+      sound_tech: "Especifique si hay tecnología de sonido disponible para el escenario."
+      tech_specs_id: "Cargue las especificaciones técnicas del escenario."
+      stage_plot_id: "Cargue el archivo del plano del escenario."
+      seating_chart_id: "Cargue el archivo del plano de asientos."
+
+    venue_offer:
+      accommodations_provided: "Indique si se proporcionan alojamientos como parte de la oferta del lugar."
+      accomodations_notes: "Proporcione detalles adicionales sobre los alojamientos."
+      financial_notes: "Agregue notas financieras o consideraciones para la oferta."
+      marketing_support: "Especifique si hay soporte de marketing disponible para la oferta del lugar."
+      deal_type_ids: "Seleccione uno o más tipos de acuerdos aplicables a esta oferta del lugar."
+      ticket_sale_option_ids: "Seleccione una o más opciones de venta de entradas disponibles para esta oferta del lugar."
+
+    better_together/contact_detail:
+      name: "Ingrese el nombre del contacto."
+      role: "Especifique el rol del contacto."

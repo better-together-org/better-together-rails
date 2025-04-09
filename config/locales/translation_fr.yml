@@ -1,20 +1,89 @@
 fr:
   activerecord:
     models:
-      partner: Partenaire  #g
+      venue: "Lieu"
+      stage: "Scène"
+      venue_offer: "Offre du Lieu"
 
     attributes:
-      partner:
-        creator: :activerecord.models.creator  #g
-        host: Hôte  #g
-        identifier: Identifiant  #g
-        lock_version: Version verrouillable  #g
-        person_community_memberships: Adhésions de personnes à des communautés  #g
-        person_members: Membres de la personne  #g
-        person_roles: Rôles des personnes  #g
-        privacy: Confidentialité  #g
-        protected: Protégé  #g
-        slug: Limace  #g
-        slugs: Limaces  #g
-        string_translations: Traductions de chaînes  #g
-        text_translations: Traductions de textes  #g
+      better_together:
+        common:
+          primary_flag: "Principal"
+          privacy: "Confidentialité"
+          identifier: "Identifiant"
+          position: "Position"
+          protected: "Protégé"
+          host: "Hôte"
+          name: "Nom"
+          description: "Description"
+          slug: "Slug"
+          visible: "Visible"
+          locale: "Langue"
+          creator: "Créateur"
+          community: "Communauté"
+
+      venue:
+        identifier: :activerecord.attributes.better_together.common.identifier
+        privacy: :activerecord.attributes.better_together.common.privacy
+        community: :activerecord.attributes.better_together.common.community
+        creator: :activerecord.attributes.better_together.common.creator
+
+      stage:
+        identifier: :activerecord.attributes.better_together.common.identifier
+        privacy: :activerecord.attributes.better_together.common.privacy
+        primary_flag: :activerecord.attributes.better_together.common.primary_flag
+        capacity: "Capacité"
+        equipment_list: "Liste d'Équipements"
+        accessible: "Accessible"
+        lighting_tech: "Technique d'Éclairage"
+        sound_tech: "Technique de Son"
+        venue_id: "Lieu"
+        tech_specs_id: "Spécifications Techniques"
+        stage_plot_id: "Plan de la Scène"
+        seating_chart_id: "Plan des Sièges"
+
+      venue_offer:
+        identifier: :activerecord.attributes.better_together.common.identifier
+        privacy: :activerecord.attributes.better_together.common.privacy
+        primary_flag: :activerecord.attributes.better_together.common.primary_flag
+        accommodations_provided: "Hébergements Fournis"
+        accomodations_notes: "Notes d'Hébergement"
+        box_office: "Billetterie"
+        financial_notes: "Notes Financières"
+        marketing_support: "Support Marketing"
+        venue_id: "Lieu"
+        stage_id: "Scène"
+        deal_type_ids: "Types d'Accord"
+        ticket_sale_option_ids: "Options de Vente de Billets"
+
+      better_together/contact_detail:
+        name: "Nom"
+        role: "Rôle"
+
+  placeholders:
+    stage:
+      identifier: "(optionnel)"
+
+  hints:
+    stage:
+      identifier: "Entrez un identifiant unique pour la scène. Ne doit pas contenir d'espaces et doit comporter moins de 100 caractères."
+      capacity: "Spécifiez la capacité maximale de la scène."
+      equipment_list: "Listez l'équipement disponible sur la scène."
+      accessible: "Indiquez si la scène est accessible aux personnes handicapées."
+      lighting_tech: "Spécifiez si une technologie d'éclairage est disponible pour la scène."
+      sound_tech: "Spécifiez si une technologie sonore est disponible pour la scène."
+      tech_specs_id: "Téléchargez les spécifications techniques de la scène."
+      stage_plot_id: "Téléchargez le fichier du plan de la scène."
+      seating_chart_id: "Téléchargez le fichier du plan des sièges."
+
+    venue_offer:
+      accommodations_provided: "Indiquez si des hébergements sont fournis dans le cadre de l'offre du lieu."
+      accomodations_notes: "Fournissez des détails supplémentaires sur les hébergements."
+      financial_notes: "Ajoutez des notes financières ou des considérations pour l'offre."
+      marketing_support: "Spécifiez si un support marketing est disponible pour l'offre du lieu."
+      deal_type_ids: "Sélectionnez un ou plusieurs types d'accords applicables à cette offre de lieu."
+      ticket_sale_option_ids: "Sélectionnez une ou plusieurs options de vente de billets disponibles pour cette offre de lieu."
+
+    better_together/contact_detail:
+      name: "Entrez le nom du contact."
+      role: "Spécifiez le rôle du contact."

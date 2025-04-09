@@ -1,58 +1,101 @@
-
 <%# locals: (form:) %>
-<div class="stages-fields nested-fields my-3 row align-items-end" data-new-record="<%= form.object.new_record? %>">
+<div class="stages-fields nested-fields my-3 border-top mt-3 pt-3" data-new-record="<%= form.object.new_record? %>">
   <h4><%= Stage.name.humanize %></h4>
   <%= form.hidden_field :_destroy %>
   <%= form.hidden_field :venue_id, value: form.object.venue_id %>
 
   <!-- Identifier text field -->
-  <div class="col-12 mb-3">
-    <%= form.label :identifier, "Identifier", class: "form-label" %>
-    <%= form.text_field :identifier, class: "form-control#{' is-invalid' if form.object.errors[:identifier].any?}", maxlength: 100, placeholder: '(optional)' %>
+  <div class="row my-3">
+    <div class="col-12">
+      <%= form.label :identifier, human_attribute_name_for(form.object, :identifier), class: "form-label" %>
+      <%= form.text_field :identifier, class: "form-control#{' is-invalid' if form.object.errors[:identifier].any?}", maxlength: 100, placeholder: t('placeholders.stage.identifier') %>
 
-    <% if form.object.errors[:identifier].any? %>
-      <div class="invalid-feedback">
-        <%= form.object.errors[:identifier].join(", ") %>
-      </div>
-    <% end %>
-    <small class="form-text text-muted mt-2">
-      You can enter an optional identifier to make it easier to identify the stage later. Should be not contain spaces and should be under 100 characters.
-    </small>
-  </div>
-
-  <div class="col col-md-6 mb-3">
-    <%= form.label :capacity, class: "form-label" %>
-    <%= form.number_field :capacity, class: 'form-control' %>
-  </div>
-
-  <div class="col col-md-6 mb-3">
-    <%= form.label :equipment_list, class: "form-label" %>
-    <%= form.text_area :equipment_list, class: 'form-control' %>
-  </div>
-
-  <div class="col-12">
-    <div class="row">
-      <%= form.fields_for :tech_specs do |tech_specs_fields| %>
-        <%= render partial: 'better_together/files/fields', locals: { form: tech_specs_fields, label: 'Tech Specs' } %>
+      <% if form.object.errors[:identifier].any? %>
+        <div class="invalid-feedback">
+          <%= form.object.errors[:identifier].join(", ") %>
+        </div>
       <% end %>
-
-      <%= form.fields_for :stage_plot do |stage_plot_fields| %>
-        <%= render partial: 'better_together/files/fields', locals: { form: stage_plot_fields, label: 'Stage Plot' } %>
-      <% end %>
-
-      <%= form.fields_for :seating_chart do |seating_chart_fields| %>
-        <%= render partial: 'better_together/files/fields', locals: { form: seating_chart_fields, label: 'Tech Specs' } %>
-      <% end %>
+      <small class="form-text text-muted mt-2">
+        <%= t('hints.stage.identifier') %>
+      </small>
     </div>
   </div>
 
-  <div class="col-4 col-md-2">
-    <%= render partial: 'better_together/shared/fields/primary_flag', locals: { form:, primary_flag_scope: form.object.venue_id } %>
+  <!-- Toggle switches -->
+  <div class="row my-3">
+    <div class="col">
+      <%= render partial: 'better_together/shared/fields/toggle_switch', locals: { form:, attr: :accessible } %>
+      <small class="form-text text-muted mt-2">
+        <%= t('hints.stage.accessible') %>
+      </small>
+    </div>
+    <div class="col">
+      <%= render partial: 'better_together/shared/fields/toggle_switch', locals: { form:, attr: :lighting_tech } %>
+      <small class="form-text text-muted mt-2">
+        <%= t('hints.stage.lighting_tech') %>
+      </small>
+    </div>
+    <div class="col">
+      <%= render partial: 'better_together/shared/fields/toggle_switch', locals: { form:, attr: :sound_tech } %>
+      <small class="form-text text-muted mt-2">
+        <%= t('hints.stage.sound_tech') %>
+      </small>
+    </div>
   </div>
 
-  <div class="col-8 col-md-10 mt-3 mt-md-0">
-    <%= link_to '#remove-stage', class: 'btn btn-outline-danger btn-sm', data: { action: 'click->better_together--dynamic-fields#remove' } do %>
-      <i class="fas fa-minus"></i> <%= t('better_together.remove') %>
-    <% end %>
+  <!-- Capacity and Equipment List -->
+  <div class="row my-3">
+    <div class="col-md-6">
+      <%= form.label :capacity, human_attribute_name_for(form.object, :capacity), class: "form-label" %>
+      <%= form.number_field :capacity, class: 'form-control' %>
+      <small class="form-text text-muted mt-2">
+        <%= t('hints.stage.capacity') %>
+      </small>
+    </div>
+    <div class="col-md-6">
+      <%= form.label :equipment_list, human_attribute_name_for(form.object, :equipment_list), class: "form-label" %>
+      <%= form.text_area :equipment_list, class: 'form-control' %>
+      <small class="form-text text-muted mt-2">
+        <%= t('hints.stage.equipment_list') %>
+      </small>
+    </div>
+  </div>
+
+  <!-- File fields -->
+  <div class="row my-3">
+    <div class="col-12">
+      <%= form.fields_for :tech_specs do |tech_specs_fields| %>
+        <%= render partial: 'better_together/uploads/fields', locals: { form: tech_specs_fields, label: human_attribute_name_for(form.object, :tech_specs_id) } %>
+      <% end %>
+      <small class="form-text text-muted mt-2">
+        <%= t('hints.stage.tech_specs_id') %>
+      </small>
+
+      <%= form.fields_for :stage_plot do |stage_plot_fields| %>
+        <%= render partial: 'better_together/uploads/fields', locals: { form: stage_plot_fields, label: human_attribute_name_for(form.object, :stage_plot_id) } %>
+      <% end %>
+      <small class="form-text text-muted mt-2">
+        <%= t('hints.stage.stage_plot_id') %>
+      </small>
+
+      <%= form.fields_for :seating_chart do |seating_chart_fields| %>
+        <%= render partial: 'better_together/uploads/fields', locals: { form: seating_chart_fields, label: human_attribute_name_for(form.object, :seating_chart_id) } %>
+      <% end %>
+      <small class="form-text text-muted mt-2">
+        <%= t('hints.stage.seating_chart_id') %>
+      </small>
+    </div>
+  </div>
+
+  <!-- Primary flag and remove button -->
+  <div class="row">
+    <div class="col-md-2">
+      <%= render partial: 'better_together/shared/fields/primary_flag', locals: { form:, primary_flag_scope: form.object.venue_id } %>
+    </div>
+    <div class="col-md-10 mt-3 mt-md-0">
+      <%= link_to '#remove-stage', class: 'btn btn-outline-danger btn-sm', data: { action: 'click->better_together--dynamic-fields#remove' } do %>
+        <i class="fas fa-minus"></i> <%= t('better_together.remove') %>
+      <% end %>
+    </div>
   </div>
 </div>

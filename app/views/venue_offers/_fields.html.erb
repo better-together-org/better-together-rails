@@ -1,52 +1,101 @@
-
 <%# locals: (form:) %>
-<div class="venue-buildings-fields nested-fields my-3 row align-items-end" data-new-record="<%= form.object.new_record? %>">
+<div class="venue-offers-fields nested-fields my-3 border-top mt-3 pt-3" data-new-record="<%= form.object.new_record? %>">
   <h4><%= VenueOffer.name.humanize %></h4>
   <%= form.hidden_field :_destroy %>
   <%= form.hidden_field :venue_id, value: form.object.venue_id %>
 
-  <div class="col-md-12 mb-3">
-    <%= form.label :deal_type_ids, t('activerecord.attributes.venue_offer_deal_type.deal_type'), class: 'me-3' %>
-    <% DealType.all.each do |deal_type| %>
-      <div class="form-check form-check-inline">
-        <%= form.check_box :deal_type_ids, { multiple: true, class: 'form-check-input' }, deal_type.id, nil %>
-        <%= form.label :deal_type_ids, deal_type.name, class: 'form-check-label' %>
+  <!-- Deal Types -->
+  <div class="row my-3">
+    <div class="col-12">
+      <%= form.label :deal_type_ids, t('activerecord.attributes.venue_offer_deal_type.deal_type'), class: 'form-label me-3' %>
+      <% DealType.all.each do |deal_type| %>
+        <div class="form-check form-check-inline">
+          <%= form.check_box :deal_type_ids, { multiple: true, class: 'form-check-input' }, deal_type.id, nil %>
+          <%= form.label :deal_type_ids, deal_type.name, class: 'form-check-label' %>
+        </div>
+      <% end %>
+      <div class="my-3">
+        <small class="form-text text-muted">
+          <%= t('hints.venue_offer.deal_type_ids') %>
+        </small>
       </div>
-    <% end %>
+    </div>
   </div>
 
-  <div class="col-md-12 mb-3">
-    <%= form.label :ticket_sale_option_ids, t('activerecord.attributes.venue_offer_ticket_sale_option.ticket_sale_option'), class: 'me-3' %>
-    <% TicketSaleOption.all.each do |option| %>
-      <div class="form-check form-check-inline">
-        <%= form.check_box :ticket_sale_option_ids, { multiple: true, class: 'form-check-input' }, option.id, nil %>
-        <%= form.label :ticket_sale_option_ids, option.name, class: 'form-check-label' %>
+  <!-- Ticket Sale Options -->
+  <div class="row my-3">
+    <div class="col-12">
+      <%= form.label :ticket_sale_option_ids, t('activerecord.attributes.venue_offer_ticket_sale_option.ticket_sale_option'), class: 'form-label me-3' %>
+      <% TicketSaleOption.all.each do |option| %>
+        <div class="form-check form-check-inline">
+          <%= form.check_box :ticket_sale_option_ids, { multiple: true, class: 'form-check-input' }, option.id, nil %>
+          <%= form.label :ticket_sale_option_ids, option.name, class: 'form-check-label' %>
+        </div>
+      <% end %>
+      <div class="my-3">
+        <small class="form-text text-muted">
+          <%= t('hints.venue_offer.ticket_sale_option_ids') %>
+        </small>
       </div>
-    <% end %>
+    </div>
   </div>
 
-  <div class="col-md-12 mb-3">
-    <%= form.label :accomodations_notes %>
-    <%= form.text_area :accomodations_notes, class: 'form-control' %>
+  <!-- Toggle Switches -->
+  <div class="row my-3">
+    <div class="col">
+      <%= render partial: 'better_together/shared/fields/toggle_switch', locals: { form:, attr: :accommodations_provided } %>
+      <div class="my-3">
+        <small class="form-text text-muted">
+          <%= t('hints.venue_offer.accommodations_provided') %>
+        </small>
+      </div>
+    </div>
   </div>
 
-  <div class="col-md-12 mb-3">
-    <%= form.label :financial_notes %>
-    <%= form.text_area :financial_notes, class: 'form-control' %>
+  <!-- Notes Fields -->
+  <div class="row my-3">
+    <div class="col-12">
+      <%= form.label :accomodations_notes, t('activerecord.attributes.venue_offer.accomodations_notes'), class: 'form-label' %>
+      <%= form.text_area :accomodations_notes, class: 'form-control' %>
+      <div class="my-3">
+        <small class="form-text text-muted">
+          <%= t('hints.venue_offer.accomodations_notes') %>
+        </small>
+      </div>
+    </div>
+  </div>
+  <div class="row my-3">
+    <div class="col-12">
+      <%= form.label :financial_notes, t('activerecord.attributes.venue_offer.financial_notes'), class: 'form-label' %>
+      <%= form.text_area :financial_notes, class: 'form-control' %>
+      <div class="my-3">
+        <small class="form-text text-muted">
+          <%= t('hints.venue_offer.financial_notes') %>
+        </small>
+      </div>
+    </div>
+  </div>
+  <div class="row my-3">
+    <div class="col-12">
+      <%= form.label :marketing_support, t('activerecord.attributes.venue_offer.marketing_support'), class: 'form-label' %>
+      <%= form.text_area :marketing_support, class: 'form-control' %>
+      <div class="my-3">
+        <small class="form-text text-muted">
+          <%= t('hints.venue_offer.marketing_support') %>
+        </small>
+      </div>
+    </div>
   </div>
 
-  <div class="col-md-12 mb-3">
-    <%= form.label :marketing_support %>
-    <%= form.text_area :marketing_support, class: 'form-control' %>
-  </div>
-
-  <div class="col-4 col-md-2">
-    <%= render partial: 'better_together/shared/fields/primary_flag', locals: { form:, primary_flag_scope: form.object.venue_id } %>
-  </div>
-
-  <div class="col-8 col-md-10 mt-3 mt-md-0">
-    <%= link_to '#remove-venue-offer', class: 'btn btn-outline-danger btn-sm', data: { action: 'click->better_together--dynamic-fields#remove' } do %>
-      <i class="fas fa-minus"></i> <%= t('better_together.remove') %>
-    <% end %>
+  <!-- Primary Flag and Remove Button -->
+  <div class="row">
+    <div class="col-md-2">
+      <%= render partial: 'better_together/shared/fields/primary_flag', locals: { form:, primary_flag_scope: form.object.venue_id } %>
+    </div>
+    <div class="col-md-10 mt-3 mt-md-0">
+      <%= link_to '#remove-venue-offer', class: 'btn btn-outline-danger btn-sm', data: { action: 'click->better_together--dynamic-fields#remove' } do %>
+        <i class="fas fa-minus"></i> <%= t('better_together.remove') %>
+      <% end %>
+    </div>
   </div>
 </div>

@@ -13,25 +13,6 @@ en:
       submit: Save %{model}
       update: Update %{model}
   hints:
-    resource:
-      name: "Enter the name of the resource."
-      description: "Provide a detailed description of the resource."
-      slug: "Enter a URL-friendly identifier."
-      type: "Select the type of the resource."
-      url: "Provide the external URL for the resource."
-      file: "Attach a document related to the resource."
-      file_size: "File must be less than %{size} MB."
-      privacy: "Specify the privacy level of the resource."
-      locale: "Select the language of the resource."
-      published_at: "Set the date and time when the resource was published. Resources will only be visible if they have a published date that is in the past. You can use this to control when resources become available by selecting a future date."
-      author: "Name of the author of the resource."
-  journey_items:
-    tooltips:
-      add: "Add to Journey"
-      remove: "Remove from Journey"
-    none_yet: "You haven't added any items to your Journey yet. Click on the '+' button on content to add it to your Journey."
-  journeys:
-    title: My Journey
   time:
     am: am
     formats:

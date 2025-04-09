@@ -25,12 +25,16 @@ class VenueOffer < ApplicationRecord
 
   def self.permitted_attributes(id: false, destroy: false)
     %i[
-      accomodations_notes financial_notes marketing_support venue_id
+      accomodations_notes accommodations_provided financial_notes marketing_support venue_id
     ] + [
       {
         deal_type_ids: [],
         ticket_sale_option_ids: []
       }
     ] + super
+  end
+
+  def box_office
+    @box_office ||= super || ticket_sale_options.where(identifier: 'box_office').exists?
   end
 end
