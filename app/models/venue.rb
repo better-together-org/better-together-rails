@@ -45,6 +45,8 @@ class Venue < ApplicationRecord
   translates :name
   translates :description, backend: :action_text
 
+  slugged :name
+
   settings index: { number_of_shards: 1 } do
     mappings dynamic: 'false' do
       indexes :name, as: 'name'
