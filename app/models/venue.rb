@@ -39,7 +39,8 @@ class Venue < ApplicationRecord
   delegate :box_office, :accommodations_provided, :accomodations_notes, :financial_notes, :marketing_support,
            to: :primary_venue_offer, allow_nil: true
 
-  before_validation :create_map, if: ->(obj) { obj.map.nil? }
+  after_create :create_map, if: ->(obj) { obj.map.nil? }
+  after_update :create_map, if: ->(obj) { obj.map.nil? }
 
   translates :name
   translates :description, backend: :action_text
