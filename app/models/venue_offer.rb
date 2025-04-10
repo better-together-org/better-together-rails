@@ -35,6 +35,6 @@ class VenueOffer < ApplicationRecord
   end
 
   def box_office
-    @box_office ||= super || ticket_sale_options.where(identifier: 'box_office').exists?
+    @box_office ||= super || ticket_sale_options.where(identifier: %w[box_office box-office]).exists?
   end
 end
