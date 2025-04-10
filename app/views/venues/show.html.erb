@@ -96,27 +96,27 @@
     <section class="resources-and-downloads my-4 pb-2">
       <h3><i class="fas fa-download text-warning"></i> Resources & Downloads</h3>
       <ul class="list-inline">
-      <% if (@venue.tech_specs && policy(@venue.tech_specs).download?) %>
-        <li class="list-inline-item">
-        <a href="<%= download_file_url(@venue.tech_specs) %>" class="text-decoration-none">
-          <i class="fas fa-arrow-alt-circle-down"></i> Tech Info
-        </a>
-        </li>
-      <% end %>
-      <% if (@venue.stage_plot && policy(@venue.stage_plot).download?) %>
-        <li class="list-inline-item">
-        <a href="<%= download_file_url(@venue.stage_plot) %>" class="text-decoration-none">
-          <i class="fas fa-arrow-alt-circle-down"></i> Stage Info
-        </a>
-        </li>
-      <% end %>
-      <% if (@venue.seating_chart && policy(@venue.seating_chart).download?) %>
-        <li class="list-inline-item">
-        <a href="<%= download_file_url(@venue.seating_chart) %>" class="text-decoration-none">
-          <i class="fas fa-arrow-alt-circle-down"></i> Seating Chart
-        </a>
-        </li>
-      <% end %>
+        <% if (@venue.tech_specs && policy(@venue.tech_specs).download?) %>
+          <li class="list-inline-item">
+            <a href="<%= download_file_url(@venue.tech_specs) %>" class="text-decoration-none">
+              <i class="fas fa-arrow-alt-circle-down"></i> Tech Info
+            </a>
+          </li>
+        <% end %>
+        <% if (@venue.stage_plot && policy(@venue.stage_plot).download?) %>
+          <li class="list-inline-item">
+            <a href="<%= download_file_url(@venue.stage_plot) %>" class="text-decoration-none">
+              <i class="fas fa-arrow-alt-circle-down"></i> Stage Info
+            </a>
+          </li>
+        <% end %>
+        <% if (@venue.seating_chart && policy(@venue.seating_chart).download?) %>
+          <li class="list-inline-item">
+            <a href="<%= download_file_url(@venue.seating_chart) %>" class="text-decoration-none">
+              <i class="fas fa-arrow-alt-circle-down"></i> Seating Chart
+            </a>
+          </li>
+        <% end %>
       </ul>
     </section>
   <% end %>
@@ -124,7 +124,7 @@
   <% if @venue.map %>
     <section id="map" class="my-4 pb-2">
       <h3><i class="fas fa-map-marker-alt text-warning"></i> Location Map</h3>
-      <%= render partial: 'better_together/shared/mappable_map', locals: { mappable: @venue } %>
+      <%= render partial: 'better_together/shared/map', locals: { map: @venue.map } %>
     </section>
   <% end %>
 </div>
