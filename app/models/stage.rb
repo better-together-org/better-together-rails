@@ -37,14 +37,14 @@ class Stage < ApplicationRecord
   end
 
   def seating_chart
-    super || build_seating_chart(identifier: "seating-chart-#{id}")
+    super || build_seating_chart
   end
 
   def stage_plot
-    super || build_stage_plot(identifier: "stage-plot-#{id}")
+    super || build_stage_plot
   end
 
   def tech_specs
-    super || build_tech_specs(identifier: "tech-specs-#{id}")
+    super || build_tech_specs
   end
 end
