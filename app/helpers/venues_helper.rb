@@ -16,6 +16,10 @@ module VenuesHelper # rubocop:todo Style/Documentation
     end
   end
 
+  def venues_map
+    @venues_map ||= VenueCollectionMap.find_or_initialize_by(identifier: 'venues')
+  end
+
   private
 
   def quick_fact_items(venue)

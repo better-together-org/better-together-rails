@@ -7,6 +7,12 @@
     <% end %>
   </div>
 
+  <% if venues_map %>
+    <section class="venues-map my-4">
+      <%= render partial: 'better_together/shared/map', locals: { map: venues_map, use_label_as_popup: true } %>
+    </section>
+  <% end %>
+
   <!-- Venues Grid -->
   <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
     <%= render @venues %>

@@ -100,7 +100,17 @@ class Venue < ApplicationRecord
   end
 
   def leaflet_points
-    buildings.includes(:space).map(&:to_leaflet_point).compact.to_json
+    buildings.joins(:space).map do |building|
+      point = building.to_leaflet_point
+      next if point.nil?
+
+      point.merge(
+        label: "<a href='#{Rails.application.routes.url_helpers.venue_path(self,
+                                                                           locale: I18n.locale)}' class='text-decoration-none'><strong>#{name}</strong></a>",
+        popup_html: "<a href='#{Rails.application.routes.url_helpers.venue_path(self,
+                                                                                locale: I18n.locale)}' class='text-decoration-none'><strong>#{name}</strong></a><br>#{building.address}"
+      )
+    end.compact
   end
 
   def to_s

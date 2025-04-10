@@ -12,7 +12,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 20_250_409_012_255) do
+ActiveRecord::Schema[7.1].define(version: 20_250_410_134_501) do
   # These are extensions that must be enabled in order to support this database
   enable_extension 'pgcrypto'
   enable_extension 'plpgsql'
@@ -353,6 +353,7 @@ ActiveRecord::Schema[7.1].define(version: 20_250_409_012_255) do
     t.jsonb 'metadata', default: {}, null: false
     t.string 'mappable_type'
     t.uuid 'mappable_id'
+    t.string 'type', default: 'BetterTogether::Geography::Map', null: false
     t.index ['creator_id'], name: 'by_better_together_geography_maps_creator'
     t.index ['identifier'], name: 'index_better_together_geography_maps_on_identifier', unique: true
     t.index ['locale'], name: 'by_better_together_geography_maps_locale'
