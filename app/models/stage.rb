@@ -20,6 +20,7 @@ class Stage < ApplicationRecord
 
   translates :name
   translates :description, backend: :action_text
+  translates :specs, backend: :action_text
 
   accepts_nested_attributes_for :tech_specs, :stage_plot, :seating_chart,
                                 allow_destroy: true, reject_if: :all_blank

@@ -34,7 +34,7 @@ class Venue < ApplicationRecord
   accepts_nested_attributes_for :venue_buildings, :venue_images, :venue_offers, :stages,
                                 allow_destroy: true, reject_if: :all_blank
 
-  delegate :accessible, :capacity, :equipment_list, :lighting_tech, :sound_tech, :seating_chart, :stage_plot,
+  delegate :accessible, :capacity, :equipment_list, :lighting_tech, :sound_tech, :seating_chart, :specs, :stage_plot,
            :tech_specs, to: :primary_stage, allow_nil: true
   delegate :box_office, :accommodations_provided, :accomodations_notes, :financial_notes, :marketing_support,
            to: :primary_venue_offer, allow_nil: true

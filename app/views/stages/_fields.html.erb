@@ -61,6 +61,14 @@
     </div>
   </div>
 
+  <div class="row my-3">
+    <!-- Translatable Description Field -->
+    <div class="col mb-3 py-3 border-top border-bottom">
+      <%= render partial: 'better_together/shared/translated_rich_text_field', locals: { model: form.object, form: form, attribute: 'specs' } %>
+      <small class="form-text text-muted mt-2">Enter the tech and stage specifications.</small>
+    </div>
+  </div>
+
   <!-- File fields -->
   <div class="row my-3">
     <div class="col-12">
