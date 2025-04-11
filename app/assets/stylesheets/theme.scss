@@ -62,9 +62,9 @@ body {
 }
 
 h1, h2, h3, h4, h5, h6 {
-  font-family: 'Raleway', sans-serif; /* Elegant font */
+  font-family: 'Roboto', sans-serif; /* Elegant font */
   letter-spacing: 1.25px; /* Slight letter spacing for better readability */
-  text-transform: uppercase; /* Uppercase for headings */
+  // text-transform: uppercase; /* Uppercase for headings */
   margin-bottom: 20px;
 }
 
@@ -267,4 +267,12 @@ a.active {
   a {
     color: $dark-background-text-color;
   }
+}
+
+.text-primary {
+  color: $primary !important;
+}
+
+.bg-primary {
+  background-color: $primary !important;
 }
