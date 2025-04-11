@@ -37,7 +37,7 @@
           <%= @venue.description.presence || 'Nothing yet' %>
         </div>
 
-        <% if @venue.contacts.any? %>
+        <% if @venue.contacts.map(&:has_contact_details?).include?(true) %>
           <div class="contacts mt-4">
             <h3 class="mt-4 mb-3"><i class="fas fa-address-book text-warning"></i> Contacts</h3>
             <%= render partial: 'better_together/contact_details/about_section', locals: { contactable: @venue, include_heading: false } %>
@@ -92,9 +92,25 @@
     </section>
   <% end %>
 
-  <% if (@venue.tech_specs && policy(@venue.tech_specs).download?) || (@venue.stage_plot && policy(@venue.stage_plot).download?) || (@venue.seating_chart && policy(@venue.seating_chart).download?) %>
+  <% if @venue.specs.present? || (@venue.tech_specs && policy(@venue.tech_specs).download?) || (@venue.stage_plot && policy(@venue.stage_plot).download?) || (@venue.seating_chart && policy(@venue.seating_chart).download?) %>
     <section class="resources-and-downloads my-4 pb-2">
       <h3><i class="fas fa-download text-warning"></i> Resources & Downloads</h3>
+      <% if @venue.specs.present? %>
+        <div class="accordion" id="specsAccordion">
+          <div class="accordion-item">
+        <h2 class="accordion-header" id="headingSpecs">
+          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSpecs" aria-expanded="false" aria-controls="collapseSpecs">
+            View Specs
+          </button>
+        </h2>
+        <div id="collapseSpecs" class="accordion-collapse collapse" aria-labelledby="headingSpecs" data-bs-parent="#specsAccordion">
+          <div class="accordion-body">
+            <%= @venue.specs %>
+          </div>
+        </div>
+          </div>
+        </div>
+      <% end %>
       <ul class="list-inline">
         <% if (@venue.tech_specs && policy(@venue.tech_specs).download?) %>
           <li class="list-inline-item">
@@ -121,7 +137,7 @@
     </section>
   <% end %>
 
-  <% if @venue.map %>
+  <% if @venue.map&.spaces.any? %>
     <section id="map" class="my-4 pb-2">
       <h3><i class="fas fa-map-marker-alt text-warning"></i> Location Map</h3>
       <%= render partial: 'better_together/shared/map', locals: { map: @venue.map } %>
