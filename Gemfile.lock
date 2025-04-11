@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/better-together-org/community-engine-rails.git
-  revision: 5b568ab01d1db53fa28790a82cbbdf2e797de5a0
+  revision: c1fed4a9c19d5a079ce94f3d7bbd5225b0ff39ec
   branch: geospatial/places-and-spaces
   specs:
     better_together (0.7.1)
