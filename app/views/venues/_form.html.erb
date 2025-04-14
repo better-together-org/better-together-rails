@@ -1,11 +1,11 @@
 <%= form_with(model: venue, class: 'form', multipart: true, id: dom_id(venue, 'form'), data: { controller: "better_together--form-validation better_together--tabs" }) do |form| %>
   <% content_for :resource_toolbar do %>
-    <div class="btn-toolbar mb-3" role="toolbar" aria-label="Toolbar with button groups">
+    <div class="btn-toolbar mb-3" role="toolbar" aria-label="<%= t('helpers.toolbar.aria_label') %>">
       <div class="btn-group me-2" role="group">
-        <%= link_to "Back to Venues", venues_path, class: 'btn btn-secondary' %>
+        <%= link_to t('venues.back_to_venues'), venues_path, class: 'btn btn-secondary' %>
       </div>
       <div class="btn-group me-2" role="group">
-        <%= form.submit "Save Venue", class: 'btn btn-primary' %>
+        <%= form.submit t('venues.save_venue'), class: 'btn btn-primary' %>
       </div>
     </div>
   <% end %>
@@ -14,7 +14,7 @@
 
   <% if venue.errors.any? %>
     <div class="alert alert-danger">
-      <h4>Please correct the following errors:</h4>
+      <h4><%= t('helpers.errors.heading') %></h4>
       <ul>
         <% venue.errors.full_messages.each do |msg| %>
           <li><%= msg %></li>
@@ -27,23 +27,23 @@
     <!-- Vertical Pills Navigation -->
     <div class="col-md-3">
       <div class="nav flex-column nav-pills" id="venue-form-tabs" role="tablist" aria-orientation="vertical">
-        <button id="#venue-details-tab" class="nav-link active" id="venue-details-tab" data-bs-toggle="pill" data-bs-target="#venue-details" type="button" role="tab" aria-controls="venue-details" aria-selected="true" data-better_together--tabs-target="tab">
-          Venue Details
+        <button class="nav-link active" id="venue-details-tab" data-bs-toggle="pill" data-bs-target="#venue-details" type="button" role="tab" aria-controls="venue-details" aria-selected="true" data-better_together--tabs-target="tab">
+          <%= t('venues.tabs.details') %>
         </button>
-        <button id="#venue-buildings-tab" class="nav-link" id="venue-buildings-tab" data-bs-toggle="pill" data-bs-target="#venue-buildings" type="button" role="tab" aria-controls="venue-buildings" aria-selected="false" data-better_together--tabs-target="tab">
-          Buildings
+        <button class="nav-link" id="venue-buildings-tab" data-bs-toggle="pill" data-bs-target="#venue-buildings" type="button" role="tab" aria-controls="venue-buildings" aria-selected="false" data-better_together--tabs-target="tab">
+          <%= t('venues.tabs.buildings') %>
         </button>
-        <button id="#venue-images-tab" class="nav-link" id="venue-images-tab" data-bs-toggle="pill" data-bs-target="#venue-images" type="button" role="tab" aria-controls="venue-images" aria-selected="false" data-better_together--tabs-target="tab">
-          Images
+        <button class="nav-link" id="venue-images-tab" data-bs-toggle="pill" data-bs-target="#venue-images" type="button" role="tab" aria-controls="venue-images" aria-selected="false" data-better_together--tabs-target="tab">
+          <%= t('venues.tabs.images') %>
         </button>
-        <button id="#contacts-tab" class="nav-link" id="contacts-tab" data-bs-toggle="pill" data-bs-target="#contacts" type="button" role="tab" aria-controls="contacts" aria-selected="false" data-better_together--tabs-target="tab">
-          Contacts
+        <button class="nav-link" id="contacts-tab" data-bs-toggle="pill" data-bs-target="#contacts" type="button" role="tab" aria-controls="contacts" aria-selected="false" data-better_together--tabs-target="tab">
+          <%= t('venues.tabs.contacts') %>
         </button>
-        <button id="#stages-tab" class="nav-link" id="stages-tab" data-bs-toggle="pill" data-bs-target="#stages" type="button" role="tab" aria-controls="stages" aria-selected="false" data-better_together--tabs-target="tab">
-          Stages
+        <button class="nav-link" id="stages-tab" data-bs-toggle="pill" data-bs-target="#stages" type="button" role="tab" aria-controls="stages" aria-selected="false" data-better_together--tabs-target="tab">
+          <%= t('venues.tabs.stages') %>
         </button>
-        <button id="#venue-offers-tab" class="nav-link" id="venue-offers-tab" data-bs-toggle="pill" data-bs-target="#venue-offers" type="button" role="tab" aria-controls="venue-offers" aria-selected="false" data-better_together--tabs-target="tab">
-          Offers
+        <button class="nav-link" id="venue-offers-tab" data-bs-toggle="pill" data-bs-target="#venue-offers" type="button" role="tab" aria-controls="venue-offers" aria-selected="false" data-better_together--tabs-target="tab">
+          <%= t('venues.tabs.offers') %>
         </button>
       </div>
     </div>
@@ -56,18 +56,18 @@
           <!-- Translatable Name Field -->
           <div class="col mb-3 pb-3 border-bottom">
             <%= render partial: 'better_together/shared/translated_string_field', locals: { model: venue, form: form, attribute: 'name' } %>
-            <small class="form-text text-muted mt-2">Enter the venue name.</small>
+            <small class="form-text text-muted mt-2"><%= t('venues.hints.name') %></small>
           </div>
 
           <!-- Translatable Slug Field -->
           <div class="col mb-3 pb-3 border-bottom">
             <%= render partial: 'better_together/shared/translated_string_field', locals: { model: venue, form: form, attribute: 'slug' } %>
-            <small class="form-text text-muted mt-2">Enter the venue username.</small>
+            <small class="form-text text-muted mt-2"><%= t('venues.hints.slug') %></small>
           </div>
 
           <!-- Privacy Field -->
           <div class="col mb-3 pb-3 border-bottom">
-            <%= form.label :privacy %>
+            <%= form.label :privacy, t('venues.labels.privacy') %>
             <%= privacy_field(form:, klass: Venue) %>
             <% if venue.errors[:privacy].any? %>
               <div class="invalid-feedback">
@@ -81,7 +81,7 @@
           <!-- Translatable Description Field -->
           <div class="col mb-3 pb-3 border-bottom">
             <%= render partial: 'better_together/shared/translated_rich_text_field', locals: { model: venue, form: form, attribute: 'description' } %>
-            <small class="form-text text-muted mt-2">Enter a description for the venue.</small>
+            <small class="form-text text-muted mt-2"><%= t('venues.hints.description') %></small>
           </div>
         </div>
       </div>

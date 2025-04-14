@@ -12,9 +12,29 @@ en:
       create: Create %{model}
       submit: Save %{model}
       update: Update %{model}
+    toolbar:
+      aria_label: "Toolbar with button groups"
+    errors:
+      heading: "Please correct the following errors:"
   hints:
   time:
     am: am
     formats:
       date_picker: "%m/%d/%Y"
       datetime_picker: "%m/%d/%Y %I:%M %p" # 12-hour format with AM/PM
+  venues:
+    back_to_venues: "Back to Venues"
+    save_venue: "Save Venue"
+    tabs:
+      details: "Details"
+      buildings: "Buildings"
+      images: "Images"
+      contacts: "Contacts"
+      stages: "Stages"
+      offers: "Offers"
+    hints:
+      name: "Enter the venue name."
+      slug: "Enter the venue username."
+      description: "Enter a description for the venue."
+    labels:
+      privacy: "Privacy"
