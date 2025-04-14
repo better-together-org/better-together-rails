@@ -1,0 +1,12 @@
+<%# cache ['header_branding', host_community.cache_key_with_version] do %>
+  <!-- Branding Element -->
+  <%= link_to base_path_with_locale, class: 'navbar-brand' do %>
+    <% if host_community.logo.attached? %>
+      <%= image_tag host_community.logo.url, class: "#{dom_class(host_community, :host)}_logo", title: host_community.name, alt: host_community.name %>
+    <% elsif File.exist?(Rails.root.join('app/assets/images/logos/NL-Venues.svg')) %>
+      <%= image_tag 'logos/NL-Venues.svg', class: 'host_community_logo default-logo', style:'height: 7vh;', title: host_community.name, alt: host_community.name %>
+    <% else %>
+      <%= host_community.name %>
+    <% end %>
+  <% end %>
+<%# end %>
