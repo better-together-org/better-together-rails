@@ -1,38 +1,51 @@
 <script id="scroll-progress-bar" type="text/javascript">
 
+  const PROGRESS_BAR_ID = "custom-progress-bar"; // Configurable ID for the progress bar
+  var timeout; // Declare timeout variable
+
+  // Utility function to debounce calls
+  function debounce(func, wait) {
+    return function(...args) {
+      const context = this;
+      clearTimeout(timeout);
+      timeout = setTimeout(() => func.apply(context, args), wait);
+    }
+  }
+
   function createProgressBar() {
     // Create the progress bar element
     var progressBar = document.createElement("div");
-    progressBar.id = "custom-progress-bar"; // Use your ID for styling
+    progressBar.id = PROGRESS_BAR_ID; // Use the configurable ID
 
     // Append the progress bar to the body
     document.body.appendChild(progressBar);
   }
+
+  function updateProgressBar() {
+    var winScroll = document.documentElement.scrollTop;
+    var height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+    var scrolled = (winScroll / height) * 100;
+
+    // Update the custom progress bar width based on scroll
+    var progressBar = document.getElementById(PROGRESS_BAR_ID);
+    if (progressBar) {
+      progressBar.style.width = scrolled + "%";
+    }
+  }
+
   // Function to add the progress bar if not already added
   function addScrollProgressBar() {
     // Check if the progress bar already exists
-    if (!document.getElementById("custom-progress-bar")) {
+    if (!document.getElementById(PROGRESS_BAR_ID)) {
       createProgressBar();
     }
 
-    // Add scroll event listener to update progress bar width
-    window.onscroll = function() {
-      var winScroll = document.body.scrollTop || document.documentElement.scrollTop;
-      var height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-      var scrolled = (winScroll / height) * 100;
-
-      // Update the custom progress bar width based on scroll
-      document.getElementById("custom-progress-bar").style.width = scrolled + "%";
-    };
+    window.addEventListener('scroll', debounce(updateProgressBar, 100));
   }
 
   // Run the function on initial page load
-  window.onload = function() {
-    addScrollProgressBar();
-  };
+  document.addEventListener('DOMContentLoaded', addScrollProgressBar);
 
   // Run the function after Turbo finishes loading new content
-  document.addEventListener('turbo:load', function() {
-    addScrollProgressBar();
-  });
+  document.addEventListener('turbo:load', addScrollProgressBar);
 </script>
