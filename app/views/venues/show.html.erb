@@ -20,7 +20,7 @@
 
     <% if @venue.primary_address %>
       <p class="address">
-        <%= @venue.primary_address.to_formatted_s(excluded: %i[postal_code country_name]) %> | <a href="#map" class="text-decoration-none">View on Map</a>
+        <%= (@venue.formatted_address + ' | ') if @venue.formatted_address.present? %><a href="#map" class="text-decoration-none">View on Map</a>
       </p>
     <% end %>
 

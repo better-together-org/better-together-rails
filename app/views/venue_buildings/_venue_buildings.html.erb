@@ -12,7 +12,7 @@
 
   <!-- Hidden template -->
   <template data-better_together--dynamic-fields-target="template">
-    <%# Build a new PhoneNumber instance %>
+    <%# Build a new VenueBuilding instance %>
     <%= form.fields_for :venue_buildings, form.object.venue_buildings.build, child_index: 'NEW_RECORD' do |venue_building_form| %>
       <%= render 'venue_buildings/fields', form: venue_building_form %>
     <% end %>

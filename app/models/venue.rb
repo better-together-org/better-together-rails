@@ -69,6 +69,14 @@ class Venue < ApplicationRecord
     ] + super
   end
 
+  def create_venue_map
+    create_map(name:, zoom: 10)
+  end
+
+  def formatted_address
+    @formatted_address ||= primary_address&.to_formatted_s(excluded: %i[postal_code country_name])
+  end
+
   def primary_building
     return if venue_buildings.empty?
 
