@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/better-together-org/community-engine-rails.git
-  revision: 575e66b99f8ad969e5a89ac9559cf763be43f297
+  revision: 899b240350a20a516e6b637433482985b6aff176
   branch: geospatial/places-and-spaces
   specs:
     better_together (0.7.1)
@@ -314,7 +314,7 @@ GEM
       multipart-post (~> 2.0)
     faraday-net_http (3.4.0)
       net-http (>= 0.5.0)
-    ffi (1.17.1-x86_64-linux-gnu)
+    ffi (1.17.2-x86_64-linux-gnu)
     fog-aws (3.30.0)
       base64 (~> 0.2.0)
       fog-core (~> 2.6)
