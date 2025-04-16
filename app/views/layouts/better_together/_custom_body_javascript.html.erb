@@ -1,6 +1,6 @@
 <script id="scroll-progress-bar" type="text/javascript">
 
-  const PROGRESS_BAR_ID = "custom-progress-bar"; // Configurable ID for the progress bar
+  let progressBarId = "custom-progress-bar"; // Configurable ID for the progress bar
   var timeout; // Declare timeout variable
 
   // Utility function to debounce calls
@@ -15,7 +15,7 @@
   function createProgressBar() {
     // Create the progress bar element
     var progressBar = document.createElement("div");
-    progressBar.id = PROGRESS_BAR_ID; // Use the configurable ID
+    progressBar.id = progressBarId; // Use the configurable ID
 
     // Append the progress bar to the body
     document.body.appendChild(progressBar);
@@ -27,7 +27,7 @@
     var scrolled = (winScroll / height) * 100;
 
     // Update the custom progress bar width based on scroll
-    var progressBar = document.getElementById(PROGRESS_BAR_ID);
+    var progressBar = document.getElementById(progressBarId);
     if (progressBar) {
       progressBar.style.width = scrolled + "%";
     }
@@ -36,7 +36,7 @@
   // Function to add the progress bar if not already added
   function addScrollProgressBar() {
     // Check if the progress bar already exists
-    if (!document.getElementById(PROGRESS_BAR_ID)) {
+    if (!document.getElementById(progressBarId)) {
       createProgressBar();
     }
 
