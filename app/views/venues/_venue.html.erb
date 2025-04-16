@@ -1,4 +1,4 @@
-<div id="<%= dom_id(venue) %>" class="col venue-column mb-3 <%= dom_class(venue) %>">
+<div id="<%= dom_id(venue) %>" class="col col-md-6 venue-column mb-3 <%= dom_class(venue) %>">
   <div class="card venue h-100 shadow-sm border-0">
     <% if venue.primary_image&.media&.attached? %>
       <% if policy(venue).show? %>

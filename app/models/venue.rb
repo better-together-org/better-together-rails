@@ -47,16 +47,11 @@ class Venue < ApplicationRecord
 
   slugged :name
 
-  settings index: { number_of_shards: 1 } do
+  settings index: default_elasticsearch_index do
     mappings dynamic: 'false' do
-      indexes :name, as: 'name'
-      indexes :description, as: 'description'
-      indexes :rich_text_content, type: 'nested' do
-        indexes :body, type: 'text'
-      end
-      indexes :rich_text_translations, type: 'nested' do
-        indexes :body, type: 'text'
-      end
+      indexes :name, type: :text, analyzer: 'custom_analyzer', search_analyzer: 'standard', boost: 3
+      indexes :description, type: :text, analyzer: 'custom_analyzer', search_analyzer: 'standard', boost: 2
+      indexes :formatted_address, type: :text, analyzer: 'custom_analyzer', search_analyzer: 'standard', boost: 2
     end
   end
 
@@ -67,6 +62,14 @@ class Venue < ApplicationRecord
       venue_images_attributes: VenueImage.permitted_attributes(id: true, destroy: true),
       venue_offers_attributes: VenueOffer.permitted_attributes(id: true, destroy: true)
     ] + super
+  end
+
+  # Customize the data sent to Elasticsearch for indexing
+  def as_indexed_json(_options = {})
+    as_json(
+      only: [:id],
+      methods: [:name, :slug, :formatted_address, *self.class.localized_attribute_list.keep_if { |a| a.starts_with?('name') || a.starts_with?('description') }]
+    )
   end
 
   def create_venue_map
