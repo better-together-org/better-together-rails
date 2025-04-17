@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+# Allows venues to offer deals to artists
 class VenueOffer < ApplicationRecord
   include BetterTogether::Creatable
   include BetterTogether::Identifier

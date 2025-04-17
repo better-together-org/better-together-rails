@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 module VenuesHelper # rubocop:todo Style/Documentation
-  def render_quick_fact_icons(venue)
+  def render_quick_fact_icons(venue) # rubocop:todo Metrics/MethodLength
     content_tag(:ul, class: 'venue-quick-facts list-inline mb-0 d-flex justify-content-center') do
       quick_fact_items(venue).map do |icon, title, value, badge|
         content_tag(:li, class: "#{title.parameterize} list-inline-item position-relative",

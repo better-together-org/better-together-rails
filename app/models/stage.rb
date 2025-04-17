@@ -1,5 +1,18 @@
 # frozen_string_literal: true
 
+# Represents spaces for performances, such as stages and auditoriums.
+# A stage can have multiple tech specs, stage plots, and seating charts.
+# It belongs to a venue and can be associated with multiple events.
+#
+# @see Venue
+# @see Event
+# @see BetterTogether::Upload
+# @see BetterTogether::Creatable
+# @see BetterTogether::Identifier
+# @see BetterTogether::Positioned
+# @see BetterTogether::PrimaryFlag
+# @see BetterTogether::Privacy
+# @see BetterTogether::Translatable
 class Stage < ApplicationRecord
   include BetterTogether::Creatable
   include BetterTogether::Identifier

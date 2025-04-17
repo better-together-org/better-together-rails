@@ -1,7 +1,8 @@
 # frozen_string_literal: true
 
+# Create the stages table
 class CreateStages < ActiveRecord::Migration[7.1]
-  def change
+  def change # rubocop:todo Metrics/MethodLength
     create_bt_table :stages, prefix: nil do |t|
       t.bt_creator
       t.bt_identifier

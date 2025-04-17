@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+# Join record between a ticket sale option and a venue offer
 class VenueOfferTicketSaleOption < ApplicationRecord
   include BetterTogether::Positioned
   include BetterTogether::Translatable

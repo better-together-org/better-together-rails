@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+# Add foreign keys to stages for seating_chart, stage_plot, and tech_specs files
 class CreateStageFiles < ActiveRecord::Migration[7.1]
   def change
     change_table :stages do |t|

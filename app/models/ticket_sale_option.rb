@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+# Responsible for defining ticket sale options for venues
 class TicketSaleOption < ApplicationRecord
   include BetterTogether::Identifier
   include BetterTogether::Translatable

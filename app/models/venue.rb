@@ -68,7 +68,9 @@ class Venue < ApplicationRecord
   def as_indexed_json(_options = {})
     as_json(
       only: [:id],
-      methods: [:name, :slug, :formatted_address, *self.class.localized_attribute_list.keep_if { |a| a.starts_with?('name') || a.starts_with?('description') }]
+      methods: [:name, :slug, :formatted_address, *self.class.localized_attribute_list.keep_if do |a|
+        a.starts_with?('name') || a.starts_with?('description')
+      end]
     )
   end
 
@@ -112,19 +114,25 @@ class Venue < ApplicationRecord
     @spaces ||= buildings.includes(:space).map(&:space).flatten.uniq
   end
 
-  def leaflet_points
+  # rubocop:todo Metrics/MethodLength
+  def leaflet_points # rubocop:todo Metrics/AbcSize, Metrics/MethodLength
     buildings.joins(:space).map do |building|
       point = building.to_leaflet_point
       next if point.nil?
 
       point.merge(
-        label: "<a href='#{Rails.application.routes.url_helpers.venue_path(self,
-                                                                           locale: I18n.locale)}' class='text-decoration-none'><strong>#{name}</strong></a>",
-        popup_html: "<a href='#{Rails.application.routes.url_helpers.venue_path(self,
-                                                                                locale: I18n.locale)}' class='text-decoration-none'><strong>#{name}</strong></a><br>#{building.address}"
+        label: "<a href='#{Rails.application.routes.url_helpers.venue_path(
+          self,
+          locale: I18n.locale
+        )}' class='text-decoration-none'><strong>#{name}</strong></a>",
+        popup_html: "<a href='#{Rails.application.routes.url_helpers.venue_path(
+          self,
+          locale: I18n.locale
+        )}' class='text-decoration-none'><strong>#{name}</strong></a><br>#{building.address}"
       )
     end.compact
   end
+  # rubocop:enable Metrics/MethodLength
 
   def to_s
     name

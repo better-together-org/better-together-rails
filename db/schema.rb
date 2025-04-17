@@ -12,7 +12,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 20_250_410_134_501) do
+ActiveRecord::Schema[7.1].define(version: 20_250_410_134_501) do # rubocop:todo Metrics/BlockLength
   # These are extensions that must be enabled in order to support this database
   enable_extension 'pgcrypto'
   enable_extension 'plpgsql'
@@ -1136,6 +1136,7 @@ ActiveRecord::Schema[7.1].define(version: 20_250_410_134_501) do
     t.index %w[recipient_type recipient_id], name: 'index_noticed_notifications_on_recipient'
   end
 
+  # rubocop:todo Metrics/BlockLength
   create_table 'stages', id: :uuid, default: -> { 'gen_random_uuid()' }, force: :cascade do |t|
     t.integer 'lock_version', default: 0, null: false
     t.datetime 'created_at', null: false
@@ -1165,6 +1166,7 @@ ActiveRecord::Schema[7.1].define(version: 20_250_410_134_501) do
                                        where: '(primary_flag IS TRUE)'
     t.index ['venue_id'], name: 'index_stages_on_venue_id'
   end
+  # rubocop:enable Metrics/BlockLength
 
   create_table 'ticket_sale_options', id: :uuid, default: -> { 'gen_random_uuid()' }, force: :cascade do |t|
     t.integer 'lock_version', default: 0, null: false

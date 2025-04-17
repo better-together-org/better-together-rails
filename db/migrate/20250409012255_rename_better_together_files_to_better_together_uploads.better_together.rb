@@ -2,7 +2,7 @@
 
 # This migration comes from better_together (originally 20250409012010)
 class RenameBetterTogetherFilesToBetterTogetherUploads < ActiveRecord::Migration[7.1]
-  def change
+  def change # rubocop:todo Metrics/MethodLength
     rename_table :better_together_files, :better_together_uploads, if_exists: true
     change_column_default :better_together_uploads, :type, from: 'BetterTogether::File', to: 'BetterTogether::Upload'
     reversible do |dir|

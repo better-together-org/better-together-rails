@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+# Represents a type of deals offered by Venues.
 class DealType < ApplicationRecord
   include BetterTogether::Identifier
   include BetterTogether::Translatable

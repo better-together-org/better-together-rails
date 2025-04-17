@@ -1,7 +1,23 @@
 GIT
-  remote: https://github.com/better-together-org/community-engine-rails.git
-  revision: a477bf2d363bb4775b8a7a74cb57f0677ce050f5
-  branch: geospatial/places-and-spaces
+  remote: https://github.com/better-together-org/pundit-resources.git
+  revision: b6218c695c2b6c7413ab416a318cd540835c5394
+  specs:
+    pundit-resources (1.1.5)
+      activesupport
+      jsonapi-resources
+      pundit
+      rails (>= 4.2.1, < 7.2)
+
+GIT
+  remote: https://github.com/better-together-org/storext.git
+  revision: 1d7c3707b3e412fece0022c16cc6f51564969d2c
+  specs:
+    storext (3.3.0)
+      activerecord (>= 4.0, < 8)
+      virtus
+
+PATH
+  remote: /community-engine
   specs:
     better_together (0.7.1)
       active_storage_svg_sanitizer
@@ -46,24 +62,6 @@ GIT
       storext
       translate_enum
       turbo-rails (~> 2.0)
-
-GIT
-  remote: https://github.com/better-together-org/pundit-resources.git
-  revision: b6218c695c2b6c7413ab416a318cd540835c5394
-  specs:
-    pundit-resources (1.1.5)
-      activesupport
-      jsonapi-resources
-      pundit
-      rails (>= 4.2.1, < 7.2)
-
-GIT
-  remote: https://github.com/better-together-org/storext.git
-  revision: 1d7c3707b3e412fece0022c16cc6f51564969d2c
-  specs:
-    storext (3.3.0)
-      activerecord (>= 4.0, < 8)
-      virtus
 
 GEM
   remote: https://rubygems.org/
@@ -774,7 +772,7 @@ DEPENDENCIES
   aws-sdk-s3
   bcrypt (~> 3.1.20)
   better_errors
-  better_together (~> 0.7.1)!
+  better_together!
   binding_of_caller
   bootsnap (>= 1.7.0)
   brakeman
