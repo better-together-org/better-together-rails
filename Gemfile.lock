@@ -293,7 +293,8 @@ GEM
       multi_json
     erubi (1.13.1)
     event_stream_parser (1.0.0)
-    excon (1.2.2)
+    excon (1.2.5)
+      logger
     execjs (2.10.0)
     factory_bot (6.5.0)
       activesupport (>= 5.0.0)
@@ -311,7 +312,7 @@ GEM
     faraday-net_http (3.4.0)
       net-http (>= 0.5.0)
     ffi (1.17.1-x86_64-linux-gnu)
-    fog-aws (3.30.0)
+    fog-aws (3.31.0)
       base64 (~> 0.2.0)
       fog-core (~> 2.6)
       fog-json (~> 1.1)
@@ -324,7 +325,7 @@ GEM
     fog-json (1.2.0)
       fog-core
       multi_json (~> 1.10)
-    fog-xml (0.1.4)
+    fog-xml (0.1.5)
       fog-core
       nokogiri (>= 1.5.11, < 2.0.0)
     font-awesome-sass (6.7.2)
@@ -400,7 +401,7 @@ GEM
     listen (3.9.0)
       rb-fsevent (~> 0.10, >= 0.10.3)
       rb-inotify (~> 0.9, >= 0.9.10)
-    logger (1.6.6)
+    logger (1.7.0)
     loofah (2.24.0)
       crass (~> 1.0.2)
       nokogiri (>= 1.12.0)
@@ -413,10 +414,10 @@ GEM
     matrix (0.4.2)
     memory_profiler (1.1.0)
     method_source (1.1.0)
-    mime-types (3.6.0)
+    mime-types (3.6.2)
       logger
       mime-types-data (~> 3.2015)
-    mime-types-data (3.2024.1203)
+    mime-types-data (3.2025.0415)
     mini_magick (5.2.0)
       benchmark
       logger
