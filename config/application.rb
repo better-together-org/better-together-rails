@@ -19,6 +19,8 @@ module BetterTogether
 
     config.generators do |g|
       g.orm :active_record, primary_key_type: :uuid
+      g.fixture_replacement :factory_bot, dir: 'spec/factories'
+      g.test_framework :rspec
     end
 
     # Configuration for the application, engines, and railties goes here.
