@@ -3,7 +3,7 @@
 require 'better_together'
 
 BetterTogether.base_url = ENV.fetch(
-  'APP_HOST',
+  'BASE_URL',
   'http://localhost:3000'
 )
 BetterTogether.user_class = '::BetterTogether::User'
