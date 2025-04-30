@@ -23,5 +23,8 @@ class VenuePolicy < ApplicationPolicy
   end
 
   class Scope < ApplicationPolicy::Scope
+    def resolve
+      scope.i18n.privacy_public.order(name: :asc)
+    end
   end
 end
