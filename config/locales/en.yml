@@ -1,5 +1,11 @@
 ---
 en:
+  better_together:
+    navigation_items:
+      route_names:
+        deal_types: "Deal Types"
+        ticket_sale_options: "Ticket Sale Options"
+        venues: "Venues"
   globals:
     attached_file: "Attached file"
     download: "Download"
