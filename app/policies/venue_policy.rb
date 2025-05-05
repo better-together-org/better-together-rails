@@ -3,11 +3,11 @@
 # Controls RBAC for Venues
 class VenuePolicy < ApplicationPolicy
   def index?
-    permitted_to?('manage_platform')
+    true
   end
 
   def show?
-    permitted_to?('manage_platform')
+    record.privacy_public? or permitted_to?('manage_platform')
   end
 
   def create?
@@ -15,16 +15,21 @@ class VenuePolicy < ApplicationPolicy
   end
 
   def update?
-    create?
+    (record.creator_id.present? and record.creator_id == agent.id) or permitted_to?('manage_platform')
   end
 
   def destroy?
-    create?
+    permitted_to?('manage_platform')
   end
 
+  # Sorts the Venues by their name asc and only show public records unless platform manager
   class Scope < ApplicationPolicy::Scope
     def resolve
-      scope.i18n.privacy_public.order(name: :asc)
+      result = scope.i18n.order(name: :asc)
+
+      result = result.privacy_public unless permitted_to?('manage_platform')
+
+      result
     end
   end
 end
