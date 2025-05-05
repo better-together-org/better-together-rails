@@ -5,11 +5,11 @@ module NlVenues
     extend ::ActiveSupport::Concern
 
     included do
-      self.route_names = self.route_names.merge({
-                          deal_types: 'deal_types_path',
-                          ticket_sale_options: 'ticket_sale_options_path',
-                          venues: 'venues_path'
-                        })
+      self.route_names = route_names.merge({
+                                             deal_types: 'deal_types_path',
+                                             ticket_sale_options: 'ticket_sale_options_path',
+                                             venues: 'venues_path'
+                                           })
     end
   end
 end
