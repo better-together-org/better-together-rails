@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/better-together-org/community-engine-rails.git
-  revision: c7c3d738a6125e9129ffeb88ebed77dcc9b25f75
+  revision: ba71a76b8f0c6ece67fa407dd859dd0aaa03c5c3
   branch: main
   specs:
     better_together (0.8.1)
@@ -493,10 +493,10 @@ GEM
     pry (0.15.2)
       coderay (~> 1.1)
       method_source (~> 1.0)
-    psych (5.2.3)
+    psych (5.2.4)
       date
       stringio
-    public_suffix (6.0.1)
+    public_suffix (6.0.2)
     puma (6.6.0)
       nio4r (~> 2.0)
     pundit (2.5.0)
@@ -616,7 +616,7 @@ GEM
       rspec-expectations (~> 3.13)
       rspec-mocks (~> 3.13)
       rspec-support (~> 3.13)
-    rspec-support (3.13.2)
+    rspec-support (3.13.3)
     rswag (2.16.0)
       rswag-api (= 2.16.0)
       rswag-specs (= 2.16.0)
