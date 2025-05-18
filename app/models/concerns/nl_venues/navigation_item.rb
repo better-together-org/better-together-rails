@@ -6,9 +6,9 @@ module NlVenues
 
     included do
       self.route_names = route_names.merge({
-                                             deal_types: 'deal_types_path',
-                                             ticket_sale_options: 'ticket_sale_options_path',
-                                             venues: 'venues_path'
+                                             deal_types: 'deal_types_url',
+                                             ticket_sale_options: 'ticket_sale_options_url',
+                                             venues: 'venues_url'
                                            })
     end
   end
