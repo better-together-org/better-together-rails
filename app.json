@@ -1,9 +1,6 @@
 {
   "name": "community-engine",
   "scripts": {
-    "dokku": {
-      "predeploy": "bundle install"
-    },
     "postdeploy": "bundle exec rails db:seed"
   },
   "env": {

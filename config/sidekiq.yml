@@ -7,6 +7,8 @@ development:
   queues:
     - [default, 1]   # Default queue with priority 1
     - [mailers, 2]   # Mailers queue with priority 2
+    - [es_indexing, 3]   # Elasticsearch indexing queue with priority 3 (lower priority)
+    - [geocoding, 3]   # Geocoding queue with priority 3 (lower priority)
     - [metrics, 3]   # Metrics queue with priority 3 (lower priority)
 
 test:
@@ -20,4 +22,6 @@ production:
   queues:
     - [better_together_production_default, 1]   # Default queue with priority 1
     - [better_together_production_mailers, 2]   # Mailers queue with priority 2
+    - [better_together_production_es_indexing, 3]   # Elasticsearch indexing queue with priority 3 (lower priority)
+    - [better_together_production_geocoding, 3]   # Geocoding queue with priority 3 (lower priority)
     - [better_together_production_metrics, 3]   # Metrics queue with priority 3 (lower priority)
