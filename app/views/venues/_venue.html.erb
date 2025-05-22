@@ -3,10 +3,10 @@
     <% if venue.primary_image&.media&.attached? %>
       <% if policy(venue).show? %>
       <%= link_to venue do %>
-        <%= image_tag venue.primary_image.url, class: "card-img-top", alt: "#{venue.primary_image.alt_text}" %>
+        <%= image_tag rails_storage_proxy_url(venue.primary_image.media), class: "card-img-top", alt: "#{venue.primary_image.alt_text}" %>
       <% end %>
       <% else %>
-      <%= image_tag venue.primary_image.url, class: "card-img-top", alt: "#{venue.primary_image.alt_text}" %>
+      <%= image_tag rails_storage_proxy_url(venue.primary_image.media), class: "card-img-top", alt: "#{venue.primary_image.alt_text}" %>
       <% end %>
     <% else %>
       <%= card_image_tag(venue) %>
