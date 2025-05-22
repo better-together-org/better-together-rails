@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/better-together-org/community-engine-rails.git
-  revision: f3ab499d3a61f6a759db7c5436fd4dd38a6efa68
+  revision: 6605c295378599d5fd64bc3c32629d9ac593517d
   branch: main
   specs:
     better_together (0.8.1)
@@ -270,7 +270,7 @@ GEM
       representable (>= 3.1.1, < 4)
     docile (1.4.0)
     domain_name (0.6.20240107)
-    drb (2.2.1)
+    drb (2.2.3)
     dry-auto_inject (1.1.0)
       dry-core (~> 1.1)
       zeitwerk (~> 2.6)
@@ -543,7 +543,7 @@ GEM
       activesupport (= 7.1.5.1)
       bundler (>= 1.15.0)
       railties (= 7.1.5.1)
-    rails-dom-testing (2.2.0)
+    rails-dom-testing (2.3.0)
       activesupport (>= 5.0.0)
       minitest
       nokogiri (>= 1.6)
@@ -840,4 +840,4 @@ RUBY VERSION
    ruby 3.4.3p32
 
 BUNDLED WITH
-   2.4.19
+   2.6.7
