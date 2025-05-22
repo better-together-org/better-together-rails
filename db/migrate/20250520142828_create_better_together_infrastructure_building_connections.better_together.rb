@@ -4,6 +4,8 @@
 # Creates the table for a polymorphic connection to buildings
 class CreateBetterTogetherInfrastructureBuildingConnections < ActiveRecord::Migration[7.1]
   def change
+    return if table_exists? :better_together_infrastructure_building_connections
+
     create_bt_table :building_connections, prefix: :better_together_infrastructure do |t|
       t.bt_references :building, target_table: :better_together_infrastructure_buildings, null: false,
                                  index: { name: 'bt_building_connections_building' }
