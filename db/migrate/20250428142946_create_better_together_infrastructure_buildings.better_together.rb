@@ -4,8 +4,6 @@
 # Creates db table for buildings
 class CreateBetterTogetherInfrastructureBuildings < ActiveRecord::Migration[7.1]
   def change
-    return if table_exists? :better_together_infrastructure_buildings
-
     create_bt_table :buildings, prefix: :better_together_infrastructure do |t|
       t.string :type, null: false, default: 'BetterTogether::Infrastructure::Building'
       t.bt_community

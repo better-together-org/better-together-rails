@@ -4,8 +4,6 @@
 # Join table between a geospatial entity and its spaces
 class CreateBetterTogetherGeographyGeospatialSpaces < ActiveRecord::Migration[7.1]
   def change
-    return if table_exists? :better_together_geography_geospatial_spaces
-
     create_bt_table :geospatial_spaces, prefix: :better_together_geography do |t|
       t.bt_references :geospatial, polymorphic: true
       t.bt_position
