@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/better-together-org/community-engine-rails.git
-  revision: ba71a76b8f0c6ece67fa407dd859dd0aaa03c5c3
+  revision: 6605c295378599d5fd64bc3c32629d9ac593517d
   branch: main
   specs:
     better_together (0.8.1)
@@ -33,7 +33,8 @@ GIT
       premailer-rails
       pundit (>= 2.1, < 2.6)
       pundit-resources
-      rack-cors (>= 1.1.1, < 2.1.0)
+      rack-attack
+      rack-cors (>= 1.1.1, < 3.1.0)
       rack-mini-profiler
       rails (>= 5.2.2, < 7.2.0)
       reform-rails (~> 0.2.0)
@@ -269,7 +270,7 @@ GEM
       representable (>= 3.1.1, < 4)
     docile (1.4.0)
     domain_name (0.6.20240107)
-    drb (2.2.1)
+    drb (2.2.3)
     dry-auto_inject (1.1.0)
       dry-core (~> 1.1)
       zeitwerk (~> 2.6)
@@ -294,6 +295,7 @@ GEM
       base64
       faraday (>= 1, < 3)
       multi_json
+    erb (5.0.1)
     erubi (1.13.1)
     event_stream_parser (1.0.0)
     excon (1.2.5)
@@ -347,11 +349,11 @@ GEM
       csv (>= 3.0.0)
     globalid (1.2.1)
       activesupport (>= 6.1)
-    google-protobuf (4.30.2-x86_64-linux)
+    google-protobuf (4.31.0-x86_64-linux-gnu)
       bigdecimal
       rake (>= 13)
-    groupdate (6.5.1)
-      activesupport (>= 7)
+    groupdate (6.6.0)
+      activesupport (>= 7.1)
     hashie (5.0.0)
     highline (3.1.2)
       reline
@@ -468,7 +470,7 @@ GEM
     nio4r (2.7.4)
     nokogiri (1.18.8-x86_64-linux-gnu)
       racc (~> 1.4)
-    noticed (2.6.1)
+    noticed (2.7.0)
       rails (>= 6.1.0)
     optimist (3.1.0)
     orm_adapter (0.5.0)
@@ -502,9 +504,12 @@ GEM
     pundit (2.5.0)
       activesupport (>= 3.0.0)
     racc (1.8.1)
-    rack (3.1.14)
-    rack-cors (2.0.2)
-      rack (>= 2.0.0)
+    rack (3.1.15)
+    rack-attack (6.7.0)
+      rack (>= 1.0, < 4)
+    rack-cors (3.0.0)
+      logger
+      rack (>= 3.0.14)
     rack-mini-profiler (3.3.1)
       rack (>= 1.2.0)
     rack-protection (4.1.1)
@@ -532,7 +537,7 @@ GEM
       activesupport (= 7.1.5.1)
       bundler (>= 1.15.0)
       railties (= 7.1.5.1)
-    rails-dom-testing (2.2.0)
+    rails-dom-testing (2.3.0)
       activesupport (>= 5.0.0)
       minitest
       nokogiri (>= 1.6)
@@ -560,7 +565,8 @@ GEM
       ffi (>= 1.0.6)
       msgpack (>= 0.4.3)
       optimist (>= 3.0.0)
-    rdoc (6.13.1)
+    rdoc (6.14.0)
+      erb
       psych (>= 4.0.0)
     redis (5.4.0)
       redis-client (>= 0.22.0)
@@ -658,8 +664,8 @@ GEM
       ffi (~> 1.12)
       logger
     rubyzip (2.4.1)
-    sass-embedded (1.87.0-x86_64-linux-gnu)
-      google-protobuf (~> 4.30)
+    sass-embedded (1.89.0-x86_64-linux-gnu)
+      google-protobuf (~> 4.31)
     sassc (2.4.0)
       ffi (~> 1.9)
     sassc-embedded (1.80.4)
@@ -766,7 +772,7 @@ GEM
     websocket-extensions (0.1.5)
     xpath (3.2.0)
       nokogiri (~> 1.8)
-    zeitwerk (2.7.2)
+    zeitwerk (2.7.3)
 
 PLATFORMS
   x86_64-linux
