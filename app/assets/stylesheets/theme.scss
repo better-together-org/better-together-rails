@@ -61,7 +61,6 @@ body {
 h1, h2, h3, h4, h5, h6 {
   font-family: 'Raleway', sans-serif; /* Elegant font */
   letter-spacing: 1.25px; /* Slight letter spacing for better readability */
-  text-transform: uppercase; /* Uppercase for headings */
   margin-bottom: 20px;
 }
 
@@ -221,7 +220,7 @@ a.active {
 }
 
 .card.membership:hover,
-.card.shadow-sm:hover {
+.card.hover-effect:hover {
   transform: translateY(-10px); /* Lift the card on hover */
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15); /* Add shadow */
 }
