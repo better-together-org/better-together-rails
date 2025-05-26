@@ -1,13 +1,15 @@
 # frozen_string_literal: true
 
 # A place where entertainment performances are held
-class Venue < ApplicationRecord
+class Venue < ApplicationRecord # rubocop:todo Metrics/ClassLength
   include BetterTogether::Contactable
   include BetterTogether::Creatable
   include BetterTogether::Identifier
   include BetterTogether::PrimaryCommunity
   include BetterTogether::Privacy
   include BetterTogether::Searchable
+
+  has_community(class_name: 'VenueCommunity')
 
   has_many :venue_buildings,
            -> { order(:primary_flag, :position) }, dependent: :destroy
