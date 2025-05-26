@@ -12,7 +12,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 20_250_428_142_959) do # rubocop:todo Metrics/BlockLength
+ActiveRecord::Schema[7.1].define(version: 20_250_520_142_828) do # rubocop:todo Metrics/BlockLength
   # These are extensions that must be enabled in order to support this database
   enable_extension 'pgcrypto'
   enable_extension 'plpgsql'
@@ -463,6 +463,23 @@ ActiveRecord::Schema[7.1].define(version: 20_250_428_142_959) do # rubocop:todo 
     t.index %w[agent_type agent_id], name: 'by_agent'
     t.index %w[identity_type identity_id agent_type agent_id], name: 'unique_identification', unique: true
     t.index %w[identity_type identity_id], name: 'by_identity'
+  end
+
+  create_table 'better_together_infrastructure_building_connections', id: :uuid, default: lambda {
+    'gen_random_uuid()'
+  }, force: :cascade do |t|
+    t.integer 'lock_version', default: 0, null: false
+    t.datetime 'created_at', null: false
+    t.datetime 'updated_at', null: false
+    t.uuid 'building_id', null: false
+    t.string 'connection_type', null: false
+    t.uuid 'connection_id', null: false
+    t.integer 'position', null: false
+    t.boolean 'primary_flag', default: false, null: false
+    t.index ['building_id'], name: 'bt_building_connections_building'
+    t.index %w[connection_id primary_flag], name: 'index_bt_building_connections_on_connection_id_and_primary',
+                                            unique: true, where: '(primary_flag IS TRUE)'
+    t.index %w[connection_type connection_id], name: 'bt_building_connections_connection'
   end
 
   create_table 'better_together_infrastructure_buildings', id: :uuid, default: lambda {
@@ -1167,6 +1184,8 @@ ActiveRecord::Schema[7.1].define(version: 20_250_428_142_959) do # rubocop:todo 
   add_foreign_key 'better_together_geography_spaces', 'better_together_people', column: 'creator_id'
   add_foreign_key 'better_together_geography_states', 'better_together_communities', column: 'community_id'
   add_foreign_key 'better_together_geography_states', 'better_together_geography_countries', column: 'country_id'
+  add_foreign_key 'better_together_infrastructure_building_connections', 'better_together_infrastructure_buildings',
+                  column: 'building_id'
   add_foreign_key 'better_together_infrastructure_buildings', 'better_together_addresses', column: 'address_id'
   add_foreign_key 'better_together_infrastructure_buildings', 'better_together_communities', column: 'community_id'
   add_foreign_key 'better_together_infrastructure_buildings', 'better_together_people', column: 'creator_id'

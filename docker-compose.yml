@@ -73,9 +73,9 @@ services:
 
   mail-server:
     image: mailhog/mailhog
-    container_name: new-to-nl-smtp
+    container_name: better-together-smtp
     ports:
-      - '1025:1025'
+      - '1026:1025'
       - '8026:8025'
 
   redis:
@@ -87,7 +87,7 @@ services:
 
   sidekiq:
     <<: *app-shared
-    container_name: new-to-nl-sidekiq
+    container_name: better-together-sidekiq
     command: bundle exec sidekiq -C config/sidekiq.yml
     depends_on:
       - app

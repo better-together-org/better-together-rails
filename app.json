@@ -1,9 +1,6 @@
 {
   "name": "community-engine",
   "scripts": {
-    "dokku": {
-      "predeploy": "bundle install"
-    },
     "postdeploy": "bundle exec rails db:seed"
   },
   "env": {
@@ -77,15 +74,6 @@
     }
   },
   "healthchecks": {
-    "web": [
-      {
-        "type": "http",
-        "path": "/healthcheck",
-        "protocol": "HTTP",
-        "interval": 10,
-        "timeout": 5,
-        "max_attempts": 3
-      }
-    ]
+    
   }
 }

@@ -50,7 +50,7 @@ Rails.application.configure do # rubocop:todo Metrics/BlockLength
   # Local MailHog config
   config.action_mailer.smtp_settings = {
     address: 'mail-server', # This matches the service name in docker-compose
-    port: 1025,
+    port: 1026,
     domain: 'localhost',
     enable_starttls_auto: false
   }
@@ -87,5 +87,11 @@ Rails.application.configure do # rubocop:todo Metrics/BlockLength
   # Uncomment if you wish to allow Action Cable access from any origin.
   # config.action_cable.disable_request_forgery_protection = true
 
-  BetterErrors::Middleware.allow_ip! '0.0.0.0/0'
+  BetterErrors::Middleware.allow_ip! '0.0.0.0/0' if defined?(BetterErrors)
+
+  if defined?(FactoryBot)
+    config.to_prepare do
+      FactoryBot.definition_file_paths << File.join(BetterTogether::Engine.root, 'spec', 'factories')
+    end
+  end
 end

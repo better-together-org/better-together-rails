@@ -1,13 +1,40 @@
 # This Dockerfile is used for the development environment via `docker compose`
 
-FROM ruby:3.2.4
+# This building libxml2 fixes the security issues with libxml2 2.9.14
+
+FROM ruby:3.4.3-slim AS libxml2-bin
 
 RUN apt-get update -qq \
-  && apt-get install -y build-essential git postgresql-client libpq-dev nodejs libssl-dev apt-transport-https ca-certificates libvips42 nano
+  && apt-get install -y --no-install-recommends build-essential wget tar gcc pkg-config python3-dev xz-utils \
+  && wget https://download.gnome.org/sources/libxml2/2.14/libxml2-2.14.2.tar.xz -O /tmp/libxml2.tar.xz \
+  && mkdir -p /tmp/libxml2 \
+  && tar -xf /tmp/libxml2.tar.xz -C /tmp/libxml2 --strip-components=1
 
-RUN mkdir /bt
+WORKDIR /tmp/libxml2
+
+RUN ./configure --prefix=/opt/libxml2 PYTHON=/usr/bin/python3
+RUN make .
+RUN make install \
+  && ldconfig \
+  && rm -rf /tmp/libxml2 /tmp/libxml2.tar.xz
+
+FROM ruby:3.4.3-slim AS app-host
+
+RUN apt-get update -qq \
+  && apt-get install -y --no-install-recommends build-essential \
+  git nano postgresql-client libpq-dev libssl-dev libyaml-dev \
+  apt-transport-https ca-certificates libvips42
+
+# Copy built libxml2 binaries
+COPY --from=libxml2-bin /opt/libxml2 /opt/libxml2
+
+ENV LD_LIBRARY_PATH=/opt/libxml2/lib:$LD_LIBRARY_PATH
+ENV PKG_CONFIG_PATH=/opt/libxml2/lib/pkgconfig:$PKG_CONFIG_PATH
+
+RUN mkdir -p /bt
+
 WORKDIR /bt
+
 COPY Gemfile /bt/Gemfile
 COPY Gemfile.lock /bt/Gemfile.lock
-
 COPY . /bt

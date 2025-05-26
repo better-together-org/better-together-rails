@@ -3,7 +3,7 @@
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-ruby '3.2.4'
+ruby '3.4.3'
 
 gem 'asset_sync'
 gem 'aws-sdk-s3', require: false
@@ -11,7 +11,7 @@ gem 'aws-sdk-s3', require: false
 # Use the published version of better_together for production
 gem 'better_together', '~> 0.8',
     github: 'better-together-org/community-engine-rails',
-    branch: 'enhancement/credentials'
+    branch: 'main'
 
 # Use the local development version of better_together
 # gem 'better_together', path: '/community-engine'
@@ -39,7 +39,7 @@ gem 'rails', '~> 7.1.5'
 gem 'redis', '~> 5.4'
 # Sidekiq for background processing
 
-gem 'sidekiq', '~> 8.0.1'
+gem 'sidekiq', '~> 8.0.3'
 
 # Error and performance monitoring with Sentry
 gem 'sentry-rails'
