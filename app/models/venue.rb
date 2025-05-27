@@ -88,7 +88,7 @@ class Venue < ApplicationRecord # rubocop:todo Metrics/ClassLength
   end
 
   def formatted_address
-    @formatted_address ||= primary_address&.to_formatted_s(excluded: %i[postal_code country_name])
+    @formatted_address ||= primary_address&.to_formatted_s(excluded: %i[display_label postal_code country_name])
   end
 
   def primary_building
