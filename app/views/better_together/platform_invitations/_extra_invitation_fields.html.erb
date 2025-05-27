@@ -1,0 +1,19 @@
+
+<%# locals: (form: ) %>
+
+<%# override in your host application to add additional fields %>
+
+<div class="hidden-field" data-better_together--dependent-fields-target="dependentField" data-show-if-value="VenueInvitation">
+  <%= form.fields_for :venue_invitation_venue_attributes, VenueInvitationVenue.new(venue_invitation_id: form.object.id) do |venue_invitation_venue_form| %>
+    <div class="mb-3 pb-3 col-md-6 border-bottom">
+      <%= venue_invitation_venue_form.label :venue_id, "Select Venue", class: "form-label" %>
+      <%= venue_invitation_venue_form.collection_select :venue_id, Venue.all, :id, :name, { prompt: "Select a Venue" }, { class: "form-select", title: 'Invitation Venue' } %>
+    </div>
+
+    <div class="mb-3 pb-3 col-md-6 border-bottom">
+      <%= venue_invitation_venue_form.label :role_id, "Select Venue Role", class: "form-label" %>
+      <%= venue_invitation_venue_form.collection_select :role_id, ::BetterTogether::Role.where(resource_type: "BetterTogether::Community").positioned, :id, :name, { prompt: "Select a Venue role" }, { class: "form-select", title: 'Venue Role' } %>
+    </div>
+  <% end %>
+</div>
+

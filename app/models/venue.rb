@@ -38,8 +38,11 @@ class Venue < ApplicationRecord # rubocop:todo Metrics/ClassLength
 
   delegate :accessible, :capacity, :equipment_list, :lighting_tech, :sound_tech, :seating_chart, :specs, :stage_plot,
            :tech_specs, to: :primary_stage, allow_nil: true
+
   delegate :box_office, :accommodations_provided, :accomodations_notes, :financial_notes, :marketing_support,
            to: :primary_venue_offer, allow_nil: true
+
+  delegate :person_community_memberships, :person_community_memberships_attributes=, to: :community
 
   after_create :create_map, if: ->(obj) { obj.map.nil? }
   after_update :create_map, if: ->(obj) { obj.map.nil? }
@@ -62,7 +65,11 @@ class Venue < ApplicationRecord # rubocop:todo Metrics/ClassLength
       stages_attributes: Stage.permitted_attributes(id: true, destroy: true),
       venue_buildings_attributes: VenueBuilding.permitted_attributes(id: true, destroy: true),
       venue_images_attributes: VenueImage.permitted_attributes(id: true, destroy: true),
-      venue_offers_attributes: VenueOffer.permitted_attributes(id: true, destroy: true)
+      venue_offers_attributes: VenueOffer.permitted_attributes(id: true, destroy: true),
+      person_community_memberships_attributes: BetterTogether::PersonCommunityMembership.permitted_attributes(id: true,
+                                                                                                              # rubocop:todo Layout/LineLength
+                                                                                                              destroy: true)
+      # rubocop:enable Layout/LineLength
     ] + super
   end
 
@@ -92,6 +99,10 @@ class Venue < ApplicationRecord # rubocop:todo Metrics/ClassLength
 
   def primary_address
     @primary_address ||= primary_building&.address
+  end
+
+  def primary_community_extra_attrs
+    { privacy: 'private' }
   end
 
   def primary_image

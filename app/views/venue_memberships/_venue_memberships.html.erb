@@ -1,0 +1,24 @@
+
+<%# locals: (form:) %>
+
+<div class="venue-memberships mb-4" data-controller="better_together--dynamic-fields">
+  <h3><%= t('venue-memberships') %></h3>
+
+  <div id="<%= dom_id(form.object, :memberships) %>" class="mb-3" data-better_together--dynamic-fields-target="container">
+    <%= form.fields_for :person_community_memberships do |membership_form| %>
+      <%= render 'venue_memberships/fields', form: membership_form %>
+    <% end %>
+  </div>
+
+  <!-- Hidden template -->
+  <template data-better_together--dynamic-fields-target="template">
+    <%# Build a new VenueBuilding instance %>
+    <%= form.fields_for :person_community_memberships, form.object.person_community_memberships.build, child_index: 'NEW_RECORD' do |membership_form| %>
+      <%= render 'venue_memberships/fields', form: membership_form %>
+    <% end %>
+  </template>
+
+  <%= link_to '#add-venue-membership', class: 'btn btn-outline-primary btn-sm', data: { action: 'click->better_together--dynamic-fields#add' } do %>
+    <i class="fas fa-plus"></i> <%= t('better_together.global.add') %>
+  <% end %>
+</div>

@@ -1,0 +1,21 @@
+
+<%# locals: (form:) %>
+<div class="venue-memberships-fields nested-fields border-top py-3 my-3 row align-items-end" data-new-record="<%= form.object.new_record? %>">
+  <h4><%= t('venue-membership') %></h4>
+  <%= form.hidden_field :_destroy %>
+
+  <div class="col-md-6 mb-3">
+    <%= form.label :member %>
+    <%= form.select :member_id, options_from_collection_for_select(BetterTogether::Person.all, :id, :name, form.object.member_id), { prompt: 'Choose Person' }, class: 'form-select' %>
+  </div>
+
+  <div class="col-md-6 mb-3">
+    <%= form.label :role %>
+    <%= form.select :role_id, options_from_collection_for_select(BetterTogether::Role.where(resource_type: 'BetterTogether::Community'), :id, :name, form.object.role_id), { prompt: 'Choose Role' }, class: 'form-select' %>
+  </div>
+  <div class="col-8 col-md-10 mt-3 mt-md-0">
+    <%= link_to '#remove-venue-membership', class: 'btn btn-outline-danger btn-sm', data: { action: 'click->better_together--dynamic-fields#remove' } do %>
+      <i class="fas fa-minus"></i> <%= t('better_together.remove') %>
+    <% end %>
+  </div>
+</div>

@@ -7,7 +7,9 @@ class VenuePolicy < ApplicationPolicy
   end
 
   def show?
-    record.privacy_public? or permitted_to?('manage_platform')
+    record.privacy_public? or
+      permitted_to?('manage_platform') or
+      permitted_to?('read_communinity', record.community)
   end
 
   def create?
@@ -15,7 +17,10 @@ class VenuePolicy < ApplicationPolicy
   end
 
   def update?
-    (record.creator_id.present? and record.creator_id == agent.id) or permitted_to?('manage_platform')
+    # byebug
+    (record.creator_id.present? and record.creator_id == agent.id) or
+      permitted_to?('manage_platform') or
+      permitted_to?('update_community', record.community)
   end
 
   def destroy?

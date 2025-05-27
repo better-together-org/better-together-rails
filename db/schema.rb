@@ -12,7 +12,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 20_250_522_143_346) do # rubocop:todo Metrics/BlockLength
+ActiveRecord::Schema[7.1].define(version: 20_250_527_131_149) do # rubocop:todo Metrics/BlockLength
   # These are extensions that must be enabled in order to support this database
   enable_extension 'pgcrypto'
   enable_extension 'plpgsql'
@@ -1258,6 +1258,19 @@ ActiveRecord::Schema[7.1].define(version: 20_250_522_143_346) do # rubocop:todo 
     t.index ['venue_id'], name: 'index_venue_images_on_venue_id'
   end
 
+  create_table 'venue_invitation_venues', id: :uuid, default: -> { 'gen_random_uuid()' }, force: :cascade do |t|
+    t.integer 'lock_version', default: 0, null: false
+    t.datetime 'created_at', null: false
+    t.datetime 'updated_at', null: false
+    t.uuid 'role_id'
+    t.uuid 'venue_id'
+    t.uuid 'venue_invitation_id'
+    t.index ['role_id'], name: 'index_venue_invitation_venues_on_role_id'
+    t.index %w[venue_id venue_invitation_id], name: 'idx_on_venue_id_venue_invitation_id_2f129feec6'
+    t.index ['venue_id'], name: 'index_venue_invitation_venues_on_venue_id'
+    t.index ['venue_invitation_id'], name: 'index_venue_invitation_venues_on_venue_invitation_id'
+  end
+
   create_table 'venue_offer_deal_types', id: :uuid, default: -> { 'gen_random_uuid()' }, force: :cascade do |t|
     t.integer 'lock_version', default: 0, null: false
     t.datetime 'created_at', null: false
@@ -1418,6 +1431,9 @@ ActiveRecord::Schema[7.1].define(version: 20_250_522_143_346) do # rubocop:todo 
   add_foreign_key 'venue_buildings', 'venues'
   add_foreign_key 'venue_images', 'better_together_content_blocks', column: 'image_id'
   add_foreign_key 'venue_images', 'venues'
+  add_foreign_key 'venue_invitation_venues', 'better_together_platform_invitations', column: 'venue_invitation_id'
+  add_foreign_key 'venue_invitation_venues', 'better_together_roles', column: 'role_id'
+  add_foreign_key 'venue_invitation_venues', 'venues'
   add_foreign_key 'venue_offer_deal_types', 'deal_types'
   add_foreign_key 'venue_offer_deal_types', 'venue_offers'
   add_foreign_key 'venue_offer_ticket_sale_options', 'deal_types'

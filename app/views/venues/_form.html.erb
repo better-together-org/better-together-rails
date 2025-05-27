@@ -8,6 +8,9 @@
       <div class="btn-group me-2" role="group">
         <%= form.submit t('venues.save_venue'), class: 'btn btn-primary' %>
       </div>
+      <div class="btn-group me-2" role="group">
+        <%= link_to t('venues.view'), venue, class: 'btn btn-info' %>
+      </div>
     </div>
   <% end %>
 
@@ -45,6 +48,9 @@
         </button>
         <button class="nav-link" id="venue-offers-tab" data-bs-toggle="pill" data-bs-target="#venue-offers" type="button" role="tab" aria-controls="venue-offers" aria-selected="false" data-better_together--tabs-target="tab">
           <%= t('venues.tabs.offers') %>
+        </button>
+        <button class="nav-link" id="venue-offers-tab" data-bs-toggle="pill" data-bs-target="#venue-members" type="button" role="tab" aria-controls="venue-members" aria-selected="false" data-better_together--tabs-target="tab">
+          <%= t('venues.tabs.members') %>
         </button>
       </div>
     </div>
@@ -119,6 +125,13 @@
       <div class="nav-tab-pane tab-pane fade" id="venue-offers" role="tabpanel" aria-labelledby="venue-offers-tab">
         <div class="mb-3">
           <%= render partial: 'venue_offers/venue_offers', locals: { form: } if venue.persisted? %>
+        </div>
+      </div>
+
+      <!-- Venue Members Tab -->
+      <div class="nav-tab-pane tab-pane fade" id="venue-members" role="tabpanel" aria-labelledby="venue-members-tab">
+        <div class="mb-3">
+          <%= render partial: 'venue_memberships/venue_memberships', locals: { form: } if venue.persisted? %>
         </div>
       </div>
     </div>
