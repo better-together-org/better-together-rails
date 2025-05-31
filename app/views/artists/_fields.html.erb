@@ -1,0 +1,22 @@
+<%# locals: (form:) %>
+<div class="artists-fields nested-fields my-3 border-top mt-3 pt-3" data-new-record="<%= form.object.new_record? %>">
+  <h4><%= Artist.name.humanize %></h4>
+  <%= form.hidden_field :_destroy %>
+
+  <!-- Identifier text field -->
+  <div class="row my-3">
+    <div class="col-12">
+      <%= form.label :identifier, human_attribute_name_for(form.object, :identifier), class: "form-label" %>
+      <%= form.text_field :identifier, class: "form-control#{' is-invalid' if form.object.errors[:identifier].any?}", maxlength: 100, placeholder: t('placeholders.artist.identifier') %>
+
+      <% if form.object.errors[:identifier].any? %>
+        <div class="invalid-feedback">
+          <%= form.object.errors[:identifier].join(", ") %>
+        </div>
+      <% end %>
+      <small class="form-text text-muted mt-2">
+        <%= t('hints.artist.identifier') %>
+      </small>
+    </div>
+  </div>
+</div>

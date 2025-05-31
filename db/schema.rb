@@ -59,6 +59,18 @@ ActiveRecord::Schema[7.1].define(version: 20_250_605_183_256) do # rubocop:todo 
     t.index %w[blob_id variation_digest], name: 'index_active_storage_variant_records_uniqueness', unique: true
   end
 
+  create_table 'artists', id: :uuid, default: -> { 'gen_random_uuid()' }, force: :cascade do |t|
+    t.integer 'lock_version', default: 0, null: false
+    t.datetime 'created_at', null: false
+    t.datetime 'updated_at', null: false
+    t.uuid 'creator_id'
+    t.string 'identifier', limit: 100, null: false
+    t.string 'privacy', limit: 50, default: 'private', null: false
+    t.index ['creator_id'], name: 'by_artists_creator'
+    t.index ['identifier'], name: 'index_artists_on_identifier', unique: true
+    t.index ['privacy'], name: 'by_artists_privacy'
+  end
+
   create_table 'better_together_addresses', id: :uuid, default: -> { 'gen_random_uuid()' }, force: :cascade do |t|
     t.integer 'lock_version', default: 0, null: false
     t.datetime 'created_at', null: false
@@ -1253,6 +1265,48 @@ ActiveRecord::Schema[7.1].define(version: 20_250_605_183_256) do # rubocop:todo 
     t.index ['identifier'], name: 'index_ticket_sale_options_on_identifier', unique: true
   end
 
+  create_table 'tour_artists', id: :uuid, default: -> { 'gen_random_uuid()' }, force: :cascade do |t|
+    t.integer 'lock_version', default: 0, null: false
+    t.datetime 'created_at', null: false
+    t.datetime 'updated_at', null: false
+    t.integer 'position', null: false
+    t.uuid 'artist_id', null: false
+    t.uuid 'tour_id', null: false
+    t.index ['artist_id'], name: 'index_tour_artists_on_artist_id'
+    t.index ['tour_id'], name: 'index_tour_artists_on_tour_id'
+  end
+
+  create_table 'tour_stops', id: :uuid, default: -> { 'gen_random_uuid()' }, force: :cascade do |t|
+    t.integer 'lock_version', default: 0, null: false
+    t.datetime 'created_at', null: false
+    t.datetime 'updated_at', null: false
+    t.integer 'position', null: false
+    t.uuid 'tour_id', null: false
+    t.uuid 'venue_id', null: false
+    t.datetime 'arrives_at'
+    t.datetime 'departs_at'
+    t.index ['arrives_at'], name: 'tour_stops_by_arrives_at'
+    t.index ['departs_at'], name: 'tour_stops_by_departs_at'
+    t.index ['tour_id'], name: 'index_tour_stops_on_tour_id'
+    t.index ['venue_id'], name: 'index_tour_stops_on_venue_id'
+  end
+
+  create_table 'tours', id: :uuid, default: -> { 'gen_random_uuid()' }, force: :cascade do |t|
+    t.integer 'lock_version', default: 0, null: false
+    t.datetime 'created_at', null: false
+    t.datetime 'updated_at', null: false
+    t.uuid 'creator_id'
+    t.string 'identifier', limit: 100, null: false
+    t.string 'privacy', limit: 50, default: 'private', null: false
+    t.datetime 'starts_at'
+    t.datetime 'ends_at'
+    t.index ['creator_id'], name: 'by_tours_creator'
+    t.index ['ends_at'], name: 'tours_by_ends_at'
+    t.index ['identifier'], name: 'index_tours_on_identifier', unique: true
+    t.index ['privacy'], name: 'by_tours_privacy'
+    t.index ['starts_at'], name: 'tours_by_starts_at'
+  end
+
   create_table 'venue_buildings', id: :uuid, default: -> { 'gen_random_uuid()' }, force: :cascade do |t|
     t.integer 'lock_version', default: 0, null: false
     t.datetime 'created_at', null: false
@@ -1359,6 +1413,7 @@ ActiveRecord::Schema[7.1].define(version: 20_250_605_183_256) do # rubocop:todo 
 
   add_foreign_key 'active_storage_attachments', 'active_storage_blobs', column: 'blob_id'
   add_foreign_key 'active_storage_variant_records', 'active_storage_blobs', column: 'blob_id'
+  add_foreign_key 'artists', 'better_together_people', column: 'creator_id'
   add_foreign_key 'better_together_addresses', 'better_together_contact_details', column: 'contact_detail_id'
   add_foreign_key 'better_together_ai_log_translations', 'better_together_people', column: 'initiator_id'
   add_foreign_key 'better_together_authorships', 'better_together_people', column: 'author_id'
@@ -1451,6 +1506,11 @@ ActiveRecord::Schema[7.1].define(version: 20_250_605_183_256) do # rubocop:todo 
   add_foreign_key 'stages', 'better_together_uploads', column: 'stage_plot_id', on_delete: :nullify
   add_foreign_key 'stages', 'better_together_uploads', column: 'tech_specs_id', on_delete: :nullify
   add_foreign_key 'stages', 'venues'
+  add_foreign_key 'tour_artists', 'artists'
+  add_foreign_key 'tour_artists', 'tours'
+  add_foreign_key 'tour_stops', 'tours'
+  add_foreign_key 'tour_stops', 'venues'
+  add_foreign_key 'tours', 'better_together_people', column: 'creator_id'
   add_foreign_key 'venue_buildings', 'better_together_infrastructure_buildings', column: 'building_id'
   add_foreign_key 'venue_buildings', 'venues'
   add_foreign_key 'venue_images', 'better_together_content_blocks', column: 'image_id'

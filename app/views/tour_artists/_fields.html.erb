@@ -1,0 +1,17 @@
+
+<%# locals: (form:) %>
+<div class="tour-artists-fields nested-fields border-top py-3 my-3 row align-items-end" data-new-record="<%= form.object.new_record? %>">
+  <h4><%= TourArtist.name.humanize %></h4>
+  <%= form.hidden_field :_destroy %>
+
+  <div class="col-md-12 mb-3">
+    <%= form.label :artist_id, Artist.name.humanize %>
+    <%= form.collection_select :artist_id, bookable_artists, :id, :name, { }, { class: 'form-select', required: true, data: { controller: "better_together--slim-select" } } %>
+  </div>
+
+  <div class="col-8 col-md-10 mt-3 mt-md-0">
+    <%= link_to '#remove-tour-artist', class: 'btn btn-outline-danger btn-sm', data: { action: 'click->better_together--dynamic-fields#remove' } do %>
+      <i class="fas fa-minus"></i> <%= t('better_together.remove') %>
+    <% end %>
+  </div>
+</div>

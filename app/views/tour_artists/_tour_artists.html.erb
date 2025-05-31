@@ -1,0 +1,24 @@
+
+<%# locals: (form:) %>
+
+<div class="tour-artists mb-4" data-controller="better_together--dynamic-fields">
+  <h3><%= TourArtist.name.humanize.pluralize %></h3>
+
+  <div id="<%= dom_id(form.object, :tour_artists) %>" class="mb-3" data-better_together--dynamic-fields-target="container">
+    <%= form.fields_for :tour_artists do |tour_artist_form| %>
+      <%= render 'tour_artists/fields', form: tour_artist_form %>
+    <% end %>
+  </div>
+
+  <!-- Hidden template -->
+  <template data-better_together--dynamic-fields-target="template">
+    <%# Build a new TourArtist instance %>
+    <%= form.fields_for :tour_artists, form.object.tour_artists.build, child_index: 'NEW_RECORD' do |tour_artist_form| %>
+      <%= render 'tour_artists/fields', form: tour_artist_form %>
+    <% end %>
+  </template>
+
+  <%= link_to '#add-tour-artist', class: 'btn btn-outline-primary btn-sm', data: { action: 'click->better_together--dynamic-fields#add' } do %>
+    <i class="fas fa-plus"></i> <%= t('better_together.global.add') %>
+  <% end %>
+</div>

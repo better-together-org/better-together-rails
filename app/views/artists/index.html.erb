@@ -1,0 +1,17 @@
+<% content_for :page_title do %>
+  <%= resource_class.model_name.human.pluralize %>
+<% end %>
+<div class="artists container mt-4">
+  <!-- Page Heading -->
+  <div class="d-flex justify-content-between align-items-center mb-4">
+    <h1 class="text-primary"><i class="fas fa-map-marker-alt"></i> <%= resource_class.model_name.human.pluralize %></h1>
+    <% if policy(resource_class).create? %>
+      <%= link_to "New Artist", new_artist_path, class: "btn btn-success" %>
+    <% end %>
+  </div>
+
+  <!-- Artists Grid -->
+  <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+    <%= render @artists %>
+  </div>
+</div>

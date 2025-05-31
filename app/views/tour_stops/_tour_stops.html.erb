@@ -1,0 +1,24 @@
+
+<%# locals: (form:) %>
+
+<div class="tour-stops mb-4" data-controller="better_together--dynamic-fields">
+  <h3><%= TourStop.name.humanize.pluralize %></h3>
+
+  <div id="<%= dom_id(form.object, :tour_stops) %>" class="mb-3" data-better_together--dynamic-fields-target="container">
+    <%= form.fields_for :tour_stops do |tour_stop_form| %>
+      <%= render 'tour_stops/fields', form: tour_stop_form %>
+    <% end %>
+  </div>
+
+  <!-- Hidden template -->
+  <template data-better_together--dynamic-fields-target="template">
+    <%# Build a new TourStop instance %>
+    <%= form.fields_for :tour_stops, form.object.tour_stops.build, child_index: 'NEW_RECORD' do |tour_stop_form| %>
+      <%= render 'tour_stops/fields', form: tour_stop_form %>
+    <% end %>
+  </template>
+
+  <%= link_to '#add-tour-stop', class: 'btn btn-outline-primary btn-sm', data: { action: 'click->better_together--dynamic-fields#add' } do %>
+    <i class="fas fa-plus"></i> <%= t('better_together.global.add') %>
+  <% end %>
+</div>

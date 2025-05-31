@@ -1,0 +1,113 @@
+<%= form_with(model: artist, class: 'form', multipart: true, id: dom_id(artist, 'form'), local: true, data: { controller: "better_together--form-validation better_together--tabs" }) do |form| %>
+  <%= form.hidden_field :creator_id, value: current_person&.id unless form.object.creator_id %>
+  <% content_for :resource_toolbar do %>
+    <div class="btn-toolbar mb-3" role="toolbar" aria-label="<%= t('helpers.toolbar.aria_label') %>">
+      <div class="btn-group me-2" role="group">
+        <%= link_to t('artists.back_to_artists'), artists_path, class: 'btn btn-secondary' %>
+      </div>
+      <div class="btn-group me-2" role="group">
+        <%= form.submit t('artists.save_artist'), class: 'btn btn-primary' %>
+      </div>
+      <% if artist.persisted? %>
+        <div class="btn-group me-2" role="group">
+          <%= link_to t('artists.view_artist'), artist, class: 'btn btn-info' %>
+        </div>
+      <% end %>
+    </div>
+  <% end %>
+
+  <%= yield :resource_toolbar %>
+
+  <% if artist.errors.any? %>
+    <div class="alert alert-danger">
+      <h4><%= t('helpers.errors.heading') %></h4>
+      <ul>
+        <% artist.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="row">
+    <!-- Vertical Pills Navigation -->
+    <div class="col-md-3">
+      <div class="nav flex-column nav-pills" id="artist-form-tabs" role="tablist" aria-orientation="vertical">
+        <button class="nav-link active" id="artist-details-tab" data-bs-toggle="pill" data-bs-target="#artist-details" type="button" role="tab" aria-controls="artist-details" aria-selected="true" data-better_together--tabs-target="tab">
+          <%= t('artists.tabs.details') %>
+        </button>
+        <button class="nav-link" id="artist-images-tab" data-bs-toggle="pill" data-bs-target="#artist-images" type="button" role="tab" aria-controls="artist-images" aria-selected="false" data-better_together--tabs-target="tab">
+          <%= t('artists.tabs.images') %>
+        </button>
+      </div>
+    </div>
+
+    <!-- Tab Content -->
+    <div class="col-md-9 tab-content" id="artist-form-tabs-content">
+      <!-- Artist Details Tab -->
+      <div class="nav-tab-pane tab-pane fade show active" id="artist-details" role="tabpanel" aria-labelledby="artist-details-tab">
+        <div class="row mb-3 row-cols-1 row-cols-sm-2">
+          <!-- Translatable Name Field -->
+          <div class="col mb-3 pb-3 border-bottom">
+            <%= render partial: 'better_together/shared/translated_string_field', locals: { model: artist, form: form, attribute: 'name' } %>
+            <small class="form-text text-muted mt-2"><%= t('artists.hints.name') %></small>
+          </div>
+
+          <!-- Translatable Slug Field -->
+          <div class="col mb-3 pb-3 border-bottom">
+            <%= render partial: 'better_together/shared/translated_string_field', locals: { model: artist, form: form, attribute: 'slug' } %>
+            <small class="form-text text-muted mt-2"><%= t('artists.hints.slug') %></small>
+          </div>
+
+          <!-- Privacy Field -->
+          <div class="col mb-3 pb-3 border-bottom">
+            <%= form.label :privacy, t('artists.labels.privacy') %>
+            <%= privacy_field(form:, klass: artist.class) %>
+            <% if artist.errors[:privacy].any? %>
+              <div class="invalid-feedback">
+                <%= artist.errors[:privacy].join(", ") %>
+              </div>
+            <% end %>
+          </div>
+        </div>
+
+        <div class="row">
+          <!-- Translatable Description Field -->
+          <div class="col mb-3 pb-3 border-bottom">
+            <%= render partial: 'better_together/shared/translated_rich_text_field', locals: { model: artist, form: form, attribute: 'description' } %>
+            <small class="form-text text-muted mt-2"><%= t('artists.hints.description') %></small>
+          </div>
+        </div>
+      </div>
+
+      <!-- Artist Images Tab -->
+      <div class="nav-tab-pane tab-pane fade" id="artist-images" role="tabpanel" aria-labelledby="artist-images-tab">
+        <div class="mb-3">
+          <div id="artist-cover-image-fields" class="mb-3" data-controller="better_together--image-preview"
+            data-image-preview-clear-value="<%= t('globals.clear') %>"
+            data-image-preview-undo-clear-value="<%= t('globals.undo_clear') %>">
+            <%= label_tag do %>
+              <%= artist.class.human_attribute_name(:cover_image) %>
+              <% if artist.cover_image.attached? %>
+                : <%= artist.cover_image.filename %>
+              <% end %>
+            <% end %>
+
+            <div class="input-group">
+              <%= form.file_field :cover_image, accept: acceptable_image_file_types, "data-better_together--image-preview-target" => 'input', data: { 'action' => "better_together--image-preview#preview" }, class: "form-control" %>
+              <%= form.hidden_field :remove_cover_image, value: '0', "data-better_together--image-preview-target" => "deleteField" %>
+              <%= button_tag t('globals.clear'), { type: 'button', class: 'btn btn-secondary', "data-better_together--image-preview-target" => "deleteButton", data: { 'action' => "better_together--image-preview#toggleDelete", 'clear-value' => t('globals.clear'), 'undo-clear-value' => t('globals.undo_clear'), 'no-image-value' => t('globals.no_image') } } %>
+            </div>
+
+            <small class="form-text text-muted"><%= t('helpers.hint.artist.cover_image') %></small>
+
+            <div class="my-3 text-center preview-target" data-better_together--image-preview-target="preview" data-image-classes="cover-image" data-url="<%= artist.cover_image.url if artist.cover_image.attached? %>">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <%= yield :resource_toolbar %>
+<% end %>
