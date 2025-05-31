@@ -136,6 +136,28 @@ ActiveRecord::Schema[7.1].define(version: 20_250_605_183_256) do # rubocop:todo 
     t.index ['privacy'], name: 'by_better_together_calendars_privacy'
   end
 
+  create_table 'better_together_calls_for_interest', id: :uuid, default: lambda {
+    'gen_random_uuid()'
+  }, force: :cascade do |t|
+    t.integer 'lock_version', default: 0, null: false
+    t.datetime 'created_at', null: false
+    t.datetime 'updated_at', null: false
+    t.string 'type', default: 'BetterTogether::CallForInterest', null: false
+    t.string 'interestable_type'
+    t.uuid 'interestable_id'
+    t.uuid 'creator_id'
+    t.string 'identifier', limit: 100, null: false
+    t.string 'privacy', limit: 50, default: 'private', null: false
+    t.datetime 'starts_at'
+    t.datetime 'ends_at'
+    t.index ['creator_id'], name: 'by_better_together_calls_for_interest_creator'
+    t.index ['ends_at'], name: 'bt_calls_for_interest_by_ends_at'
+    t.index ['identifier'], name: 'index_better_together_calls_for_interest_on_identifier', unique: true
+    t.index %w[interestable_type interestable_id], name: 'index_better_together_calls_for_interest_on_interestable'
+    t.index ['privacy'], name: 'by_better_together_calls_for_interest_privacy'
+    t.index ['starts_at'], name: 'bt_calls_for_interest_by_starts_at'
+  end
+
   create_table 'better_together_categories', id: :uuid, default: -> { 'gen_random_uuid()' }, force: :cascade do |t|
     t.integer 'lock_version', default: 0, null: false
     t.datetime 'created_at', null: false
@@ -1342,6 +1364,7 @@ ActiveRecord::Schema[7.1].define(version: 20_250_605_183_256) do # rubocop:todo 
   add_foreign_key 'better_together_authorships', 'better_together_people', column: 'author_id'
   add_foreign_key 'better_together_calendars', 'better_together_communities', column: 'community_id'
   add_foreign_key 'better_together_calendars', 'better_together_people', column: 'creator_id'
+  add_foreign_key 'better_together_calls_for_interest', 'better_together_people', column: 'creator_id'
   add_foreign_key 'better_together_communities', 'better_together_people', column: 'creator_id'
   add_foreign_key 'better_together_content_blocks', 'better_together_people', column: 'creator_id'
   add_foreign_key 'better_together_content_page_blocks', 'better_together_content_blocks', column: 'block_id'

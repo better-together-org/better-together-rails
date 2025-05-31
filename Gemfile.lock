@@ -1,7 +1,7 @@
 GIT
   remote: https://github.com/better-together-org/community-engine-rails.git
-  revision: ce3e68fd5992fb55e55f74e3c4ab91ac5eb2a6c9
-  branch: main
+  revision: db9b736dca13e5e84e6b101973c8713d0da68493
+  branch: feature/calls-for-interest
   specs:
     better_together (0.8.1)
       active_storage_svg_sanitizer
