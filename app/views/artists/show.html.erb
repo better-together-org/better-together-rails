@@ -49,8 +49,11 @@
         <!-- About Section -->
         <section id="about" class="row collapse show" aria-labelledby="about-tab" aria-expanded="true" data-bs-parent="#platformTabs">
           <div class="col-md-12">
+            <div class="tour-datetime card-text text-muted mt-2">
+              <i class="fas fa-eye me-2"></i> <%= @artist.privacy.humanize %>
+            </div>
             <!-- Description Section -->
-            <p class="card-text text-muted">
+            <p class="card-text text-muted mt-2">
               <%= @resource.description.presence || 'No description available.' %>
             </p>
           </div>

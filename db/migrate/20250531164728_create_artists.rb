@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+# Tracks artists
 class CreateArtists < ActiveRecord::Migration[7.1]
   def change
     create_bt_table :artists, prefix: nil do |t|

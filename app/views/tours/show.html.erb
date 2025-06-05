@@ -64,21 +64,21 @@
               <i class="fas fa-eye me-2"></i> <%= @tour.privacy.humanize %>
             </div>
             <!-- Description Section -->
-            <p class="card-text text-muted">
+            <p class="card-text text-muted mt-2">
               <%= @resource.description.presence || 'No description available.' %>
             </p>
 
             <div class="tour-artists">
               <h4><%= Artist.model_name.human.pluralize %></h4>
               <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
-                <%= render(@tour.artists) || render('artists/none') %>
+                <%= render(policy_scope(@tour.artists)) || render('artists/none') %>
               </div>
             </div>
 
             <div class="tour-stops"></div>
               <h4><%= TourStop.model_name.human.pluralize %></h4>
               <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
-                <%= render(@tour.venues) || render('venues/none') %>
+                <%= render(policy_scope(@tour.venues)) || render('venues/none') %>
               </div>
             </div>
           </div>

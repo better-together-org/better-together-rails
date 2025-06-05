@@ -57,7 +57,7 @@ module BetterTogether
       port: '587',
       authentication: :plain,
       user_name: ENV.fetch('SMTP_USERNAME', 'apikey'),
-      password: ENV['SMTP_PASSWORD'],
+      password: ENV.fetch('SMTP_PASSWORD', nil),
       domain: ENV.fetch('APP_HOST', 'localhost:3000'),
       enable_starttls_auto: true
     }

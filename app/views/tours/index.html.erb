@@ -36,12 +36,12 @@
           <div class="card-body">
             <h3 class="card-title">No tours yet!</h3>
             <p class="card-text">
-              Stay tuned for upcoming tours where you can connect, learn, and grow with our community.
-              <br>
-              Tours are a great way to meet like-minded people, share knowledge, and have fun together.
+                No tours are currently scheduled.<br>
+                Plan a tour to bring your performances to new venues and audiences!<br>
+                Touring is a great way to share your talent, connect with fans, and grow your presence.
             </p>
             <% if policy(resource_class).create? %>
-              <a href="<%= new_tour_path %>" class="btn btn-primary mt-3">Publish an Tour</a>
+              <a href="<%= new_tour_path %>" class="btn btn-primary mt-3">Plan a Tour</a>
             <% end %>
           </div>
         </div>

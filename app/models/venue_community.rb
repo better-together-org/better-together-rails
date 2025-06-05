@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 # Join record between a deal type and a venue offer
-class VenueCommunity < ::BetterTogether::Community
+class VenueCommunity < BetterTogether::Community
   has_one :venue, foreign_key: :community_id
 
   alias members person_members

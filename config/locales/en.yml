@@ -1,10 +1,14 @@
 ---
 en:
+  artists:
+    save_artist: Save Artist
   better_together:
     navigation_items:
       route_names:
+        artists: Artists
         deal_types: "Deal Types"
         ticket_sale_options: "Ticket Sale Options"
+        tours: Tours
         venues: "Venues"
   globals:
     attached_file: "Attached file"
@@ -28,6 +32,9 @@ en:
     formats:
       date_picker: "%m/%d/%Y"
       datetime_picker: "%m/%d/%Y %I:%M %p" # 12-hour format with AM/PM
+      tour: "%B %d, %Y @ %-I:%M %p"
+  tours:
+    save_tour: Save Tour
   venues:
     back_to_venues: "Back to Venues"
     save_venue: "Save Venue"

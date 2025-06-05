@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+# A performance artist performs at a venue.
 class Artist < ApplicationRecord
   include BetterTogether::Creatable
   include BetterTogether::Identifier

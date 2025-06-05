@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 # Custom platform invitation to add link to Venue
-class VenueInvitation < ::BetterTogether::PlatformInvitation
+class VenueInvitation < BetterTogether::PlatformInvitation
   has_one :venue_invitation_venue
   has_one :venue, through: :venue_invitation_venue
 

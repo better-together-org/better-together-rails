@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+# Association between a tour and a venue
 class TourStop < ApplicationRecord
   include ::BetterTogether::Positioned
 

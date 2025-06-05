@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+# Association between a tour and an artist
 class TourArtist < ApplicationRecord
   include ::BetterTogether::Positioned
 

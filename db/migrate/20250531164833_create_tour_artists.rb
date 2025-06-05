@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+# Tracks association betwen tours and artists
 class CreateTourArtists < ActiveRecord::Migration[7.1]
   def change
     create_bt_table :tour_artists, prefix: nil do |t|

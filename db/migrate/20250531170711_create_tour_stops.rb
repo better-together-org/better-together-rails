@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+# Creates table to track association between tours and venues
 class CreateTourStops < ActiveRecord::Migration[7.1]
   def change
     create_bt_table :tour_stops, prefix: nil do |t|

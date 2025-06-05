@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+# A tour is a set of venues performed at by artists
 class Tour < ApplicationRecord
   include ::BetterTogether::Creatable
   include ::BetterTogether::Identifier
