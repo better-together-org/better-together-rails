@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/better-together-org/community-engine-rails.git
-  revision: 2fdc1f57600a95cf0508aba60b6631005f60f0e6
+  revision: ce3e68fd5992fb55e55f74e3c4ab91ac5eb2a6c9
   branch: main
   specs:
     better_together (0.8.1)
@@ -196,7 +196,7 @@ GEM
       erubi (>= 1.0.0)
       rack (>= 0.9.0)
       rouge (>= 1.0.0)
-    bigdecimal (3.2.1)
+    bigdecimal (3.2.2)
     bindex (0.8.1)
     binding_of_caller (1.0.1)
       debug_inspector (>= 1.2.0)
@@ -352,7 +352,7 @@ GEM
     google-protobuf (4.31.1-x86_64-linux-gnu)
       bigdecimal
       rake (>= 13)
-    groupdate (6.6.0)
+    groupdate (6.7.0)
       activesupport (>= 7.1)
     hashie (5.0.0)
     highline (3.1.2)
@@ -504,7 +504,7 @@ GEM
     pundit (2.5.0)
       activesupport (>= 3.0.0)
     racc (1.8.1)
-    rack (3.1.15)
+    rack (3.1.16)
     rack-attack (6.7.0)
       rack (>= 1.0, < 4)
     rack-cors (3.0.0)
@@ -660,7 +660,7 @@ GEM
       faraday (>= 1)
       faraday-multipart (>= 1)
     ruby-progressbar (1.13.0)
-    ruby-vips (2.2.3)
+    ruby-vips (2.2.4)
       ffi (~> 1.12)
       logger
     rubyzip (2.4.1)
