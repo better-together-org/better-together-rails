@@ -1,1 +1,12 @@
-require: rubocop-rspec
+plugins: rubocop-rspec
+
+AllCops:
+  Exclude:
+    - 'bin/*'
+    - 'node_modules/**/*'
+    - 'db/schema.rb'
+    - 'vendor/**/*'
+  NewCops: enable
+Style/StringLiterals:
+  Exclude:
+    - 'db/migrate/*'

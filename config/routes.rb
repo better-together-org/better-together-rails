@@ -6,7 +6,7 @@ Rails.application.routes.draw do
 
   scope ':locale',
         locale: /#{I18n.available_locales.join('|')}/ do
-    authenticated :user do
+    authenticated :user do # rubocop:todo Lint/EmptyBlock
     end
   end
 
