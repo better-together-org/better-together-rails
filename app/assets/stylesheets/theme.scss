@@ -2,16 +2,20 @@
 // Better Together colour palette
 
 $brand-accent: #42b983;
+$brand-success: #5debab;
+$brand-secondary: #2e815c;
+$brand-info: #347c46;
 
 $header-footer-bg: lighten($brand-accent, 30%);
 
 // Override the color variables in the host application
 $primary: $brand-accent;
-// $secondary: $blue-2; /* Change to a different green */
-// $success: $green-2;
-// $info: $green-1;
-// $warning: #C9B947;
-// $danger: #BF4A47;
+$secondary: $brand-secondary; /* Change to a different green */
+$success: $brand-success;
+$info: $brand-info;
+$warning: #C9B947;
+$danger: #BF4A47;
+
 $text-opposite-theme-color: #222; /* Darker text */
 $background-opposite-theme-color: #f0f0f0; /* Lighter background */
 $light-background-text-color: #222;
@@ -25,6 +29,15 @@ $slider-track-height: 6px;
 $slider-thumb-size: 15px;
 $slider-thumb-border-size: 2px;
 
+$colors: (
+  primary: $primary,
+  secondary: $secondary,
+  success: $success,
+  info: $info,
+  warning: $warning,
+  danger: $danger,
+);
+
 // Import the gem's SCSS styles after overriding the variables
 @import 'better_together/theme';
 
@@ -34,6 +47,7 @@ $slider-thumb-border-size: 2px;
 @import "bootstrap/maps";
 @import "bootstrap/utilities";
 @import "bootstrap/buttons";
+@import "bootstrap/root";
 
 html {
   scroll-behavior: smooth;
