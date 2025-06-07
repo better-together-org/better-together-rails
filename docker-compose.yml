@@ -75,7 +75,7 @@ services:
     image: mailhog/mailhog
     container_name: better-together-smtp
     ports:
-      - '1026:1025'
+      - '1025:1025'
       - '8026:8025'
 
   redis:

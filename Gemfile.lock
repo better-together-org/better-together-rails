@@ -1,23 +1,7 @@
 GIT
-  remote: https://github.com/better-together-org/pundit-resources.git
-  revision: b6218c695c2b6c7413ab416a318cd540835c5394
-  specs:
-    pundit-resources (1.1.5)
-      activesupport
-      jsonapi-resources
-      pundit
-      rails (>= 4.2.1, < 7.2)
-
-GIT
-  remote: https://github.com/better-together-org/storext.git
-  revision: 1d7c3707b3e412fece0022c16cc6f51564969d2c
-  specs:
-    storext (3.3.0)
-      activerecord (>= 4.0, < 8)
-      virtus
-
-PATH
-  remote: /community-engine
+  remote: https://github.com/better-together-org/community-engine-rails.git
+  revision: babf10d5226dcb812f6dab5c11c45d67db8001cd
+  branch: main
   specs:
     better_together (0.8.1)
       active_storage_svg_sanitizer
@@ -47,6 +31,7 @@ PATH
       mobility-actiontext (~> 1.1)
       noticed
       premailer-rails
+      public_activity
       pundit (>= 2.1, < 2.6)
       pundit-resources
       rack-attack
@@ -63,6 +48,24 @@ PATH
       storext
       translate_enum
       turbo-rails (~> 2.0)
+
+GIT
+  remote: https://github.com/better-together-org/pundit-resources.git
+  revision: b6218c695c2b6c7413ab416a318cd540835c5394
+  specs:
+    pundit-resources (1.1.5)
+      activesupport
+      jsonapi-resources
+      pundit
+      rails (>= 4.2.1, < 7.2)
+
+GIT
+  remote: https://github.com/better-together-org/storext.git
+  revision: 1d7c3707b3e412fece0022c16cc6f51564969d2c
+  specs:
+    storext (3.3.0)
+      activerecord (>= 4.0, < 8)
+      virtus
 
 GEM
   remote: https://rubygems.org/
@@ -502,6 +505,11 @@ GEM
     psych (5.2.6)
       date
       stringio
+    public_activity (3.0.1)
+      actionpack (>= 6.1.0)
+      activerecord (>= 6.1)
+      i18n (>= 0.5.0)
+      railties (>= 6.1.0)
     public_suffix (6.0.2)
     puma (6.6.0)
       nio4r (~> 2.0)
@@ -789,7 +797,7 @@ DEPENDENCIES
   aws-sdk-s3
   bcrypt (~> 3.1.20)
   better_errors
-  better_together!
+  better_together (~> 0.8)!
   binding_of_caller
   bootsnap (>= 1.7.0)
   brakeman
