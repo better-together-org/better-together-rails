@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/better-together-org/community-engine-rails.git
-  revision: babf10d5226dcb812f6dab5c11c45d67db8001cd
+  revision: c67989c169490efd821cad35c6e5e301a256ecd5
   branch: main
   specs:
     better_together (0.8.1)
@@ -259,7 +259,7 @@ GEM
       railties (>= 4.1.0)
       responders
       warden (~> 1.2.3)
-    devise-i18n (1.13.0)
+    devise-i18n (1.14.0)
       devise (>= 4.9.0)
       rails-i18n
     devise-jwt (0.12.1)
@@ -315,7 +315,7 @@ GEM
       logger
     faraday-multipart (1.1.0)
       multipart-post (~> 2.0)
-    faraday-net_http (3.4.0)
+    faraday-net_http (3.4.1)
       net-http (>= 0.5.0)
     ffi (1.17.2-aarch64-linux-gnu)
     ffi (1.17.2-x86_64-linux-gnu)
@@ -676,9 +676,9 @@ GEM
       ffi (~> 1.12)
       logger
     rubyzip (2.4.1)
-    sass-embedded (1.89.1-aarch64-linux-gnu)
+    sass-embedded (1.89.2-aarch64-linux-gnu)
       google-protobuf (~> 4.31)
-    sass-embedded (1.89.1-x86_64-linux-gnu)
+    sass-embedded (1.89.2-x86_64-linux-gnu)
       google-protobuf (~> 4.31)
     sassc (2.4.0)
       ffi (~> 1.9)
