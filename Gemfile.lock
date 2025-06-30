@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/better-together-org/community-engine-rails.git
-  revision: 1f789bdf6fb0af4c47f4e0c9aac3bb59b601d6bf
+  revision: a518647b0dc80ae1489fef104ead87b932dc6451
   branch: main
   specs:
     better_together (0.8.1)
@@ -405,7 +405,7 @@ GEM
       activerecord (>= 4.1)
       concurrent-ruby
       railties (>= 4.1)
-    jwt (2.10.1)
+    jwt (2.10.2)
       base64
     kaminari (1.2.2)
       activesupport (>= 4.1.0)
