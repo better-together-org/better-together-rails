@@ -39,7 +39,7 @@ gem 'rails', '~> 7.1.5'
 gem 'redis', '~> 5.4'
 # Sidekiq for background processing
 
-gem 'sidekiq', '~> 8.0.4'
+gem 'sidekiq', '~> 8.0.5'
 
 # Error and performance monitoring with Sentry
 gem 'sentry-rails'
