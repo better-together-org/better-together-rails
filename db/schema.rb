@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2025_06_05_211020) do
+ActiveRecord::Schema[7.1].define(version: 2025_07_08_222023) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
   enable_extension "plpgsql"
@@ -65,6 +65,25 @@ ActiveRecord::Schema[7.1].define(version: 2025_06_05_211020) do
     t.index ["creator_id"], name: "by_artists_creator"
     t.index ["identifier"], name: "index_artists_on_identifier", unique: true
     t.index ["privacy"], name: "by_artists_privacy"
+  end
+
+  create_table "better_together_activities", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.integer "lock_version", default: 0, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "trackable_type"
+    t.uuid "trackable_id"
+    t.string "owner_type"
+    t.uuid "owner_id"
+    t.string "key"
+    t.jsonb "parameters", default: "{}"
+    t.string "recipient_type"
+    t.uuid "recipient_id"
+    t.string "privacy", limit: 50, default: "private", null: false
+    t.index ["owner_type", "owner_id"], name: "bt_activities_by_owner"
+    t.index ["privacy"], name: "by_better_together_activities_privacy"
+    t.index ["recipient_type", "recipient_id"], name: "bt_activities_by_recipient"
+    t.index ["trackable_type", "trackable_id"], name: "bt_activities_by_trackable"
   end
 
   create_table "better_together_addresses", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
@@ -122,6 +141,22 @@ ActiveRecord::Schema[7.1].define(version: 2025_06_05_211020) do
     t.uuid "author_id", null: false
     t.index ["author_id"], name: "by_authorship_author"
     t.index ["authorable_type", "authorable_id"], name: "by_authorship_authorable"
+  end
+
+  create_table "better_together_calendar_entries", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.integer "lock_version", default: 0, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.uuid "calendar_id"
+    t.string "schedulable_type"
+    t.uuid "schedulable_id"
+    t.datetime "starts_at", null: false
+    t.datetime "ends_at"
+    t.decimal "duration_minutes"
+    t.index ["calendar_id"], name: "index_better_together_calendar_entries_on_calendar_id"
+    t.index ["ends_at"], name: "bt_calendar_events_by_ends_at"
+    t.index ["schedulable_type", "schedulable_id"], name: "index_better_together_calendar_entries_on_schedulable"
+    t.index ["starts_at"], name: "bt_calendar_events_by_starts_at"
   end
 
   create_table "better_together_calendars", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
@@ -183,6 +218,18 @@ ActiveRecord::Schema[7.1].define(version: 2025_06_05_211020) do
     t.uuid "categorizable_id", null: false
     t.index ["categorizable_type", "categorizable_id"], name: "index_better_together_categorizations_on_categorizable"
     t.index ["category_type", "category_id"], name: "index_better_together_categorizations_on_category"
+  end
+
+  create_table "better_together_comments", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.integer "lock_version", default: 0, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "commentable_type", null: false
+    t.uuid "commentable_id", null: false
+    t.uuid "creator_id"
+    t.text "content", default: "", null: false
+    t.index ["commentable_type", "commentable_id"], name: "bt_comments_on_commentable"
+    t.index ["creator_id"], name: "by_better_together_comments_creator"
   end
 
   create_table "better_together_communities", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
@@ -1324,9 +1371,11 @@ ActiveRecord::Schema[7.1].define(version: 2025_06_05_211020) do
   add_foreign_key "better_together_addresses", "better_together_contact_details", column: "contact_detail_id"
   add_foreign_key "better_together_ai_log_translations", "better_together_people", column: "initiator_id"
   add_foreign_key "better_together_authorships", "better_together_people", column: "author_id"
+  add_foreign_key "better_together_calendar_entries", "better_together_calendars", column: "calendar_id"
   add_foreign_key "better_together_calendars", "better_together_communities", column: "community_id"
   add_foreign_key "better_together_calendars", "better_together_people", column: "creator_id"
   add_foreign_key "better_together_calls_for_interest", "better_together_people", column: "creator_id"
+  add_foreign_key "better_together_comments", "better_together_people", column: "creator_id"
   add_foreign_key "better_together_communities", "better_together_people", column: "creator_id"
   add_foreign_key "better_together_content_blocks", "better_together_people", column: "creator_id"
   add_foreign_key "better_together_content_page_blocks", "better_together_content_blocks", column: "block_id"
