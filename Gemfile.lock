@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/better-together-org/community-engine-rails.git
-  revision: 48e0004d8b0798b8ab4849e12042ab7edd03b645
+  revision: dfd67263420dee3d7b2f6d73ab5e4fcc93dc7ea8
   branch: message-notifications
   specs:
     better_together (0.8.1)
