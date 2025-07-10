@@ -1,7 +1,7 @@
 GIT
   remote: https://github.com/better-together-org/community-engine-rails.git
-  revision: a518647b0dc80ae1489fef104ead87b932dc6451
-  branch: main
+  revision: 48e0004d8b0798b8ab4849e12042ab7edd03b645
+  branch: message-notifications
   specs:
     better_together (0.8.1)
       active_storage_svg_sanitizer
@@ -121,7 +121,7 @@ GEM
       rails-html-sanitizer (~> 1.6)
     active_storage_svg_sanitizer (0.1.0)
       rails (>= 5.2)
-    active_storage_validations (3.0.0)
+    active_storage_validations (3.0.1)
       activejob (>= 6.1.4)
       activemodel (>= 6.1.4)
       activestorage (>= 6.1.4)
@@ -309,7 +309,7 @@ GEM
       railties (>= 6.1.0)
     faker (3.5.2)
       i18n (>= 1.8.11, < 2)
-    faraday (2.13.1)
+    faraday (2.13.2)
       faraday-net_http (>= 2.0, < 3.5)
       json
       logger
@@ -402,7 +402,7 @@ GEM
       reline (>= 0.4.2)
     jmespath (1.6.2)
     json (2.12.2)
-    json-schema (5.1.1)
+    json-schema (5.2.1)
       addressable (~> 2.8)
       bigdecimal (~> 3.1)
     jsonapi-resources (0.10.7)
@@ -457,7 +457,7 @@ GEM
       actiontext (>= 6.0)
       mobility (~> 1.2)
     msgpack (1.8.0)
-    multi_json (1.15.0)
+    multi_json (1.16.0)
     multipart-post (2.4.1)
     mutex_m (0.3.0)
     net-http (0.6.0)
@@ -477,7 +477,7 @@ GEM
       racc (~> 1.4)
     nokogiri (1.18.8-x86_64-linux-gnu)
       racc (~> 1.4)
-    noticed (2.7.0)
+    noticed (2.7.1)
       rails (>= 6.1.0)
     optimist (3.2.1)
     orm_adapter (0.5.0)
@@ -577,7 +577,7 @@ GEM
       ffi (>= 1.0.6)
       msgpack (>= 0.4.3)
       optimist (>= 3.0.0)
-    rdoc (6.14.1)
+    rdoc (6.14.2)
       erb
       psych (>= 4.0.0)
     redis (5.4.0)
@@ -738,7 +738,7 @@ GEM
       unicode-display_width (>= 1.1.1, < 4)
     thor (1.3.2)
     thread_safe (0.3.6)
-    tilt (2.6.0)
+    tilt (2.6.1)
     timeout (0.4.3)
     tins (1.33.0)
       bigdecimal
