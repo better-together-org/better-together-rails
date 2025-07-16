@@ -18,7 +18,7 @@ class VenuePolicy < ApplicationPolicy
 
   def update?
     # byebug
-    agent && (record.creator_id.present? and record.creator_id == agent.id) or
+    (agent && (record.creator_id.present? and record.creator_id == agent.id)) or
       permitted_to?('manage_platform') or
       permitted_to?('update_community', record.community)
   end
