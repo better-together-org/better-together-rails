@@ -65,6 +65,8 @@ group :development, :test do
   gem 'factory_bot_rails'
   # Fuubar for fancy test progress bar
   gem 'fuubar'
+  # Help with managing translation database
+  gem 'i18n-tasks', '~> 1.0.15'
   # Pry for a powerful shell alternative to IRB
   gem 'pry'
   # RuboCop for static code analysis
@@ -78,8 +80,7 @@ group :development do
   gem 'bundler-audit', require: false
   # Facilitate I18n translation management
   gem 'i18n_generators'
-  # Help with managing translation databasde
-  gem 'i18n-tasks', '~> 1.0.15'
+  gem 'easy_translate'
   # Listen for file system changes
   gem 'listen', '>= 3.0.5', '< 3.10'
   # Rack mini profiler for performance profiling
@@ -99,14 +100,20 @@ end
 group :test do
   # Capybara for integration testing
   gem 'capybara', '>= 2.15'
+  gem 'capybara-screenshot'
   # Coveralls for test coverage reporting
-  gem 'coveralls'
+  gem 'coveralls_reborn', require: false
   # Database cleaner for test database cleaning
   gem 'database_cleaner'
+  gem 'database_cleaner-active_record'
   # # Easy installation and use of chromedriver to run system tests with Chrome
-  gem 'webdrivers'
+  # gem 'webdrivers'
   # RuboCop RSpec for RSpec-specific code analysis
+  gem 'rubocop-capybara'
+  gem 'rubocop-factory_bot'
+  gem 'rubocop-rails'
   gem 'rubocop-rspec'
+  gem 'rubocop-rspec_rails'
   # RSpec for unit testing
   gem 'rspec'
   # RSpec Rails integration
