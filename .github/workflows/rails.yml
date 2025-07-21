@@ -18,6 +18,10 @@ jobs:
           POSTGRES_DB: rails_test
           POSTGRES_USER: rails
           POSTGRES_PASSWORD: password
+      redis:
+        image: redis:7.2-alpine
+        ports:
+          - '6379:6379'
       elasticsearch:
         image: elasticsearch:7.17.23
         ports:
