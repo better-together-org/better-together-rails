@@ -3,8 +3,9 @@
 require 'rails_helper'
 
 RSpec.describe VenueBuilding, type: :model do
-  subject(:venue_building) {build(:venue_building)}
-  let(:existing_venue_building) {create(:venue_building)}
+  subject(:venue_building) { build(:venue_building) }
+
+  let(:existing_venue_building) { create(:venue_building) }
 
   # Test the factory and its validations
   describe 'Factory' do
@@ -14,9 +15,9 @@ RSpec.describe VenueBuilding, type: :model do
   end
 
   describe 'ActiveRecord associations' do
-    it {is_expected.to belong_to(:venue)}
+    it { is_expected.to belong_to(:venue) }
 
-    it {is_expected.to accept_nested_attributes_for(:building)}
+    it { is_expected.to accept_nested_attributes_for(:building) }
   end
 
   describe 'callbacks' do
@@ -24,12 +25,13 @@ RSpec.describe VenueBuilding, type: :model do
     describe '#set_new_building_details' do
       # when venue_building is a new record, attributes should be copied from parent venue
       context 'when creating a new venue_building' do
-        let(:venue) {create(:venue, 
-          name: 'Test Venue', 
-          description: 'A new test venue', 
-          privacy: 'public'
-        )}
-        let(:venue_building) {build(:venue_building, venue: venue)}
+        let(:venue) do
+          create(:venue,
+                 name: 'Test Venue',
+                 description: 'A new test venue',
+                 privacy: 'public')
+        end
+        let(:venue_building) { build(:venue_building, venue: venue) }
 
         it 'copies parent attributes from venue for name, description, and privacy' do
           venue_building.valid?
@@ -41,15 +43,16 @@ RSpec.describe VenueBuilding, type: :model do
 
       # when venue_building already exists, its own attributes should persist on update
       context 'when updating an existing venue_building' do
-        let(:venue) {create(:venue, 
-          name: 'Test Venue', 
-          description: 'A new test venue', 
-          privacy: 'public'
-        )}
-        let(:venue_building) {create(:venue_building, venue: venue)}
+        let(:venue) do
+          create(:venue,
+                 name: 'Test Venue',
+                 description: 'A new test venue',
+                 privacy: 'public')
+        end
+        let(:venue_building) { create(:venue_building, venue: venue) }
 
         it 'does not run the #set_new_building_details callback' do
-          expect {venue_building.valid?}.not_to(change {venue_building.building.name})
+          expect { venue_building.valid? }.not_to(change { venue_building.building.name })
         end
       end
     end
