@@ -5,5 +5,10 @@ FactoryBot.define do
     id { Faker::Internet.uuid }
     name { Faker::Company.name }
     description { Faker::Lorem.paragraphs(number: 3) }
+    privacy { 'private' }
+
+    trait :public do
+      privacy { 'public' }
+    end
   end
 end

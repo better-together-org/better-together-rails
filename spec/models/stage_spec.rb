@@ -41,9 +41,9 @@ RSpec.describe Stage, type: :model do
       end
 
       it 'returns the associated upload' do
-        expect(stage_with_uploads.tech_specs).to eq(tech_specs)
-        expect(stage_with_uploads.stage_plot).to eq(stage_plot)
-        expect(stage_with_uploads.seating_chart).to eq(seating_chart)
+        { tech_specs:, stage_plot:, seating_chart: }.each do |method_name, upload|
+          expect(stage_with_uploads.send(method_name)).to eq(upload)
+        end
       end
     end
 
@@ -57,9 +57,9 @@ RSpec.describe Stage, type: :model do
       end
 
       it 'builds a new, unsaved upload association' do
-        expect(stage_without_uploads.tech_specs).to be_an_instance_of(BetterTogether::Upload)
-        expect(stage_without_uploads.stage_plot).to be_an_instance_of(BetterTogether::Upload)
-        expect(stage_without_uploads.seating_chart).to be_an_instance_of(BetterTogether::Upload)
+        %i[tech_specs stage_plot seating_chart].each do |method_name|
+          expect(stage_without_uploads.send(method_name)).to be_an_instance_of(BetterTogether::Upload)
+        end
       end
     end
   end

@@ -46,7 +46,7 @@ RSpec.describe Venue, type: :model do
   # Test that the model properly delegates attributes to its child associatioins where necessary
   describe 'delegations' do
     context 'when a venue has a primary stage' do
-      let!(:stage) do
+      before do
         create(:stage,
                capacity: 1001,
                lighting_tech: true,
@@ -59,17 +59,23 @@ RSpec.describe Venue, type: :model do
       end
 
       it 'delegates lighting tech to the primary stage' do
-        expect(existing_venue.lighting_tech).to eq(true)
+        expect(existing_venue.lighting_tech).to be(true)
       end
     end
   end
 
   # Test that after creating a venue it also creates a map that is of the correct model and title
   describe 'callbacks' do
-    context 'after_create' do
+    context 'when a venue has been created' do
       it 'creates a map record' do
         expect(existing_venue.map).to be_present
+      end
+
+      it 'associates the map to the correct model' do
         expect(existing_venue.map).to be_a(BetterTogether::Geography::Map)
+      end
+
+      it 'assigns the map name to the name of the venue' do
         expect(existing_venue.map.title).to eq(existing_venue.name)
       end
     end
@@ -78,18 +84,16 @@ RSpec.describe Venue, type: :model do
   # Test that a venue properly delegates its primary address to that of its primary building address if set
   describe '#formatted_address' do
     context 'when a primary building with an address is set' do
-      let(:address) do
-        create(:better_together_address,
-               line1: '123 Main Street',
-               city_name: 'Corner Brook',
-               state_province_name: 'NL',
-               primary_flag: true)
-      end
-      let(:building) do
-        create(:better_together_infrastructure_building,
-               address: address)
-      end
-      let!(:venue_building) do
+      before do
+        address = create(:better_together_address,
+                         line1: '123 Main Street',
+                         city_name: 'Corner Brook',
+                         state_province_name: 'NL',
+                         primary_flag: true)
+
+        building = create(:better_together_infrastructure_building,
+                          address: address)
+
         create(:venue_building,
                venue: existing_venue,
                building: building,
@@ -102,7 +106,7 @@ RSpec.describe Venue, type: :model do
     end
 
     it 'returns nil when venue does not have a primary stage' do
-      expect(existing_venue.formatted_address).to eq(nil)
+      expect(existing_venue.formatted_address).to be_nil
     end
   end
 end
