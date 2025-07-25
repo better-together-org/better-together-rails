@@ -7,8 +7,6 @@ module DeviseSessionHelpers
 
   def login_as_platform_manager
     user = create(:nl_venues_user, :confirmed, :platform_manager)
-
-    # byebug
     visit new_user_session_url(locale: I18n.locale)
     fill_in 'Email', with: user.email
     fill_in 'Password', with: user.password
@@ -17,8 +15,9 @@ module DeviseSessionHelpers
   end
 
   def configure_host_platform
-    create(:better_together_platform, :host, privacy: 'public')
+    host_platform = create(:better_together_platform, :host, privacy: 'public')
     wizard = BetterTogether::Wizard.find_or_create_by(identifier: 'host_setup')
     wizard.mark_completed
+    host_platform
   end
 end
