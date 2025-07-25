@@ -27,6 +27,5 @@ RSpec.describe 'accepting a platform invitation', type: :feature do
     fill_in 'user[email]', with: created_user.email
     fill_in 'user[password]', with: password
     click_button 'Sign In'
-    save_and_open_page
   end
 end
