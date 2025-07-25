@@ -10,10 +10,10 @@ Rails.application.routes.draw do
       resources :deal_types
       resources :ticket_sale_options
       resources :tours
-      resources :venues, only: %i[create update destroy]
+      resources :venues, except: %i[index show]
     end
 
-    resources :venues, except: %i[create update destroy]
+    resources :venues, only: %i[index show] # unauthenticated visitors only have index & show routes
   end
 
   root to: redirect("/#{I18n.default_locale}")
