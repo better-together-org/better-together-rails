@@ -4,6 +4,10 @@ require 'rails_helper'
 
 RSpec.feature 'update a venue', type: :feature do
   include DeviseSessionHelpers
+
+  let!(:venue) { create(:venue, :public) }
+  let(:new_name) { Faker::Company.name }
+
   before do
     configure_host_platform
     login_as_platform_manager
@@ -11,8 +15,6 @@ RSpec.feature 'update a venue', type: :feature do
 
   describe 'submit with' do
     scenario 'valid inputs' do
-      venue = create(:venue)
-      new_name = Faker::Company.name
       visit main_app.edit_venue_path(locale: I18n.locale, id: venue.id)
       fill_in 'venue[name_en]', with: new_name
       first(:button, 'Save Venue').click

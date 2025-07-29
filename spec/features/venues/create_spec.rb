@@ -5,6 +5,7 @@ require 'rails_helper'
 RSpec.feature 'create a venue', type: :feature do
   include DeviseSessionHelpers
   include VenueFormHelpers
+
   before do
     configure_host_platform
     login_as_platform_manager

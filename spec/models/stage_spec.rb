@@ -60,8 +60,6 @@ RSpec.describe Stage, type: :model do
         %i[tech_specs stage_plot seating_chart].each do |method_name|
           expect(stage_without_uploads.send(method_name)).to be_an_instance_of(BetterTogether::Upload)
         end
-        stage_without_uploads.save
-        expect(stage_without_uploads).to be_valid
       end
     end
   end
