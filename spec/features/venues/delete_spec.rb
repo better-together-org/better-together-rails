@@ -2,7 +2,7 @@
 
 require 'rails_helper'
 
-RSpec.describe 'deleting a city', type: :feature do
+RSpec.describe 'deleting a venue', type: :feature do
   include DeviseSessionHelpers
   before do
     configure_host_platform
@@ -10,7 +10,7 @@ RSpec.describe 'deleting a city', type: :feature do
   end
 
   scenario 'success' do
-    venue = create(:venue)
+    venue = create(:venue, :public)
     visit main_app.venues_path(locale: I18n.locale)
     expect(page).to have_content(venue.name)
 

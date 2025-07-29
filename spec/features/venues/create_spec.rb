@@ -2,34 +2,25 @@
 
 require 'rails_helper'
 
-RSpec.feature 'Venues', type: :feature do
+RSpec.feature 'create a venue', type: :feature do
   include DeviseSessionHelpers
+  include VenueFormHelpers
   before do
     configure_host_platform
     login_as_platform_manager
   end
 
-  describe 'creating a new venue' do
-    scenario 'with valid inputs' do
+  describe 'submit with' do
+    scenario 'valid inputs' do
       venue = build(:venue)
-      visit main_app.new_venue_path(locale: I18n.locale)
-      fill_in 'venue[name_en]', with: venue.name
-      fill_in 'venue[slug_en]', with: venue.slug
-      select 'Public', from: 'Privacy'
-      find_by_id('new_venue-description_en').click.set(venue.description)
-      first(:button, 'Save Venue').click
+      fill_in_venue_form(venue)
       visit main_app.venues_path(locale: I18n.locale)
       expect(page).to have_content(venue.name)
     end
 
-    scenario 'with invalid inputs' do
+    scenario 'invalid inputs' do
       venue = build(:venue, name: 'AB')
-      visit main_app.new_venue_path(locale: I18n.locale)
-      fill_in 'venue[name_en]', with: venue.name
-      fill_in 'venue[slug_en]', with: venue.slug
-      select 'Public', from: 'Privacy'
-      find_by_id('new_venue-description_en').click.set(venue.description)
-      first(:button, 'Save Venue').click
+      fill_in_venue_form(venue)
       expect(page).to have_content('Community slug is too short')
     end
   end
