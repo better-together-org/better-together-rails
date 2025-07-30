@@ -54,10 +54,9 @@ node_modules/
 
 storage/
 
-/config/master.key
+config/master.key
 config/master.key.dontcommit
+config/credentials/development.key
+config/credentials/test.key
+config/credentials/staging.key
 config/credentials/production.key
-
-/config/credentials/development.key
-
-/config/credentials/staging.key
