@@ -18,17 +18,21 @@ RSpec.describe 'deleting a venue', type: :feature do
     expect(page).to have_content(venue.name)
   end
 
-  scenario 'success', js: true do
+  scenario 'success', :js do
     venue_path = main_app.venue_path(locale: I18n.locale, id: venue.id)
     visit venue_path
 
+    click_delete_venue_button(venue)
+
+    visit main_app.venues_path(locale: I18n.locale)
+    expect(page).not_to have_content(venue.name)
+  end
+
+  def click_delete_venue_button(venue)
     within("##{dom_id(venue, :toolbar)}") do
       accept_confirm do
         find('a[data-turbo-method="delete"]').click
       end
     end
-
-    visit main_app.venues_path(locale: I18n.locale)
-    expect(page).not_to have_content(venue.name)
   end
 end

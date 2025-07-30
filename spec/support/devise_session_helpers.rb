@@ -21,23 +21,29 @@ module DeviseSessionHelpers
   def sign_in_user(email, password)
     Capybara.reset_session! # Ensure a new session is created
     visit new_user_session_path(locale: I18n.locale)
-    fill_in 'user[email]', with: email
-    fill_in 'user[password]', with: password
+    fill_in_email_and_password(email, password)
     click_button 'Sign In'
   end
 
   def sign_up_new_user(token, email, password, person)
     visit better_together.new_user_registration_path(invitation_code: token, locale: I18n.locale)
-    fill_in 'user[email]', with: email
-    fill_in 'user[password]', with: password
+    fill_in_registration_form(email, password, person)
+    click_button 'Sign Up'
+    created_user = BetterTogether::User.find_by(email: email)
+    created_user.confirm
+    created_user
+  end
+
+  def fill_in_registration_form(email, password, person)
+    fill_in_email_and_password(email, password)
     fill_in 'user[password_confirmation]', with: password
     fill_in 'user[person_attributes][name]', with: person.name
     fill_in 'user[person_attributes][identifier]', with: person.identifier
     fill_in 'user[person_attributes][description]', with: person.description
-    click_button 'Sign Up'
-    created_user = BetterTogether::User.find_by(email: email)
-    created_user.confirm
+  end
 
-    created_user
+  def fill_in_email_and_password(email, password)
+    fill_in 'user[email]', with: email
+    fill_in 'user[password]', with: password
   end
 end
