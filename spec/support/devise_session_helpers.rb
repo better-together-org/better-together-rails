@@ -14,10 +14,7 @@ module DeviseSessionHelpers
 
   def login_as_platform_manager
     user = create(:nl_venues_user, :confirmed, :platform_manager)
-    visit new_user_session_url(locale: I18n.locale)
-    fill_in 'Email', with: user.email
-    fill_in 'Password', with: user.password
-    click_button 'Sign In'
+    sign_in_user(user.email, user.password)
     user
   end
 
@@ -39,5 +36,7 @@ module DeviseSessionHelpers
     click_button 'Sign Up'
     created_user = BetterTogether::User.find_by(email: email)
     created_user.confirm
+
+    created_user
   end
 end
