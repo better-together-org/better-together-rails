@@ -4,15 +4,19 @@
   <header class="mb-4 text-center">
     <h2 class="fw-bold"><%= @venue.name %></h2>
     <% if policy(@venue).edit? || policy(@venue).destroy? %>
-      <div class="btn-toolbar justify-content-center mb-3" role="toolbar">
+      <div id="<%= dom_id(@venue, :toolbar) %>" class="btn-toolbar justify-content-center mb-3" role="toolbar">
       <% if policy(@venue).edit? %>
         <div class="btn-group me-2" role="group">
-        <%= link_to 'Edit', edit_venue_path(@venue), class: 'btn btn-warning btn-sm' %>
+        <%= link_to edit_venue_path(@venue), class: 'btn btn-warning btn-sm' do %>
+          <i class="fas fa-edit"></i> <%= t('globals.edit') %>
+        <% end %>
         </div>
       <% end %>
       <% if policy(@venue).destroy? %>
         <div class="btn-group" role="group">
-        <%= link_to 'Delete', @venue, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger btn-sm' %>
+        <%= link_to @venue, method: :delete, data: { 'turbo-method': 'delete', turbo_confirm: t('venues.confirm_destroy') }, class: 'btn btn-danger btn-sm' do %>
+          <i class="fas fa-trash-alt"></i> <%= t('globals.destroy') %>
+        <% end %>
         </div>
       <% end %>
       </div>

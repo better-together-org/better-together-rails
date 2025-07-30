@@ -3,6 +3,7 @@
 require 'rails_helper'
 
 RSpec.describe 'deleting a venue', type: :feature do
+  include ActionView::RecordIdentifier
   include DeviseSessionHelpers
 
   let!(:venue) { create(:venue, :public) }
@@ -17,9 +18,16 @@ RSpec.describe 'deleting a venue', type: :feature do
     expect(page).to have_content(venue.name)
   end
 
-  scenario 'success' do
-    visit main_app.venue_path(locale: I18n.locale, id: venue.id)
-    click_link 'Delete'
+  scenario 'success', js: true do
+    venue_path = main_app.venue_path(locale: I18n.locale, id: venue.id)
+    visit venue_path
+
+    within("##{dom_id(venue, :toolbar)}") do
+      accept_confirm do
+        find('a[data-turbo-method="delete"]').click
+      end
+    end
+
     visit main_app.venues_path(locale: I18n.locale)
     expect(page).not_to have_content(venue.name)
   end

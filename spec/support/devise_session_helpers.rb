@@ -19,7 +19,8 @@ module DeviseSessionHelpers
   end
 
   def sign_in_user(email, password)
-    visit new_user_session_url(locale: I18n.locale)
+    Capybara.reset_session! # Ensure a new session is created
+    visit new_user_session_path(locale: I18n.locale)
     fill_in 'user[email]', with: email
     fill_in 'user[password]', with: password
     click_button 'Sign In'
