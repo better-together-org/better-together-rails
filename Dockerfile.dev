@@ -2,7 +2,7 @@
 
 # This building libxml2 fixes the security issues with libxml2 2.9.14
 
-FROM ruby:3.4.3-slim AS libxml2-bin
+FROM ruby:3.4.4-slim AS libxml2-bin
 
 RUN apt-get update -qq \
   && apt-get install -y --no-install-recommends build-essential wget tar gcc pkg-config python3-dev xz-utils \
@@ -18,7 +18,7 @@ RUN make install \
   && ldconfig \
   && rm -rf /tmp/libxml2 /tmp/libxml2.tar.xz
 
-FROM ruby:3.4.3-slim AS app-host
+FROM ruby:3.4.4-slim AS app-host
 
 RUN apt-get update -qq \
   && apt-get install -y --no-install-recommends build-essential \

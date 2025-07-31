@@ -2,7 +2,7 @@
 # When pushed to dokku via git, it detects this Dockerfile and automatically chooses Docker build
 
 # Stage 1: Build libxml2
-FROM ruby:3.4.3-slim AS libxml2-bin
+FROM ruby:3.4.4-slim AS libxml2-bin
 
 RUN apt-get update -qq \
   && apt-get install -y --no-install-recommends build-essential wget tar gcc pkg-config python3-dev xz-utils \
@@ -19,7 +19,7 @@ RUN ./configure --prefix=/opt/libxml2 PYTHON=/usr/bin/python3 \
   && rm -rf /tmp/libxml2 /tmp/libxml2.tar.xz
 
 # Stage 2: Build environment
-FROM ruby:3.4.3-slim AS builder
+FROM ruby:3.4.4-slim AS builder
 
 # Define build-time variables
 ARG AWS_ACCESS_KEY_ID
@@ -74,7 +74,7 @@ COPY . .
 RUN bundle exec rake assets:precompile
 
 # Stage 3: Runtime environment
-FROM ruby:3.4.3 AS app-host
+FROM ruby:3.4.4 AS app-host
 
 # Install runtime dependencies
 RUN apt-get update -qq \
