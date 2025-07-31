@@ -3,7 +3,7 @@
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-ruby '3.2.4'
+ruby '3.4.4'
 
 gem 'asset_sync'
 gem 'aws-sdk-s3', require: false

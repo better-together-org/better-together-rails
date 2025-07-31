@@ -1,6 +1,6 @@
 # This Dockerfile is used for the development environment via `docker compose`
 
-FROM ruby:3.2.4
+FROM ruby:3.4.4
 
 RUN apt-get update -qq \
   && apt-get install -y build-essential git nano postgresql-client libpq-dev nodejs libssl-dev apt-transport-https ca-certificates libvips42
