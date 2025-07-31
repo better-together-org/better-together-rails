@@ -8,6 +8,7 @@ class Venue < ApplicationRecord # rubocop:todo Metrics/ClassLength
   include BetterTogether::PrimaryCommunity
   include BetterTogether::Privacy
   include BetterTogether::Searchable
+  include BetterTogether::TrackedActivity
 
   has_community(class_name: 'VenueCommunity')
 

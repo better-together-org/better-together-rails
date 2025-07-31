@@ -46,7 +46,7 @@ services:
   db:
     <<: *env-info
     container_name: nl-venues-db
-    image: postgis/postgis:latest
+    image: imresamu/postgis:17-recent
     volumes:
       - nl-venues-db-data:/var/lib/postgresql/data
     ports:

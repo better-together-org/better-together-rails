@@ -9,6 +9,7 @@ on: push
 jobs:
   rspec:
     runs-on: ubuntu-latest
+    environment: Test
     services:
       postgres:
         image: postgis/postgis:latest
@@ -18,6 +19,10 @@ jobs:
           POSTGRES_DB: rails_test
           POSTGRES_USER: rails
           POSTGRES_PASSWORD: password
+      redis:
+        image: redis:7.2-alpine
+        ports:
+          - '6379:6379'
       elasticsearch:
         image: elasticsearch:7.17.23
         ports:
@@ -48,6 +53,8 @@ jobs:
         run: rm -f tmp/pids/server.pid && bundle exec rails db:schema:load
       # Add or replace test runners here
       - name: Run tests
+        env:
+          RAILS_MASTER_KEY: ${{ secrets.RAILS_MASTER_KEY }}
         run: rm -f tmp/pids/server.pid && bundle exec rspec
 
   rubocop:

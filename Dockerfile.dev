@@ -3,7 +3,9 @@
 FROM ruby:3.4.4
 
 RUN apt-get update -qq \
-  && apt-get install -y build-essential git nano postgresql-client libpq-dev nodejs libssl-dev apt-transport-https ca-certificates libvips42
+  && apt-get install -y build-essential git nano postgresql-client libpq-dev \
+  nodejs libssl-dev apt-transport-https ca-certificates libvips42 \
+  chromium chromium-driver
 
 RUN mkdir /bt
 WORKDIR /bt
