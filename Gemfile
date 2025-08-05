@@ -29,7 +29,7 @@ gem 'pg', '>= 0.18', '< 2.0'
 gem 'puma', '~> 6.6'
 
 # Pundit for authorization, custom fork for Better Together
-gem 'pundit-resources', '~> 1.1.4', github: 'better-together-org/pundit-resources'
+gem 'pundit-resources', '~> 1.1.6', github: 'better-together-org/pundit-resources'
 
 # Core Rails gem
 gem 'rack-protection'
