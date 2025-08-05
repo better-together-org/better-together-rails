@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/better-together-org/community-engine-rails.git
-  revision: af53d5616d873befb1ef4f8d84debf7c3b92f990
+  revision: 8708bf13b594cb02043f0f47dc10fff2ac019248
   branch: main
   specs:
     better_together (0.8.1)
@@ -37,7 +37,7 @@ GIT
       rack-attack
       rack-cors (>= 1.1.1, < 3.1.0)
       rack-mini-profiler
-      rails (>= 5.2.2, < 7.2.0)
+      rails (>= 7.1, < 8.1)
       reform-rails (~> 0.2.0)
       rswag (>= 2.3.1, < 2.17.0)
       ruby-openai
@@ -51,20 +51,20 @@ GIT
 
 GIT
   remote: https://github.com/better-together-org/pundit-resources.git
-  revision: b6218c695c2b6c7413ab416a318cd540835c5394
+  revision: 4e50d1f97a1e7c864bc45e2613b763ecf8f079ce
   specs:
-    pundit-resources (1.1.5)
+    pundit-resources (1.1.6)
       activesupport
       jsonapi-resources
       pundit
-      rails (>= 4.2.1, < 7.2)
+      rails (>= 4.2.1, < 8.1)
 
 GIT
   remote: https://github.com/better-together-org/storext.git
-  revision: 1d7c3707b3e412fece0022c16cc6f51564969d2c
+  revision: ebc92461e95d07c34f5d8eac4eb7ad13cfd92afa
   specs:
-    storext (3.3.0)
-      activerecord (>= 4.0, < 8)
+    storext (3.3.1)
+      activerecord (>= 4.0, < 8.1)
       virtus
 
 GEM
@@ -394,7 +394,7 @@ GEM
     image_processing (1.14.0)
       mini_magick (>= 4.9.5, < 6)
       ruby-vips (>= 2.0.17, < 3)
-    importmap-rails (2.2.0)
+    importmap-rails (2.2.2)
       actionpack (>= 6.0.0)
       activesupport (>= 6.0.0)
       railties (>= 6.0.0)
@@ -404,7 +404,7 @@ GEM
       rdoc (>= 4.0.0)
       reline (>= 0.4.2)
     jmespath (1.6.2)
-    json (2.13.1)
+    json (2.13.2)
     json-schema (5.2.1)
       addressable (~> 2.8)
       bigdecimal (~> 3.1)
@@ -478,6 +478,8 @@ GEM
     net-smtp (0.5.1)
       net-protocol
     nio4r (2.7.4)
+    nokogiri (1.18.9-aarch64-linux-gnu)
+      racc (~> 1.4)
     nokogiri (1.18.9-x86_64-linux-gnu)
       racc (~> 1.4)
     noticed (2.8.0)
@@ -488,6 +490,7 @@ GEM
     parser (3.3.9.0)
       ast (~> 2.4.1)
       racc
+    pg (1.6.0-aarch64-linux)
     pg (1.6.0-x86_64-linux)
     popper_js (2.11.8)
     pp (0.6.2)
@@ -519,13 +522,13 @@ GEM
     pundit (2.5.0)
       activesupport (>= 3.0.0)
     racc (1.8.1)
-    rack (3.1.16)
+    rack (3.2.0)
     rack-attack (6.7.0)
       rack (>= 1.0, < 4)
     rack-cors (3.0.0)
       logger
       rack (>= 3.0.14)
-    rack-mini-profiler (4.0.0)
+    rack-mini-profiler (4.0.1)
       rack (>= 1.2.0)
     rack-protection (4.1.1)
       base64 (>= 0.1.0)
