@@ -21,7 +21,7 @@ require 'capybara-screenshot/rspec'
 require 'simplecov'
 require 'coveralls'
 
-Capybara.asset_host = ENV.fetch('APP_HOST', 'http://localhost:3000')
+Capybara.asset_host = ENV.fetch('APP_HOST', 'http://localhost:3001')
 
 Coveralls.wear!('rails')
 
