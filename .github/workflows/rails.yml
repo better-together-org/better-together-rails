@@ -9,7 +9,7 @@ on: push
 jobs:
   rspec:
     runs-on: ubuntu-latest
-    environment: Test
+    environment: test
     services:
       postgres:
         image: postgis/postgis:latest
@@ -38,6 +38,7 @@ jobs:
       RAILS_ENV: test
       DATABASE_URL: "postgis://rails:password@localhost:5432/rails_test"
       ES_HOST: "http://localhost"
+      RAILS_MASTER_KEY: ${{ secrets.RAILS_MASTER_KEY }}
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
@@ -53,8 +54,6 @@ jobs:
         run: rm -f tmp/pids/server.pid && bundle exec rails db:schema:load
       # Add or replace test runners here
       - name: Run tests
-        env:
-          RAILS_MASTER_KEY: ${{ secrets.RAILS_MASTER_KEY }}
         run: rm -f tmp/pids/server.pid && bundle exec rspec
 
   rubocop:
