@@ -33,7 +33,7 @@ gem 'pundit-resources', '~> 1.1.6', github: 'better-together-org/pundit-resource
 
 # Core Rails gem
 gem 'rack-protection'
-gem 'rails', '~> 7.1.5'
+gem 'rails', '~> 8.0.2'
 
 # Redis for ActionCable and background jobs
 gem 'redis', '~> 5.4'
