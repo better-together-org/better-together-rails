@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/better-together-org/community-engine-rails.git
-  revision: b0daaf8b1dd7ea777dc8794bbfda649b37d8a90b
+  revision: 9508e3c9a554c6e733abfa84ccbbc83994264697
   branch: main
   specs:
     better_together (0.8.1)
@@ -403,7 +403,7 @@ GEM
       reline (>= 0.4.2)
     jmespath (1.6.2)
     json (2.13.2)
-    json-schema (5.2.1)
+    json-schema (5.2.2)
       addressable (~> 2.8)
       bigdecimal (~> 3.1)
     jsonapi-resources (0.10.7)
