@@ -110,4 +110,8 @@ Rails.application.configure do # rubocop:todo Metrics/BlockLength
   config.action_controller.forgery_protection_origin_check = ENV.fetch('FORGERY_ORIGIN_CHECK', false)
   config.assume_ssl = ENV.fetch('ASSUME_SSL', false)
   config.force_ssl = ENV.fetch('FORCE_SSL', false)
+
+  # Allows unencrypted values to be store in encrypted columns for transitioning
+  config.active_record.encryption.support_unencrypted_data = true
+  config.active_record.encryption.extend_queries = true
 end
