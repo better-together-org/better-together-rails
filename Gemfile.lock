@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/better-together-org/community-engine-rails.git
-  revision: e17c639a633f0280bf74407323b4f1b9b1904baa
+  revision: 0ec9870fcfcd15b94b397fd6a88a0564184cdcc9
   branch: main
   specs:
     better_together (0.8.1)
@@ -352,10 +352,10 @@ GEM
       csv (>= 3.0.0)
     globalid (1.2.1)
       activesupport (>= 6.1)
-    google-protobuf (4.31.1-aarch64-linux-gnu)
+    google-protobuf (4.32.0-aarch64-linux-gnu)
       bigdecimal
       rake (>= 13)
-    google-protobuf (4.31.1-x86_64-linux-gnu)
+    google-protobuf (4.32.0-x86_64-linux-gnu)
       bigdecimal
       rake (>= 13)
     groupdate (6.7.0)
