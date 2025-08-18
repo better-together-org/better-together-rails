@@ -63,4 +63,10 @@ Rails.application.configure do
   # Allows unencrypted values to be store in encrypted columns for transitioning
   config.active_record.encryption.support_unencrypted_data = true
   config.active_record.encryption.extend_queries = true
+
+  if defined?(FactoryBot)
+    config.to_prepare do
+      FactoryBot.definition_file_paths << File.join(BetterTogether::Engine.root, 'spec', 'factories')
+    end
+  end
 end

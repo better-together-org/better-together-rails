@@ -1,5 +1,14 @@
 # frozen_string_literal: true
 
+begin
+  require 'simplecov'
+  SimpleCov.start 'rails' do
+    add_filter '/test/'
+  end
+rescue LoadError
+  warn 'SimpleCov not available; coverage will not be reported.'
+end
+
 ENV['RAILS_ENV'] ||= 'test'
 require_relative '../config/environment'
 require 'rails/test_help'

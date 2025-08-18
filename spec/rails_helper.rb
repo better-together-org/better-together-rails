@@ -22,7 +22,7 @@ require 'rspec/rails'
 # directory. Alternatively, in the individual `*_spec.rb` files, manually
 # require only the support files necessary.
 #
-# Dir[Rails.root.join('spec', 'support', '**', '*.rb')].each { |f| require f }
+Dir[Rails.root.join('spec', 'support', '**', '*.rb')].each { |f| require f }
 
 # Checks for pending migrations and applies them before tests are run.
 # If you are not using ActiveRecord, you can remove these lines.
@@ -32,30 +32,51 @@ rescue ActiveRecord::PendingMigrationError => e
   puts e.to_s.strip
   exit 1
 end
+
 RSpec.configure do |config|
   config.include FactoryBot::Syntax::Methods
+
+  config.include Devise::Test::IntegrationHelpers, type: :feature
+
+  config.include Warden::Test::Helpers
+  config.after { Warden.test_reset! }
   # Remove this line if you're not using ActiveRecord or ActiveRecord fixtures
   config.fixture_path = "#{Rails.root}/spec/fixtures"
 
-  # If you're not using ActiveRecord, or you'd prefer not to run each of your
-  # examples within a transaction, remove the following line or assign false
-  # instead of true.
+  # Feature/system specs using JS run in a separate thread/process, so
+  # transactional fixtures can cause data visibility issues. Let
+  # DatabaseCleaner handle cleaning strategies instead.
   config.use_transactional_fixtures = true
 
   config.before(:suite) do
     DatabaseCleaner.clean_with(:truncation, except: %w[spatial_ref_sys])
+
+    load BetterTogether::Engine.root.join('db', 'seeds.rb')
   end
 
+  # Default to transactions for fast non-JS specs
   config.before do
     DatabaseCleaner.strategy = :transaction
   end
 
-  config.before do
-    DatabaseCleaner.start
+  # Use truncation for JS/Capybara-driven specs so the app server
+  # can see committed data
+  config.before(:each, :js) do
+    DatabaseCleaner.strategy = :truncation
+    load BetterTogether::Engine.root.join('db', 'seeds.rb')
   end
 
-  config.after do
-    DatabaseCleaner.clean
+  config.before { DatabaseCleaner.start }
+  config.append_after { DatabaseCleaner.clean }
+
+  Shoulda::Matchers.configure do |config|
+    config.integrate do |with|
+      # Choose a test framework:
+      with.test_framework :rspec
+
+      # Or, choose the following (which implies all of the above):
+      with.library :rails
+    end
   end
 
   # RSpec Rails can automatically mix in different behaviours to your tests

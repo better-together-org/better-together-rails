@@ -33,6 +33,9 @@ gem 'pundit-resources', '~> 1.1.6', github: 'better-together-org/pundit-resource
 
 # Core Rails gem
 gem 'rack-protection'
+# Rack mini profiler for performance profiling
+gem 'rack-mini-profiler'
+
 gem 'rails', '~> 7.1.5'
 
 # Redis for ActionCable and background jobs
@@ -65,6 +68,8 @@ group :development, :test do
   gem 'factory_bot_rails'
   # Fuubar for fancy test progress bar
   gem 'fuubar'
+  # Help with managing translation database
+  gem 'i18n-tasks', '~> 1.0.15'
   # Pry for a powerful shell alternative to IRB
   gem 'pry'
   # RuboCop for static code analysis
@@ -77,9 +82,8 @@ group :development do
   # Bundler audit for checking gem vulnerabilities
   gem 'bundler-audit', require: false
   # Facilitate I18n translation management
+  gem 'easy_translate'
   gem 'i18n_generators'
-  # Help with managing translation databasde
-  gem 'i18n-tasks', '~> 1.0.15'
   # Listen for file system changes
   gem 'listen', '>= 3.0.5', '< 3.10'
   # Rack mini profiler for performance profiling
@@ -99,16 +103,23 @@ end
 group :test do
   # Capybara for integration testing
   gem 'capybara', '>= 2.15'
+  gem 'capybara-screenshot'
   # Coveralls for test coverage reporting
-  gem 'coveralls'
+  gem 'coveralls_reborn', require: false
   # Database cleaner for test database cleaning
   gem 'database_cleaner'
+  gem 'database_cleaner-active_record'
   # # Easy installation and use of chromedriver to run system tests with Chrome
-  gem 'webdrivers'
+  # gem 'webdrivers'
   # RuboCop RSpec for RSpec-specific code analysis
+  gem 'rubocop-capybara'
+  gem 'rubocop-factory_bot'
+  gem 'rubocop-rails'
   gem 'rubocop-rspec'
+  gem 'rubocop-rspec_rails'
   # RSpec for unit testing
   gem 'rspec'
+  gem 'rspec-rebound'
   # RSpec Rails integration
   gem 'rspec-rails'
   # Selenium WebDriver for browser automation

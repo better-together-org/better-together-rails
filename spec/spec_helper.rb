@@ -15,7 +15,53 @@
 # it.
 #
 # See http://rubydoc.info/gems/rspec-core/RSpec/Core/Configuration
+
+require 'capybara/rspec'
+require 'capybara-screenshot/rspec'
+require 'simplecov'
+require 'coveralls'
+require 'rspec/rebound'
+
+Capybara.asset_host = ENV.fetch('APP_HOST', 'http://localhost:3001')
+
+Coveralls.wear!('rails')
+
+SimpleCov.formatter = SimpleCov::Formatter::MultiFormatter.new(
+  [
+    SimpleCov::Formatter::HTMLFormatter,
+    Coveralls::SimpleCov::Formatter
+  ]
+)
+
+SimpleCov.start 'rails' do
+  add_filter '/bin/'
+  add_filter '/db/'
+  add_filter '/vendor/'
+  add_filter '/tmp/'
+  add_filter '/docker/'
+  add_filter '/script/'
+  add_filter '/log/'
+  add_filter '/public/'
+  add_filter '/deploy/'
+  add_filter '/spec/' # for rspec
+end
+
 RSpec.configure do |config|
+  # show retry status in spec process
+  config.verbose_retry = true
+  # show exception that triggers a retry if verbose_retry is set to true
+  config.display_try_failure_messages = true
+
+  # run retry only on features
+  config.around :each, type: :feature do |ex|
+    ex.run_with_retry retry: 3
+  end
+  config.around :each, :js do |ex|
+    ex.run_with_retry retry: 3
+  end
+
+  # Use Capybara’s DSL in feature specs
+  config.include Capybara::DSL
   # rspec-expectations config goes here. You can use an alternate
   # assertion/expectation library such as wrong or the stdlib/minitest
   # assertions if you prefer.

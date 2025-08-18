@@ -23,7 +23,7 @@ FROM ruby:3.4.4-slim AS app-host
 RUN apt-get update -qq \
   && apt-get install -y --no-install-recommends build-essential \
   git nano postgresql-client libpq-dev libssl-dev libyaml-dev \
-  apt-transport-https ca-certificates libvips42
+  apt-transport-https ca-certificates libvips42 chromium chromium-driver
 
 # Copy built libxml2 binaries
 COPY --from=libxml2-bin /opt/libxml2 /opt/libxml2
