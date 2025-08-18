@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/better-together-org/community-engine-rails.git
-  revision: 6183799e2dbe6fbc5330d8777d23f5ab59ce29c5
+  revision: 7c2ba108a7edb3d8b0eb650de29e5825ba0a305b
   branch: main
   specs:
     better_together (0.8.1)
@@ -635,7 +635,7 @@ GEM
       rspec-expectations (~> 3.13)
       rspec-mocks (~> 3.13)
       rspec-support (~> 3.13)
-    rspec-support (3.13.4)
+    rspec-support (3.13.5)
     rswag (2.16.0)
       rswag-api (= 2.16.0)
       rswag-specs (= 2.16.0)
