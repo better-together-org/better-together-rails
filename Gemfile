@@ -23,6 +23,8 @@ gem 'bootsnap', '>= 1.7.0', require: false
 
 gem 'fog-aws'
 
+gem 'ostruct'
+
 # Database adapter for PostgreSQL
 gem 'pg', '>= 0.18', '< 2.0'
 # Puma as the app server
@@ -86,8 +88,6 @@ group :development do
   gem 'i18n_generators'
   # Listen for file system changes
   gem 'listen', '>= 3.0.5', '< 3.10'
-  # Rack mini profiler for performance profiling
-  gem 'rack-mini-profiler'
   # Readline implementation for Ruby
   gem 'rb-readline'
   # Spring for fast Rails actions via pre-loading
