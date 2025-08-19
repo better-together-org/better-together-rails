@@ -7,4 +7,3 @@ RSpec.describe ApplicationHelper, type: :helper do
     expect(helper).to be_a(Object)
   end
 end
-

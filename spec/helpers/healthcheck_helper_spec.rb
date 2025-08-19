@@ -4,7 +4,6 @@ require 'rails_helper'
 
 RSpec.describe HealthcheckHelper, type: :helper do
   it 'is defined' do
-    expect(defined?(HealthcheckHelper)).to eq('constant')
+    expect(defined?(described_class)).to eq('constant')
   end
 end
-
