@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/better-together-org/community-engine-rails.git
-  revision: 1597fcefc7d7538dffa56190d5292efec73aef76
+  revision: a26de75fd9f93af15914a375ed1011b7e82ae3c5
   branch: main
   specs:
     better_together (0.8.1)
@@ -264,7 +264,7 @@ GEM
       railties (>= 4.1.0)
       responders
       warden (~> 1.2.3)
-    devise-i18n (1.14.0)
+    devise-i18n (1.15.0)
       devise (>= 4.9.0)
       rails-i18n
     devise-jwt (0.12.1)
@@ -693,7 +693,7 @@ GEM
       faraday (>= 1)
       faraday-multipart (>= 1)
     ruby-progressbar (1.13.0)
-    ruby-vips (2.2.4)
+    ruby-vips (2.2.5)
       ffi (~> 1.12)
       logger
     rubyzip (3.0.1)
