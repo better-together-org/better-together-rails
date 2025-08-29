@@ -1,10 +1,10 @@
 ---
 en:
   globals:
-    attached_file: "Attached file"
-    download: "Download"
-    no_publish_date: "No publish date"
-    no_author: "No author"
+    attached_file: Attached file
+    download: Download
+    no_author: No author
+    no_publish_date: No publish date
   helpers:
     select:
       prompt: Please select
@@ -14,26 +14,30 @@ en:
       update: Update %{model}
   hints:
     resource:
-      name: "Enter the name of the resource."
-      description: "Provide a detailed description of the resource."
-      slug: "Enter a URL-friendly identifier."
-      type: "Select the type of the resource."
-      url: "Provide the external URL for the resource."
-      file: "Attach a document related to the resource."
-      file_size: "File must be less than %{size} MB."
-      privacy: "Specify the privacy level of the resource."
-      locale: "Select the language of the resource."
-      published_at: "Set the date and time when the resource was published. Resources will only be visible if they have a published date that is in the past. You can use this to control when resources become available by selecting a future date."
-      author: "Name of the author of the resource."
+      author: Name of the author of the resource.
+      description: Provide a detailed description of the resource.
+      file: Attach a document related to the resource.
+      file_size: File must be less than %{size} MB.
+      locale: Select the language of the resource.
+      name: Enter the name of the resource.
+      privacy: Specify the privacy level of the resource.
+      published_at: Set the date and time when the resource was published. Resources
+        will only be visible if they have a published date that is in the past. You
+        can use this to control when resources become available by selecting a future
+        date.
+      slug: Enter a URL-friendly identifier.
+      type: Select the type of the resource.
+      url: Provide the external URL for the resource.
   journey_items:
+    none_yet: You haven't added any items to your Journey yet. Click on the '+' button
+      on content to add it to your Journey.
     tooltips:
-      add: "Add to Journey"
-      remove: "Remove from Journey"
-    none_yet: "You haven't added any items to your Journey yet. Click on the '+' button on content to add it to your Journey."
+      add: Add to Journey
+      remove: Remove from Journey
   journeys:
     title: My Journey
   time:
     am: am
     formats:
       date_picker: "%m/%d/%Y"
-      datetime_picker: "%m/%d/%Y %I:%M %p" # 12-hour format with AM/PM
+      datetime_picker: "%m/%d/%Y %I:%M %p"
