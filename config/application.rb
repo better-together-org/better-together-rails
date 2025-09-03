@@ -38,7 +38,7 @@ module BetterTogether
     I18n.enforce_available_locales = true
 
     # Initialize configuration defaults for originally generated Rails version.
-    config.load_defaults 7.0
+    config.load_defaults 7.2
 
     config.active_storage.analyzers = [
       ActiveStorage::Analyzer::ImageAnalyzer::Vips,

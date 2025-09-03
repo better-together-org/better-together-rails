@@ -21,23 +21,23 @@ RUN ./configure --prefix=/opt/libxml2 PYTHON=/usr/bin/python3 \
 # Stage 2: Build environment
 FROM ruby:3.4.4-slim AS builder
 
-# Define build-time variables
-ARG AWS_ACCESS_KEY_ID
-ARG AWS_SECRET_ACCESS_KEY
+# Define build-time variables (will be passed as build args)
 ARG FOG_DIRECTORY
 ARG FOG_HOST
 ARG FOG_REGION
 ARG ASSET_HOST
 ARG CDN_DISTRIBUTION_ID
+ARG AWS_ACCESS_KEY_ID=""
+ARG AWS_SECRET_ACCESS_KEY=""
 
 # Set environment variables for asset precompilation
-ENV AWS_ACCESS_KEY_ID=${AWS_ACCESS_KEY_ID}
-ENV AWS_SECRET_ACCESS_KEY=${AWS_SECRET_ACCESS_KEY}
 ENV FOG_DIRECTORY=${FOG_DIRECTORY}
 ENV FOG_HOST=${FOG_HOST}
 ENV FOG_REGION=${FOG_REGION}
 ENV ASSET_HOST=${ASSET_HOST}
 ENV CDN_DISTRIBUTION_ID=${CDN_DISTRIBUTION_ID}
+ENV AWS_ACCESS_KEY_ID=${AWS_ACCESS_KEY_ID}
+ENV AWS_SECRET_ACCESS_KEY=${AWS_SECRET_ACCESS_KEY}
 
 # Install dependencies
 RUN apt-get update -qq \
@@ -94,9 +94,9 @@ RUN apt-get update -qq \
 # Copy built libxml2 binaries
 COPY --from=libxml2-bin /opt/libxml2 /opt/libxml2
 
-# Set environment variables for libxml2
-ENV LD_LIBRARY_PATH=/opt/libxml2/lib:$LD_LIBRARY_PATH
-ENV PKG_CONFIG_PATH=/opt/libxml2/lib/pkgconfig:$PKG_CONFIG_PATH
+# Set environment variables for libxml2 (properly handle undefined variables)
+ENV LD_LIBRARY_PATH=/opt/libxml2/lib
+ENV PKG_CONFIG_PATH=/opt/libxml2/lib/pkgconfig
 
 # Set bundler environment variables to use vendor/bundle
 ENV BUNDLE_PATH=/bt/vendor/bundle
