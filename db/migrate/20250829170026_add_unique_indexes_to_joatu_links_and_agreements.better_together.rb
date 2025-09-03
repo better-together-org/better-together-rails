@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 # This migration comes from better_together (originally 20250821094500)
-class AddUniqueIndexesToJoatuLinksAndAgreements < ActiveRecord::Migration[7.1] # rubocop:todo Style/Documentation
+class AddUniqueIndexesToJoatuLinksAndAgreements < ActiveRecord::Migration[7.1]
   def change
     # Ensure one Agreement per Offer/Request pair
     add_index :better_together_joatu_agreements,

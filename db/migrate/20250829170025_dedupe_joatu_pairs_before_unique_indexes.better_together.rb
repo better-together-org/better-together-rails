@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 # This migration comes from better_together (originally 20250821094000)
-class DedupeJoatuPairsBeforeUniqueIndexes < ActiveRecord::Migration[7.1] # rubocop:todo Style/Documentation
+class DedupeJoatuPairsBeforeUniqueIndexes < ActiveRecord::Migration[7.1]
   disable_ddl_transaction!
 
   def up # rubocop:todo Metrics/MethodLength

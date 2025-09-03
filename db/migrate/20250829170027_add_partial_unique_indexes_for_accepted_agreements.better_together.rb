@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 # This migration comes from better_together (originally 20250821095000)
-class AddPartialUniqueIndexesForAcceptedAgreements < ActiveRecord::Migration[7.1] # rubocop:todo Style/Documentation
+class AddPartialUniqueIndexesForAcceptedAgreements < ActiveRecord::Migration[7.1]
   def change
     add_index :better_together_joatu_agreements,
               :offer_id,
