@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/better-together-org/community-engine-rails.git
-  revision: 53e4df425aacb2647a08f1b08f2c037fed38f56b
+  revision: 1bc5a39c6c7b5a154bb0310aec4720213c5579a3
   branch: main
   specs:
     better_together (0.8.1)
@@ -699,9 +699,9 @@ GEM
     rubyzip (3.0.1)
     rufus-scheduler (3.9.2)
       fugit (~> 1.1, >= 1.11.1)
-    sass-embedded (1.92.0-aarch64-linux-gnu)
+    sass-embedded (1.92.1-aarch64-linux-gnu)
       google-protobuf (~> 4.31)
-    sass-embedded (1.92.0-x86_64-linux-gnu)
+    sass-embedded (1.92.1-x86_64-linux-gnu)
       google-protobuf (~> 4.31)
     sassc (2.4.0)
       ffi (~> 1.9)
