@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/better-together-org/community-engine-rails.git
-  revision: 57b7b026b9d993db24ff8842cb9b27119dd69b5b
+  revision: 7a0392b248ff0fd59586dbd48a98f058747ba026
   branch: main
   specs:
     better_together (0.8.1)
@@ -482,7 +482,7 @@ GEM
       racc (~> 1.4)
     nokogiri (1.18.9-x86_64-linux-gnu)
       racc (~> 1.4)
-    noticed (2.8.0)
+    noticed (2.8.1)
       rails (>= 6.1.0)
     optimist (3.2.1)
     orm_adapter (0.5.0)
