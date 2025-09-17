@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/better-together-org/community-engine-rails.git
-  revision: ba4eff7db622555f36e20e73fc30ff9b7abe221c
+  revision: 01d0697e6e799f8446f1699001626ab814472e95
   branch: main
   specs:
     better_together (0.8.1)
@@ -117,7 +117,7 @@ GEM
       rails-html-sanitizer (~> 1.6)
     active_storage_svg_sanitizer (0.1.0)
       rails (>= 5.2)
-    active_storage_validations (3.0.1)
+    active_storage_validations (3.0.2)
       activejob (>= 6.1.4)
       activemodel (>= 6.1.4)
       activestorage (>= 6.1.4)
@@ -358,10 +358,10 @@ GEM
       csv (>= 3.0.0)
     globalid (1.2.1)
       activesupport (>= 6.1)
-    google-protobuf (4.32.0-aarch64-linux-gnu)
+    google-protobuf (4.32.1-aarch64-linux-gnu)
       bigdecimal
       rake (>= 13)
-    google-protobuf (4.32.0-x86_64-linux-gnu)
+    google-protobuf (4.32.1-x86_64-linux-gnu)
       bigdecimal
       rake (>= 13)
     groupdate (6.7.0)
@@ -413,7 +413,7 @@ GEM
       activerecord (>= 4.1)
       concurrent-ruby
       railties (>= 4.1)
-    jwt (2.10.2)
+    jwt (3.1.2)
       base64
     kaminari (1.2.2)
       activesupport (>= 4.1.0)
@@ -445,7 +445,7 @@ GEM
       net-imap
       net-pop
       net-smtp
-    marcel (1.0.4)
+    marcel (1.1.0)
     matrix (0.4.2)
     memory_profiler (1.1.0)
     method_source (1.1.0)
@@ -478,9 +478,9 @@ GEM
     net-smtp (0.5.1)
       net-protocol
     nio4r (2.7.4)
-    nokogiri (1.18.9-aarch64-linux-gnu)
+    nokogiri (1.18.10-aarch64-linux-gnu)
       racc (~> 1.4)
-    nokogiri (1.18.9-x86_64-linux-gnu)
+    nokogiri (1.18.10-x86_64-linux-gnu)
       racc (~> 1.4)
     noticed (2.8.1)
       rails (>= 6.1.0)
@@ -520,7 +520,7 @@ GEM
     public_suffix (6.0.2)
     puma (6.6.1)
       nio4r (~> 2.0)
-    pundit (2.5.0)
+    pundit (2.5.1)
       activesupport (>= 3.0.0)
     raabro (1.4.0)
     racc (1.8.1)
@@ -590,7 +590,7 @@ GEM
       psych (>= 4.0.0)
     redis (5.4.1)
       redis-client (>= 0.22.0)
-    redis-client (0.25.2)
+    redis-client (0.25.3)
       connection_pool
     reform (2.6.2)
       disposable (>= 0.5.0, < 1.0.0)
@@ -639,7 +639,7 @@ GEM
       rspec-support (~> 3.13)
     rspec-rebound (0.2.1)
       rspec-core (~> 3.3)
-    rspec-support (3.13.5)
+    rspec-support (3.13.6)
     rswag (2.16.0)
       rswag-api (= 2.16.0)
       rswag-specs (= 2.16.0)
@@ -793,10 +793,10 @@ GEM
       descendants_tracker (~> 0.0, >= 0.0.3)
     warden (1.2.9)
       rack (>= 2.0.9)
-    warden-jwt_auth (0.11.0)
+    warden-jwt_auth (0.12.0)
       dry-auto_inject (>= 0.8, < 2)
       dry-configurable (>= 0.13, < 2)
-      jwt (~> 2.1)
+      jwt (>= 2.1, < 4)
       warden (~> 1.2)
     web-console (4.2.1)
       actionview (>= 6.0.0)
