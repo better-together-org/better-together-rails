@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/better-together-org/community-engine-rails.git
-  revision: a93dc8991c4b111a30fe4733b305f357ad7f7b14
+  revision: 6b4a101cc5aa7198f59538fbacc6fe87757c2eab
   branch: main
   specs:
     better_together (0.8.1)
@@ -353,7 +353,7 @@ GEM
     fuubar (2.5.1)
       rspec-core (~> 3.0)
       ruby-progressbar (~> 1.4)
-    geocoder (1.8.5)
+    geocoder (1.8.6)
       base64 (>= 0.1.0)
       csv (>= 3.0.0)
     globalid (1.2.1)
@@ -405,7 +405,7 @@ GEM
       rdoc (>= 4.0.0)
       reline (>= 0.4.2)
     jmespath (1.6.2)
-    json (2.13.2)
+    json (2.14.1)
     json-schema (5.2.2)
       addressable (~> 2.8)
       bigdecimal (~> 3.1)
@@ -699,9 +699,9 @@ GEM
     rubyzip (3.0.1)
     rufus-scheduler (3.9.2)
       fugit (~> 1.1, >= 1.11.1)
-    sass-embedded (1.92.1-aarch64-linux-gnu)
+    sass-embedded (1.93.0-aarch64-linux-gnu)
       google-protobuf (~> 4.31)
-    sass-embedded (1.92.1-x86_64-linux-gnu)
+    sass-embedded (1.93.0-x86_64-linux-gnu)
       google-protobuf (~> 4.31)
     sassc (2.4.0)
       ffi (~> 1.9)
