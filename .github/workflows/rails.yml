@@ -90,6 +90,8 @@ jobs:
       - name: Create GitHub Deployment
         id: deployment
         uses: actions/github-script@v6
+        env:
+          TARGET_APP_NAME: ${{ secrets.DEPLOY_TARGET_APP_NAME }}
         with:
           script: |
             const deployment = await github.rest.repos.createDeployment({
@@ -97,7 +99,7 @@ jobs:
               repo: context.repo.repo,
               ref: '${{ github.sha }}',
               environment: 'production',
-              description: 'Deploying via webhook to ${{ secrets.DEPLOY_TARGET_APP_NAME }}',
+              description: `Deploying via webhook to ${process.env.TARGET_APP_NAME}`,
               auto_merge: false,
               required_contexts: []
             });
@@ -162,6 +164,8 @@ jobs:
       - name: Update Deployment Status - Success
         if: steps.webhook.outputs.webhook_success == 'true'
         uses: actions/github-script@v6
+        env:
+          ENVIRONMENT_URL: ${{ secrets.DEPLOY_ENVIRONMENT_URL }}
         with:
           script: |
             await github.rest.repos.createDeploymentStatus({
@@ -170,7 +174,7 @@ jobs:
               deployment_id: ${{ steps.deployment.outputs.result }},
               state: 'success',
               description: 'Deployment webhook triggered successfully',
-              environment_url: '${{ secrets.DEPLOY_ENVIRONMENT_URL }}'
+              environment_url: process.env.ENVIRONMENT_URL
             });
       
       - name: Update Deployment Status - Failure
