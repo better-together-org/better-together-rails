@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/better-together-org/community-engine-rails.git
-  revision: 4373bade808962c143d4190e12d4131896441d08
+  revision: b48d63e1f8060a972f3d8c6bba3f7d790f6efcb1
   branch: main
   specs:
     better_together (0.8.1)
@@ -347,7 +347,7 @@ GEM
     friendly_id-mobility (1.0.4)
       friendly_id (>= 5.0.0, < 5.5)
       mobility (>= 1.0.1, < 2.0)
-    fugit (1.12.0)
+    fugit (1.12.1)
       et-orbi (~> 1.4)
       raabro (~> 1.4)
     fuubar (2.5.1)
