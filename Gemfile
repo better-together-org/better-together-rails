@@ -38,7 +38,7 @@ gem 'rack-protection'
 # Rack mini profiler for performance profiling
 gem 'rack-mini-profiler'
 
-gem 'rails', '~> 8.0.3'
+gem 'rails', '~> 8.0.4'
 
 # Redis for ActionCable and background jobs
 gem 'redis', '~> 5.4'
