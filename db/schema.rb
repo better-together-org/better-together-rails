@@ -10,10 +10,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2025_09_08_172923) do
+ActiveRecord::Schema[8.0].define(version: 2025_12_08_162030) do
   # These are extensions that must be enabled in order to support this database
+  enable_extension "pg_catalog.plpgsql"
   enable_extension "pgcrypto"
-  enable_extension "plpgsql"
   enable_extension "postgis"
 
   create_table "action_text_rich_texts", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
@@ -350,6 +350,7 @@ ActiveRecord::Schema[7.2].define(version: 2025_09_08_172923) do
     t.boolean "visible", default: true, null: false
     t.jsonb "content_area_settings", default: {}, null: false
     t.jsonb "content_data", default: {}
+    t.boolean "protected", default: false, null: false
     t.index ["creator_id"], name: "by_better_together_content_blocks_creator"
     t.index ["privacy"], name: "by_better_together_content_blocks_privacy"
   end
@@ -1152,7 +1153,9 @@ ActiveRecord::Schema[7.2].define(version: 2025_09_08_172923) do
     t.string "url", null: false
     t.string "time_zone", null: false
     t.jsonb "settings", default: {}, null: false
+    t.uuid "creator_id"
     t.index ["community_id"], name: "by_platform_community"
+    t.index ["creator_id"], name: "by_better_together_platforms_creator"
     t.index ["host"], name: "index_better_together_platforms_on_host", unique: true, where: "(host IS TRUE)"
     t.index ["identifier"], name: "index_better_together_platforms_on_identifier", unique: true
     t.index ["privacy"], name: "by_platform_privacy"
@@ -1502,6 +1505,7 @@ ActiveRecord::Schema[7.2].define(version: 2025_09_08_172923) do
   add_foreign_key "better_together_platform_invitations", "better_together_roles", column: "community_role_id"
   add_foreign_key "better_together_platform_invitations", "better_together_roles", column: "platform_role_id"
   add_foreign_key "better_together_platforms", "better_together_communities", column: "community_id"
+  add_foreign_key "better_together_platforms", "better_together_people", column: "creator_id"
   add_foreign_key "better_together_posts", "better_together_people", column: "creator_id"
   add_foreign_key "better_together_reports", "better_together_people", column: "reporter_id"
   add_foreign_key "better_together_role_resource_permissions", "better_together_resource_permissions", column: "resource_permission_id"
