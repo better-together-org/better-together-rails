@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/better-together-org/community-engine-rails.git
-  revision: 8a04e73e573fcef32436c88ad77a705b2c77700e
+  revision: 7ae76ebfa0673e4c2d7f170621fd4b66183ce049
   branch: main
   specs:
     better_together (0.8.1)
@@ -249,7 +249,7 @@ GEM
       activerecord (>= 5.a)
       database_cleaner-core (~> 2.0)
     database_cleaner-core (2.0.1)
-    date (3.5.0)
+    date (3.5.1)
     debug_inspector (1.2.0)
     declarative (0.0.20)
     descendants_tracker (0.0.4)
@@ -516,7 +516,7 @@ GEM
     pry (0.15.2)
       coderay (~> 1.1)
       method_source (~> 1.0)
-    psych (5.2.6)
+    psych (5.3.0)
       date
       stringio
     public_activity (3.0.1)
@@ -702,19 +702,19 @@ GEM
       faraday (>= 1)
       faraday-multipart (>= 1)
     ruby-progressbar (1.13.0)
-    ruby-vips (2.2.5)
+    ruby-vips (2.3.0)
       ffi (~> 1.12)
       logger
     rubyzip (3.2.2)
     rufus-scheduler (3.9.2)
       fugit (~> 1.1, >= 1.11.1)
-    sass-embedded (1.94.2-aarch64-linux-gnu)
+    sass-embedded (1.96.0-aarch64-linux-gnu)
       google-protobuf (~> 4.31)
-    sass-embedded (1.94.2-x86_64-linux-gnu)
+    sass-embedded (1.96.0-x86_64-linux-gnu)
       google-protobuf (~> 4.31)
     sassc (2.4.0)
       ffi (~> 1.9)
-    sassc-embedded (1.80.6)
+    sassc-embedded (1.80.7)
       sass-embedded (~> 1.80)
     securerandom (0.4.1)
     selenium-webdriver (4.39.0)
