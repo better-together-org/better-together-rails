@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_12_08_162030) do
+ActiveRecord::Schema[8.0].define(version: 2025_12_18_175400) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
   enable_extension "pgcrypto"
@@ -736,8 +736,8 @@ ActiveRecord::Schema[8.0].define(version: 2025_12_08_162030) do
     t.uuid "invitable_id", null: false
     t.string "inviter_type", null: false
     t.uuid "inviter_id", null: false
-    t.string "invitee_type", null: false
-    t.uuid "invitee_id", null: false
+    t.string "invitee_type"
+    t.uuid "invitee_id"
     t.string "invitee_email", null: false
     t.uuid "role_id"
     t.index ["invitable_id", "status"], name: "invitations_on_invitable_id_and_status"
