@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/better-together-org/community-engine-rails.git
-  revision: edc606300e6201092d556a855188537a45b19d5c
+  revision: 1e9e817ace3e897bb9c095070248693ccd4e0ffc
   branch: main
   specs:
     better_together (0.8.1)
@@ -371,13 +371,14 @@ GEM
       rake (>= 13)
     groupdate (6.7.0)
       activesupport (>= 7.1)
-    hashie (5.0.0)
+    hashie (5.1.0)
+      logger
     highline (3.1.2)
       reline
     htmlentities (4.4.2)
     humanize_boolean (0.0.2)
       i18n
-    i18n (1.14.7)
+    i18n (1.14.8)
       concurrent-ruby (~> 1.0)
     i18n-tasks (1.1.2)
       activesupport (>= 4.0.2)
@@ -412,8 +413,9 @@ GEM
       reline (>= 0.4.2)
     jmespath (1.6.2)
     json (2.18.0)
-    json-schema (5.1.0)
+    json-schema (6.1.0)
       addressable (~> 2.8)
+      bigdecimal (>= 3.1, < 5)
     jsonapi-resources (0.10.7)
       activerecord (>= 4.1)
       concurrent-ruby
@@ -593,7 +595,7 @@ GEM
       ffi (>= 1.0.6)
       msgpack (>= 0.4.3)
       optimist (>= 3.0.0)
-    rdoc (7.0.1)
+    rdoc (7.0.3)
       erb
       psych (>= 4.0.0)
       tsort
@@ -708,9 +710,9 @@ GEM
     rubyzip (3.2.2)
     rufus-scheduler (3.9.2)
       fugit (~> 1.1, >= 1.11.1)
-    sass-embedded (1.97.0-aarch64-linux-gnu)
+    sass-embedded (1.97.1-aarch64-linux-gnu)
       google-protobuf (~> 4.31)
-    sass-embedded (1.97.0-x86_64-linux-gnu)
+    sass-embedded (1.97.1-x86_64-linux-gnu)
       google-protobuf (~> 4.31)
     sassc (2.4.0)
       ffi (~> 1.9)
