@@ -3,14 +3,14 @@
 # This migration comes from better_together (originally 20251229000000)
 # Adds posts navigation items to header and host dropdown
 class AddPostsNavigationItems < ActiveRecord::Migration[7.2]
-  def up
+  def up # rubocop:todo Metrics/MethodLength
     puts 'Adding posts navigation items...'
 
     load BetterTogether::Engine.root.join('lib', 'tasks', 'better_together', 'navigation_items.rake')
 
     # Set header posts privacy to 'private' for platform managers only during this migration.
-    # The navigation_items rake task defaults POSTS_PRIVACY to 'public'; here we override that default to 'private' for security,
-    # so posts navigation is initially restricted to platform managers. Platform organizers can later change it to 'public'
+    # The navigation_items rake task defaults POSTS_PRIVACY to 'public'; here we override that default to 'private' for security, # rubocop:disable Layout/LineLength
+    # so posts navigation is initially restricted to platform managers. Platform organizers can later change it to 'public' # rubocop:disable Layout/LineLength
     # via the admin interface.
     ENV['POSTS_PRIVACY'] = 'private'
 
