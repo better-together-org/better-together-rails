@@ -78,114 +78,114 @@ jobs:
       - name: Security audit application code
         run: bundle exec brakeman -q -w2
 
-  deploy:
-    runs-on: ubuntu-latest
-    needs: [rspec, rubocop, security]
-    if: github.ref == 'refs/heads/main'
-    environment: production
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v3
+  # deploy:
+  #   runs-on: ubuntu-latest
+  #   needs: [rspec, rubocop, security]
+  #   if: github.ref == 'refs/heads/main'
+  #   environment: production
+  #   steps:
+  #     - name: Checkout code
+  #       uses: actions/checkout@v3
       
-      - name: Create GitHub Deployment
-        id: deployment
-        uses: actions/github-script@v6
-        env:
-          TARGET_APP_NAME: ${{ secrets.DEPLOY_TARGET_APP_NAME }}
-        with:
-          script: |
-            const deployment = await github.rest.repos.createDeployment({
-              owner: context.repo.owner,
-              repo: context.repo.repo,
-              ref: '${{ github.sha }}',
-              environment: 'production',
-              description: `Deploying via webhook to ${process.env.TARGET_APP_NAME}`,
-              auto_merge: false,
-              required_contexts: []
-            });
+  #     - name: Create GitHub Deployment
+  #       id: deployment
+  #       uses: actions/github-script@v6
+  #       env:
+  #         TARGET_APP_NAME: ${{ secrets.DEPLOY_TARGET_APP_NAME }}
+  #       with:
+  #         script: |
+  #           const deployment = await github.rest.repos.createDeployment({
+  #             owner: context.repo.owner,
+  #             repo: context.repo.repo,
+  #             ref: '${{ github.sha }}',
+  #             environment: 'production',
+  #             description: `Deploying via webhook to ${process.env.TARGET_APP_NAME}`,
+  #             auto_merge: false,
+  #             required_contexts: []
+  #           });
             
-            // Set deployment status to in_progress
-            await github.rest.repos.createDeploymentStatus({
-              owner: context.repo.owner,
-              repo: context.repo.repo,
-              deployment_id: deployment.data.id,
-              state: 'in_progress',
-              description: 'Deployment started via webhook'
-            });
+  #           // Set deployment status to in_progress
+  #           await github.rest.repos.createDeploymentStatus({
+  #             owner: context.repo.owner,
+  #             repo: context.repo.repo,
+  #             deployment_id: deployment.data.id,
+  #             state: 'in_progress',
+  #             description: 'Deployment started via webhook'
+  #           });
             
-            return deployment.data.id;
+  #           return deployment.data.id;
       
-      - name: Trigger Production Deploy
-        id: webhook
-        env:
-          DEPLOY_WEBHOOK_URL: ${{ secrets.DEPLOY_WEBHOOK_URL }}
-          DEPLOY_AUTH_HEADER_NAME: ${{ secrets.DEPLOY_AUTH_HEADER_NAME }}
-          DEPLOY_AUTH_TOKEN: ${{ secrets.DEPLOY_AUTH_TOKEN }}
-          DEPLOY_TARGET_APP_NAME: ${{ secrets.DEPLOY_TARGET_APP_NAME }}
-          DEPLOYMENT_ID: ${{ steps.deployment.outputs.result }}
-        run: |
-          # Create JSON payload for deployment webhook
-          PAYLOAD=$(cat <<EOF
-          {
-            "repository": "${{ github.repository }}",
-            "branch": "main",
-            "commit_sha": "${{ github.sha }}",
-            "commit_message": "${{ github.event.head_commit.message }}",
-            "author": "${{ github.actor }}",
-            "workflow_run_id": "${{ github.run_id }}",
-            "timestamp": "$(date -u +%Y-%m-%dT%H:%M:%SZ)",
-            "environment": "production",
-            "target_app_name": "$DEPLOY_TARGET_APP_NAME",
-            "github_deployment_id": "$DEPLOYMENT_ID"
-          }
-          EOF
-          )
+  #     - name: Trigger Production Deploy
+  #       id: webhook
+  #       env:
+  #         DEPLOY_WEBHOOK_URL: ${{ secrets.DEPLOY_WEBHOOK_URL }}
+  #         DEPLOY_AUTH_HEADER_NAME: ${{ secrets.DEPLOY_AUTH_HEADER_NAME }}
+  #         DEPLOY_AUTH_TOKEN: ${{ secrets.DEPLOY_AUTH_TOKEN }}
+  #         DEPLOY_TARGET_APP_NAME: ${{ secrets.DEPLOY_TARGET_APP_NAME }}
+  #         DEPLOYMENT_ID: ${{ steps.deployment.outputs.result }}
+  #       run: |
+  #         # Create JSON payload for deployment webhook
+  #         PAYLOAD=$(cat <<EOF
+  #         {
+  #           "repository": "${{ github.repository }}",
+  #           "branch": "main",
+  #           "commit_sha": "${{ github.sha }}",
+  #           "commit_message": "${{ github.event.head_commit.message }}",
+  #           "author": "${{ github.actor }}",
+  #           "workflow_run_id": "${{ github.run_id }}",
+  #           "timestamp": "$(date -u +%Y-%m-%dT%H:%M:%SZ)",
+  #           "environment": "production",
+  #           "target_app_name": "$DEPLOY_TARGET_APP_NAME",
+  #           "github_deployment_id": "$DEPLOYMENT_ID"
+  #         }
+  #         EOF
+  #         )
           
-          # Send webhook for deployment
-          RESPONSE_CODE=$(curl -w "%{http_code}" -s -o /tmp/webhook_response.json -X POST \
-            -H "Content-Type: application/json" \
-            -H "$DEPLOY_AUTH_HEADER_NAME: $DEPLOY_AUTH_TOKEN" \
-            -d "$PAYLOAD" \
-            "$DEPLOY_WEBHOOK_URL")
+  #         # Send webhook for deployment
+  #         RESPONSE_CODE=$(curl -w "%{http_code}" -s -o /tmp/webhook_response.json -X POST \
+  #           -H "Content-Type: application/json" \
+  #           -H "$DEPLOY_AUTH_HEADER_NAME: $DEPLOY_AUTH_TOKEN" \
+  #           -d "$PAYLOAD" \
+  #           "$DEPLOY_WEBHOOK_URL")
           
-          echo "Webhook response code: $RESPONSE_CODE"
-          echo "webhook_response_code=$RESPONSE_CODE" >> $GITHUB_OUTPUT
+  #         echo "Webhook response code: $RESPONSE_CODE"
+  #         echo "webhook_response_code=$RESPONSE_CODE" >> $GITHUB_OUTPUT
           
-          if [ "$RESPONSE_CODE" -ge 200 ] && [ "$RESPONSE_CODE" -lt 300 ]; then
-            echo "Webhook triggered successfully"
-            echo "webhook_success=true" >> $GITHUB_OUTPUT
-          else
-            echo "Webhook failed with code $RESPONSE_CODE"
-            cat /tmp/webhook_response.json
-            echo "webhook_success=false" >> $GITHUB_OUTPUT
-            exit 1
-          fi
+  #         if [ "$RESPONSE_CODE" -ge 200 ] && [ "$RESPONSE_CODE" -lt 300 ]; then
+  #           echo "Webhook triggered successfully"
+  #           echo "webhook_success=true" >> $GITHUB_OUTPUT
+  #         else
+  #           echo "Webhook failed with code $RESPONSE_CODE"
+  #           cat /tmp/webhook_response.json
+  #           echo "webhook_success=false" >> $GITHUB_OUTPUT
+  #           exit 1
+  #         fi
       
-      - name: Update Deployment Status - Success
-        if: steps.webhook.outputs.webhook_success == 'true'
-        uses: actions/github-script@v6
-        env:
-          ENVIRONMENT_URL: ${{ secrets.DEPLOY_ENVIRONMENT_URL }}
-        with:
-          script: |
-            await github.rest.repos.createDeploymentStatus({
-              owner: context.repo.owner,
-              repo: context.repo.repo,
-              deployment_id: ${{ steps.deployment.outputs.result }},
-              state: 'success',
-              description: 'Deployment webhook triggered successfully',
-              environment_url: process.env.ENVIRONMENT_URL
-            });
+  #     - name: Update Deployment Status - Success
+  #       if: steps.webhook.outputs.webhook_success == 'true'
+  #       uses: actions/github-script@v6
+  #       env:
+  #         ENVIRONMENT_URL: ${{ secrets.DEPLOY_ENVIRONMENT_URL }}
+  #       with:
+  #         script: |
+  #           await github.rest.repos.createDeploymentStatus({
+  #             owner: context.repo.owner,
+  #             repo: context.repo.repo,
+  #             deployment_id: ${{ steps.deployment.outputs.result }},
+  #             state: 'success',
+  #             description: 'Deployment webhook triggered successfully',
+  #             environment_url: process.env.ENVIRONMENT_URL
+  #           });
       
-      - name: Update Deployment Status - Failure
-        if: failure()
-        uses: actions/github-script@v6
-        with:
-          script: |
-            await github.rest.repos.createDeploymentStatus({
-              owner: context.repo.owner,
-              repo: context.repo.repo,
-              deployment_id: ${{ steps.deployment.outputs.result }},
-              state: 'failure',
-              description: 'Deployment webhook failed'
-            });
+  #     - name: Update Deployment Status - Failure
+  #       if: failure()
+  #       uses: actions/github-script@v6
+  #       with:
+  #         script: |
+  #           await github.rest.repos.createDeploymentStatus({
+  #             owner: context.repo.owner,
+  #             repo: context.repo.repo,
+  #             deployment_id: ${{ steps.deployment.outputs.result }},
+  #             state: 'failure',
+  #             description: 'Deployment webhook failed'
+  #           });
