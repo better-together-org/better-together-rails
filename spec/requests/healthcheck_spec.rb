@@ -11,7 +11,7 @@ RSpec.describe 'Healthcheck', type: :request do
 
   describe 'GET /healthcheck' do
     # rubocop:todo RSpec/MultipleExpectations
-    it 'returns ok JSON and 200' do # rubocop:todo RSpec/ExampleLength, RSpec/MultipleExpectations
+    it 'returns ok JSON and 200' do # rubocop:todo RSpec/MultipleExpectations
       # rubocop:enable RSpec/MultipleExpectations
       get '/healthcheck'
 
