@@ -18,7 +18,7 @@ class AddTimezoneToEvents < ActiveRecord::Migration[7.2]
 
   private
 
-  def backfill_event_timezones
+  def backfill_event_timezones # rubocop:todo Metrics/MethodLength
     # Get platform timezone (safe for multi-tenancy)
     platform = BetterTogether::Platform.find_by(host: true)
     default_timezone = platform&.time_zone || 'UTC'
