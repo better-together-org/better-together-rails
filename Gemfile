@@ -89,7 +89,7 @@ group :development do
   gem 'easy_translate'
   gem 'i18n_generators'
   # Listen for file system changes
-  gem 'listen', '>= 3.0.5', '< 3.10'
+  gem 'listen', '>= 3.0.5', '< 3.11'
   # Readline implementation for Ruby
   gem 'rb-readline'
   # Spring for fast Rails actions via pre-loading
