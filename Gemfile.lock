@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/better-together-org/community-engine-rails.git
-  revision: 7bc363ff26112a5ab0234c94be92d2378ea644f9
+  revision: 681b3c2767bcfb770f447e7eebd3ad2f217e2576
   branch: main
   specs:
     better_together (0.8.1)
@@ -429,7 +429,7 @@ GEM
       rdoc (>= 4.0.0)
       reline (>= 0.4.2)
     jmespath (1.6.2)
-    json (2.18.0)
+    json (2.18.1)
     json-schema (6.1.0)
       addressable (~> 2.8)
       bigdecimal (>= 3.1, < 5)
@@ -697,7 +697,7 @@ GEM
       rspec-support (~> 3.13)
     rspec-rebound (0.2.1)
       rspec-core (~> 3.3)
-    rspec-support (3.13.6)
+    rspec-support (3.13.7)
     rswag (2.17.0)
       rswag-api (= 2.17.0)
       rswag-specs (= 2.17.0)
@@ -840,7 +840,7 @@ GEM
     translate_enum (0.2.0)
       activesupport
     tsort (0.2.0)
-    turbo-rails (2.0.21)
+    turbo-rails (2.0.23)
       actionpack (>= 7.1.0)
       railties (>= 7.1.0)
     tzinfo (2.0.6)
