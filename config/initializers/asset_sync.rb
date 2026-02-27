@@ -19,7 +19,11 @@ if defined?(AssetSync)
     # config.aws_reduced_redundancy = true
     # config.aws_signature_version = 4
     # config.aws_acl = nil
-    config.fog_host = ENV['FOG_HOST'] if ENV.key?('FOG_HOST') && ENV['FOG_HOST'] !~ /amazonaws\.com/i
+    if ENV.key?('FOG_HOST') && ENV['FOG_HOST'] !~ /amazonaws\.com/i
+      config.fog_host = ENV['FOG_HOST']
+      # MinIO requires path-style access (not virtual-hosted)
+      config.fog_options = { path_style: true }
+    end
     # config.fog_port = "9000"
     config.fog_scheme = 'https'
     config.cdn_distribution_id = ENV['CDN_DISTRIBUTION_ID'] if ENV.key?('CDN_DISTRIBUTION_ID')
@@ -30,7 +34,7 @@ if defined?(AssetSync)
     # config.include_manifest = false
     # config.remote_file_list_cache_file_path = './.asset_sync_remote_file_list_cache.json'
     # config.remote_file_list_remote_path = '/remote/asset_sync_remote_file.json'
-    # config.fail_silently = true
+    config.fail_silently = true
     config.log_silently = true
     config.concurrent_uploads = true
   end
