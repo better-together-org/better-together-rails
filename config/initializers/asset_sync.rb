@@ -19,8 +19,10 @@ if defined?(AssetSync)
     # config.aws_reduced_redundancy = true
     # config.aws_signature_version = 4
     # config.aws_acl = nil
-    if ENV.key?('FOG_HOST') && ENV['FOG_HOST'] !~ /amazonaws\.com/i
-      config.fog_host = ENV['FOG_HOST']
+    # ASSET_SYNC_ENDPOINT is only set for non-AWS S3-compatible providers (e.g., MinIO, Cloudflare R2).
+    # Do NOT use FOG_HOST here — that env var contains the CDN distribution hostname, not an S3 API endpoint.
+    if ENV.key?('ASSET_SYNC_ENDPOINT') && ENV['ASSET_SYNC_ENDPOINT'] !~ /amazonaws\.com/i
+      config.fog_host = ENV['ASSET_SYNC_ENDPOINT']
       # MinIO requires path-style access (not virtual-hosted)
       config.fog_options = { path_style: true }
     end
