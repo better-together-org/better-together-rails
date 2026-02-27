@@ -11,8 +11,10 @@ amazon:
   service: S3
   access_key_id: <%= ENV.fetch('AWS_ACCESS_KEY_ID', nil) %>
   secret_access_key: <%= ENV.fetch('AWS_SECRET_ACCESS_KEY', nil) %>
-  region: <%= ENV.fetch('S3_REGION', nil) %>
-  bucket: <%= ENV.fetch('S3_BUCKET_NAME', nil) %>
+  region: <%= ENV.fetch('S3_REGION', ENV.fetch('AWS_REGION', 'us-east-1')) %>
+  bucket: <%= ENV.fetch('S3_BUCKET_NAME', ENV.fetch('FOG_DIRECTORY', nil)) %>
+  endpoint: <%= ENV.fetch('S3_ENDPOINT', nil) %>
+  force_path_style: <%= ENV.key?('S3_ENDPOINT') %>
 
 # Remember not to checkin your GCS keyfile to a repository
 # google:
