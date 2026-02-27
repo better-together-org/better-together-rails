@@ -19,7 +19,7 @@ if defined?(AssetSync)
     # config.aws_reduced_redundancy = true
     # config.aws_signature_version = 4
     # config.aws_acl = nil
-    # config.fog_host = "s3.amazonaws.com"
+    config.fog_host = ENV['FOG_HOST'] if ENV.key?('FOG_HOST') && ENV['FOG_HOST'] !~ /amazonaws\.com/i
     # config.fog_port = "9000"
     config.fog_scheme = 'https'
     config.cdn_distribution_id = ENV['CDN_DISTRIBUTION_ID'] if ENV.key?('CDN_DISTRIBUTION_ID')
