@@ -35,15 +35,18 @@ Rails.application.configure do # rubocop:todo Metrics/BlockLength
   config.assets.enabled = true
 
   # Enable serving of images, stylesheets, and JavaScripts from an asset server.
-  config.asset_host = ENV.fetch('ASSET_HOST')
-  config.action_controller.asset_host = ENV.fetch('ASSET_HOST')
+  # Optional in staging (no CDN) — only set when ASSET_HOST is provided.
+  if (asset_host = ENV['ASSET_HOST'].presence)
+    config.asset_host = asset_host
+    config.action_controller.asset_host = asset_host
+  end
 
   # Specifies the header that your server uses for sending files.
   # config.action_dispatch.x_sendfile_header = "X-Sendfile" # for Apache
   # config.action_dispatch.x_sendfile_header = "X-Accel-Redirect" # for NGINX
 
-  # Store uploaded files on the local file system (see config/storage.yml for options).
-  config.active_storage.service = :amazon
+  # Store uploaded files — defaults to S3/MinIO; set ACTIVE_STORAGE_SERVICE=local for staging.
+  config.active_storage.service = ENV.fetch('ACTIVE_STORAGE_SERVICE', 'amazon').to_sym
 
   # Mount Action Cable outside main process or domain.
   # config.action_cable.mount_path = nil
