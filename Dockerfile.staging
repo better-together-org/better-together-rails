@@ -1,0 +1,98 @@
+# Dockerfile.staging — production-like build for internal bts-0 staging.
+# Differences from production Dockerfile:
+#   - No sentry-cli install (not needed for internal staging)
+#   - No S3 build args — asset_sync has fail_silently=true, sync is skipped
+#   - Assets served locally by puma (RAILS_SERVE_STATIC_FILES=true)
+#   - Active Storage uses disk (ACTIVE_STORAGE_SERVICE=local)
+
+# Stage 1: Build libxml2
+FROM ruby:3.4.4-slim AS libxml2-bin
+
+RUN apt-get update -qq \
+  && apt-get install -y --no-install-recommends build-essential wget tar gcc pkg-config python3-dev xz-utils \
+  && wget https://download.gnome.org/sources/libxml2/2.14/libxml2-2.14.2.tar.xz -O /tmp/libxml2.tar.xz \
+  && mkdir -p /tmp/libxml2 \
+  && tar -xf /tmp/libxml2.tar.xz -C /tmp/libxml2 --strip-components=1
+
+WORKDIR /tmp/libxml2
+
+RUN ./configure --prefix=/opt/libxml2 PYTHON=/usr/bin/python3 \
+  && make \
+  && make install \
+  && ldconfig \
+  && rm -rf /tmp/libxml2 /tmp/libxml2.tar.xz
+
+# Stage 2: Build environment
+FROM ruby:3.4.4-slim AS builder
+
+# Install build dependencies (no sentry-cli)
+RUN apt-get update -qq \
+  && apt-get install -y --no-install-recommends \
+    build-essential \
+    git \
+    postgresql-client \
+    libpq-dev \
+    libssl-dev \
+    libyaml-dev \
+    apt-transport-https \
+    ca-certificates \
+    libvips42 \
+    curl \
+  && rm -rf /var/lib/apt/lists/*
+
+WORKDIR /bt
+
+COPY Gemfile Gemfile.lock ./
+
+RUN bundle config set without 'development test' \
+  && bundle config set deployment true \
+  && bundle config set path 'vendor/bundle' \
+  && bundle install --jobs 4 --retry 3
+
+COPY . .
+
+# Precompile assets without S3 sync (fail_silently=true in initializer handles missing creds)
+ENV SKIP_ASSET_SYNC=true
+RUN bundle exec rake assets:precompile
+
+# Stage 3: Runtime environment
+FROM ruby:3.4.4 AS app-host
+
+# Install runtime dependencies (no sentry-cli)
+RUN apt-get update -qq \
+  && apt-get install -y --no-install-recommends \
+    git \
+    gcc \
+    libpq-dev \
+    libssl-dev \
+    libvips42 \
+    libyaml-dev \
+    curl \
+    nano \
+  && rm -rf /var/lib/apt/lists/* \
+  && mkdir -p tmp/pids && chmod -R 755 tmp
+
+COPY --from=libxml2-bin /opt/libxml2 /opt/libxml2
+
+ENV LD_LIBRARY_PATH=/opt/libxml2/lib
+ENV PKG_CONFIG_PATH=/opt/libxml2/lib/pkgconfig
+
+ENV BUNDLE_PATH=/bt/vendor/bundle
+ENV BUNDLE_APP_CONFIG=/bt/vendor/bundle
+ENV BUNDLE_BIN=/bt/vendor/bundle/bin
+ENV PATH=$BUNDLE_BIN:$PATH
+
+WORKDIR /bt
+
+ENV RAILS_ENV=production
+ENV RACK_ENV=production
+ENV BUNDLE_WITHOUT=development:test
+
+COPY --from=builder /bt /bt
+
+RUN rm -rf /bt/tmp/cache /bt/log /bt/spec /bt/test \
+  && mkdir -p tmp/pids && chmod -R 755 tmp
+
+EXPOSE 3000
+
+CMD ["bundle", "exec", "puma", "-C", "config/puma.rb"]
