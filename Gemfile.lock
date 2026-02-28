@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/better-together-org/community-engine-rails.git
-  revision: d0b23ce0218227609f48c0157515660ca61050e7
+  revision: 03f673e1fe1a5b28b526e0be57df34006a876a43
   branch: main
   specs:
     better_together (0.10.0)
@@ -166,7 +166,7 @@ GEM
       securerandom (>= 0.3)
       tzinfo (~> 2.0, >= 2.0.5)
       uri (>= 0.13.1)
-    addressable (2.8.8)
+    addressable (2.8.9)
       public_suffix (>= 2.0.2, < 8.0)
     asset_sync (2.19.3)
       activemodel (>= 4.1.0)
@@ -436,9 +436,10 @@ GEM
       rainbow (>= 2.2.2, < 4.0)
       ruby-progressbar (~> 1.8, >= 1.8.1)
       terminal-table (>= 1.5.1)
-    i18n-timezones (1.4.8)
-      i18n (>= 0.9.3)
-      rails (>= 5.1.6.2)
+    i18n-timezones (2.0.0)
+      activesupport (>= 7.0, < 9)
+      i18n (>= 1.0, < 3)
+      railties (>= 7.0, < 9)
     i18n_generators (2.2.2)
       activerecord (>= 3.0.0)
       railties (>= 3.0.0)

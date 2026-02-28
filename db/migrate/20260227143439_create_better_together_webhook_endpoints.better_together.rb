@@ -3,7 +3,7 @@
 # This migration comes from better_together (originally 20260215000002)
 # Creates the webhook_endpoints table for outbound webhook subscriptions
 class CreateBetterTogetherWebhookEndpoints < ActiveRecord::Migration[7.2]
-  def change
+  def change # rubocop:disable Metrics/MethodLength
     create_bt_table :webhook_endpoints do |t|
       t.string :url, null: false
       t.string :secret, null: false
