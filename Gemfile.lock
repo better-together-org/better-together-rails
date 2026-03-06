@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/better-together-org/community-engine-rails.git
-  revision: 5f0d8e85f12b6590f0ce774d2c4bb44e69f87f0a
+  revision: cdb5e9b6c3e031124b7771d263982efb586d8cd5
   branch: main
   specs:
     better_together (0.10.0)
@@ -436,7 +436,7 @@ GEM
       rainbow (>= 2.2.2, < 4.0)
       ruby-progressbar (~> 1.8, >= 1.8.1)
       terminal-table (>= 1.5.1)
-    i18n-timezones (2.0.0)
+    i18n-timezones (2.1.0)
       activesupport (>= 7.0, < 9)
       i18n (>= 1.0, < 3)
       railties (>= 7.0, < 9)
@@ -464,8 +464,8 @@ GEM
       rdoc (>= 4.0.0)
       reline (>= 0.4.2)
     jmespath (1.6.2)
-    json (2.18.1)
-    json-schema (6.1.0)
+    json (2.19.0)
+    json-schema (6.2.0)
       addressable (~> 2.8)
       bigdecimal (>= 3.1, < 5)
     jsonapi-resources (0.10.7)
@@ -684,7 +684,7 @@ GEM
     redcarpet (3.6.1)
     redis (5.4.1)
       redis-client (>= 0.22.0)
-    redis-client (0.26.4)
+    redis-client (0.27.0)
       connection_pool
     reform (2.6.2)
       disposable (>= 0.5.0, < 1.0.0)
