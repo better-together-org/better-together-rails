@@ -6,6 +6,7 @@ AllCops:
     - 'node_modules/**/*'
     - 'db/schema.rb'
     - 'vendor/**/*'
+    - 'worktrees/**/*'
   NewCops: enable
 Style/StringLiterals:
   Exclude:
