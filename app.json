@@ -37,11 +37,6 @@
       "description": "Database URL",
       "required": true
     },
-    "PUMA_WORKERS": {
-      "description": "Number of Puma workers",
-      "value": "2",
-      "required": false
-    },
     "NODE_ENV": {
       "description": "Node environment",
       "value": "production",
@@ -63,14 +58,6 @@
     "SMTP_PASSWORD": {
       "description": "SMTP server password",
       "required": false
-    }
-  },
-  "formation": {
-    "web": {
-      "quantity": 1
-    },
-    "worker": {
-      "quantity": 1
     }
   },
   "healthchecks": {
