@@ -38,7 +38,7 @@ class EnhanceReportsForRestorativeSafety < ActiveRecord::Migration[7.1]
     end
   end
 
-  def backfill_existing_reports!
+  def backfill_existing_reports! # rubocop:todo Metrics/MethodLength
     execute <<~SQL.squish
       UPDATE better_together_reports
       SET
