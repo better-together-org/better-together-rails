@@ -25,8 +25,16 @@ Rails.application.configure do # rubocop:todo Metrics/BlockLength
     config.action_controller.perform_caching = true
     config.action_controller.enable_fragment_cache_logging = true
 
+    cache_redis_url = ENV.fetch('REDIS_URL', 'redis://localhost:6379/1')
+    cache_pool_size = ENV.fetch('REDIS_CACHE_POOL_SIZE', 5).to_i
+    cache_pool_timeout = ENV.fetch('REDIS_CACHE_POOL_TIMEOUT', 5).to_f
+    cache_redis_pool = ConnectionPool.new(size: cache_pool_size, timeout: cache_pool_timeout) do
+      Redis.new(url: cache_redis_url)
+    end
+
     config.cache_store = :redis_cache_store, {
-      url: ENV.fetch('REDIS_URL', 'redis://localhost:6379/1'),
+      redis: cache_redis_pool,
+      pool: false,
       namespace: 'cache_wayfinder_development'
     }
 
