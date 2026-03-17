@@ -64,7 +64,18 @@ Rails.application.configure do # rubocop:todo Metrics/BlockLength
   config.log_tags = [:request_id]
 
   # Use a different cache store in production.
-  # config.cache_store = :mem_cache_store
+  cache_redis_url = ENV.fetch('REDIS_URL', 'redis://localhost:6379/1')
+  cache_pool_size = ENV.fetch('REDIS_CACHE_POOL_SIZE', 5).to_i
+  cache_pool_timeout = ENV.fetch('REDIS_CACHE_POOL_TIMEOUT', 5).to_f
+  cache_redis_pool = ConnectionPool.new(size: cache_pool_size, timeout: cache_pool_timeout) do
+    Redis.new(url: cache_redis_url)
+  end
+
+  config.cache_store = :redis_cache_store, {
+    redis: cache_redis_pool,
+    pool: false,
+    namespace: 'cache_better_together_production'
+  }
 
   # Use a real queuing backend for Active Job (and separate queues per environment).
   # config.active_job.queue_adapter     = :resque
