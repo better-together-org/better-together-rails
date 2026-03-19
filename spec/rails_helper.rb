@@ -41,7 +41,7 @@ RSpec.configure do |config|
   config.include Warden::Test::Helpers
   config.after { Warden.test_reset! }
   # Remove this line if you're not using ActiveRecord or ActiveRecord fixtures
-  config.fixture_path = "#{Rails.root}/spec/fixtures"
+  config.fixture_paths = ["#{Rails.root}/spec/fixtures"]
 
   # Feature/system specs using JS run in a separate thread/process, so
   # transactional fixtures can cause data visibility issues. Let
