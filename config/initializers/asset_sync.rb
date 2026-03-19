@@ -19,10 +19,13 @@ if defined?(AssetSync)
     # config.aws_reduced_redundancy = true
     # config.aws_signature_version = 4
     # config.aws_acl = nil
-    # ASSET_SYNC_ENDPOINT is only set for non-AWS S3-compatible providers (e.g., MinIO, Cloudflare R2).
-    # Do NOT use FOG_HOST here — that env var contains the CDN distribution hostname, not an S3 API endpoint.
-    if ENV.key?('ASSET_SYNC_ENDPOINT') && ENV.fetch('ASSET_SYNC_ENDPOINT', nil) !~ /amazonaws\.com/i
-      config.fog_host = ENV.fetch('ASSET_SYNC_ENDPOINT', nil)
+    # For S3-compatible providers (e.g. MinIO), set a custom endpoint via ASSET_SYNC_ENDPOINT
+    # or FOG_HOST. Both are passed as Docker build args so they're available at asset precompile time.
+    # If the region is not a real AWS region (i.e. a MinIO/custom region), FOG_HOST must be set
+    # to the actual S3-compatible endpoint or asset sync will try to resolve a bogus amazonaws.com host.
+    s3_endpoint = ENV.fetch('ASSET_SYNC_ENDPOINT', nil) || ENV.fetch('FOG_HOST', nil)
+    if s3_endpoint && s3_endpoint !~ /amazonaws\.com/i
+      config.fog_host = s3_endpoint
       # MinIO requires path-style access (not virtual-hosted)
       config.fog_options = { path_style: true }
     end
