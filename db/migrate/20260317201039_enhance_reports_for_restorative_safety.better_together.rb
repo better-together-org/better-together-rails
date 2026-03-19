@@ -61,7 +61,7 @@ class EnhanceReportsForRestorativeSafety < ActiveRecord::Migration[7.1]
   end
 
   def add_safety_indexes!
-    return if index_exists?(:better_together_reports, name: 'index_better_together_reports_uniqueness')
+    return if connection.indexes(:better_together_reports).any? { |i| i.name == 'index_better_together_reports_uniqueness' }
 
     add_index :better_together_reports, :category
     add_index :better_together_reports, :harm_level
