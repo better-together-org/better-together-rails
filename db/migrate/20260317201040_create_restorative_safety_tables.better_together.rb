@@ -14,6 +14,8 @@ class CreateRestorativeSafetyTables < ActiveRecord::Migration[7.1]
 
   # rubocop:disable Metrics/AbcSize, Metrics/MethodLength
   def create_safety_cases_table
+    return if table_exists?(:better_together_safety_cases)
+
     create_table :better_together_safety_cases, id: :uuid do |t|
       t.integer :lock_version, default: 0, null: false
       t.references :report, null: false, type: :uuid, foreign_key: { to_table: :better_together_reports }
@@ -39,6 +41,8 @@ class CreateRestorativeSafetyTables < ActiveRecord::Migration[7.1]
   end
 
   def create_safety_actions_table
+    return if table_exists?(:better_together_safety_actions)
+
     create_table :better_together_safety_actions, id: :uuid do |t|
       t.integer :lock_version, default: 0, null: false
       t.references :safety_case, null: false, type: :uuid, foreign_key: { to_table: :better_together_safety_cases }
@@ -66,6 +70,8 @@ class CreateRestorativeSafetyTables < ActiveRecord::Migration[7.1]
   # rubocop:enable Metrics/AbcSize, Metrics/MethodLength
 
   def create_safety_notes_table
+    return if table_exists?(:better_together_safety_notes)
+
     create_table :better_together_safety_notes, id: :uuid do |t|
       t.integer :lock_version, default: 0, null: false
       t.references :safety_case, null: false, type: :uuid, foreign_key: { to_table: :better_together_safety_cases }
@@ -79,6 +85,8 @@ class CreateRestorativeSafetyTables < ActiveRecord::Migration[7.1]
   end
 
   def create_safety_agreements_table # rubocop:todo Metrics/MethodLength
+    return if table_exists?(:better_together_safety_agreements)
+
     create_table :better_together_safety_agreements, id: :uuid do |t|
       t.integer :lock_version, default: 0, null: false
       t.references :safety_case, null: false, type: :uuid, foreign_key: { to_table: :better_together_safety_cases }
