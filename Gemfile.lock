@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/better-together-org/community-engine-rails.git
-  revision: ed2fe159edba5263f0cab1d944ed00b355a534f2
+  revision: 39061274b1779074a12f12f70534f1e86654995c
   branch: main
   specs:
     better_together (0.10.0)
@@ -199,7 +199,7 @@ GEM
       ice_nine (~> 0.11.0)
       thread_safe (~> 0.3, >= 0.3.1)
     base64 (0.3.0)
-    bcrypt (3.1.21)
+    bcrypt (3.1.22)
     benchmark (0.5.0)
     better_errors (2.10.1)
       erubi (>= 1.0.0)
@@ -466,7 +466,7 @@ GEM
       rdoc (>= 4.0.0)
       reline (>= 0.4.2)
     jmespath (1.6.2)
-    json (2.19.1)
+    json (2.19.2)
     json-schema (6.2.0)
       addressable (~> 2.8)
       bigdecimal (>= 3.1, < 5)
@@ -517,7 +517,7 @@ GEM
     mime-types (3.7.0)
       logger
       mime-types-data (~> 3.2025, >= 3.2025.0507)
-    mime-types-data (3.2026.0303)
+    mime-types-data (3.2026.0317)
     mini_magick (5.3.1)
       logger
     mini_mime (1.1.5)
@@ -688,7 +688,7 @@ GEM
     redcarpet (3.6.1)
     redis (5.4.1)
       redis-client (>= 0.22.0)
-    redis-client (0.27.0)
+    redis-client (0.28.0)
       connection_pool
     reform (2.6.2)
       disposable (>= 0.5.0, < 1.0.0)
