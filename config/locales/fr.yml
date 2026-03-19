@@ -14,3 +14,9 @@ fr:
       long: "%A %d %B %Y %Hh%M"
       short: "%d %b %Hh%M"
     pm: pm
+
+  better_together:
+    layouts:
+      footer:
+        powered_by_html: >-
+          Construit sur <a href="%{ce_url}" target="_blank" rel="noopener noreferrer" class="text-muted">Community Engine</a> — plateforme de communauté open-source par <a href="%{bts_url}" target="_blank" rel="noopener noreferrer" class="text-muted">Better Together Solutions</a>, un collectif de technologie de communauté
