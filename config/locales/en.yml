@@ -1754,19 +1754,6 @@ en:
           medium_results: Medium
           no_results: No results
           result_quality: Avg results per search
-        tabs:
-          charts: Charts
-          charts_and_reports: Charts & Reports
-          downloads: Downloads
-          link_checker: Link Checker
-          link_clicks: Link Clicks
-          metrics_types: Metrics types
-          page_views: Page Views
-          reports: Reports
-          search_health: Search Health
-          search_queries: Search queries
-          shares: Shares
-          users: Users
         search_health:
           backend: Backend
           db_count: DB Count
@@ -1783,6 +1770,19 @@ en:
           store_size: Store Size
           total_drift: Total Drift
           unmanaged_models: Unmanaged searchable models
+        tabs:
+          charts: Charts
+          charts_and_reports: Charts & Reports
+          downloads: Downloads
+          link_checker: Link Checker
+          link_clicks: Link Clicks
+          metrics_types: Metrics types
+          page_views: Page Views
+          reports: Reports
+          search_health: Search Health
+          search_queries: Search queries
+          shares: Shares
+          users: Users
         title: Metrics Reports
         unknown_type: Unknown
       shares:

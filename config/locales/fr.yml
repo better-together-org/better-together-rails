@@ -1783,19 +1783,6 @@ fr:
           medium_results: Moyen
           no_results: Aucun résultat
           result_quality: Moyenne des résultats par recherche
-        tabs:
-          charts: Graphiques
-          charts_and_reports: Graphiques et rapports
-          downloads: Téléchargements
-          link_checker: Vérificateur de Liens
-          link_clicks: Clics sur les Liens
-          metrics_types: Types de métriques
-          page_views: Vues de Page
-          reports: Rapports
-          search_health: Santé de la recherche
-          search_queries: Recherches
-          shares: Partages
-          users: Users
         search_health:
           backend: Backend
           db_count: Nombre BD
@@ -1812,6 +1799,19 @@ fr:
           store_size: Taille du stockage
           total_drift: Écart total
           unmanaged_models: Modèles recherchables non gérés
+        tabs:
+          charts: Graphiques
+          charts_and_reports: Graphiques et rapports
+          downloads: Téléchargements
+          link_checker: Vérificateur de Liens
+          link_clicks: Clics sur les Liens
+          metrics_types: Types de métriques
+          page_views: Vues de Page
+          reports: Rapports
+          search_health: Santé de la recherche
+          search_queries: Recherches
+          shares: Partages
+          users: Users
         title: Rapports de Métriques
         unknown_type: Inconnu
       shares:

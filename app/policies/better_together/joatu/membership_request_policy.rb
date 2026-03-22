@@ -61,11 +61,13 @@ module BetterTogether
           managed_ids = managed_community_ids_for(agent)
           return nil unless managed_ids.any?
 
+          t = base.klass.arel_table
           base.where(
-            'creator_id = ? OR (target_type = ? AND target_id IN (?))',
-            agent.id,
-            'BetterTogether::Community',
-            managed_ids
+            t[:creator_id].eq(agent.id).or(
+              t[:target_type].eq('BetterTogether::Community').and(
+                t[:target_id].in(managed_ids)
+              )
+            )
           )
         end
 

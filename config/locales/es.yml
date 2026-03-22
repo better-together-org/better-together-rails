@@ -1776,19 +1776,6 @@ es:
           medium_results: Medio
           no_results: Sin resultados
           result_quality: Promedio de resultados por búsqueda
-        tabs:
-          charts: Gráficos
-          charts_and_reports: Gráficos y reportes
-          downloads: Descargas
-          link_checker: Verificador de Enlaces
-          link_clicks: Clics en Enlaces
-          metrics_types: Tipos de métricas
-          page_views: Vistas de Página
-          reports: Reportes
-          search_health: Estado de la búsqueda
-          search_queries: Búsquedas
-          shares: Compartidos
-          users: Users
         search_health:
           backend: Backend
           db_count: Conteo BD
@@ -1805,6 +1792,19 @@ es:
           store_size: Tamaño de almacenamiento
           total_drift: Desviación total
           unmanaged_models: Modelos buscables no gestionados
+        tabs:
+          charts: Gráficos
+          charts_and_reports: Gráficos y reportes
+          downloads: Descargas
+          link_checker: Verificador de Enlaces
+          link_clicks: Clics en Enlaces
+          metrics_types: Tipos de métricas
+          page_views: Vistas de Página
+          reports: Reportes
+          search_health: Estado de la búsqueda
+          search_queries: Búsquedas
+          shares: Compartidos
+          users: Users
         title: Informes de Métricas
         unknown_type: Desconocido
       shares:

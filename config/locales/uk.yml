@@ -1769,19 +1769,6 @@ uk:
           medium_results: Середня
           no_results: Без результатів
           result_quality: Середня кількість результатів на пошук
-        tabs:
-          charts: Графіки
-          charts_and_reports: Графіки й звіти
-          downloads: Завантаження
-          link_checker: Перевірка посилань
-          link_clicks: Кліки по посиланнях
-          metrics_types: Типи метрик
-          page_views: Перегляди сторінок
-          reports: Звіти
-          search_health: Стан пошуку
-          search_queries: Пошуки
-          shares: Поширення
-          users: Users
         search_health:
           backend: Backend
           db_count: Кількість у БД
@@ -1798,6 +1785,19 @@ uk:
           store_size: Розмір сховища
           total_drift: Загальна розбіжність
           unmanaged_models: Некеровані пошукові моделі
+        tabs:
+          charts: Графіки
+          charts_and_reports: Графіки й звіти
+          downloads: Завантаження
+          link_checker: Перевірка посилань
+          link_clicks: Кліки по посиланнях
+          metrics_types: Типи метрик
+          page_views: Перегляди сторінок
+          reports: Звіти
+          search_health: Стан пошуку
+          search_queries: Пошуки
+          shares: Поширення
+          users: Users
         title: Звіти метрик
         unknown_type: Невідомо
       shares:
