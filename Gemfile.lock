@@ -827,7 +827,7 @@ GEM
       activesupport (>= 3)
     shoulda-matchers (7.0.1)
       activesupport (>= 7.1)
-    sidekiq (8.1.1)
+    sidekiq (8.1.2)
       connection_pool (>= 3.0.0)
       json (>= 2.16.0)
       logger (>= 1.7.0)
@@ -976,7 +976,7 @@ DEPENDENCIES
   sentry-ruby
   shoulda-callback-matchers
   shoulda-matchers
-  sidekiq (~> 8.1.1)
+  sidekiq (~> 8.1.2)
   simplecov
   spring
   spring-watcher-listen (~> 2.1.0)
