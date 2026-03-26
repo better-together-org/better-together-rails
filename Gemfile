@@ -11,7 +11,7 @@ gem 'aws-sdk-s3', require: false
 # Use the published version of better_together for production
 gem 'better_together', '~> 0.10',
     github: 'better-together-org/community-engine-rails',
-    branch: 'main'
+    ref: '1ec48327a808deb80a944a6882f87cc278c7289e'
 
 # Use the local development version of better_together
 # gem 'better_together', path: '/community-engine'
@@ -38,7 +38,7 @@ gem 'rack-protection'
 # Rack mini profiler for performance profiling
 gem 'rack-mini-profiler'
 
-gem 'rails', '~> 8.0.5'
+gem 'rails', '~> 8.0.4.1'
 
 # Redis for ActionCable and background jobs
 gem 'redis', '~> 5.4'

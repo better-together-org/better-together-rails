@@ -19,13 +19,17 @@ module RequestSpecHelper
     }
   end
 
-  def configure_host_platform
-    host_platform = create(:better_together_platform, :host, privacy: 'public')
+  def configure_host_platform # rubocop:todo Metrics/MethodLength
+    host_platform = BetterTogether::Platform.find_by(host: true) ||
+                    BetterTogether::Platform.find_by(community_host: true) ||
+                    create(:better_together_platform, :host, privacy: 'public')
     wizard = BetterTogether::Wizard.find_or_create_by(identifier: 'host_setup')
     wizard.mark_completed
-    create(:user, :confirmed, :platform_manager,
-           email: 'manager@example.test',
-           password: 'xkcd4559!&@G')
+    unless BetterTogether::User.exists?(email: 'manager@example.test')
+      create(:user, :confirmed, :platform_manager,
+             email: 'manager@example.test',
+             password: 'xkcd4559!&@G')
+    end
     host_platform
   end
 end
