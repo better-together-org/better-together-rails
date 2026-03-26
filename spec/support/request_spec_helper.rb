@@ -25,7 +25,7 @@ module RequestSpecHelper
                     create(:better_together_platform, :host, privacy: 'public')
     wizard = BetterTogether::Wizard.find_or_create_by(identifier: 'host_setup')
     wizard.mark_completed
-    unless User.exists?(email: 'manager@example.test')
+    unless BetterTogether::User.exists?(email: 'manager@example.test')
       create(:user, :confirmed, :platform_manager,
              email: 'manager@example.test',
              password: 'xkcd4559!&@G')
