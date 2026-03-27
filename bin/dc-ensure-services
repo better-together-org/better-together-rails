@@ -8,4 +8,4 @@ cd "$repo_root"
 # shellcheck source=./docker-compose-env.sh
 source "$repo_root/bin/docker-compose-env.sh"
 
-docker compose -f docker-compose.yml "$@"
+./bin/dc up -d db redis elasticsearch >/dev/null

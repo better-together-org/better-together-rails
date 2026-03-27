@@ -1,3 +1,8 @@
 #!/usr/bin/env bash
 
-./bin/dc run --rm app $@
+set -euo pipefail
+
+# shellcheck source=./docker-compose-env.sh
+source "$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)/docker-compose-env.sh"
+
+./bin/dc run --rm --no-deps app "$@"
