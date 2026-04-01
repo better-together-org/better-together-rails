@@ -1,7 +1,7 @@
 GIT
   remote: https://github.com/better-together-org/community-engine-rails.git
-  revision: 92a9420e721712fa5e72ba0a6695113f762dc20f
-  ref: 92a9420e721712fa5e72ba0a6695113f762dc20f
+  revision: 080fa5ce2d2fe0286ea622c2ea39c96dfd125dfb
+  ref: 080fa5ce2d2fe0286ea622c2ea39c96dfd125dfb
   specs:
     better_together (0.10.1)
       active_storage_svg_sanitizer
@@ -515,11 +515,11 @@ GEM
     mime-types (3.7.0)
       logger
       mime-types-data (~> 3.2025, >= 3.2025.0507)
-    mime-types-data (3.2026.0317)
+    mime-types-data (3.2026.0331)
     mini_magick (5.3.1)
       logger
     mini_mime (1.1.5)
-    minitest (6.0.2)
+    minitest (6.0.3)
       drb (~> 2.0)
       prism (~> 1.5)
     mobility (1.3.2)
@@ -617,7 +617,7 @@ GEM
       activesupport (>= 3.0.0)
     raabro (1.4.0)
     racc (1.8.1)
-    rack (3.2.5)
+    rack (3.2.6)
     rack-attack (6.8.0)
       rack (>= 1.0, < 4)
     rack-cors (3.0.0)
