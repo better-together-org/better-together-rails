@@ -1,3 +1,14 @@
 #!/usr/bin/env bash
 
-./bin/dc run --rm app $@
+set -euo pipefail
+
+# shellcheck source=./docker-compose-env.sh
+source "$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)/docker-compose-env.sh"
+
+joined_args=" $* "
+if [[ -n "${BTR_WORKTREE_DB_SUFFIX:-}" ]] && [[ "$joined_args" == *" rspec "* || "$joined_args" == *" RAILS_ENV=test "* ]]; then
+  echo "BTR worktree test runs require prepared worktree databases for suffix ${BTR_WORKTREE_DB_SUFFIX}." >&2
+  echo "Run host-side db prep first or use the primary worktree test database." >&2
+fi
+
+./bin/dc run --rm --no-deps app "$@"
