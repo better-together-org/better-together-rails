@@ -10,9 +10,13 @@
 
 volumes:
   bt-bundler-gems:
+    name: better-together-rails_bt-bundler-gems
   bt-db-data:
+    name: better-together-rails_bt-db-data
   bt-elasticsearch:
+    name: better-together-rails_bt-elasticsearch
   bt-redis:
+    name: better-together-rails_bt-redis
 
 x-env-info: &env-info
   env_file:
@@ -24,9 +28,19 @@ x-app-shared: &app-shared
   image: better-together/better-together-rails:dev
   volumes:
     - .:/bt
-    # - ../pundit-resources:/pundit-resources
-    - ../community-engine-rails:/community-engine
+    - ${COMMUNITY_ENGINE_PATH:-../community-engine-rails}:/community-engine
     - bt-bundler-gems:/usr/local/bundle/
+  extra_hosts:
+    - "host.docker.internal:host-gateway"
+  environment:
+    DB_HOST: ${DB_HOST:-host.docker.internal}
+    DB_PORT: ${DB_PORT:-5431}
+    DB_USERNAME: ${DB_USERNAME:-postgres}
+    DB_PASSWORD: ${DB_PASSWORD:-postgres}
+    BTR_WORKTREE_DB_SUFFIX: ${BTR_WORKTREE_DB_SUFFIX:-}
+    ES_HOST: ${ES_HOST:-http://host.docker.internal}
+    ES_PORT: ${ES_PORT:-9203}
+    REDIS_URL: ${REDIS_URL:-redis://host.docker.internal:6382}
   depends_on:
     - elasticsearch
     - db
@@ -82,6 +96,8 @@ services:
     image: 'redis:7.2-alpine'
     container_name: better-together-redis
     command: redis-server
+    ports:
+      - "6382:6379"
     volumes:
       - bt-redis:/data
 
