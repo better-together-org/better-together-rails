@@ -1,7 +1,7 @@
 GIT
   remote: https://github.com/better-together-org/community-engine-rails.git
-  revision: a160ed21f282cbe242da248e0b53f3cc28de833a
-  ref: a160ed21f282cbe242da248e0b53f3cc28de833a
+  revision: 64f887ac0abbfc6c9e77e10076f485e07e3f6456
+  branch: release/0.11.0-notes
   specs:
     better_together (0.10.1)
       active_storage_svg_sanitizer
@@ -39,6 +39,7 @@ GIT
       omniauth
       omniauth-github (~> 2.0.0)
       omniauth-rails_csrf_protection
+      pg_search
       premailer-rails
       public_activity
       pundit (>= 2.1, < 2.6)
@@ -166,7 +167,7 @@ GEM
       securerandom (>= 0.3)
       tzinfo (~> 2.0, >= 2.0.5)
       uri (>= 0.13.1)
-    addressable (2.8.9)
+    addressable (2.9.0)
       public_suffix (>= 2.0.2, < 8.0)
     asset_sync (2.19.3)
       activemodel (>= 4.1.0)
@@ -205,7 +206,7 @@ GEM
       erubi (>= 1.0.0)
       rack (>= 0.9.0)
       rouge (>= 1.0.0)
-    bigdecimal (4.1.0)
+    bigdecimal (4.1.1)
     bindex (0.8.1)
     binding_of_caller (2.0.0)
       debug_inspector (>= 1.2.0)
@@ -415,8 +416,8 @@ GEM
     google-protobuf (4.34.1-x86_64-linux-gnu)
       bigdecimal
       rake (~> 13.3)
-    groupdate (6.7.0)
-      activesupport (>= 7.1)
+    groupdate (6.8.0)
+      activesupport (>= 7.2)
     hashie (5.1.0)
       logger
     highline (3.1.2)
@@ -587,6 +588,9 @@ GEM
       racc
     pg (1.6.3-aarch64-linux)
     pg (1.6.3-x86_64-linux)
+    pg_search (2.3.7)
+      activerecord (>= 6.1)
+      activesupport (>= 6.1)
     popper_js (2.11.8)
     pp (0.6.3)
       prettyprint
@@ -631,7 +635,7 @@ GEM
       base64 (>= 0.1.0)
       logger (>= 1.6.0)
       rack (>= 3.0.0, < 4)
-    rack-session (2.1.1)
+    rack-session (2.1.2)
       base64 (>= 0.1.0)
       rack (>= 3.0.0)
     rack-test (2.2.0)
