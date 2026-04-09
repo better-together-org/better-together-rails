@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/better-together-org/community-engine-rails.git
-  revision: 64f887ac0abbfc6c9e77e10076f485e07e3f6456
+  revision: 7d2ea596f0e756508291b1a1832a4f1af552117c
   branch: release/0.11.0-notes
   specs:
     better_together (0.10.1)
@@ -326,7 +326,7 @@ GEM
     easy_translate (0.5.1)
       thread
       thread_safe
-    elastic-transport (8.4.1)
+    elastic-transport (8.5.0)
       faraday (< 3)
       multi_json
     elasticsearch (8.19.3)
@@ -518,7 +518,7 @@ GEM
     mime-types (3.7.0)
       logger
       mime-types-data (~> 3.2025, >= 3.2025.0507)
-    mime-types-data (3.2026.0331)
+    mime-types-data (3.2026.0407)
     mini_magick (5.3.1)
       logger
     mini_mime (1.1.5)
