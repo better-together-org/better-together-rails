@@ -4,7 +4,10 @@ require 'uri'
 
 if defined?(AssetSync)
   AssetSync.configure do |config| # rubocop:todo Metrics/BlockLength
+    skip_asset_sync = ActiveModel::Type::Boolean.new.cast(ENV.fetch('SKIP_ASSET_SYNC', nil))
+
     config.fog_provider = 'AWS'
+    config.run_on_precompile = !skip_asset_sync
 
     config.aws_access_key_id = ENV.fetch('AWS_ACCESS_KEY_ID', nil)
     config.aws_secret_access_key = ENV.fetch('AWS_SECRET_ACCESS_KEY', nil)
@@ -29,15 +32,17 @@ if defined?(AssetSync)
     rescue URI::InvalidURIError
       nil
     end
-    s3_endpoint = ENV.fetch('ASSET_SYNC_ENDPOINT', nil)
-    if s3_endpoint.blank?
-      fog_host = ENV.fetch('FOG_HOST', nil)
-      s3_endpoint = fog_host if fog_host.present? && fog_host != asset_host_host
-    end
-    if s3_endpoint && s3_endpoint !~ /amazonaws\.com/i
-      config.fog_host = s3_endpoint
-      # MinIO requires path-style access (not virtual-hosted)
-      config.fog_options = { path_style: true }
+    unless skip_asset_sync
+      s3_endpoint = ENV.fetch('ASSET_SYNC_ENDPOINT', nil)
+      if s3_endpoint.blank?
+        fog_host = ENV.fetch('FOG_HOST', nil)
+        s3_endpoint = fog_host if fog_host.present? && fog_host != asset_host_host
+      end
+      if s3_endpoint && s3_endpoint !~ /amazonaws\.com/i
+        config.fog_host = s3_endpoint
+        # MinIO requires path-style access (not virtual-hosted)
+        config.fog_options = { path_style: true }
+      end
     end
     # config.fog_port = "9000"
     config.fog_scheme = 'https'
