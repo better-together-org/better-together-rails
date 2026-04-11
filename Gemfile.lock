@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/better-together-org/community-engine-rails.git
-  revision: 5f5de9fa7220d2705ffa6b1411c9b76de7c9383c
+  revision: 7a2c40a56fbbe1fa7872dff3cd1fe95cb476dd6a
   branch: release/0.11.0-notes
   specs:
     better_together (0.10.1)
@@ -326,7 +326,7 @@ GEM
     easy_translate (0.5.1)
       thread
       thread_safe
-    elastic-transport (8.5.0)
+    elastic-transport (8.5.1)
       faraday (< 3)
       multi_json
     elasticsearch (8.19.3)
@@ -532,7 +532,7 @@ GEM
       actiontext (>= 6.0)
       mobility (~> 1.2)
     msgpack (1.8.0)
-    multi_json (1.19.1)
+    multi_json (1.20.0)
     multi_xml (0.8.1)
       bigdecimal (>= 3.1, < 5)
     multipart-post (2.4.1)
