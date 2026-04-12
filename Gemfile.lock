@@ -1,7 +1,7 @@
 GIT
   remote: https://github.com/better-together-org/community-engine-rails.git
-  revision: 7a2c40a56fbbe1fa7872dff3cd1fe95cb476dd6a
-  branch: release/0.11.0-notes
+  revision: 8d4a1607bc495b25b224ad0d6ba00babf9c2994b
+  ref: 8d4a1607bc495b25b224ad0d6ba00babf9c2994b
   specs:
     better_together (0.10.1)
       active_storage_svg_sanitizer
@@ -532,7 +532,7 @@ GEM
       actiontext (>= 6.0)
       mobility (~> 1.2)
     msgpack (1.8.0)
-    multi_json (1.20.0)
+    multi_json (1.20.1)
     multi_xml (0.8.1)
       bigdecimal (>= 3.1, < 5)
     multipart-post (2.4.1)
