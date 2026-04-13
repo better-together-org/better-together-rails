@@ -1,5 +1,4 @@
-<script id="scroll-progress-bar" type="text/javascript">
-
+<%= javascript_tag id: 'scroll-progress-bar', nonce: true do %>
   function createProgressBar() {
     // Create the progress bar element
     var progressBar = document.createElement("div");
@@ -35,4 +34,4 @@
   document.addEventListener('turbo:load', function() {
     addScrollProgressBar();
   });
-</script>
+<% end %>
