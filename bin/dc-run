@@ -11,4 +11,5 @@ if [[ -n "${BTR_WORKTREE_DB_SUFFIX:-}" ]] && [[ "$joined_args" == *" rspec "* ||
   echo "Run host-side db prep first or use the primary worktree test database." >&2
 fi
 
+./bin/dc-ensure-services
 ./bin/dc run --rm --no-deps app "$@"

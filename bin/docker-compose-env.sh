@@ -7,10 +7,16 @@ repo_basename="$(basename "$repo_root")"
 git_common_dir="$(git -C "$repo_root" rev-parse --git-common-dir)"
 primary_repo_root="$(cd "$(dirname "$git_common_dir")" && pwd)"
 
+detect_compose_project() {
+  local container_name="$1"
+  docker inspect -f '{{ index .Config.Labels "com.docker.compose.project" }}' "$container_name" 2>/dev/null || true
+}
+
 # Better Together Rails uses fixed service/container names for the shared dev
 # database, Redis, and Elasticsearch services. Secondary git worktrees must
 # reuse the primary compose project instead of inventing a per-worktree one.
-export COMPOSE_PROJECT_NAME="${COMPOSE_PROJECT_NAME:-better-together-rails}"
+existing_project="$(detect_compose_project better-together-db)"
+export COMPOSE_PROJECT_NAME="${COMPOSE_PROJECT_NAME:-${existing_project:-better-together-rails}}"
 
 sanitize_slug() {
   printf '%s' "$1" | tr '[:upper:]' '[:lower:]' | sed -E 's/[^a-z0-9]+/_/g; s/^_+//; s/_+$//'

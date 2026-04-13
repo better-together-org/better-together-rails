@@ -1,3 +1,5 @@
 #!/usr/bin/env bash
 
-./bin/dc up $@
+set -euo pipefail
+
+./bin/dc up "$@"

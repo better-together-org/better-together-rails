@@ -1,0 +1,25 @@
+#!/usr/bin/env bash
+
+set -euo pipefail
+
+repo_root="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
+cd "$repo_root"
+
+# shellcheck source=./docker-compose-env.sh
+source "$repo_root/bin/docker-compose-env.sh"
+
+ensure_container() {
+  local service_name="$1"
+  local container_name="$2"
+
+  if docker inspect "$container_name" >/dev/null 2>&1; then
+    docker start "$container_name" >/dev/null 2>&1 || true
+    return 0
+  fi
+
+  ./bin/dc up -d "$service_name" >/dev/null
+}
+
+ensure_container db better-together-db
+ensure_container redis better-together-redis
+ensure_container elasticsearch better-together-elasticsearch

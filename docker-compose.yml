@@ -28,6 +28,7 @@ x-app-shared: &app-shared
   image: better-together/better-together-rails:dev
   volumes:
     - .:/bt
+    # - ../pundit-resources:/pundit-resources
     - ${COMMUNITY_ENGINE_PATH:-../community-engine-rails}:/community-engine
     - bt-bundler-gems:/usr/local/bundle/
   extra_hosts:
