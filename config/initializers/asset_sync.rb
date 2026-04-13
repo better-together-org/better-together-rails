@@ -1,8 +1,17 @@
 # frozen_string_literal: true
 
 if defined?(AssetSync)
-  AssetSync.configure do |config|
-    skip_asset_sync = ActiveModel::Type::Boolean.new.cast(ENV.fetch('SKIP_ASSET_SYNC', nil))
+  AssetSync.configure do |config| # rubocop:todo Metrics/BlockLength
+    boolean = ActiveModel::Type::Boolean.new
+    asset_sync_enabled = ENV.fetch('ASSET_SYNC_ENABLED', nil)
+    asset_sync_enabled = nil if asset_sync_enabled.to_s.empty?
+    skip_asset_sync =
+      if asset_sync_enabled.nil?
+        boolean.cast(ENV.fetch('SKIP_ASSET_SYNC', nil))
+      else
+        !boolean.cast(asset_sync_enabled)
+      end
+
     config.fog_provider = 'AWS'
     config.run_on_precompile = !skip_asset_sync
 
