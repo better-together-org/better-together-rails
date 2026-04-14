@@ -4,7 +4,14 @@ require 'uri'
 
 if defined?(AssetSync)
   AssetSync.configure do |config| # rubocop:todo Metrics/BlockLength
-    skip_asset_sync = ActiveModel::Type::Boolean.new.cast(ENV.fetch('SKIP_ASSET_SYNC', nil))
+    boolean = ActiveModel::Type::Boolean.new
+    asset_sync_enabled = boolean.cast(ENV.fetch('ASSET_SYNC_ENABLED', nil))
+    skip_asset_sync =
+      if ENV.key?('SKIP_ASSET_SYNC')
+        boolean.cast(ENV.fetch('SKIP_ASSET_SYNC', nil))
+      else
+        !asset_sync_enabled
+      end
 
     config.fog_provider = 'AWS'
     config.run_on_precompile = !skip_asset_sync
