@@ -3,7 +3,7 @@
 
 # The host app (built using the Better Together Community Engine),
 # a PostgreSQL db,
-# ElasticSearch 7,
+# pg_search-backed search,
 # a mail server,
 # redis,
 # Sidekiq
@@ -13,8 +13,6 @@ volumes:
     name: better-together-rails_bt-bundler-gems
   bt-db-data:
     name: better-together-rails_bt-db-data
-  bt-elasticsearch:
-    name: better-together-rails_bt-elasticsearch
   bt-redis:
     name: better-together-rails_bt-redis
 
@@ -38,11 +36,8 @@ x-app-shared: &app-shared
     DB_USERNAME: ${DB_USERNAME:-postgres}
     DB_PASSWORD: ${DB_PASSWORD:-postgres}
     BTR_WORKTREE_DB_SUFFIX: ${BTR_WORKTREE_DB_SUFFIX:-}
-    ES_HOST: ${ES_HOST:-http://host.docker.internal}
-    ES_PORT: ${ES_PORT:-9203}
     REDIS_URL: ${REDIS_URL:-redis://host.docker.internal:6382}
   depends_on:
-    - elasticsearch
     - db
     - redis
   # user: $USER:$USER
@@ -65,25 +60,6 @@ services:
       - bt-db-data:/var/lib/postgresql/data
     ports:
       - "5431:5432"
-
-  elasticsearch:
-    container_name: better-together-elasticsearch
-    image: elasticsearch:7.17.23
-    environment:
-      - node.name=elasticsearch
-      - cluster.name=better-together-es
-      - discovery.seed_hosts=elasticsearch
-      - discovery.type=single-node
-      - bootstrap.memory_lock=true
-      - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
-    ports:
-      - 9203:9200
-    ulimits:
-      memlock:
-        soft: -1
-        hard: -1
-    volumes:
-      - bt-elasticsearch:/usr/share/elasticsearch/data
 
   mail-server:
     image: mailhog/mailhog
