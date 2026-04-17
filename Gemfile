@@ -44,7 +44,7 @@ gem 'rails', '~> 8.0.5'
 gem 'redis', '~> 5.4'
 
 gem 'connection_pool', '~> 3.0.2'
-gem 'sidekiq', '~> 8.1.2'
+gem 'sidekiq', '~> 8.1.3'
 
 # Error and performance monitoring with Sentry
 gem 'sentry-rails'
