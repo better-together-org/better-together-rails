@@ -37,6 +37,16 @@
       "description": "Database URL",
       "required": true
     },
+    "SEARCH_BACKEND": {
+      "description": "Search backend key. Use pg_search for the Postgres/native path while Elasticsearch remains optional.",
+      "value": "pg_search",
+      "required": false
+    },
+    "ELASTICSEARCH_DISABLED": {
+      "description": "Disable Elasticsearch-specific runtime behavior when using pg_search.",
+      "value": "true",
+      "required": false
+    },
     "NODE_ENV": {
       "description": "Node environment",
       "value": "production",

@@ -11,7 +11,8 @@ gem 'aws-sdk-s3', require: false
 # Use the published version of better_together for production
 gem 'better_together', '~> 0.10',
     github: 'better-together-org/community-engine-rails',
-    ref: '92a9420e721712fa5e72ba0a6695113f762dc20f'
+    branch: 'release/0.11.0-notes',
+    ref: '99799a2e3142feeb891263b6cf6430c37ccad2a2'
 
 # Use the local development version of better_together
 # gem 'better_together', path: '/community-engine'
@@ -47,6 +48,11 @@ gem 'connection_pool', '~> 3.0.2'
 gem 'sidekiq', '~> 8.1.3'
 
 # Error and performance monitoring with Sentry
+gem 'opentelemetry-exporter-otlp', '~> 0.33.0'
+gem 'opentelemetry-instrumentation-rails', '~> 0.41.0'
+gem 'opentelemetry-instrumentation-sidekiq', '~> 0.29.0'
+gem 'opentelemetry-sdk', '~> 1.11.0'
+gem 'pyroscope', '~> 1.0'
 gem 'sentry-rails'
 gem 'sentry-ruby'
 gem 'stackprof'
