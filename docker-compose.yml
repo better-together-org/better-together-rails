@@ -37,6 +37,8 @@ x-app-shared: &app-shared
     DB_PASSWORD: ${DB_PASSWORD:-postgres}
     BTR_WORKTREE_DB_SUFFIX: ${BTR_WORKTREE_DB_SUFFIX:-}
     REDIS_URL: ${REDIS_URL:-redis://host.docker.internal:6382}
+    SEARCH_BACKEND: ${SEARCH_BACKEND:-pg_search}
+    ELASTICSEARCH_DISABLED: ${ELASTICSEARCH_DISABLED:-true}
   depends_on:
     - db
     - redis
