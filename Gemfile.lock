@@ -1,7 +1,7 @@
 GIT
   remote: https://github.com/better-together-org/community-engine-rails.git
-  revision: 84f41010dfa08969f9294576640b97ae269f801c
-  ref: 84f41010dfa08969f9294576640b97ae269f801c
+  revision: 99799a2e3142feeb891263b6cf6430c37ccad2a2
+  ref: 99799a2e3142feeb891263b6cf6430c37ccad2a2
   branch: release/0.11.0-notes
   specs:
     better_together (0.10.1)
@@ -888,7 +888,7 @@ GEM
       logger (>= 1.7.0)
       rack (>= 3.2.0)
       redis-client (>= 0.26.0)
-    sidekiq-scheduler (6.0.1)
+    sidekiq-scheduler (6.0.2)
       rufus-scheduler (~> 3.2)
       sidekiq (>= 7.3, < 9)
     simple_calendar (3.1.0)
