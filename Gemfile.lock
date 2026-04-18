@@ -1,7 +1,7 @@
 GIT
   remote: https://github.com/better-together-org/community-engine-rails.git
-  revision: e18a22fa8aceba3efb236342c9124b42c1874b50
-  ref: e18a22fa8aceba3efb236342c9124b42c1874b50
+  revision: 51bbdbac913222254f1c6230cb42df0d599bb0de
+  ref: 51bbdbac913222254f1c6230cb42df0d599bb0de
   branch: release/0.11.0-notes
   specs:
     better_together (0.10.1)
@@ -205,7 +205,7 @@ GEM
       erubi (>= 1.0.0)
       rack (>= 0.9.0)
       rouge (>= 1.0.0)
-    bigdecimal (4.1.1)
+    bigdecimal (4.1.2)
     bindex (0.8.1)
     binding_of_caller (2.0.0)
       debug_inspector (>= 1.2.0)
@@ -456,7 +456,7 @@ GEM
       rdoc (>= 4.0.0)
       reline (>= 0.4.2)
     jmespath (1.6.2)
-    json (2.19.3)
+    json (2.19.4)
     json-schema (6.2.0)
       addressable (~> 2.8)
       bigdecimal (>= 3.1, < 5)
