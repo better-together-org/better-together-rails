@@ -247,7 +247,7 @@ GEM
       thor (~> 1.2)
       tins (~> 1.32)
     crass (1.0.6)
-    css_parser (2.0.0)
+    css_parser (2.1.0)
       addressable
     csv (3.3.5)
     dartsass-sprockets (3.2.1)
@@ -545,9 +545,9 @@ GEM
     net-smtp (0.5.1)
       net-protocol
     nio4r (2.7.5)
-    nokogiri (1.19.2-aarch64-linux-gnu)
+    nokogiri (1.19.3-aarch64-linux-gnu)
       racc (~> 1.4)
-    nokogiri (1.19.2-x86_64-linux-gnu)
+    nokogiri (1.19.3-x86_64-linux-gnu)
       racc (~> 1.4)
     noticed (3.0.0)
       rails (>= 6.1.0)
