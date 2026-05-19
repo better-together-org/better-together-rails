@@ -29,7 +29,7 @@ gem 'ostruct'
 # Database adapter for PostgreSQL
 gem 'pg', '>= 0.18', '< 2.0'
 # Puma as the app server
-gem 'puma', '~> 7.2'
+gem 'puma', '~> 8.0'
 
 # Pundit for authorization, custom fork for Better Together
 gem 'pundit-resources', '~> 1.1.6', github: 'better-together-org/pundit-resources'
@@ -45,7 +45,7 @@ gem 'rails', '~> 8.0.5'
 gem 'redis', '~> 5.4'
 
 gem 'connection_pool', '~> 3.0.2'
-gem 'sidekiq', '~> 8.1.2'
+gem 'sidekiq', '~> 8.1.5'
 
 # Error and performance monitoring with Sentry
 gem 'opentelemetry-exporter-otlp', '~> 0.33.0'
