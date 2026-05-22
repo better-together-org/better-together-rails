@@ -1,7 +1,7 @@
 GIT
   remote: https://github.com/better-together-org/community-engine-rails.git
-  revision: 847eed3bc9b955dbf011daa53df1d6bbac45e88e
-  ref: 847eed3bc9b955dbf011daa53df1d6bbac45e88e
+  revision: 9ceb4a63f9027e9a548691a18430ca0cf6b95eb5
+  ref: 9ceb4a63f9027e9a548691a18430ca0cf6b95eb5
   specs:
     better_together (0.10.1)
       active_storage_svg_sanitizer
@@ -856,9 +856,9 @@ GEM
     rubyzip (3.3.0)
     rufus-scheduler (3.9.2)
       fugit (~> 1.1, >= 1.11.1)
-    sass-embedded (1.99.0-aarch64-linux-gnu)
+    sass-embedded (1.100.0-aarch64-linux-gnu)
       google-protobuf (~> 4.31)
-    sass-embedded (1.99.0-x86_64-linux-gnu)
+    sass-embedded (1.100.0-x86_64-linux-gnu)
       google-protobuf (~> 4.31)
     sassc (2.4.0)
       ffi (~> 1.9)
