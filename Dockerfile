@@ -27,8 +27,10 @@ ARG FOG_HOST
 ARG FOG_REGION
 ARG ASSET_HOST
 ARG CDN_DISTRIBUTION_ID
+ARG ASSET_SYNC_ENABLED=""
 ARG AWS_ACCESS_KEY_ID=""
 ARG AWS_SECRET_ACCESS_KEY=""
+ARG SKIP_ASSET_SYNC=""
 
 # Set environment variables for asset precompilation
 ENV FOG_DIRECTORY=${FOG_DIRECTORY}
@@ -36,8 +38,12 @@ ENV FOG_HOST=${FOG_HOST}
 ENV FOG_REGION=${FOG_REGION}
 ENV ASSET_HOST=${ASSET_HOST}
 ENV CDN_DISTRIBUTION_ID=${CDN_DISTRIBUTION_ID}
+ENV ASSET_SYNC_ENABLED=${ASSET_SYNC_ENABLED}
 ENV AWS_ACCESS_KEY_ID=${AWS_ACCESS_KEY_ID}
 ENV AWS_SECRET_ACCESS_KEY=${AWS_SECRET_ACCESS_KEY}
+# Production builds publish digested assets to AWS by default. Keep an explicit
+# override for exceptional builds instead of forcing sync off globally.
+ENV SKIP_ASSET_SYNC=${SKIP_ASSET_SYNC}
 
 # Install dependencies
 RUN apt-get update -qq \
