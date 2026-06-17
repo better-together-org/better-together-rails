@@ -40,33 +40,78 @@ class BackfillContentBlockTranslations < ActiveRecord::Migration[7.2]
 
   def backfill_string_fields(locale)
     STRING_FIELDS.each do |block_type, fields|
-      ::BetterTogether::Content::Block.where(type: block_type).find_each do |block|
-        backfill_block_fields(block, fields, locale, ::BetterTogether::StringTranslation)
+      blocks = ActiveRecord::Base.connection.execute(
+        "SELECT id, content_data FROM #{quote_table_name('better_together_content_blocks')} WHERE type = '#{block_type}'"
+      )
+
+      blocks.each do |row|
+        block_id = row['id']
+        content_data = JSON.parse(row['content_data'] || '{}')
+
+        fields.each do |field|
+          value = content_data[field]
+          next if value.blank?
+
+          insert_translation(
+            'mobility_string_translations',
+            block_id,
+            field,
+            value,
+            locale
+          )
+        end
       end
     end
   end
 
   def backfill_text_fields(locale)
     TEXT_FIELDS.each do |block_type, fields|
-      ::BetterTogether::Content::Block.where(type: block_type).find_each do |block|
-        backfill_block_fields(block, fields, locale, ::BetterTogether::TextTranslation)
+      blocks = ActiveRecord::Base.connection.execute(
+        "SELECT id, content_data FROM #{quote_table_name('better_together_content_blocks')} WHERE type = '#{block_type}'"
+      )
+
+      blocks.each do |row|
+        block_id = row['id']
+        content_data = JSON.parse(row['content_data'] || '{}')
+
+        fields.each do |field|
+          value = content_data[field]
+          next if value.blank?
+
+          insert_translation(
+            'mobility_text_translations',
+            block_id,
+            field,
+            value,
+            locale
+          )
+        end
       end
     end
   end
 
-  def backfill_block_fields(block, fields, locale, translation_class)
-    data = block.read_attribute(:content_data) || {}
-    fields.each do |field|
-      value = data[field]
-      next if value.blank?
+  def insert_translation(table_name, translatable_id, key, value, locale)
+    now = Time.current.to_s(:db)
+    translatable_type = 'BetterTogether::Content::Block'
 
-      translation_class.find_or_create_by!(
-        translatable_type: 'BetterTogether::Content::Block',
-        translatable_id: block.id,
-        key: field,
-        locale: locale
-      ) { |t| t.value = value }
-    end
+    # Check if translation already exists
+    existing = ActiveRecord::Base.connection.execute(
+      "SELECT id FROM #{quote_table_name(table_name)} " \
+      "WHERE translatable_type = '#{translatable_type}' " \
+      "AND translatable_id = #{translatable_id} " \
+      "AND key = '#{key}' " \
+      "AND locale = '#{locale}' " \
+      "LIMIT 1"
+    )
+
+    return if existing.any?
+
+    ActiveRecord::Base.connection.execute(
+      "INSERT INTO #{quote_table_name(table_name)} " \
+      "(locale, key, value, translatable_type, translatable_id, created_at, updated_at) " \
+      "VALUES ('#{locale}', '#{key}', '#{ActiveRecord::Base.connection.quote(value)}', " \
+      "'#{translatable_type}', #{translatable_id}, '#{now}', '#{now}')"
+    )
   end
 
   def down; end
