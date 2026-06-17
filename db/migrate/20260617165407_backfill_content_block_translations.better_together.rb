@@ -46,19 +46,14 @@ class BackfillContentBlockTranslations < ActiveRecord::Migration[7.2]
 
       blocks.each do |row|
         block_id = row['id']
-        content_data = JSON.parse(row['content_data'] || '{}')
+        raw = row['content_data']
+        content_data = raw.is_a?(Hash) ? raw : JSON.parse(raw || '{}')
 
         fields.each do |field|
           value = content_data[field]
           next if value.blank?
 
-          insert_translation(
-            'mobility_string_translations',
-            block_id,
-            field,
-            value,
-            locale
-          )
+          insert_translation('mobility_string_translations', block_id, field, value, locale)
         end
       end
     end
@@ -72,32 +67,27 @@ class BackfillContentBlockTranslations < ActiveRecord::Migration[7.2]
 
       blocks.each do |row|
         block_id = row['id']
-        content_data = JSON.parse(row['content_data'] || '{}')
+        raw = row['content_data']
+        content_data = raw.is_a?(Hash) ? raw : JSON.parse(raw || '{}')
 
         fields.each do |field|
           value = content_data[field]
           next if value.blank?
 
-          insert_translation(
-            'mobility_text_translations',
-            block_id,
-            field,
-            value,
-            locale
-          )
+          insert_translation('mobility_text_translations', block_id, field, value, locale)
         end
       end
     end
   end
 
   def insert_translation(table_name, translatable_id, key, value, locale)
+    conn = ActiveRecord::Base.connection
     translatable_type = 'BetterTogether::Content::Block'
 
-    # Check if translation already exists
-    existing = ActiveRecord::Base.connection.execute(
+    existing = conn.execute(
       "SELECT id FROM #{quote_table_name(table_name)} " \
       "WHERE translatable_type = '#{translatable_type}' " \
-      "AND translatable_id = #{translatable_id} " \
+      "AND translatable_id = '#{translatable_id}' " \
       "AND key = '#{key}' " \
       "AND locale = '#{locale}' " \
       "LIMIT 1"
@@ -105,11 +95,11 @@ class BackfillContentBlockTranslations < ActiveRecord::Migration[7.2]
 
     return if existing.any?
 
-    ActiveRecord::Base.connection.execute(
+    conn.execute(
       "INSERT INTO #{quote_table_name(table_name)} " \
       "(locale, key, value, translatable_type, translatable_id, created_at, updated_at) " \
-      "VALUES ('#{locale}', '#{key}', '#{ActiveRecord::Base.connection.quote(value)}', " \
-      "'#{translatable_type}', #{translatable_id}, NOW(), NOW())"
+      "VALUES ('#{locale}', '#{key}', #{conn.quote(value)}, " \
+      "'#{translatable_type}', '#{translatable_id}', NOW(), NOW())"
     )
   end
 
