@@ -10,7 +10,7 @@ primary_repo_root="$(cd "$(dirname "$git_common_dir")" && pwd)"
 # Better Together Rails uses fixed service/container names for the shared dev
 # database, Redis, and Elasticsearch services. Secondary git worktrees must
 # reuse the primary compose project instead of inventing a per-worktree one.
-export COMPOSE_PROJECT_NAME="${COMPOSE_PROJECT_NAME:-better-together-rails}"
+export COMPOSE_PROJECT_NAME="${COMPOSE_PROJECT_NAME:-better-together}"
 
 sanitize_slug() {
   printf '%s' "$1" | tr '[:upper:]' '[:lower:]' | sed -E 's/[^a-z0-9]+/_/g; s/^_+//; s/_+$//'
