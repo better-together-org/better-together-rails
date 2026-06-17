@@ -91,7 +91,6 @@ class BackfillContentBlockTranslations < ActiveRecord::Migration[7.2]
   end
 
   def insert_translation(table_name, translatable_id, key, value, locale)
-    now = Time.current.to_s(:db)
     translatable_type = 'BetterTogether::Content::Block'
 
     # Check if translation already exists
@@ -110,7 +109,7 @@ class BackfillContentBlockTranslations < ActiveRecord::Migration[7.2]
       "INSERT INTO #{quote_table_name(table_name)} " \
       "(locale, key, value, translatable_type, translatable_id, created_at, updated_at) " \
       "VALUES ('#{locale}', '#{key}', '#{ActiveRecord::Base.connection.quote(value)}', " \
-      "'#{translatable_type}', #{translatable_id}, '#{now}', '#{now}')"
+      "'#{translatable_type}', #{translatable_id}, NOW(), NOW())"
     )
   end
 
