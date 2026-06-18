@@ -1,7 +1,7 @@
 GIT
   remote: https://github.com/better-together-org/community-engine-rails.git
-  revision: 9fde3e85a95112977d77412f1cbe955182c8ad22
-  ref: 9fde3e85a95112977d77412f1cbe955182c8ad22
+  revision: 272073ed4acc9f2055ca7c7f27c70a6b162348ee
+  ref: 272073ed4acc9f2055ca7c7f27c70a6b162348ee
   specs:
     better_together (0.10.1)
       active_storage_svg_sanitizer
@@ -175,7 +175,7 @@ GEM
       mime-types (>= 2.99)
       unf
     ast (2.4.3)
-    auth-sanitizer (0.2.1)
+    auth-sanitizer (0.2.2)
       version_gem (~> 1.1, >= 1.1.10)
     aws-eventstream (1.4.0)
     aws-partitions (1.1247.0)
@@ -415,7 +415,7 @@ GEM
     htmlentities (4.4.2)
     humanize_boolean (0.0.2)
       i18n
-    i18n (1.15.0)
+    i18n (1.15.1)
       concurrent-ruby (~> 1.0)
     i18n-tasks (1.1.2)
       activesupport (>= 4.0.2)
@@ -534,9 +534,9 @@ GEM
     net-smtp (0.5.1)
       net-protocol
     nio4r (2.7.5)
-    nokogiri (1.19.3-aarch64-linux-gnu)
+    nokogiri (1.19.4-aarch64-linux-gnu)
       racc (~> 1.4)
-    nokogiri (1.19.3-x86_64-linux-gnu)
+    nokogiri (1.19.4-x86_64-linux-gnu)
       racc (~> 1.4)
     noticed (3.0.0)
       rails (>= 6.1.0)
