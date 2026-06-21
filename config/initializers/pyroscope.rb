@@ -21,7 +21,11 @@ Rails.application.config.after_initialize do
   service_name = ENV.fetch('BETTER_TOGETHER_OBSERVABILITY_SERVICE_NAME', 'communityengine.app')
   observability_app = ENV.fetch('BTS_OBSERVABILITY_APP', ENV.fetch('DOKKU_APP_NAME', 'communityengine'))
   host_name = ENV.fetch('HOSTNAME', Socket.gethostname)
-  role_name = ENV.fetch('BETTER_TOGETHER_PYROSCOPE_ROLE', 'web')
+  role_name = if $PROGRAM_NAME.include?('sidekiq')
+                'worker'
+              else
+                ENV.fetch('BETTER_TOGETHER_PYROSCOPE_ROLE', 'web')
+              end
 
   Pyroscope.configure do |config|
     config.application_name = service_name
