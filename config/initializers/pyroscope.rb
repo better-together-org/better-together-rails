@@ -28,7 +28,9 @@ Rails.application.config.after_initialize do
               end
 
   Pyroscope.configure do |config|
-    config.application_name = service_name
+    # Pyroscope 1.x parses the suffix after the last dot as the profile type.
+    # 'communityengine.app' → type='app' (invalid). Use observability_app + '.cpu'.
+    config.application_name = "#{observability_app}.cpu"
     config.server_address = server_address
     config.autoinstrument_rails = true
     config.report_pid = true
