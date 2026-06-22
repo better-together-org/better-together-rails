@@ -51,15 +51,25 @@ begin
         c.use 'OpenTelemetry::Instrumentation::Sidekiq'
       end
 
-      # The Rack instrumentation Railtie registers its middleware-insertion
-      # initializer during SDK.configure, but Rails won't pick up Railtie
-      # initializers added mid-run. Insert the middleware explicitly so HTTP
-      # request spans reach Tempo.
-      rack_inst = OpenTelemetry::Instrumentation::Rack::Instrumentation.instance
-      Rails.application.middleware.insert_before(
-        ActionDispatch::RequestId,
-        *rack_inst.middleware_args
-      )
+      # The Rack instrumentation's install block may not fully load its
+      # middleware files when invoked as a Rails dependency (require_relative
+      # returning false trips the installed? guard). Require explicitly and
+      # insert before ActionDispatch::RequestId so HTTP spans reach Tempo.
+      # Rack::Events (Rack 2.x) is preferred; TracerMiddleware is the fallback.
+      if defined?(Rack::Events)
+        require 'opentelemetry/instrumentation/rack/middlewares/stable/event_handler'
+        Rails.application.middleware.insert_before(
+          ActionDispatch::RequestId,
+          Rack::Events,
+          [OpenTelemetry::Instrumentation::Rack::Middlewares::Stable::EventHandler.new]
+        )
+      else
+        require 'opentelemetry/instrumentation/rack/middlewares/stable/tracer_middleware'
+        Rails.application.middleware.insert_before(
+          ActionDispatch::RequestId,
+          OpenTelemetry::Instrumentation::Rack::Middlewares::Stable::TracerMiddleware
+        )
+      end
 
       Rails.logger.info("[Observability] OpenTelemetry tracing enabled for #{service_name} -> #{endpoint}")
     end
