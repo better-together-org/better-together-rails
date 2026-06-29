@@ -1,7 +1,7 @@
 GIT
   remote: https://github.com/better-together-org/community-engine-rails.git
-  revision: 0b607a677904a5cb6c91a27e318dd798c576ed1c
-  ref: 0b607a677904a5cb6c91a27e318dd798c576ed1c
+  revision: 96cf8f29f48831d85cd4ce11aa06225d9c03a497
+  ref: 96cf8f29f48831d85cd4ce11aa06225d9c03a497
   specs:
     better_together (0.10.1)
       active_storage_svg_sanitizer
@@ -901,7 +901,7 @@ GEM
       simplecov_json_formatter (~> 0.1)
     simplecov-html (0.12.3)
     simplecov_json_formatter (0.1.4)
-    sitemap_generator (7.0.1)
+    sitemap_generator (7.0.2)
       builder (~> 3.0)
     snaky_hash (2.0.6)
       hashie (>= 0.1.0, < 6)
