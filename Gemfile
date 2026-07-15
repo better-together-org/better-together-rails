@@ -9,17 +9,12 @@ gem 'asset_sync'
 gem 'aws-sdk-s3', require: false
 
 # Use the published version of better_together for production
-# TEMPORARY: pinned to the mounted local checkout because GitHub push access is
-# blocked on Deck card #8710 (expired gh auth), so ref 530e0137b (native Ruby
-# content-security scanner) isn't resolvable via github:/ref: yet. Swap back to
-# github: 'better-together-org/community-engine-rails', ref: '530e0137b6b6b6c967c60af36b2621f48760a6a8'
-# and regenerate Gemfile.lock once that commit is pushed.
-# gem 'better_together', '~> 0.10',
-#     github: 'better-together-org/community-engine-rails',
-#     ref: 'a5f4eab70a48c5432f5465dd9d83b3145d3af444'
+gem 'better_together', '~> 0.10',
+    github: 'better-together-org/community-engine-rails',
+    ref: 'f81fdd4ac7b2c98b94ce74296dcc4b0c7eaaff32'
 
 # Use the local development version of better_together
-gem 'better_together', path: '/community-engine'
+# gem 'better_together', path: '/community-engine'
 
 # bcrypt for secure password handling
 gem 'bcrypt', '~> 3.1.21'
