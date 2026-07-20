@@ -322,7 +322,7 @@ GEM
       dry-inflector (~> 1.0)
       dry-logic (~> 1.4)
       zeitwerk (~> 2.6)
-    easy_translate (0.5.1)
+    easy_translate (0.5.2)
       thread
       thread_safe
     elastic-transport (8.4.1)
