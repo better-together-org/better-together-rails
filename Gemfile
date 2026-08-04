@@ -41,7 +41,7 @@ gem 'rack-mini-profiler'
 gem 'rails', '~> 8.0.5'
 
 # Redis for ActionCable and background jobs
-gem 'redis', '~> 5.4'
+gem 'redis', '~> 6.0'
 
 gem 'connection_pool', '~> 3.0.2'
 gem 'sidekiq', '~> 8.1.6'
