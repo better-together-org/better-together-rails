@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2026_08_11_012946) do
+ActiveRecord::Schema[8.0].define(version: 2026_08_15_233151) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
   enable_extension "pgcrypto"
@@ -581,6 +581,7 @@ ActiveRecord::Schema[8.0].define(version: 2026_08_11_012946) do
     t.boolean "protected", default: false, null: false
     t.uuid "platform_id"
     t.index ["creator_id"], name: "by_better_together_content_blocks_creator"
+    t.index ["identifier", "platform_id"], name: "idx_bt_content_blocks_on_identifier_platform_id", unique: true, where: "((platform_id IS NOT NULL) AND ((identifier)::text <> ''::text))"
     t.index ["platform_id"], name: "index_better_together_content_blocks_on_platform_id"
     t.index ["privacy"], name: "by_better_together_content_blocks_privacy"
   end
