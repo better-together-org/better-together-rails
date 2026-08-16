@@ -1,7 +1,7 @@
 GIT
   remote: https://github.com/better-together-org/community-engine-rails.git
-  revision: 8e4c3afcdfccaf12d7bde4f86d7b64a44e119fe3
-  ref: 8e4c3afcdfccaf12d7bde4f86d7b64a44e119fe3
+  revision: e8d7cc9f990cf49b6206356853d0e7d595e130ee
+  ref: e8d7cc9f990cf49b6206356853d0e7d595e130ee
   specs:
     better_together (0.10.1)
       active_storage_svg_sanitizer
@@ -144,7 +144,7 @@ GEM
       activemodel (= 8.0.5.1)
       activesupport (= 8.0.5.1)
       timeout (>= 0.4.0)
-    activerecord-import (2.2.0)
+    activerecord-import (2.3.0)
       activerecord (>= 4.2)
     activerecord-postgis-adapter (11.0.0)
       activerecord (~> 8.0.0)
@@ -294,7 +294,7 @@ GEM
       declarative (>= 0.0.9, < 1.0.0)
       representable (>= 3.1.1, < 4)
     docile (1.4.1)
-    doorkeeper (5.9.5)
+    doorkeeper (5.9.6)
       railties (>= 5)
     drb (2.2.3)
     dry-auto_inject (1.2.1)
@@ -671,7 +671,7 @@ GEM
       ffi
     raabro (1.5.0)
     racc (1.8.1)
-    rack (3.2.6)
+    rack (3.2.7)
     rack-attack (6.8.0)
       rack (>= 1.0, < 4)
     rack-cors (3.0.0)
@@ -919,8 +919,8 @@ GEM
     spring-watcher-listen (2.1.0)
       listen (>= 2.7, < 4.0)
       spring (>= 4)
-    sprockets (4.2.2)
-      concurrent-ruby (~> 1.0)
+    sprockets (4.3.0)
+      concurrent-ruby (~> 1.1)
       logger
       rack (>= 2.2.4, < 4)
     sprockets-rails (3.5.2)
