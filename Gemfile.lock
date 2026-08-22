@@ -1,7 +1,7 @@
 GIT
   remote: https://github.com/better-together-org/community-engine-rails.git
-  revision: 89bc3615043471dcb5a7a94ebda91b4b73e9154c
-  ref: 89bc3615043471dcb5a7a94ebda91b4b73e9154c
+  revision: 50e262fb34e0881e36127e4b939a7512d7f34504
+  ref: 50e262fb34e0881e36127e4b939a7512d7f34504
   specs:
     better_together (0.10.1)
       active_storage_svg_sanitizer
@@ -129,7 +129,7 @@ GEM
       rails-html-sanitizer (~> 1.6)
     active_storage_svg_sanitizer (0.1.0)
       rails (>= 5.2)
-    active_storage_validations (4.0.0)
+    active_storage_validations (4.1.0)
       activejob (>= 7.0.1)
       activemodel (>= 7.0.1)
       activestorage (>= 7.0.1)
@@ -402,10 +402,10 @@ GEM
       csv (>= 3.0.0)
     globalid (1.4.0)
       activesupport (>= 6.1)
-    google-protobuf (4.35.1-aarch64-linux-gnu)
+    google-protobuf (4.36.0-aarch64-linux-gnu)
       bigdecimal
       rake (~> 13.3)
-    google-protobuf (4.35.1-x86_64-linux-gnu)
+    google-protobuf (4.36.0-x86_64-linux-gnu)
       bigdecimal
       rake (~> 13.3)
     googleapis-common-protos-types (1.22.0)
@@ -641,7 +641,7 @@ GEM
     popper_js (2.11.8)
     pp (0.6.4)
       prettyprint
-    premailer (1.29.0)
+    premailer (1.30.0)
       addressable
       css_parser (>= 1.19.0)
       htmlentities (>= 4.0.0)
@@ -677,7 +677,7 @@ GEM
     rack-cors (3.0.0)
       logger
       rack (>= 3.0.14)
-    rack-mini-profiler (4.0.1)
+    rack-mini-profiler (5.0.0)
       rack (>= 1.2.0)
     rack-protection (4.2.1)
       base64 (>= 0.1.0)
@@ -864,9 +864,9 @@ GEM
     rubyzip (3.4.1)
     rufus-scheduler (3.9.2)
       fugit (~> 1.1, >= 1.11.1)
-    sass-embedded (1.102.0-aarch64-linux-gnu)
+    sass-embedded (1.103.1-aarch64-linux-gnu)
       google-protobuf (~> 4.31)
-    sass-embedded (1.102.0-x86_64-linux-gnu)
+    sass-embedded (1.103.1-x86_64-linux-gnu)
       google-protobuf (~> 4.31)
     sassc (2.4.0)
       ffi (~> 1.9)
@@ -919,7 +919,7 @@ GEM
     spring-watcher-listen (2.1.0)
       listen (>= 2.7, < 4.0)
       spring (>= 4)
-    sprockets (4.3.0)
+    sprockets (4.4.0)
       concurrent-ruby (~> 1.1)
       logger
       rack (>= 2.2.4, < 4)
@@ -939,7 +939,7 @@ GEM
     thor (1.5.0)
     thread (0.2.2)
     thread_safe (0.3.6)
-    tilt (2.8.0)
+    tilt (2.9.0)
     timeout (0.6.1)
     tins (1.54.0)
       bigdecimal

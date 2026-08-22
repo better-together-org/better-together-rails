@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2026_08_15_233151) do
+ActiveRecord::Schema[8.0].define(version: 2026_08_22_221824) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
   enable_extension "pgcrypto"
@@ -1130,7 +1130,7 @@ ActiveRecord::Schema[8.0].define(version: 2026_08_15_233151) do
   end
 
   create_table "better_together_inbound_email_messages", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
-    t.uuid "inbound_email_id", null: false
+    t.uuid "inbound_email_id"
     t.string "route_kind", null: false
     t.string "status", default: "received", null: false
     t.string "target_type"
@@ -2830,7 +2830,7 @@ ActiveRecord::Schema[8.0].define(version: 2026_08_15_233151) do
   add_foreign_key "better_together_geography_states", "better_together_communities", column: "community_id"
   add_foreign_key "better_together_geography_states", "better_together_geography_countries", column: "country_id"
   add_foreign_key "better_together_identifications", "better_together_platforms", column: "platform_id"
-  add_foreign_key "better_together_inbound_email_messages", "action_mailbox_inbound_emails", column: "inbound_email_id"
+  add_foreign_key "better_together_inbound_email_messages", "action_mailbox_inbound_emails", column: "inbound_email_id", on_delete: :nullify
   add_foreign_key "better_together_inbound_email_messages", "better_together_platforms", column: "platform_id"
   add_foreign_key "better_together_inbound_email_reply_tokens", "better_together_people", column: "recipient_id"
   add_foreign_key "better_together_inbound_email_reply_tokens", "better_together_platforms", column: "platform_id"
