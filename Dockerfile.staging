@@ -6,7 +6,7 @@
 #   - Active Storage uses disk (ACTIVE_STORAGE_SERVICE=local)
 
 # Stage 1: Build libxml2
-FROM ruby:3.4.4-slim AS libxml2-bin
+FROM ruby:3.4.10-slim AS libxml2-bin
 
 RUN apt-get update -qq \
   && apt-get install -y --no-install-recommends build-essential wget tar gcc pkg-config python3-dev xz-utils \
@@ -23,7 +23,7 @@ RUN ./configure --prefix=/opt/libxml2 PYTHON=/usr/bin/python3 \
   && rm -rf /tmp/libxml2 /tmp/libxml2.tar.xz
 
 # Stage 2: Build environment
-FROM ruby:3.4.4-slim AS builder
+FROM ruby:3.4.10-slim AS builder
 
 # Install build dependencies (no sentry-cli)
 RUN apt-get update -qq \
@@ -56,7 +56,7 @@ ENV SKIP_ASSET_SYNC=true
 RUN bundle exec rake assets:precompile
 
 # Stage 3: Runtime environment
-FROM ruby:3.4.4 AS app-host
+FROM ruby:3.4.10 AS app-host
 
 # Install runtime dependencies (no sentry-cli)
 RUN apt-get update -qq \
