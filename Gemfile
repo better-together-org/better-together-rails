@@ -3,7 +3,7 @@
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-ruby '3.4.4'
+ruby '3.4.10'
 
 gem 'asset_sync'
 gem 'aws-sdk-s3', require: false
@@ -11,7 +11,7 @@ gem 'aws-sdk-s3', require: false
 # Use the published version of better_together for production
 gem 'better_together', '~> 0.10',
     github: 'better-together-org/community-engine-rails',
-    ref: '3cc89f0e82c33e6b9a3552f0296d8eed4a49c7f8'
+    ref: '320cfcfe3080f1f0a6d7bf0e7e0a54bbfe5b1d71'
 
 # Use the local development version of better_together
 # gem 'better_together', path: '/community-engine'
