@@ -73,6 +73,12 @@ module BetterTogether
 
     config.time_zone = ENV.fetch('APP_TIME_ZONE', 'Newfoundland')
 
+    # Accepts inbound mail relayed from the BTS mail-receiver via the built-in
+    # Rails relay ingress controller (POST /rails/action_mailbox/relay/inbound_emails,
+    # HTTP Basic Auth, username "actionmailbox"). Password comes from ENV per the
+    # BTS secrets convention rather than Rails encrypted credentials.
+    config.action_mailbox.ingress = :relay
+
     # Add engine manifest to precompile assets in production
     initializer 'assets' do |app|
       # Ensure we are not modifying frozen arrays

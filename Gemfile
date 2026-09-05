@@ -3,7 +3,7 @@
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-ruby '3.4.4'
+ruby '3.4.10'
 
 gem 'asset_sync'
 gem 'aws-sdk-s3', require: false
@@ -11,7 +11,7 @@ gem 'aws-sdk-s3', require: false
 # Use the published version of better_together for production
 gem 'better_together', '~> 0.10',
     github: 'better-together-org/community-engine-rails',
-    ref: '92a9420e721712fa5e72ba0a6695113f762dc20f'
+    ref: '731bd6961808152265607d7b687da7bbca60ed34'
 
 # Use the local development version of better_together
 # gem 'better_together', path: '/community-engine'
@@ -47,6 +47,11 @@ gem 'connection_pool', '~> 3.0.2'
 gem 'sidekiq', '~> 8.1.6'
 
 # Error and performance monitoring with Sentry
+gem 'opentelemetry-exporter-otlp', '~> 0.33.0'
+gem 'opentelemetry-instrumentation-rails', '~> 0.41.0'
+gem 'opentelemetry-instrumentation-sidekiq', '~> 0.29.0'
+gem 'opentelemetry-sdk', '~> 1.11.0'
+gem 'pyroscope', '~> 1.0'
 gem 'sentry-rails'
 gem 'sentry-ruby'
 gem 'stackprof'

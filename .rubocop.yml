@@ -7,7 +7,8 @@ AllCops:
     - 'db/schema.rb'
     - 'db/migrate/*.better_together.rb'
     - 'vendor/**/*'
-    - 'worktrees/**/*'
+    - 'tmp/**/*'               # CI compat copies and build artifacts
+    - 'worktrees/**/*'         # git worktrees — checked-out branches, not project source
   NewCops: enable
 Style/StringLiterals:
   Exclude:

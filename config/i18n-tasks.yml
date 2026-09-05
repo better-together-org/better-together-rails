@@ -1,0 +1,47 @@
+# config/i18n-tasks.yml
+base_locale: en
+
+locales:
+  - en
+
+data:
+  read:
+    - config/locales/%{locale}.yml
+    - config/locales/**/%{locale}.yml
+  write:
+    - config/locales/%{locale}.yml
+
+search:
+  paths:
+    - app
+    - lib
+    - config
+  only:
+    - "*.rb"
+    - "*.erb"
+    - "*.haml"
+    - "*.slim"
+    - "*.js"
+    - "*.yml"
+  exclude:
+    - "spec/**"
+    - "test/**"
+    - "tmp/**"
+    - "log/**"
+    - "vendor/**"
+    - "coverage/**"
+
+ignore_unused:
+  - "actions.*"
+  - "date.**"
+  - "datetime.**"
+  - "errors.**"
+  - "helpers.**"
+  - "number.**"
+  - "support.**"
+  - "time.**"
+  - "activerecord.attributes.**"
+  - "activerecord.errors.**"
+  - "activerecord.errors.messages.**"
+  - "activerecord.errors.models.**"
+  - "activerecord.models.**"
