@@ -1,7 +1,7 @@
 GIT
   remote: https://github.com/better-together-org/community-engine-rails.git
-  revision: daac7f285a4758f02c39e4bc37b132f94dc0d8d0
-  ref: daac7f285a4758f02c39e4bc37b132f94dc0d8d0
+  revision: 731bd6961808152265607d7b687da7bbca60ed34
+  ref: 731bd6961808152265607d7b687da7bbca60ed34
   specs:
     better_together (0.10.1)
       active_storage_svg_sanitizer
@@ -49,6 +49,7 @@ GIT
       rails (>= 7.2, < 8.2)
       redcarpet (~> 3.6)
       reform-rails (>= 0.2, < 0.4)
+      rgeo-geojson
       rswag (>= 2.3.1, < 2.18.0)
       ruby-vips (~> 2.2)
       ruby_llm
@@ -773,6 +774,9 @@ GEM
     rgeo-activerecord (8.0.0)
       activerecord (>= 7.0)
       rgeo (>= 3.0)
+    rgeo-geojson (2.2.0)
+      multi_json (~> 1.15)
+      rgeo (>= 1.0.0)
     rouge (4.2.1)
     rspec (3.13.2)
       rspec-core (~> 3.13.0)
