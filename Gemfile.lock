@@ -534,7 +534,7 @@ GEM
     mobility-actiontext (1.1.1)
       actiontext (>= 6.0)
       mobility (~> 1.2)
-    msgpack (1.8.3)
+    msgpack (1.8.5)
     multi_json (1.20.1)
     multi_xml (0.9.1)
       bigdecimal (>= 3.1, < 5)
@@ -684,7 +684,7 @@ GEM
       logger
       prism (>= 1.6.0)
       tsort
-    rbtrace (0.5.4)
+    rbtrace (0.5.5)
       ffi (>= 1.0.6)
       msgpack (>= 0.4.3)
       optimist (>= 3.0.0)
