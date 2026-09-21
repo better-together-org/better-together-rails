@@ -1,7 +1,7 @@
 GIT
   remote: https://github.com/better-together-org/community-engine-rails.git
-  revision: fed1750adfd3b2515507adcd348abaa8b1c5eb42
-  ref: fed1750adfd3b2515507adcd348abaa8b1c5eb42
+  revision: e185f50f6358b1d26bf617ecacf01d592b25be53
+  ref: e185f50f6358b1d26bf617ecacf01d592b25be53
   specs:
     better_together (0.10.1)
       active_storage_svg_sanitizer
@@ -254,7 +254,7 @@ GEM
       thor (>= 1.5)
       tins (>= 1.54)
     crass (1.0.7)
-    css_parser (3.1.0)
+    css_parser (3.2.0)
       addressable
       base64
       ssrf_filter (~> 1.5)
@@ -295,7 +295,6 @@ GEM
     disposable (0.6.3)
       declarative (>= 0.0.9, < 1.0.0)
       representable (>= 3.1.1, < 4)
-    docile (1.4.1)
     doorkeeper (5.9.7)
       railties (>= 5)
     drb (2.2.3)
@@ -404,10 +403,10 @@ GEM
       csv (>= 3.0.0)
     globalid (1.4.0)
       activesupport (>= 6.1)
-    google-protobuf (4.36.1-aarch64-linux-gnu)
+    google-protobuf (4.36.2-aarch64-linux-gnu)
       bigdecimal
       rake (~> 13.3)
-    google-protobuf (4.36.1-x86_64-linux-gnu)
+    google-protobuf (4.36.2-x86_64-linux-gnu)
       bigdecimal
       rake (~> 13.3)
     googleapis-common-protos-types (1.22.0)
@@ -643,7 +642,7 @@ GEM
     popper_js (2.11.8)
     pp (0.6.4)
       prettyprint
-    premailer (1.30.0)
+    premailer (1.31.0)
       addressable
       css_parser (>= 1.19.0)
       htmlentities (>= 4.0.0)
@@ -911,11 +910,6 @@ GEM
     simple_calendar (3.1.0)
       rails (>= 6.1)
     simplecov (1.1.0)
-      docile (~> 1.1)
-      simplecov-html (~> 0.11)
-      simplecov_json_formatter (~> 0.1)
-    simplecov-html (0.13.2)
-    simplecov_json_formatter (0.1.4)
     sitemap_generator (7.1.1)
       builder (~> 3.0)
     snaky_hash (2.0.7)
@@ -1069,4 +1063,4 @@ RUBY VERSION
    ruby 3.4.10p104
 
 BUNDLED WITH
-   2.6.7
+   2.6.9
