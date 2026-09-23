@@ -14,7 +14,7 @@ RSpec.describe 'BetterTogether error reporting' do
     expect(reporter).to be_present
   end
 
-  # rubocop:disable RSpec/ExampleLength
+  # rubocop:disable-next RSpec/ExampleLength
   it 'emits a structured CE exception event for the local observability stack' do
     payload = nil
     allow(logger).to receive(:error) { |value| payload = JSON.parse(value) }
@@ -52,5 +52,4 @@ RSpec.describe 'BetterTogether error reporting' do
       'exception_message' => 'boom line 2'
     )
   end
-  # rubocop:enable RSpec/ExampleLength
 end

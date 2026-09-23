@@ -44,7 +44,7 @@ gem 'rails', '~> 8.0.5'
 gem 'redis', '~> 6.0'
 
 gem 'connection_pool', '~> 3.0.2'
-gem 'sidekiq', '~> 8.1.6'
+gem 'sidekiq', '~> 8.1.7'
 
 # Error and performance monitoring with Sentry
 gem 'opentelemetry-exporter-otlp', '~> 0.33.0'

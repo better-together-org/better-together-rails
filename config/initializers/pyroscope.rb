@@ -2,7 +2,7 @@
 
 require 'socket'
 
-# rubocop:disable Metrics/BlockLength
+# rubocop:disable-next Metrics/BlockLength
 Rails.application.config.after_initialize do
   enabled = ActiveModel::Type::Boolean.new.cast(ENV.fetch('BETTER_TOGETHER_PYROSCOPE_ENABLED', nil))
   next unless enabled
@@ -47,4 +47,3 @@ Rails.application.config.after_initialize do
 rescue StandardError => e
   Rails.logger.error("[Observability] Pyroscope init failed #{e.class}: #{e.message}")
 end
-# rubocop:enable Metrics/BlockLength

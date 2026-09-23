@@ -2,7 +2,7 @@
 
 require 'socket'
 
-# rubocop:disable Metrics/BlockLength
+# rubocop:disable-next Metrics/BlockLength
 Rails.application.config.after_initialize do
   observability_app = ENV.fetch('BTS_OBSERVABILITY_APP', ENV.fetch('DOKKU_APP_NAME', 'communityengine'))
   service_name = ENV.fetch('BETTER_TOGETHER_OBSERVABILITY_SERVICE_NAME', 'communityengine.app')
@@ -69,4 +69,3 @@ Rails.application.config.after_initialize do
     end
   end
 end
-# rubocop:enable Metrics/BlockLength
