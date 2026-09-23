@@ -3,6 +3,8 @@
 # This migration comes from better_together (originally 20260522110000)
 class CreateBetterTogetherFeatureAccessGrants < ActiveRecord::Migration[7.1]
   def change
+    return if table_exists?(:better_together_feature_access_grants)
+
     create_table :better_together_feature_access_grants, id: :uuid do |t|
       t.integer :lock_version, null: false, default: 0
       t.references :platform, null: false, type: :uuid, foreign_key: { to_table: :better_together_platforms }
