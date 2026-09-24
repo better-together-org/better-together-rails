@@ -79,6 +79,19 @@ module BetterTogether
     # BTS secrets convention rather than Rails encrypted credentials.
     config.action_mailbox.ingress = :relay
 
+    # CE engine's own better_together.configure_active_job initializer force-sets
+    # queue_adapter = :sidekiq. config/environments/test.rb's plain assignment to
+    # :test gets clobbered because engine initializers run after environment
+    # config loads, and a config.after_initialize override isn't late enough
+    # either: in CI (config.eager_load = ENV['CI'].present?), eager loading
+    # resolves ActiveJob::Base's queue_adapter for keeps before after_initialize
+    # callbacks run. An ordered initializer in the same group, scheduled right
+    # after the engine's, wins outright regardless of eager_load timing.
+    initializer 'better_together_rails.force_test_queue_adapter',
+                after: 'better_together.configure_active_job' do |app|
+      app.config.active_job.queue_adapter = :test if Rails.env.test?
+    end
+
     # Add engine manifest to precompile assets in production
     initializer 'assets' do |app|
       # Ensure we are not modifying frozen arrays
