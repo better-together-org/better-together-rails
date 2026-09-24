@@ -64,6 +64,10 @@ Rails.application.configure do
   config.active_record.encryption.support_unencrypted_data = true
   config.active_record.encryption.extend_queries = true
 
+  # Forced to :test for real by an ordered initializer in application.rb --
+  # see the comment there for why a plain assignment here doesn't stick.
+  config.active_job.queue_adapter = :test
+
   if defined?(FactoryBot)
     config.to_prepare do
       FactoryBot.definition_file_paths << File.join(BetterTogether::Engine.root, 'spec', 'factories')

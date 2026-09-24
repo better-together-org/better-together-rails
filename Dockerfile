@@ -2,7 +2,7 @@
 # When pushed to dokku via git, it detects this Dockerfile and automatically chooses Docker build
 
 # Stage 1: Build libxml2
-FROM ruby:3.4.4-slim AS libxml2-bin
+FROM ruby:3.4.10-slim AS libxml2-bin
 
 RUN apt-get update -qq \
   && apt-get install -y --no-install-recommends build-essential wget tar gcc pkg-config python3-dev xz-utils \
@@ -19,7 +19,7 @@ RUN ./configure --prefix=/opt/libxml2 PYTHON=/usr/bin/python3 \
   && rm -rf /tmp/libxml2 /tmp/libxml2.tar.xz
 
 # Stage 2: Build environment
-FROM ruby:3.4.4-slim AS builder
+FROM ruby:3.4.10-slim AS builder
 
 # Define build-time variables (will be passed as build args)
 ARG FOG_DIRECTORY
@@ -27,8 +27,10 @@ ARG FOG_HOST
 ARG FOG_REGION
 ARG ASSET_HOST
 ARG CDN_DISTRIBUTION_ID
+ARG ASSET_SYNC_ENABLED=""
 ARG AWS_ACCESS_KEY_ID=""
 ARG AWS_SECRET_ACCESS_KEY=""
+ARG SKIP_ASSET_SYNC=""
 
 # Set environment variables for asset precompilation
 ENV FOG_DIRECTORY=${FOG_DIRECTORY}
@@ -36,8 +38,12 @@ ENV FOG_HOST=${FOG_HOST}
 ENV FOG_REGION=${FOG_REGION}
 ENV ASSET_HOST=${ASSET_HOST}
 ENV CDN_DISTRIBUTION_ID=${CDN_DISTRIBUTION_ID}
+ENV ASSET_SYNC_ENABLED=${ASSET_SYNC_ENABLED}
 ENV AWS_ACCESS_KEY_ID=${AWS_ACCESS_KEY_ID}
 ENV AWS_SECRET_ACCESS_KEY=${AWS_SECRET_ACCESS_KEY}
+# Production builds publish digested assets to AWS by default. Keep an explicit
+# override for exceptional builds instead of forcing sync off globally.
+ENV SKIP_ASSET_SYNC=${SKIP_ASSET_SYNC}
 
 # Install dependencies
 RUN apt-get update -qq \
@@ -74,7 +80,7 @@ COPY . .
 RUN bundle exec rake assets:precompile
 
 # Stage 3: Runtime environment
-FROM ruby:3.4.4 AS app-host
+FROM ruby:3.4.10 AS app-host
 
 # Install runtime dependencies
 RUN apt-get update -qq \

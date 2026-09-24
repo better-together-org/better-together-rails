@@ -17,3 +17,31 @@
 import 'controllers';
 
 console.log('initializing new to nl')
+
+function ensureScrollProgressBar() {
+  if (document.getElementById('custom-progress-bar')) return;
+
+  const progressBar = document.createElement('div');
+  progressBar.id = 'custom-progress-bar';
+  document.body.appendChild(progressBar);
+}
+
+function updateScrollProgressBar() {
+  const progressBar = document.getElementById('custom-progress-bar');
+  if (!progressBar) return;
+
+  const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+  const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+  const scrolled = height > 0 ? (winScroll / height) * 100 : 0;
+
+  progressBar.style.width = `${scrolled}%`;
+}
+
+function initializeScrollProgressBar() {
+  ensureScrollProgressBar();
+  updateScrollProgressBar();
+}
+
+window.addEventListener('scroll', updateScrollProgressBar, { passive: true });
+window.addEventListener('load', initializeScrollProgressBar);
+document.addEventListener('turbo:load', initializeScrollProgressBar);

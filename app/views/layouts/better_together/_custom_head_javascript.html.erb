@@ -1,12 +1,13 @@
 
-<% if ENV["GTAG_ID"] %>
+<% if (gtag_id = ENV["GTAG_ID"].presence) %>
+  <% nonce = content_security_policy_nonce %>
   <!-- Google tag (gtag.js) -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=<%= ENV["GTAG_ID"] %>"></script>
-  <script>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=<%= gtag_id %>" nonce="<%= nonce %>"></script>
+  <script nonce="<%= nonce %>">
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
 
-    gtag('config', '<%= ENV["GTAG_ID"] %>');
+    gtag('config', '<%= gtag_id %>');
   </script>
 <% end %>
