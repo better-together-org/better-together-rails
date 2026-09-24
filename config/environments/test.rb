@@ -64,9 +64,8 @@ Rails.application.configure do
   config.active_record.encryption.support_unencrypted_data = true
   config.active_record.encryption.extend_queries = true
 
-  # CE engine sets queue_adapter = :sidekiq unconditionally; override for tests
-  # so perform_later calls don't attempt a Redis connection in CI.
-  config.active_job.queue_adapter = :test
+  # after_initialize outruns the CE engine's own initializer, which force-sets :sidekiq later.
+  config.after_initialize { config.active_job.queue_adapter = :test }
 
   if defined?(FactoryBot)
     config.to_prepare do
