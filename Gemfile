@@ -48,7 +48,7 @@ gem 'sidekiq', '~> 8.1.7'
 
 # Error and performance monitoring with Sentry
 gem 'opentelemetry-exporter-otlp', '~> 0.33.0'
-gem 'opentelemetry-instrumentation-rails', '~> 0.41.0'
+gem 'opentelemetry-instrumentation-rails', '~> 0.42.0'
 gem 'opentelemetry-instrumentation-sidekiq', '~> 0.29.0'
 gem 'opentelemetry-sdk', '~> 1.11.0'
 gem 'pyroscope', '~> 1.0'
