@@ -41,7 +41,12 @@ gem 'rack-mini-profiler'
 gem 'rails', '~> 8.0.5'
 
 # Redis for ActionCable and background jobs
-gem 'redis', '~> 6.0'
+# Rails' actioncable hardcodes `gem "redis", ">= 4", "< 6"` in its own redis
+# pubsub adapter (action_cable/subscription_adapter/redis.rb) -- 6.0 activates
+# fine at bundle-install time but raises Gem::LoadError the first time
+# ActionCable actually requires that file, e.g. on every channel unsubscribe.
+# Nothing here needs redis 6.x (sidekiq only requires redis-client >= 0.29.0).
+gem 'redis', '~> 5.4'
 
 gem 'connection_pool', '~> 3.0.2'
 gem 'sidekiq', '~> 8.1.7'
