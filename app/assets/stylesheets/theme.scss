@@ -203,7 +203,8 @@ a i.fas, a i.fa {
 /* Custom Turbo Loading Bar Styles */
 .turbo-progress-bar {
   height: 5px; /* Change the height of the loading bar */
-  background: $header-footer-bg; /* Change the color of the loading bar */
+  /* $header-footer-bg matches the sticky nav directly behind this bar -- invisible on top of it. */
+  background: $primary;
   transition: width 0.2s ease-out, opacity 0.2s ease-out; /* Smooth transitions */
 }
 
@@ -214,7 +215,8 @@ a i.fas, a i.fa {
   left: 0;
   width: 0%; /* Initial width (will expand as page scrolls) */
   height: 5px; /* Same height as Turbo's default bar */
-  background: $header-footer-bg; /* You can adjust this color to match your theme */
+  /* $header-footer-bg matches the sticky nav directly behind this bar -- invisible on top of it. */
+  background: $primary;
   z-index: 9999; /* Ensures it stays on top of other elements */
   transition: width 0.2s ease; /* Smooth progress bar transitions */
 }

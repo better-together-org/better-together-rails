@@ -1,8 +1,19 @@
 # frozen_string_literal: true
 
 if defined?(AssetSync)
-  AssetSync.configure do |config|
+  AssetSync.configure do |config| # rubocop:todo Metrics/BlockLength
+    boolean = ActiveModel::Type::Boolean.new
+    asset_sync_enabled = ENV.fetch('ASSET_SYNC_ENABLED', nil)
+    asset_sync_enabled = nil if asset_sync_enabled.to_s.empty?
+    skip_asset_sync =
+      if asset_sync_enabled.nil?
+        boolean.cast(ENV.fetch('SKIP_ASSET_SYNC', nil))
+      else
+        !boolean.cast(asset_sync_enabled)
+      end
+
     config.fog_provider = 'AWS'
+    config.run_on_precompile = !skip_asset_sync
 
     config.aws_access_key_id = ENV.fetch('AWS_ACCESS_KEY_ID', nil)
     config.aws_secret_access_key = ENV.fetch('AWS_SECRET_ACCESS_KEY', nil)
@@ -19,12 +30,12 @@ if defined?(AssetSync)
     # config.aws_reduced_redundancy = true
     # config.aws_signature_version = 4
     # config.aws_acl = nil
-    # For S3-compatible providers (e.g. MinIO), set a custom endpoint via ASSET_SYNC_ENDPOINT
-    # or FOG_HOST. Both are passed as Docker build args so they're available at asset precompile time.
-    # If the region is not a real AWS region (i.e. a MinIO/custom region), FOG_HOST must be set
-    # to the actual S3-compatible endpoint or asset sync will try to resolve a bogus amazonaws.com host.
-    s3_endpoint = ENV.fetch('ASSET_SYNC_ENDPOINT', nil) || ENV.fetch('FOG_HOST', nil)
-    if s3_endpoint && s3_endpoint !~ /amazonaws\.com/i
+    # ASSET_SYNC_ENDPOINT is only set for non-AWS S3-compatible providers.
+    # Do not use FOG_HOST here: in production it is the public CDN hostname,
+    # not an S3 API endpoint.
+    s3_endpoint = ENV.fetch('ASSET_SYNC_ENDPOINT', nil)
+
+    if !skip_asset_sync && s3_endpoint && s3_endpoint !~ /amazonaws\.com/i
       config.fog_host = s3_endpoint
       # MinIO requires path-style access (not virtual-hosted)
       config.fog_options = { path_style: true }

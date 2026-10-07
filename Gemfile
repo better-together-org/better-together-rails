@@ -3,7 +3,7 @@
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-ruby '3.4.4'
+ruby '3.4.10'
 
 gem 'asset_sync'
 gem 'aws-sdk-s3', require: false
@@ -11,7 +11,7 @@ gem 'aws-sdk-s3', require: false
 # Use the published version of better_together for production
 gem 'better_together', '~> 0.10',
     github: 'better-together-org/community-engine-rails',
-    branch: 'main'
+    ref: 'c16101349332c4aa9746f6a5665dfeed882e5ee6'
 
 # Use the local development version of better_together
 # gem 'better_together', path: '/community-engine'
@@ -28,7 +28,7 @@ gem 'ostruct'
 # Database adapter for PostgreSQL
 gem 'pg', '>= 0.18', '< 2.0'
 # Puma as the app server
-gem 'puma', '~> 7.2'
+gem 'puma', '~> 8.0'
 
 # Pundit for authorization, custom fork for Better Together
 gem 'pundit-resources', '~> 1.1.6', github: 'better-together-org/pundit-resources'
@@ -38,15 +38,25 @@ gem 'rack-protection'
 # Rack mini profiler for performance profiling
 gem 'rack-mini-profiler'
 
-gem 'rails', '~> 8.0.4'
+gem 'rails', '~> 8.0.5'
 
 # Redis for ActionCable and background jobs
+# Rails' actioncable hardcodes `gem "redis", ">= 4", "< 6"` in its own redis
+# pubsub adapter (action_cable/subscription_adapter/redis.rb) -- 6.0 activates
+# fine at bundle-install time but raises Gem::LoadError the first time
+# ActionCable actually requires that file, e.g. on every channel unsubscribe.
+# Nothing here needs redis 6.x (sidekiq only requires redis-client >= 0.29.0).
 gem 'redis', '~> 5.4'
 
 gem 'connection_pool', '~> 3.0.2'
-gem 'sidekiq', '~> 8.1.1'
+gem 'sidekiq', '~> 8.1.7'
 
 # Error and performance monitoring with Sentry
+gem 'opentelemetry-exporter-otlp', '~> 0.37.0'
+gem 'opentelemetry-instrumentation-rails', '~> 0.42.0'
+gem 'opentelemetry-instrumentation-sidekiq', '~> 0.29.0'
+gem 'opentelemetry-sdk', '~> 1.13.1'
+gem 'pyroscope', '~> 1.0'
 gem 'sentry-rails'
 gem 'sentry-ruby'
 gem 'stackprof'
