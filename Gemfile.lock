@@ -339,7 +339,7 @@ GEM
     et-orbi (1.4.2)
       tzinfo
     event_stream_parser (1.0.0)
-    excon (1.7.1)
+    excon (1.7.2)
       logger
     execjs (2.10.0)
     factory_bot (6.5.5)
@@ -368,7 +368,7 @@ GEM
       rack (>= 2.0, < 4.0)
     ffi (1.17.4-aarch64-linux-gnu)
     ffi (1.17.4-x86_64-linux-gnu)
-    fog-aws (3.33.3)
+    fog-aws (3.33.4)
       base64 (>= 0.2, < 0.4)
       fog-core (~> 2.6)
       fog-json (~> 1.1)
@@ -378,9 +378,9 @@ GEM
       excon (~> 1.0)
       formatador (>= 0.2, < 2.0)
       mime-types
-    fog-json (1.4.0)
+    fog-json (1.5.0)
       fog-core
-      json (~> 2.19)
+      json (>= 2.19, < 4)
     fog-xml (0.1.5)
       fog-core
       nokogiri (>= 1.5.11, < 2.0.0)
@@ -512,7 +512,7 @@ GEM
     mime-types (3.7.0)
       logger
       mime-types-data (~> 3.2025, >= 3.2025.0507)
-    mime-types-data (3.2026.0922)
+    mime-types-data (3.2026.1006)
     mini_mime (1.1.5)
     minitest (6.0.6)
       drb (~> 2.0)
