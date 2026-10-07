@@ -626,7 +626,7 @@ GEM
       opentelemetry-instrumentation-base (~> 0.25)
     opentelemetry-registry (0.6.3)
       opentelemetry-api (~> 1.1)
-    opentelemetry-sdk (1.11.0)
+    opentelemetry-sdk (1.13.1)
       logger
       opentelemetry-api (~> 1.1)
       opentelemetry-common (~> 0.20)
@@ -1029,7 +1029,7 @@ DEPENDENCIES
   opentelemetry-exporter-otlp (~> 0.37.0)
   opentelemetry-instrumentation-rails (~> 0.41.0)
   opentelemetry-instrumentation-sidekiq (~> 0.29.0)
-  opentelemetry-sdk (~> 1.11.0)
+  opentelemetry-sdk (~> 1.13.1)
   ostruct
   pg (>= 0.18, < 2.0)
   pry
