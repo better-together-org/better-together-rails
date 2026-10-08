@@ -66,13 +66,13 @@ GIT
 
 GIT
   remote: https://github.com/better-together-org/pundit-resources.git
-  revision: 4e50d1f97a1e7c864bc45e2613b763ecf8f079ce
+  revision: 99c4f97db159c8cff48e961eb20d2fe8dd160ce1
   specs:
     pundit-resources (1.1.6)
       activesupport
       jsonapi-resources
       pundit
-      rails (>= 4.2.1, < 8.1)
+      rails (>= 4.2.1, < 8.2)
 
 GIT
   remote: https://github.com/better-together-org/storext.git
@@ -272,7 +272,7 @@ GEM
       activerecord (>= 5.a)
       database_cleaner-core (~> 2.0)
     database_cleaner-core (2.0.1)
-    date (3.5.1)
+    date (3.6.0)
     debug_inspector (1.2.0)
     declarative (0.0.20)
     descendants_tracker (0.0.4)
@@ -538,7 +538,7 @@ GEM
       net-protocol
     net-protocol (0.4.0)
       timeout
-    net-smtp (0.5.1)
+    net-smtp (0.5.2)
       net-protocol
     nio4r (2.7.5)
     nokogiri (1.19.4-aarch64-linux-gnu)
@@ -663,7 +663,7 @@ GEM
       actionmailer (>= 3)
       net-smtp
       premailer (~> 1.7, >= 1.7.9)
-    prettyprint (0.2.0)
+    prettyprint (0.2.1)
     prism (1.9.0)
     pry (0.16.0)
       coderay (~> 1.1)
