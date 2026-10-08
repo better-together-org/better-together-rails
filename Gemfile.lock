@@ -76,10 +76,10 @@ GIT
 
 GIT
   remote: https://github.com/better-together-org/storext.git
-  revision: ebc92461e95d07c34f5d8eac4eb7ad13cfd92afa
+  revision: 83533ff3e5fad660970d309cd168b6171dbd9fed
   specs:
     storext (3.3.1)
-      activerecord (>= 4.0, < 8.1)
+      activerecord (>= 4.0, < 8.2)
       virtus
 
 GEM
@@ -975,7 +975,7 @@ GEM
     unicode-display_width (3.3.0)
       unicode-emoji (~> 4.3)
     unicode-emoji (4.3.0)
-    uri (1.1.1)
+    uri (1.1.2)
     useragent (0.16.11)
     version_gem (1.1.15)
     virtus (2.0.0)
