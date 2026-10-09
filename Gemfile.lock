@@ -761,8 +761,8 @@ GEM
     readline (0.0.4)
       reline
     redcarpet (3.6.1)
-    redis (5.4.1)
-      redis-client (>= 0.22.0)
+    redis (6.0.0)
+      redis-client (= 0.30.1)
     redis-client (0.30.1)
       connection_pool
     reform (2.6.2)
@@ -1049,7 +1049,7 @@ DEPENDENCIES
   rails (~> 8.1.0)
   rb-readline
   rbtrace
-  redis (~> 5.4)
+  redis (~> 6.0)
   rspec
   rspec-rails
   rspec-rebound
