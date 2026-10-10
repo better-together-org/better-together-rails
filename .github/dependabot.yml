@@ -6,6 +6,9 @@ updates:
     interval: daily
   open-pull-requests-limit: 10
   ignore:
+  # better_together is bumped by hand: new CE versions can carry migrations
+  # that must be installed and reviewed first, which Dependabot cannot detect.
+  - dependency-name: better_together
   - dependency-name: rubocop
     versions:
     - 1.10.0
