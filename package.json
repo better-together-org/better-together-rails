@@ -2,7 +2,7 @@
   "name": "better_together",
   "private": true,
   "dependencies": {
-    "@rails/actiontext": "^7.1.2",
+    "@rails/actiontext": "^8.1.400",
     "trix": "^2.1.1"
   }
 }
