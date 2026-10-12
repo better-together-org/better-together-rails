@@ -5,39 +5,22 @@ updates:
   schedule:
     interval: daily
   open-pull-requests-limit: 10
+  groups:
+    # Security fixes land together; version updates stay one PR per gem so a
+    # single bad bump never blocks the rest.
+    security-updates:
+      applies-to: security-updates
+      patterns:
+      - "*"
   ignore:
   # better_together is bumped by hand: new CE versions can carry migrations
   # that must be installed and reviewed first, which Dependabot cannot detect.
   - dependency-name: better_together
-  - dependency-name: rubocop
-    versions:
-    - 1.10.0
-    - 1.11.0
-    - 1.12.0
-    - 1.12.1
-    - 1.9.1
-  - dependency-name: bootsnap
-    versions:
-    - 1.7.0
-    - 1.7.1
-    - 1.7.2
-    - 1.7.3
-  - dependency-name: sidekiq
-    versions:
-    - 6.2.0
-  - dependency-name: rails
-    versions:
-    - 6.0.3.5
-  - dependency-name: rspec-rails
-    versions:
-    - 4.1.0
-    - 5.0.0
-  - dependency-name: faker
-    versions:
-    - 2.16.0
-  - dependency-name: puma
-    versions:
-    - 5.2.1
-  - dependency-name: database_cleaner
-    versions:
-    - 2.0.0
+- package-ecosystem: github-actions
+  directory: "/"
+  schedule:
+    interval: weekly
+- package-ecosystem: npm
+  directory: "/"
+  schedule:
+    interval: weekly
