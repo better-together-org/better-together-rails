@@ -1,11 +1,5 @@
+---
 en:
-  time:
-    am: am
-    formats:
-      default: '%Y-%m-%d %H:%M:%S %z'
-      long: '%B %d, %Y %H:%M'
-      short: '%b %d %H:%M'
-    pm: pm
   helpers:
     select:
       prompt: Please select
@@ -13,3 +7,10 @@ en:
       create: Create %{model}
       submit: Save %{model}
       update: Update %{model}
+  time:
+    am: am
+    formats:
+      default: "%Y-%m-%d %H:%M:%S %z"
+      long: "%B %d, %Y %H:%M"
+      short: "%b %d %H:%M"
+    pm: pm
