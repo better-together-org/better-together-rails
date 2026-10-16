@@ -58,13 +58,50 @@ jobs:
 
   i18n-health:
     runs-on: ubuntu-latest
+    # The auto-fix commits to the branch tip, so only the newest push's run may proceed.
+    concurrency:
+      group: i18n-health-${{ github.head_ref || github.ref_name }}
+      cancel-in-progress: true
+    env:
+      HAS_PUSH_TOKEN: ${{ secrets.BTS_ROBOT_PUSH_TOKEN != '' }}
     steps:
       - name: Checkout code
         uses: actions/checkout@v7
+        with:
+          ref: ${{ github.head_ref || github.ref_name }}
+          token: ${{ secrets.BTS_ROBOT_PUSH_TOKEN || github.token }}
       - name: Install Ruby and gems
         uses: ruby/setup-ruby@v1
         with:
           bundler-cache: true
+      # Normalizing (key order and formatting) is deterministic and safe to auto-fix.
+      - name: Normalize locale files
+        id: normalize
+        run: |
+          bundle exec i18n-tasks normalize
+          if git diff --quiet -- config/locales; then
+            echo "changed=false" >> "$GITHUB_OUTPUT"
+          else
+            echo "changed=true" >> "$GITHUB_OUTPUT"
+            git diff --stat -- config/locales
+          fi
+      - name: Commit normalized locale files (GitHub-signed)
+        id: autofix
+        if: >-
+          steps.normalize.outputs.changed == 'true'
+          && env.HAS_PUSH_TOKEN == 'true'
+          && github.ref_name != github.event.repository.default_branch
+          && (github.event_name != 'pull_request' || github.event.pull_request.head.repo.full_name == github.repository)
+        env:
+          GH_TOKEN: ${{ secrets.BTS_ROBOT_PUSH_TOKEN }}
+          BRANCH: ${{ github.head_ref || github.ref_name }}
+        run: |
+          bin/ci-signed-commit "chore(i18n): normalize locale files" config/locales
+      - name: Fail if normalization could not be committed
+        if: steps.normalize.outputs.changed == 'true' && steps.autofix.outcome != 'success'
+        run: |
+          echo "::error::Locale files need normalization. Run bundle exec i18n-tasks normalize and commit config/locales."
+          exit 1
       - name: Run i18n health checks
         run: bundle exec i18n-tasks health
 
