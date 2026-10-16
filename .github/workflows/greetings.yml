@@ -4,6 +4,8 @@ on: [pull_request, issues]
 
 jobs:
   greeting:
+    # Skip BTS Robot's own PRs and issues; it would be greeted again on every new PR.
+    if: ${{ github.event.pull_request.user.login != 'bettertogether-bts-robot' && github.event.issue.user.login != 'bettertogether-bts-robot' }}
     runs-on: ubuntu-latest
     steps:
     - uses: actions/first-interaction@v3
