@@ -8,6 +8,15 @@
 # redis,
 # Sidekiq
 
+# Fixed network so projects and worktrees reuse one range instead of each drawing
+# a new one from Docker's limited address pools.
+networks:
+  default:
+    name: "${BTS_DOCKER_NETWORK_NAME:-better-together-dev}"
+    ipam:
+      config:
+        - subnet: "${BTS_DOCKER_SUBNET:-10.45.31.0/24}"
+
 volumes:
   bt-bundler-gems:
     name: better-together-rails_bt-bundler-gems
