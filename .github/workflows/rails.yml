@@ -33,8 +33,10 @@ jobs:
         uses: ruby/setup-ruby@v1
         with:
           bundler-cache: true
-      - name: Install Chrome
-        run: sudo apt-get install -y chromium-browser
+      # JavaScript/feature specs use the Chrome that ships on ubuntu-latest. Do not install chromium-browser
+      # with apt: on Ubuntu 24.04 it downloads a snap, and a Snap Store timeout fails the whole job.
+      - name: Verify browser
+        run: google-chrome --version && chromedriver --version
       # Add or replace database setup steps here
       - name: Set up database schema
         run: rm -f tmp/pids/server.pid && bundle exec rails db:schema:load
