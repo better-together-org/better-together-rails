@@ -2,11 +2,12 @@
 # When pushed to dokku via git, it detects this Dockerfile and automatically chooses Docker build
 
 # Stage 1: Build libxml2
-FROM ruby:3.4.10-slim AS libxml2-bin
+FROM ruby:3.4.12-slim AS libxml2-bin
 
 RUN apt-get update -qq \
   && apt-get install -y --no-install-recommends build-essential wget tar gcc pkg-config python3-dev xz-utils \
-  && wget https://download.gnome.org/sources/libxml2/2.14/libxml2-2.14.2.tar.xz -O /tmp/libxml2.tar.xz \
+  && wget https://download.gnome.org/sources/libxml2/2.15/libxml2-2.15.4.tar.xz -O /tmp/libxml2.tar.xz \
+  && echo "98087fd181d9070724f3fbc65c7377db03038eb92bd882374daff44940138821  /tmp/libxml2.tar.xz" | sha256sum -c - \
   && mkdir -p /tmp/libxml2 \
   && tar -xf /tmp/libxml2.tar.xz -C /tmp/libxml2 --strip-components=1
 
@@ -19,7 +20,7 @@ RUN ./configure --prefix=/opt/libxml2 PYTHON=/usr/bin/python3 \
   && rm -rf /tmp/libxml2 /tmp/libxml2.tar.xz
 
 # Stage 2: Build environment
-FROM ruby:3.4.10-slim AS builder
+FROM ruby:3.4.12-slim AS builder
 
 # Define build-time variables (will be passed as build args)
 ARG FOG_DIRECTORY
@@ -80,7 +81,7 @@ COPY . .
 RUN bundle exec rake assets:precompile
 
 # Stage 3: Runtime environment
-FROM ruby:3.4.10 AS app-host
+FROM ruby:3.4.12 AS app-host
 
 # Install runtime dependencies
 RUN apt-get update -qq \
