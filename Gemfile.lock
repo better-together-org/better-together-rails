@@ -1,15 +1,15 @@
 GIT
   remote: https://github.com/better-together-org/community-engine-rails.git
-  revision: 8956a28ff86352d3890e99baf653c7e143cb021f
-  ref: 8956a28ff86352d3890e99baf653c7e143cb021f
+  revision: c1a2d6ca1cb9605b2e2b1260de6df78a6f1c26dc
+  ref: c1a2d6ca1cb9605b2e2b1260de6df78a6f1c26dc
   specs:
-    better_together (0.10.1)
+    better_together (0.11.0)
       active_storage_svg_sanitizer
       active_storage_validations
       activerecord-import
       activerecord-postgis-adapter
       bootstrap (~> 5.3.2)
-      css_parser (>= 3.0.0)
+      css_parser (>= 3.2.0)
       dartsass-sprockets (~> 3.1)
       devise
       devise-i18n
@@ -1014,7 +1014,7 @@ DEPENDENCIES
   aws-sdk-s3
   bcrypt (~> 3.1.21)
   better_errors
-  better_together (~> 0.10)!
+  better_together (~> 0.11.0)!
   binding_of_caller
   bootsnap (>= 1.7.0)
   brakeman
