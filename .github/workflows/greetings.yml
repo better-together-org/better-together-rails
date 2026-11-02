@@ -4,8 +4,8 @@ on: [pull_request, issues]
 
 jobs:
   greeting:
-    # Skip BTS Robot's own PRs and issues; it would be greeted again on every new PR.
-    if: ${{ github.event.pull_request.user.login != 'bettertogether-bts-robot' && github.event.issue.user.login != 'bettertogether-bts-robot' }}
+    # Skip bot PRs and issues: BTS Robot would be greeted on every PR, and Dependabot's read-only token cannot comment.
+    if: ${{ !contains(fromJSON('["bettertogether-bts-robot","dependabot[bot]"]'), github.event.pull_request.user.login || github.event.issue.user.login) }}
     runs-on: ubuntu-latest
     steps:
     - uses: actions/first-interaction@v3
