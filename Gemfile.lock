@@ -176,7 +176,7 @@ GEM
       public_suffix (>= 2.0.2, < 8.0)
     anonymous_loader (0.1.5)
       version_gem (~> 1.1, >= 1.1.17)
-    asset_sync (2.19.3)
+    asset_sync (2.19.4)
       activemodel (>= 4.1.0)
       cgi
       fog-core
@@ -243,7 +243,7 @@ GEM
     capybara-screenshot (1.0.27)
       capybara (>= 1.0, < 4)
       launchy
-    cgi (0.5.1)
+    cgi (0.5.2)
     childprocess (5.1.0)
       logger (~> 1.5)
     coderay (1.1.3)
@@ -341,8 +341,7 @@ GEM
     et-orbi (1.4.2)
       tzinfo
     event_stream_parser (1.0.0)
-    excon (1.7.2)
-      logger
+    excon (1.10.0)
     execjs (2.10.0)
     factory_bot (6.5.5)
       activesupport (>= 6.1.0)
