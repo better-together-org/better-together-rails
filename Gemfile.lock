@@ -1,7 +1,7 @@
 GIT
   remote: https://github.com/better-together-org/community-engine-rails.git
-  revision: 613566df7f16a1d15f57783c5e4bb05ed0ddcd00
-  ref: 613566df7f16a1d15f57783c5e4bb05ed0ddcd00
+  revision: 8ccb909ab6679149e6d6a7a22dd1c5328510e81d
+  ref: 8ccb909ab6679149e6d6a7a22dd1c5328510e81d
   specs:
     better_together (0.11.0)
       active_storage_svg_sanitizer
@@ -172,7 +172,7 @@ GEM
       securerandom (>= 0.3)
       tzinfo (~> 2.0, >= 2.0.5)
       uri (>= 0.13.1)
-    addressable (2.9.1)
+    addressable (2.9.2)
       public_suffix (>= 2.0.2, < 8.0)
     anonymous_loader (0.1.5)
       version_gem (~> 1.1, >= 1.1.17)
@@ -257,7 +257,7 @@ GEM
       thor (>= 1.5)
       tins (>= 1.54)
     crass (1.0.8)
-    css_parser (3.3.0)
+    css_parser (3.4.0)
       addressable
       base64
       ssrf_filter (~> 1.5)
@@ -419,7 +419,6 @@ GEM
       logger
     highline (3.1.2)
       reline
-    htmlentities (4.4.2)
     humanize_boolean (0.0.2)
       i18n
     i18n (1.15.2)
@@ -457,7 +456,7 @@ GEM
       activesupport (>= 6.0.0)
       railties (>= 6.0.0)
     io-console (0.9.5)
-    irb (1.18.0)
+    irb (1.19.0)
       pp (>= 0.6.0)
       prism (>= 1.3.0)
       rdoc (>= 4.0.0)
@@ -473,18 +472,18 @@ GEM
       railties (>= 4.1)
     jwt (3.3.0)
       base64
-    kaminari (1.3.2)
+    kaminari (1.3.3)
       activesupport (>= 4.1.0)
-      kaminari-actionview (= 1.3.2)
-      kaminari-activerecord (= 1.3.2)
-      kaminari-core (= 1.3.2)
-    kaminari-actionview (1.3.2)
+      kaminari-actionview (= 1.3.3)
+      kaminari-activerecord (= 1.3.3)
+      kaminari-core (= 1.3.3)
+    kaminari-actionview (1.3.3)
       actionview
-      kaminari-core (= 1.3.2)
-    kaminari-activerecord (1.3.2)
+      kaminari-core (= 1.3.3)
+    kaminari-activerecord (1.3.3)
       activerecord
-      kaminari-core (= 1.3.2)
-    kaminari-core (1.3.2)
+      kaminari-core (= 1.3.3)
+    kaminari-core (1.3.3)
     language_server-protocol (3.17.0.6)
     launchy (3.1.1)
       addressable (~> 2.8)
@@ -512,11 +511,11 @@ GEM
     mime-types (3.7.0)
       logger
       mime-types-data (~> 3.2025, >= 3.2025.0507)
-    mime-types-data (3.2026.1027)
+    mime-types-data (3.2026.1103)
     mini_mime (1.1.5)
-    minitest (6.0.6)
+    minitest (6.1.0)
       drb (~> 2.0)
-      prism (~> 1.5)
+      prism (>= 1.5, < 3)
     mize (0.6.1)
     mobility (1.3.2)
       i18n (>= 0.6.10, < 2)
@@ -546,7 +545,7 @@ GEM
       racc (~> 1.4)
     nokogiri (1.19.7-x86_64-linux-gnu)
       racc (~> 1.4)
-    noticed (3.1.0)
+    noticed (3.1.1)
       rails (>= 7.1.0)
     oauth2 (2.1.0)
       anonymous_loader (~> 0.1, >= 0.1.5)
@@ -656,10 +655,9 @@ GEM
     popper_js (2.11.8)
     pp (0.6.4)
       prettyprint
-    premailer (1.32.0)
+    premailer (1.33.0)
       addressable
-      css_parser (>= 1.19.0)
-      htmlentities (>= 4.0.0)
+      css_parser (>= 3.1.0)
     premailer-rails (1.12.0)
       actionmailer (>= 3)
       net-smtp
@@ -796,7 +794,7 @@ GEM
       rspec-core (~> 3.13.0)
       rspec-expectations (~> 3.13.0)
       rspec-mocks (~> 3.13.0)
-    rspec-core (3.13.6)
+    rspec-core (3.13.7)
       rspec-support (~> 3.13.0)
     rspec-expectations (3.13.5)
       diff-lcs (>= 1.2.0, < 2.0)
@@ -814,7 +812,7 @@ GEM
       rspec-support (>= 3.13.0, < 5.0.0)
     rspec-rebound (0.2.1)
       rspec-core (~> 3.3)
-    rspec-support (3.13.7)
+    rspec-support (3.13.8)
     rswag (2.17.0)
       rswag-api (= 2.17.0)
       rswag-specs (= 2.17.0)
@@ -882,9 +880,9 @@ GEM
     rubyzip (3.7.0)
     rufus-scheduler (3.9.2)
       fugit (~> 1.1, >= 1.11.1)
-    sass-embedded (1.107.1-aarch64-linux-gnu)
+    sass-embedded (1.108.1-aarch64-linux-gnu)
       google-protobuf (~> 4.31)
-    sass-embedded (1.107.1-x86_64-linux-gnu)
+    sass-embedded (1.108.1-x86_64-linux-gnu)
       google-protobuf (~> 4.31)
     sassc (2.4.0)
       ffi (~> 1.9)

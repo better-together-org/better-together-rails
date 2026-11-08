@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2026_10_31_204338) do
+ActiveRecord::Schema[8.1].define(version: 2026_11_08_175643) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
   enable_extension "pg_trgm"
@@ -108,6 +108,26 @@ ActiveRecord::Schema[8.1].define(version: 2026_10_31_204338) do
     t.index ["contact_detail_id"], name: "index_better_together_addresses_on_contact_detail_id"
     t.index ["platform_id"], name: "index_better_together_addresses_on_platform_id"
     t.index ["privacy"], name: "by_better_together_addresses_privacy"
+  end
+
+  create_table "better_together_agent_grants", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.integer "lock_version", default: 0, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.uuid "robot_id"
+    t.uuid "platform_id"
+    t.uuid "operator_id", null: false
+    t.uuid "community_id"
+    t.uuid "granted_by_id"
+    t.string "scopes", default: [], null: false, array: true
+    t.datetime "expires_at"
+    t.datetime "revoked_at"
+    t.index "robot_id, platform_id, COALESCE(community_id, '00000000-0000-0000-0000-000000000000'::uuid)", name: "idx_bt_agent_grants_one_open", unique: true, where: "(revoked_at IS NULL)"
+    t.index ["community_id"], name: "idx_bt_agent_grants_community"
+    t.index ["granted_by_id"], name: "idx_bt_agent_grants_granted_by"
+    t.index ["operator_id"], name: "idx_bt_agent_grants_operator"
+    t.index ["platform_id"], name: "idx_bt_agent_grants_platform"
+    t.index ["robot_id"], name: "idx_bt_agent_grants_robot"
   end
 
   create_table "better_together_agent_job_results", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
@@ -400,6 +420,7 @@ ActiveRecord::Schema[8.1].define(version: 2026_10_31_204338) do
     t.string "icon", default: "fas fa-icons", null: false
     t.uuid "platform_id"
     t.string "privacy", limit: 50, default: "public", null: false
+    t.string "color"
     t.index ["identifier", "type", "platform_id"], name: "idx_bt_categories_on_identifier_type_platform_id", unique: true, where: "(platform_id IS NOT NULL)"
     t.index ["platform_id"], name: "index_better_together_categories_on_platform_id"
     t.index ["privacy"], name: "by_better_together_categories_privacy"
@@ -633,7 +654,7 @@ ActiveRecord::Schema[8.1].define(version: 2026_10_31_204338) do
     t.text "last_error_summary"
     t.jsonb "metadata", default: {}, null: false
     t.uuid "platform_id"
-    t.index ["attachable_type", "attachable_id", "attachment_name"], name: "index_bt_content_security_items_on_attachment", unique: true
+    t.index ["attachable_type", "attachable_id", "attachment_name"], name: "index_bt_content_security_items_on_attachment"
     t.index ["blob_id", "attachable_type", "attachable_id", "attachment_name"], name: "index_bt_content_security_items_on_blob_attachment", unique: true
     t.index ["lifecycle_state"], name: "idx_on_lifecycle_state_3c2bac98be"
     t.index ["platform_id"], name: "index_better_together_content_security_items_on_platform_id"
@@ -1678,8 +1699,14 @@ ActiveRecord::Schema[8.1].define(version: 2026_10_31_204338) do
     t.boolean "confidential", default: true, null: false
     t.uuid "owner_id"
     t.uuid "platform_id"
+    t.uuid "robot_id"
+    t.uuid "community_id"
+    t.datetime "last_used_at"
+    t.datetime "rotated_at"
+    t.index ["community_id"], name: "index_better_together_oauth_applications_on_community_id"
     t.index ["owner_id"], name: "index_bt_oauth_apps_on_owner_id"
     t.index ["platform_id"], name: "index_better_together_oauth_applications_on_platform_id"
+    t.index ["robot_id"], name: "index_better_together_oauth_applications_on_robot_id"
     t.index ["uid"], name: "index_bt_oauth_apps_on_uid", unique: true
   end
 
@@ -2593,6 +2620,92 @@ ActiveRecord::Schema[8.1].define(version: 2026_10_31_204338) do
     t.index ["unlock_token"], name: "index_better_together_users_on_unlock_token", unique: true
   end
 
+  create_table "better_together_weather_current_conditions", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.integer "lock_version", default: 0, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.uuid "location_id"
+    t.datetime "observed_at"
+    t.datetime "fetched_at", null: false
+    t.jsonb "payload", default: {}, null: false
+    t.index ["location_id"], name: "bt_weather_current_by_location", unique: true
+  end
+
+  create_table "better_together_weather_forecasts", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.integer "lock_version", default: 0, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.uuid "location_id"
+    t.string "kind", limit: 20, null: false
+    t.datetime "issued_at", null: false
+    t.datetime "fetched_at", null: false
+    t.jsonb "payload", default: {}, null: false
+    t.index ["location_id", "kind", "issued_at"], name: "bt_weather_forecast_unique_issue", unique: true
+    t.index ["location_id"], name: "bt_weather_forecast_by_location"
+  end
+
+  create_table "better_together_weather_locations", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.integer "lock_version", default: 0, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.uuid "settlement_id"
+    t.uuid "source_id"
+    t.string "external_ref", null: false
+    t.string "observation_station_ref"
+    t.string "precip_station_ref"
+    t.float "latitude"
+    t.float "longitude"
+    t.string "time_zone", default: "UTC", null: false
+    t.boolean "enabled", default: true, null: false
+    t.datetime "last_current_fetched_at"
+    t.datetime "last_forecast_fetched_at"
+    t.datetime "last_observations_backfilled_at"
+    t.datetime "last_error_at"
+    t.text "last_error"
+    t.index ["settlement_id", "source_id"], name: "bt_weather_location_unique_settlement_source", unique: true
+    t.index ["settlement_id"], name: "bt_weather_location_by_settlement"
+    t.index ["source_id"], name: "bt_weather_location_by_source"
+  end
+
+  create_table "better_together_weather_observations", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.integer "lock_version", default: 0, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.uuid "location_id"
+    t.string "granularity", limit: 10, null: false
+    t.datetime "observed_at", null: false
+    t.string "origin", limit: 20, null: false
+    t.float "temperature_c"
+    t.float "temperature_min_c"
+    t.float "temperature_max_c"
+    t.float "dew_point_c"
+    t.float "humidex"
+    t.float "wind_chill"
+    t.float "humidity_pct"
+    t.float "pressure_kpa"
+    t.float "wind_speed_kmh"
+    t.float "wind_gust_kmh"
+    t.float "wind_direction_deg"
+    t.float "visibility_km"
+    t.float "precip_mm"
+    t.float "snow_cm"
+    t.string "condition"
+    t.jsonb "source_flags", default: {}, null: false
+    t.index ["location_id", "granularity", "observed_at"], name: "bt_weather_observation_unique_reading", unique: true
+    t.index ["location_id"], name: "bt_weather_observation_by_location"
+  end
+
+  create_table "better_together_weather_sources", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.integer "lock_version", default: 0, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "identifier", limit: 100, null: false
+    t.string "adapter_key", null: false
+    t.jsonb "config", default: {}, null: false
+    t.boolean "enabled", default: true, null: false
+    t.index ["identifier"], name: "index_better_together_weather_sources_on_identifier", unique: true
+  end
+
   create_table "better_together_webhook_deliveries", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.integer "lock_version", default: 0, null: false
     t.datetime "created_at", null: false
@@ -2776,6 +2889,11 @@ ActiveRecord::Schema[8.1].define(version: 2026_10_31_204338) do
   add_foreign_key "better_together_activities", "better_together_platforms", column: "platform_id"
   add_foreign_key "better_together_addresses", "better_together_contact_details", column: "contact_detail_id"
   add_foreign_key "better_together_addresses", "better_together_platforms", column: "platform_id"
+  add_foreign_key "better_together_agent_grants", "better_together_communities", column: "community_id", on_delete: :cascade
+  add_foreign_key "better_together_agent_grants", "better_together_people", column: "granted_by_id", on_delete: :nullify
+  add_foreign_key "better_together_agent_grants", "better_together_people", column: "operator_id", on_delete: :cascade
+  add_foreign_key "better_together_agent_grants", "better_together_platforms", column: "platform_id"
+  add_foreign_key "better_together_agent_grants", "better_together_robots", column: "robot_id"
   add_foreign_key "better_together_agent_job_results", "better_together_fleet_nodes", column: "fleet_node_id", on_delete: :nullify
   add_foreign_key "better_together_agreement_participants", "better_together_agreements", column: "agreement_id"
   add_foreign_key "better_together_agreement_participants", "better_together_people", column: "person_id"
@@ -2946,8 +3064,10 @@ ActiveRecord::Schema[8.1].define(version: 2026_10_31_204338) do
   add_foreign_key "better_together_oauth_access_tokens", "better_together_oauth_applications", column: "application_id"
   add_foreign_key "better_together_oauth_access_tokens", "better_together_platforms", column: "platform_id"
   add_foreign_key "better_together_oauth_access_tokens", "better_together_users", column: "resource_owner_id"
+  add_foreign_key "better_together_oauth_applications", "better_together_communities", column: "community_id", on_delete: :cascade
   add_foreign_key "better_together_oauth_applications", "better_together_people", column: "owner_id"
   add_foreign_key "better_together_oauth_applications", "better_together_platforms", column: "platform_id"
+  add_foreign_key "better_together_oauth_applications", "better_together_robots", column: "robot_id", on_delete: :cascade
   add_foreign_key "better_together_pages", "better_together_communities", column: "community_id"
   add_foreign_key "better_together_pages", "better_together_navigation_areas", column: "sidebar_nav_id"
   add_foreign_key "better_together_pages", "better_together_people", column: "creator_id"
@@ -3050,6 +3170,11 @@ ActiveRecord::Schema[8.1].define(version: 2026_10_31_204338) do
   add_foreign_key "better_together_uploads", "better_together_people", column: "creator_id"
   add_foreign_key "better_together_uploads", "better_together_platforms", column: "platform_id"
   add_foreign_key "better_together_users", "better_together_platforms", column: "platform_id"
+  add_foreign_key "better_together_weather_current_conditions", "better_together_weather_locations", column: "location_id"
+  add_foreign_key "better_together_weather_forecasts", "better_together_weather_locations", column: "location_id"
+  add_foreign_key "better_together_weather_locations", "better_together_geography_settlements", column: "settlement_id"
+  add_foreign_key "better_together_weather_locations", "better_together_weather_sources", column: "source_id"
+  add_foreign_key "better_together_weather_observations", "better_together_weather_locations", column: "location_id"
   add_foreign_key "better_together_webhook_deliveries", "better_together_platforms", column: "platform_id"
   add_foreign_key "better_together_webhook_deliveries", "better_together_webhook_endpoints", column: "webhook_endpoint_id"
   add_foreign_key "better_together_webhook_endpoints", "better_together_communities", column: "community_id"
