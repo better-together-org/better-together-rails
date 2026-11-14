@@ -16,6 +16,18 @@ amazon:
   endpoint: <%= ENV.fetch('S3_ENDPOINT', nil) %>
   force_path_style: <%= ENV.key?('S3_ENDPOINT') %>
 
+# Generic S3-compatible storage (e.g. Garage). Set ACTIVE_STORAGE_SERVICE=s3_compatible and
+# provide S3_BUCKET_NAME, S3_REGION, S3_ENDPOINT and the AWS_* credentials. Also set
+# AWS_REQUEST_CHECKSUM_CALCULATION and AWS_RESPONSE_CHECKSUM_VALIDATION to when_required.
+s3_compatible:
+  service: S3
+  access_key_id: <%= ENV.fetch('AWS_ACCESS_KEY_ID', nil) %>
+  secret_access_key: <%= ENV.fetch('AWS_SECRET_ACCESS_KEY', nil) %>
+  region: <%= ENV.fetch('S3_REGION', ENV.fetch('AWS_REGION', 'us-east-1')) %>
+  bucket: <%= ENV.fetch('S3_BUCKET_NAME', ENV.fetch('FOG_DIRECTORY', nil)) %>
+  endpoint: <%= ENV.fetch('S3_ENDPOINT', nil) %>
+  force_path_style: true
+
 # Remember not to checkin your GCS keyfile to a repository
 # google:
 #   service: GCS
