@@ -7,7 +7,7 @@ require 'active_support/core_ext/integer/time'
 # your test database is "scratch space" for the test suite and is wiped
 # and recreated between test runs. Don't rely on the data there!
 
-Rails.application.configure do
+Rails.application.configure do # rubocop:disable Metrics/BlockLength
   # Settings specified here will take precedence over those in config/application.rb.
 
   # Turn false under Spring and add config.action_view.cache_template_loading = true.
@@ -61,6 +61,19 @@ Rails.application.configure do
   # config.action_view.annotate_rendered_view_with_filenames = true
 
   # Allows unencrypted values to be store in encrypted columns for transitioning
+  # Stable keys for local and ephemeral test runs only; production reads its own from the environment.
+  config.active_record.encryption.primary_key = ENV.fetch(
+    'ACTIVE_RECORD_ENCRYPTION_PRIMARY_KEY',
+    '4f7f0d8d0e2b7c8f9a1b2c3d4e5f60714f7f0d8d0e2b7c8f9a1b2c3d4e5f6071'
+  )
+  config.active_record.encryption.deterministic_key = ENV.fetch(
+    'ACTIVE_RECORD_ENCRYPTION_DETERMINISTIC_KEY',
+    '6a8b0c1d2e3f40516a8b0c1d2e3f40516a8b0c1d2e3f40516a8b0c1d2e3f4051'
+  )
+  config.active_record.encryption.key_derivation_salt = ENV.fetch(
+    'ACTIVE_RECORD_ENCRYPTION_KEY_DERIVATION_SALT',
+    '8c9d0e1f2a3b4c5d8c9d0e1f2a3b4c5d8c9d0e1f2a3b4c5d8c9d0e1f2a3b4c5d'
+  )
   config.active_record.encryption.support_unencrypted_data = true
   config.active_record.encryption.extend_queries = true
 

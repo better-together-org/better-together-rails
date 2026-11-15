@@ -126,6 +126,11 @@ Rails.application.configure do # rubocop:todo Metrics/BlockLength
   config.force_ssl = ENV.fetch('FORCE_SSL', false)
 
   # Allows unencrypted values to be store in encrypted columns for transitioning
+  # Community Engine encrypts some columns (calendar tokens, integration tokens). The keys come
+  # from the environment only; there is no fallback, so a missing key fails closed.
+  config.active_record.encryption.primary_key = ENV['ACTIVE_RECORD_ENCRYPTION_PRIMARY_KEY'].presence
+  config.active_record.encryption.deterministic_key = ENV['ACTIVE_RECORD_ENCRYPTION_DETERMINISTIC_KEY'].presence
+  config.active_record.encryption.key_derivation_salt = ENV['ACTIVE_RECORD_ENCRYPTION_KEY_DERIVATION_SALT'].presence
   config.active_record.encryption.support_unencrypted_data = true
   config.active_record.encryption.extend_queries = true
 end
