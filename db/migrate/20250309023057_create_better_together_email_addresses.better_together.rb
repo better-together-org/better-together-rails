@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
-# This migration comes from better_together (originally 20240921161849)
-class CreateBetterTogetherEmailAddresses < ActiveRecord::Migration[7.1]
+class CreateBetterTogetherEmailAddresses < ActiveRecord::Migration[7.1] # rubocop:todo Style/Documentation
   def change
     create_bt_table :email_addresses do |t|
       t.string :email, null: false

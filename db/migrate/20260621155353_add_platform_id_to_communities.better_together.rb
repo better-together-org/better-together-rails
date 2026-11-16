@@ -1,6 +1,5 @@
 # frozen_string_literal: true
 
-# This migration comes from better_together (originally 20260607005000)
 # Phase 8 — Communities are per-platform. Add platform_id FK.
 class AddPlatformIdToCommunities < ActiveRecord::Migration[7.2]
   def change

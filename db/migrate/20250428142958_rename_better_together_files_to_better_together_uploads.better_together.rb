@@ -1,6 +1,5 @@
 # frozen_string_literal: true
 
-# This migration comes from better_together (originally 20250409012010)
 # Fixes class name collision with ::File
 class RenameBetterTogetherFilesToBetterTogetherUploads < ActiveRecord::Migration[7.1]
   def change

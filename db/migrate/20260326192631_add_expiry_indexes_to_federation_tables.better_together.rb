@@ -1,6 +1,5 @@
 # frozen_string_literal: true
 
-# This migration comes from better_together (originally 20260314000001)
 # Add indexes on expires_at and revoked_at for federation tables.
 # These columns are used in current_active scopes on every request; without
 # indexes, every scope evaluation does a full table scan.

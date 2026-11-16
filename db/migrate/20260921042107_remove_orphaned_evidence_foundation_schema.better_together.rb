@@ -1,6 +1,5 @@
 # frozen_string_literal: true
 
-# This migration comes from better_together (originally 20260918041500)
 # Drops the Claim/Citation/EvidenceLink schema left behind by the
 # Evidence-foundation carve-out (7909eea17, "carve Evidence-foundation
 # (Claim/Citation) out of the release"). That commit removed the models,

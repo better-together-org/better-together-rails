@@ -1,7 +1,8 @@
 # frozen_string_literal: true
 
-# This migration comes from better_together (originally 20241003180137)
+# rubocop:todo Style/Documentation
 class AddCreatorPrivacyAndVisibleColumnsToBetterTogetherContentBlocks < ActiveRecord::Migration[7.1]
+  # rubocop:enable Style/Documentation
   def change
     change_table :better_together_content_blocks do |t|
       t.bt_creator

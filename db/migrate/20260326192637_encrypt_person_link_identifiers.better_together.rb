@@ -1,6 +1,5 @@
 # frozen_string_literal: true
 
-# This migration comes from better_together (originally 20260316000001)
 # Widens identifier/name columns on person_links and person_access_grants from
 # string (255 chars) to text so ActiveRecord::Encryption can store its JSON
 # ciphertext envelope (which exceeds 255 chars for non-trivial values).

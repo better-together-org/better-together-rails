@@ -1,6 +1,5 @@
 # frozen_string_literal: true
 
-# This migration comes from better_together (originally 20260719020100)
 # Idempotent repair for 20260606001006_add_platform_id_to_content_blocks.
 # That migration's partial unique index excluded NULL platform_id but not
 # blank identifier, even though Identifier#validate_identifier_uniqueness

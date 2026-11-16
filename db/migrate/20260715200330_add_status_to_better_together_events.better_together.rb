@@ -1,6 +1,5 @@
 # frozen_string_literal: true
 
-# This migration comes from better_together (originally 20260711000000)
 # Adds an explicit lifecycle status (draft/confirmed/cancelled) to events.
 # Previously "draft" was derived from starts_at being NULL; status is stored
 # state, orthogonal to scheduling. New events default to draft (explicit

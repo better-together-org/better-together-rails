@@ -1,6 +1,5 @@
 # frozen_string_literal: true
 
-# This migration comes from better_together (originally 20240421005311)
 # Creates a table to track the allowed actions for a target resource
 class CreateBetterTogetherResourcePermissions < ActiveRecord::Migration[7.0]
   def change

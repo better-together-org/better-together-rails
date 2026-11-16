@@ -1,6 +1,5 @@
 # frozen_string_literal: true
 
-# This migration comes from better_together (originally 20250324134601)
 # Creates table for Places
 class CreatePlaces < ActiveRecord::Migration[7.1]
   def change

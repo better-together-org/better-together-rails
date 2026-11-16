@@ -1,6 +1,5 @@
 # frozen_string_literal: true
 
-# This migration comes from better_together (originally 20260729120100)
 # Adds an optional per-occurrence dimension to event attendance. `event_id`
 # stays required (series context always applies); `event_occurrence_id` is
 # nullable — nil means "series-wide" attendance (today's only behavior),

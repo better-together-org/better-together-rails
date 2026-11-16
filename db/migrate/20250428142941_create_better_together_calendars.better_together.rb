@@ -1,6 +1,5 @@
 # frozen_string_literal: true
 
-# This migration comes from better_together (originally 20250318183610)
 # Create table to store calendar data
 class CreateBetterTogetherCalendars < ActiveRecord::Migration[7.1]
   def change

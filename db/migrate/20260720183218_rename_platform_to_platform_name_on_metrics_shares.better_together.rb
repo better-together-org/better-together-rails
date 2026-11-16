@@ -1,6 +1,5 @@
 # frozen_string_literal: true
 
-# This migration comes from better_together (originally 20260717140100)
 # Renames Metrics::Share's `platform` string column (the share network name,
 # e.g. "facebook") to `platform_name`, matching the naming convention already
 # used by SocialMediaAccount (`platform_name` for the network, `platform`/

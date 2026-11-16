@@ -1,6 +1,5 @@
 # frozen_string_literal: true
 
-# This migration comes from better_together (originally 20260605002003)
 # Phase 2 — Agreement isolation.
 # Nullable; backfill assigns host platform to pre-existing records.
 class AddPlatformIdToAgreements < ActiveRecord::Migration[7.2]

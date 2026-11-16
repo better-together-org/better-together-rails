@@ -1,6 +1,5 @@
 # frozen_string_literal: true
 
-# This migration comes from better_together (originally 20261020120000)
 # Lets a Doorkeeper application authenticate as a Robot (agent credential),
 # optionally limited to one community. Applications without robot_id keep
 # acting as their owner.

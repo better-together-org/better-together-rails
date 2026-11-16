@@ -1,6 +1,5 @@
 # frozen_string_literal: true
 
-# This migration comes from better_together (originally 20260522110000)
 class CreateBetterTogetherFeatureAccessGrants < ActiveRecord::Migration[7.1]
   def change
     return if table_exists?(:better_together_feature_access_grants)

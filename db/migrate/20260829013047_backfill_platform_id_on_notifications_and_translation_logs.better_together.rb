@@ -1,6 +1,5 @@
 # frozen_string_literal: true
 
-# This migration comes from better_together (originally 20260824000000)
 # Best-effort backfill for platform_id columns that were added by prior migrations
 # but never populated for existing rows, because the code paths that create these
 # records didn't stamp platform_id until a later fix:

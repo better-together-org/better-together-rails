@@ -1,6 +1,5 @@
 # frozen_string_literal: true
 
-# This migration comes from better_together (originally 20260605002002)
 # Phase 2 — Message isolation (inherited from conversation).
 # Nullable; backfill copies platform_id from the parent conversation.
 class AddPlatformIdToMessages < ActiveRecord::Migration[7.2]

@@ -1,6 +1,5 @@
 # frozen_string_literal: true
 
-# This migration comes from better_together (originally 20260317120000)
 # Migrate Content::Css and Content::Html block `content` translations from
 # mobility_string_translations (varchar) to mobility_text_translations (text).
 #

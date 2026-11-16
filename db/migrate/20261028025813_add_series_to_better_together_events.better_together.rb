@@ -1,9 +1,8 @@
 # frozen_string_literal: true
 
-# This migration comes from better_together (originally 20261024100000)
 # An event can be a series: a parent with no dates of its own that groups the sessions of a run (see
 # BetterTogether::EventSeries). The flag is the only thing that marks it.
-class AddSeriesToBetterTogetherEvents < ActiveRecord::Migration[8.1]
+class AddSeriesToBetterTogetherEvents < ActiveRecord::Migration[7.2]
   TABLE = :better_together_events
 
   def up

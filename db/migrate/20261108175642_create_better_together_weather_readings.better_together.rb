@@ -1,6 +1,5 @@
 # frozen_string_literal: true
 
-# This migration comes from better_together (originally 20261102150100)
 # Stored weather readings per location: the latest current conditions, forecasts
 # and the observation history that settlement pages and charts read from.
 class CreateBetterTogetherWeatherReadings < ActiveRecord::Migration[7.1]

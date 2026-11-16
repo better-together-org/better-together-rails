@@ -1,6 +1,5 @@
 # frozen_string_literal: true
 
-# This migration comes from better_together (originally 20261101120000)
 # One open (unrevoked) grant per robot, platform and community scope, so a
 # credential can never resolve to an arbitrary one of several grants. Older
 # duplicates are revoked, keeping the most recently updated.

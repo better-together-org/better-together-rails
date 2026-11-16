@@ -1,6 +1,5 @@
 # frozen_string_literal: true
 
-# This migration comes from better_together (originally 20260607001004)
 # Phase 6 — Platform isolation for join tables.
 # PersonChecklistItem allows cross-platform queries without this column.
 class AddPlatformIdToPersonChecklistItems < ActiveRecord::Migration[7.2]

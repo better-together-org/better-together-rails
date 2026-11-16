@@ -1,6 +1,5 @@
 # frozen_string_literal: true
 
-# This migration comes from better_together (originally 20260607002003)
 # Phase 6 — Backfill platform_id for ContactDetail children from their parent.
 class BackfillPlatformIdForContactDetailChildren < ActiveRecord::Migration[7.2]
   def up

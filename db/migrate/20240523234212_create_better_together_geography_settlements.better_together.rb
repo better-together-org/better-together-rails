@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
-# This migration comes from better_together (originally 20240522181628)
-class CreateBetterTogetherGeographySettlements < ActiveRecord::Migration[7.0]
+class CreateBetterTogetherGeographySettlements < ActiveRecord::Migration[7.0] # rubocop:todo Style/Documentation
   def change
     create_bt_table :settlements, prefix: :better_together_geography do |t|
       t.bt_identifier

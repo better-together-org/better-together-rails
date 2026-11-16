@@ -1,6 +1,5 @@
 # frozen_string_literal: true
 
-# This migration comes from better_together (originally 20260717120200)
 # LinkCheckerReport/UserAccountReport got platform_id from Phase 13's blanket
 # host-default with no per-row derivation. Re-derives from creator's platform
 # membership first (matching the backfill_from_creator pattern from

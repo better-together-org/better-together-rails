@@ -1,6 +1,5 @@
 # frozen_string_literal: true
 
-# This migration comes from better_together (originally 20250410133055)
 # Adds support for Single Table Inheritance (STI) to the
 # BetterTogether::Geography::Map model by adding a `type` column.
 # This allows for different subclasses of the model to be stored in the same table.

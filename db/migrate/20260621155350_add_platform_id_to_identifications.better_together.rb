@@ -1,6 +1,5 @@
 # frozen_string_literal: true
 
-# This migration comes from better_together (originally 20260607003003)
 # Phase 7 — Identifications link platform-scoped users to platform-scoped people;
 # denormalize platform_id for efficient scoped queries.
 class AddPlatformIdToIdentifications < ActiveRecord::Migration[7.2]

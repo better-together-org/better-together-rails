@@ -1,6 +1,5 @@
 # frozen_string_literal: true
 
-# This migration comes from better_together (originally 20200923004302)
 # Creates community memberships table
 class CreateBetterTogetherPersonCommunityMemberships < ActiveRecord::Migration[7.0]
   def change

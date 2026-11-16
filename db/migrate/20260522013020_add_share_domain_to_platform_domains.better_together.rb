@@ -1,8 +1,7 @@
 # frozen_string_literal: true
 
-# This migration comes from better_together (originally 20260514100001)
 class AddShareDomainToPlatformDomains < ActiveRecord::Migration[7.2]
-  def up # rubocop:disable Metrics/MethodLength
+  def up
     unless column_exists?(:better_together_platform_domains, :share_domain)
       add_column :better_together_platform_domains, :share_domain, :boolean, null: false, default: false
     end
@@ -30,7 +29,6 @@ class AddShareDomainToPlatformDomains < ActiveRecord::Migration[7.2]
   def down
     remove_index :better_together_platform_domains,
                  name: 'index_better_together_platform_domains_on_share_domain', if_exists: true
-    remove_column :better_together_platform_domains, :share_domain if column_exists?(:better_together_platform_domains,
-                                                                                     :share_domain)
+    remove_column :better_together_platform_domains, :share_domain if column_exists?(:better_together_platform_domains, :share_domain)
   end
 end

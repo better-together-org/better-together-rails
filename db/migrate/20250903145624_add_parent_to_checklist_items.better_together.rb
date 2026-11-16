@@ -1,6 +1,5 @@
 # frozen_string_literal: true
 
-# This migration comes from better_together (originally 20250901203001)
 # Migration to add a parent reference to checklist items (self-referential association).
 class AddParentToChecklistItems < ActiveRecord::Migration[7.1]
   def change

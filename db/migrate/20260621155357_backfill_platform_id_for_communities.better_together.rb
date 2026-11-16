@@ -1,6 +1,5 @@
 # frozen_string_literal: true
 
-# This migration comes from better_together (originally 20260607006000)
 # Phase 8 — Backfill communities.platform_id from the platform record.
 class BackfillPlatformIdForCommunities < ActiveRecord::Migration[7.2]
   def up

@@ -1,6 +1,5 @@
 # frozen_string_literal: true
 
-# This migration comes from better_together (originally 20260606001002)
 # Phase 5 — WebhookDelivery isolation (denormalised from endpoint for query performance).
 # Nullable; backfill inherits platform_id from the parent WebhookEndpoint.
 class AddPlatformIdToWebhookDeliveries < ActiveRecord::Migration[7.2]

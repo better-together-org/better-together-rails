@@ -1,25 +1,29 @@
 # frozen_string_literal: true
 
-# This migration comes from better_together (originally 20260519100000)
 # Idempotent repair for 20260516193000_backfill_federated_mirrored_identifiers.
 # The original loads live app models; this uses inline AR stubs (CE pattern from
 # 20260412223000) so it is safe on fresh installs in future gem versions.
 # Only processes records with source_id but no namespace separator in identifier.
 # `down` is a no-op — we do not undo a backfill that is already correct.
-# rubocop:disable Style/Documentation
 class EnsureFederatedMirroredIdentifierBackfill < ActiveRecord::Migration[7.2] # rubocop:disable Metrics/ClassLength
   NAMESPACE_SEPARATOR = '--'
 
+  # better_together_posts.type backs STI on the real BetterTogether::Post
+  # model. Without disabling it here, Rails resolves the type column against
+  # the real class and rejects this stand-in as an invalid subclass.
   class MigrationPost < ActiveRecord::Base
     self.table_name = 'better_together_posts'
+    self.inheritance_column = :_type_disabled_for_backfill
   end
 
   class MigrationPage < ActiveRecord::Base
     self.table_name = 'better_together_pages'
   end
 
+  # better_together_events.type backs STI the same way; see MigrationPost.
   class MigrationEvent < ActiveRecord::Base
     self.table_name = 'better_together_events'
+    self.inheritance_column = :_type_disabled_for_backfill
   end
 
   class MigrationPlatform < ActiveRecord::Base
@@ -65,7 +69,7 @@ class EnsureFederatedMirroredIdentifierBackfill < ActiveRecord::Migration[7.2] #
     ].all? { |t| table_exists?(t) }
   end
 
-  def backfill(model_stub, content_type:) # rubocop:disable Metrics/MethodLength, Metrics/AbcSize
+  def backfill(model_stub, content_type:)
     updated = 0
 
     model_stub.where.not(source_id: [nil, '']).find_each do |record|
@@ -169,4 +173,3 @@ class EnsureFederatedMirroredIdentifierBackfill < ActiveRecord::Migration[7.2] #
     value.to_s.split(NAMESPACE_SEPARATOR).map(&:parameterize).reject(&:blank?).join(NAMESPACE_SEPARATOR).presence
   end
 end
-# rubocop:enable Style/Documentation

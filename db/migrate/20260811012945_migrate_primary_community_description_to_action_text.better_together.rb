@@ -1,6 +1,5 @@
 # frozen_string_literal: true
 
-# This migration comes from better_together (originally 20260805110000)
 # Migrate `description` translations for PrimaryCommunity includers that were still
 # governed by PrimaryCommunity's own plain-text declaration (Country, Platform, State,
 # Continent, Region, Person) from mobility_text_translations (plain :text backend) to

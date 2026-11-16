@@ -1,6 +1,5 @@
 # frozen_string_literal: true
 
-# This migration comes from better_together (originally 20260309120000)
 # Extends report intake records with restorative-safety triage fields.
 class EnhanceReportsForRestorativeSafety < ActiveRecord::Migration[7.1]
   def up
@@ -27,8 +26,6 @@ class EnhanceReportsForRestorativeSafety < ActiveRecord::Migration[7.1]
   private
 
   def add_safety_columns!
-    return if column_exists?(:better_together_reports, :category)
-
     change_table :better_together_reports, bulk: true do |t|
       t.string :category
       t.string :harm_level
@@ -40,7 +37,7 @@ class EnhanceReportsForRestorativeSafety < ActiveRecord::Migration[7.1]
     end
   end
 
-  def backfill_existing_reports! # rubocop:todo Metrics/MethodLength
+  def backfill_existing_reports!
     execute <<~SQL.squish
       UPDATE better_together_reports
       SET
@@ -61,9 +58,6 @@ class EnhanceReportsForRestorativeSafety < ActiveRecord::Migration[7.1]
   end
 
   def add_safety_indexes!
-    uniqueness_index = 'index_better_together_reports_uniqueness'
-    return if connection.indexes(:better_together_reports).any? { |i| i.name == uniqueness_index }
-
     add_index :better_together_reports, :category
     add_index :better_together_reports, :harm_level
     add_index :better_together_reports, %i[reporter_id reportable_type reportable_id],

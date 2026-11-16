@@ -1,6 +1,5 @@
 # frozen_string_literal: true
 
-# This migration comes from better_together (originally 20250902203004)
 # Migration to ensure `link_type` on better_together_content_links has a sensible
 # default (`'website'`) and is non-nullable to satisfy callers that expect a
 # present link_type value.
@@ -10,7 +9,7 @@ class EnsureLinkTypeDefaultOnContentLinks < ActiveRecord::Migration[7.1]
     if column_exists?(table, :link_type)
       change_column_default table, :link_type, 'website'
       # Set existing nulls to default before enforcing NOT NULL
-      execute <<-SQL.squish
+      execute <<~SQL.squish
         UPDATE #{table} SET link_type = 'website' WHERE link_type IS NULL
       SQL
       change_column_null table, :link_type, false

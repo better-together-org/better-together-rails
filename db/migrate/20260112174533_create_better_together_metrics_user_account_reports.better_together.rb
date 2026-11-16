@@ -1,6 +1,5 @@
 # frozen_string_literal: true
 
-# This migration comes from better_together (originally 20260111034210)
 # Creates a db table to track and retrieve the UserAccountReport data
 class CreateBetterTogetherMetricsUserAccountReports < ActiveRecord::Migration[7.2]
   def change

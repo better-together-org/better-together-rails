@@ -1,6 +1,5 @@
 # frozen_string_literal: true
 
-# This migration comes from better_together (originally 20250905163813)
 # Changes duration_minutes from decimal to integer. Don't need high precision for minutes.
 # Also rounds any existing decimal values to nearest integer.
 class ChangeDurationMinutesToIntegerInBetterTogetherEvents < ActiveRecord::Migration[7.2]

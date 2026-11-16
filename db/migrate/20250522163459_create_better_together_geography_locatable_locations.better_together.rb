@@ -1,6 +1,5 @@
 # frozen_string_literal: true
 
-# This migration comes from better_together (originally 20250521135811)
 # Join table between polymorphic locatable and polymorphic location
 class CreateBetterTogetherGeographyLocatableLocations < ActiveRecord::Migration[7.1]
   def change

@@ -1,6 +1,5 @@
 # frozen_string_literal: true
 
-# This migration comes from better_together (originally 20260508000001)
 # Enforce at the DB layer that a person can have at most one pending deletion
 # request at a time. The model-level validate :single_active_request guard is
 # susceptible to a TOCTOU race under concurrent requests; this partial unique

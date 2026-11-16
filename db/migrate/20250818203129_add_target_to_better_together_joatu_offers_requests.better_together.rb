@@ -1,6 +1,5 @@
 # frozen_string_literal: true
 
-# This migration comes from better_together (originally 20250704000001)
 # Adds polymorphic target references to Joatu offers and requests
 class AddTargetToBetterTogetherJoatuOffersRequests < ActiveRecord::Migration[7.1]
   def change

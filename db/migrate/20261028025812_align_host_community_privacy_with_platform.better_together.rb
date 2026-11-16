@@ -1,6 +1,5 @@
 # frozen_string_literal: true
 
-# This migration comes from better_together (originally 20261009210000)
 # A platform's primary (host) community is created with the platform's privacy but nothing kept the two
 # aligned afterwards, so an instance could end up with a public platform and a private host community
 # (NL Venues did). CE's media gate answers 401 to anonymous visitors for media of a non-public record,

@@ -1,6 +1,5 @@
 # frozen_string_literal: true
 
-# This migration comes from better_together (originally 20260605001001)
 # Phase 1 — Navigation isolation.
 #
 # NavigationArea previously had no platform scope — all platforms shared the

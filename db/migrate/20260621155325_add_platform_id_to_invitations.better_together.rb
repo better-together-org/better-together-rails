@@ -1,6 +1,5 @@
 # frozen_string_literal: true
 
-# This migration comes from better_together (originally 20260605004002)
 # Phase 4 — Invitation isolation.
 #
 # The Invitation STI base has no direct platform_id — only PlatformInvitation

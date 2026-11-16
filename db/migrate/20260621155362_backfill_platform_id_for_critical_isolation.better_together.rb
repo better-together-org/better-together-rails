@@ -1,6 +1,5 @@
 # frozen_string_literal: true
 
-# This migration comes from better_together (originally 20260616002001)
 # Phase 9 — Backfill critical isolation tables
 class BackfillPlatformIdForCriticalIsolation < ActiveRecord::Migration[7.2] # rubocop:disable Metrics/ClassLength
   def up # rubocop:disable Metrics/CyclomaticComplexity, Metrics/PerceivedComplexity

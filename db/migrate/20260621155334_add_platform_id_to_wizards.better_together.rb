@@ -1,6 +1,5 @@
 # frozen_string_literal: true
 
-# This migration comes from better_together (originally 20260606001008)
 # Phase 5 — Wizard isolation.
 # Each platform can have its own onboarding wizard(s).
 # Nullable; backfill assigns host platform to pre-existing records.

@@ -1,6 +1,5 @@
 # frozen_string_literal: true
 
-# This migration comes from better_together (originally 20261020120100)
 # Delegation of authority from a human operator to a Robot on one platform,
 # optionally limited to one community. Scopes reuse Doorkeeper scope names.
 class CreateBetterTogetherAgentGrants < ActiveRecord::Migration[7.2]

@@ -1,6 +1,5 @@
 # frozen_string_literal: true
 
-# This migration comes from better_together (originally 20250325173009)
 # Creates db table for buildings
 class CreateBetterTogetherInfrastructureBuildings < ActiveRecord::Migration[7.1]
   def change

@@ -1,6 +1,5 @@
 # frozen_string_literal: true
 
-# This migration comes from better_together (originally 20260607003002)
 # Phase 7 — Users are per-platform auth records.
 class AddPlatformIdToUsers < ActiveRecord::Migration[7.2]
   def change

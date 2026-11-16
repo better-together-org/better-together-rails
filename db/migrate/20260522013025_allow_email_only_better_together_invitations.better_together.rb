@@ -1,6 +1,5 @@
 # frozen_string_literal: true
 
-# This migration comes from better_together (originally 20260517160000)
 class AllowEmailOnlyBetterTogetherInvitations < ActiveRecord::Migration[7.2]
   TABLE = :better_together_invitations
 

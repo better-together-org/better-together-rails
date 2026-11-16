@@ -1,6 +1,5 @@
 # frozen_string_literal: true
 
-# This migration comes from better_together (originally 20260717130000)
 # SeedPlanting has no reliable derivable platform for many real call paths
 # (automated/federated tending jobs run with no request context), so this column
 # stays nullable permanently — no backfill for existing rows, and no NOT NULL

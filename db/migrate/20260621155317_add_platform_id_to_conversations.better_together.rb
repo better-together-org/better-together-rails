@@ -1,6 +1,5 @@
 # frozen_string_literal: true
 
-# This migration comes from better_together (originally 20260605002001)
 # Phase 2 — Conversation isolation.
 # Nullable; backfill assigns host platform to pre-existing records.
 class AddPlatformIdToConversations < ActiveRecord::Migration[7.2]

@@ -1,12 +1,11 @@
 # frozen_string_literal: true
 
-# This migration comes from better_together (originally 20251124193251)
 # Ensures that all translated title attributes are stored as strings, not text
 # This migration fixes title translations for:
 # - BetterTogether::Post
 # - BetterTogether::Agreement
 # - BetterTogether::Geography::Map
-class MigrateTranslatedTitleAttributesToStrings < ActiveRecord::Migration[8.0]
+class MigrateTranslatedTitleAttributesToStrings < ActiveRecord::Migration[7.2]
   def up
     # Move title translations from text to string translations
     # This handles cases where titles were incorrectly stored as text type
@@ -20,11 +19,8 @@ class MigrateTranslatedTitleAttributesToStrings < ActiveRecord::Migration[8.0]
     # - insert_all() for creating string translations
     # - delete_all() for removing text translations
     # - Bypasses ActiveRecord callbacks (Elasticsearch indexing)
-    begin
-      Rake::Task['translations:mobility:migrate_titles_to_string'].invoke
-    rescue RuntimeError
-      Rake::Task['app:translations:mobility:migrate_titles_to_string'].invoke
-    end
+    run_engine_rake_task('translations:mobility:migrate_titles_to_string',
+                         skip_when_empty: %i[mobility_text_translations])
   end
 
   def down

@@ -1,6 +1,5 @@
 # frozen_string_literal: true
 
-# This migration comes from better_together (originally 20260317000001)
 # PostgreSQL does not consider NULL values equal in unique indexes, so the composite
 # unique index on person_links (platform_connection_id, source_person_id, target_person_id)
 # and person_access_grants (person_link_id, grantor_person_id, grantee_person_id) both

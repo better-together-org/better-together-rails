@@ -1,6 +1,5 @@
 # frozen_string_literal: true
 
-# This migration comes from better_together (originally 20250329183520)
 # Allows addresses to not be linked to a contact detail.
 class RemoveColumnNullOnBetterTogetherAddressesContactDetailId < ActiveRecord::Migration[7.1]
   def change

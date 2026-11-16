@@ -1,6 +1,5 @@
 # frozen_string_literal: true
 
-# This migration comes from better_together (originally 20260402120000)
 class CreateBetterTogetherRobots < ActiveRecord::Migration[7.2]
   def change
     unless table_exists?(:better_together_robots)

@@ -1,6 +1,5 @@
 # frozen_string_literal: true
 
-# This migration comes from better_together (originally 20250512160512)
 # Creates join table between a schedulable record and a calendar
 class CreateBetterTogetherCalendarEntries < ActiveRecord::Migration[7.1]
   def change

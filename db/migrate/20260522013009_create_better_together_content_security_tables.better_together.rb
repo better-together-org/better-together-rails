@@ -1,6 +1,5 @@
 # frozen_string_literal: true
 
-# This migration comes from better_together (originally 20260413170000)
 class CreateBetterTogetherContentSecurityTables < ActiveRecord::Migration[7.2]
   def change
     create_content_security_items_table
@@ -10,7 +9,7 @@ class CreateBetterTogetherContentSecurityTables < ActiveRecord::Migration[7.2]
 
   private
 
-  def create_content_security_items_table # rubocop:disable Metrics/MethodLength, Metrics/AbcSize
+  def create_content_security_items_table
     return if table_exists?(:better_together_content_security_items)
 
     create_bt_table :content_security_items do |t|
@@ -41,7 +40,7 @@ class CreateBetterTogetherContentSecurityTables < ActiveRecord::Migration[7.2]
     add_foreign_key :better_together_content_security_items, :active_storage_blobs, column: :blob_id
   end
 
-  def create_content_security_scan_events_table # rubocop:disable Metrics/MethodLength
+  def create_content_security_scan_events_table
     return if table_exists?(:better_together_content_security_scan_events)
 
     create_bt_table :content_security_scan_events do |t|
@@ -63,7 +62,7 @@ class CreateBetterTogetherContentSecurityTables < ActiveRecord::Migration[7.2]
     add_index :better_together_content_security_scan_events, :plane
   end
 
-  def create_content_security_findings_table # rubocop:disable Metrics/MethodLength
+  def create_content_security_findings_table
     return if table_exists?(:better_together_content_security_findings)
 
     create_bt_table :content_security_findings do |t|

@@ -1,6 +1,5 @@
 # frozen_string_literal: true
 
-# This migration comes from better_together (originally 20260606001007)
 # Phase 5 — PersonBlock isolation.
 # Blocking is now per-platform: person A can block person B on Platform 1
 # without affecting their relationship on Platform 2.

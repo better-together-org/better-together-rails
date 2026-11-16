@@ -1,6 +1,5 @@
 # frozen_string_literal: true
 
-# This migration comes from better_together (originally 20260315000001)
 # AR::Encryption convention documentation:
 # `encrypts :oauth_client_secret` stores the encrypted JSON blob in a column named
 # `oauth_client_secret` (same name — NOT `oauth_client_secret_ciphertext`).

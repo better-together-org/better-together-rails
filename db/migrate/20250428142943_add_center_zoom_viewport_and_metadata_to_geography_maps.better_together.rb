@@ -1,6 +1,5 @@
 # frozen_string_literal: true
 
-# This migration comes from better_together (originally 20250322202855)
 require 'activerecord-postgis-adapter'
 
 # This migration adds center, zoom, viewport, and metadata columns to the geography_maps table.

@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
-# This migration comes from better_together (originally 20240922172409)
-class CreateBetterTogetherWebsiteLinks < ActiveRecord::Migration[7.1]
+class CreateBetterTogetherWebsiteLinks < ActiveRecord::Migration[7.1] # rubocop:todo Style/Documentation
   def change
     create_bt_table :website_links do |t|
       t.string :url, null: false

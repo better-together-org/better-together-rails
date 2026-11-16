@@ -1,6 +1,5 @@
 # frozen_string_literal: true
 
-# This migration comes from better_together (originally 20250531154341)
 # Creates table for Calls for Interest
 class CreateBetterTogetherCallsForInterest < ActiveRecord::Migration[7.1]
   def change

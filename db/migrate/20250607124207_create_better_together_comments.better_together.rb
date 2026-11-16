@@ -1,6 +1,5 @@
 # frozen_string_literal: true
 
-# This migration comes from better_together (originally 20250531185536)
 # Creates table for Comments
 class CreateBetterTogetherComments < ActiveRecord::Migration[7.1]
   def change

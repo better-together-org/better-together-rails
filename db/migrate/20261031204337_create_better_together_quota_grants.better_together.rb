@@ -1,6 +1,5 @@
 # frozen_string_literal: true
 
-# This migration comes from better_together (originally 20261031155300)
 class CreateBetterTogetherQuotaGrants < ActiveRecord::Migration[7.2]
   def change
     return if table_exists?(:better_together_quota_grants)

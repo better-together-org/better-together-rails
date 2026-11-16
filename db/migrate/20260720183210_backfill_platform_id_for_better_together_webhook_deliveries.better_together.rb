@@ -1,6 +1,5 @@
 # frozen_string_literal: true
 
-# This migration comes from better_together (originally 20260716120100)
 # webhook_deliveries.platform_id is a denormalized copy of webhook_endpoint.platform_id,
 # but no code path ever actually set it (the model comment claimed otherwise). Backfill
 # every existing row from its real endpoint, then tighten to NOT NULL now that the

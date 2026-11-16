@@ -1,6 +1,5 @@
 # frozen_string_literal: true
 
-# This migration comes from better_together (originally 20260902190000)
 # `BetterTogether::Content::Block` includes `Privacy`, whose column defaults to
 # 'private'. Nothing syncs a block's privacy from the page it is placed on, and
 # the page renderer does not filter blocks by privacy -- every block on a

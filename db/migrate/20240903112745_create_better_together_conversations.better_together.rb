@@ -1,6 +1,5 @@
 # frozen_string_literal: true
 
-# This migration comes from better_together (originally 20240901182643)
 # Creates the conversations table used to group conversations for participants
 class CreateBetterTogetherConversations < ActiveRecord::Migration[7.1]
   def change

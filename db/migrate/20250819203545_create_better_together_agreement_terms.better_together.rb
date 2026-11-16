@@ -1,6 +1,5 @@
 # frozen_string_literal: true
 
-# This migration comes from better_together (originally 20250516133320)
 # Creates better_together_agreement_terms table
 class CreateBetterTogetherAgreementTerms < ActiveRecord::Migration[7.1]
   def change

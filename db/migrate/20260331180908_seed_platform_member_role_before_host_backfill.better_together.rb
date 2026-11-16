@@ -1,6 +1,5 @@
 # frozen_string_literal: true
 
-# This migration comes from better_together (originally 20260320235959)
 class SeedPlatformMemberRoleBeforeHostBackfill < ActiveRecord::Migration[7.2]
   class Role < ActiveRecord::Base
     self.table_name = 'better_together_roles'
@@ -57,7 +56,7 @@ class SeedPlatformMemberRoleBeforeHostBackfill < ActiveRecord::Migration[7.2]
       target: 'platform',
       resource_type: 'BetterTogether::Platform',
       protected: true,
-      position: 1
+      position: permission.position || next_position_for(ResourcePermission, 'BetterTogether::Platform')
     )
     permission.save! if permission.changed?
     upsert_slug!(permission, 'BetterTogether::ResourcePermission')

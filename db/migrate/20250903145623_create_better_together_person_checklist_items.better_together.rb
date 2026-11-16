@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
-# This migration comes from better_together (originally 20250830091000)
-class CreateBetterTogetherPersonChecklistItems < ActiveRecord::Migration[7.0]
+class CreateBetterTogetherPersonChecklistItems < ActiveRecord::Migration[7.0] # rubocop:todo Style/Documentation
   def change # rubocop:todo Metrics/MethodLength
     create_bt_table :person_checklist_items do |t|
       t.bt_references :person, null: false, target_table: :better_together_people,

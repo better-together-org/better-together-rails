@@ -1,6 +1,5 @@
 # frozen_string_literal: true
 
-# This migration comes from better_together (originally 20240906142416)
 # Creates blocks table to allow for robust page builder content
 class CreateBetterTogetherContentBlocks < ActiveRecord::Migration[7.1]
   def change # rubocop:todo Metrics/MethodLength

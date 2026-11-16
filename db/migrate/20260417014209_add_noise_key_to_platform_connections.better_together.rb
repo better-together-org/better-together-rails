@@ -1,6 +1,5 @@
 # frozen_string_literal: true
 
-# This migration comes from better_together (originally 20260407000200)
 class AddNoiseKeyToPlatformConnections < ActiveRecord::Migration[7.2]
   def change
     return unless table_exists?(:better_together_platform_connections)

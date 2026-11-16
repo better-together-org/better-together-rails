@@ -1,6 +1,5 @@
 # frozen_string_literal: true
 
-# This migration comes from better_together (originally 20250508171618)
 # Creates the table for a polymorphic connection to buildings
 class CreateBetterTogetherInfrastructureBuildingConnections < ActiveRecord::Migration[7.1]
   def change

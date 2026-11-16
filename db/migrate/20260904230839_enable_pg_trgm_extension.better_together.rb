@@ -1,6 +1,5 @@
 # frozen_string_literal: true
 
-# This migration comes from better_together (originally 20260715210000)
 # Enables pg_trgm for trigram-similarity name matching (used as a State resolution
 # fallback in HierarchyResolutionJob when no boundary polygon is available). Also adds a
 # GIN trigram index on the shared mobility_string_translations table's `value` column —

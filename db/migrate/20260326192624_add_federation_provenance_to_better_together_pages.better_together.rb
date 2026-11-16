@@ -1,6 +1,5 @@
 # frozen_string_literal: true
 
-# This migration comes from better_together (originally 20260312220000)
 class AddFederationProvenanceToBetterTogetherPages < ActiveRecord::Migration[7.2]
   def change
     unless column_exists?(:better_together_pages, :platform_id)

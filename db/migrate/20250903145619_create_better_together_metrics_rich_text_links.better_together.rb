@@ -1,6 +1,5 @@
 # frozen_string_literal: true
 
-# This migration comes from better_together (originally 20241125190948)
 # Migration to create the RichText link join table used for metrics and
 # associations between ActionText content and discovered links.
 class CreateBetterTogetherMetricsRichTextLinks < ActiveRecord::Migration[7.1]

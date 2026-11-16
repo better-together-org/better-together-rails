@@ -1,6 +1,5 @@
 # frozen_string_literal: true
 
-# This migration comes from better_together (originally 20261108120000)
 # A content-security Item was unique per (attachable, attachment_name), which
 # only fits has_one_attached. Scanning every ActiveStorage attachment needs one
 # Item per blob for has_many_attached slots, so keep the lookup index but drop

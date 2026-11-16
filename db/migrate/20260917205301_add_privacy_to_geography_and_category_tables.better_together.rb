@@ -1,6 +1,5 @@
 # frozen_string_literal: true
 
-# This migration comes from better_together (originally 20260917190000)
 # `BetterTogether::ActiveStorageSecurity#publicly_accessible?` (added for #1392) fails closed:
 # any attachment whose owning record doesn't respond to `privacy_public?` (and isn't a
 # `Content::Block`) always 401s for anonymous visitors, regardless of whether the record is

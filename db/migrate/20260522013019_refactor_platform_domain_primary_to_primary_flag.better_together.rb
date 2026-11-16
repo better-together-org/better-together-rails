@@ -1,8 +1,7 @@
 # frozen_string_literal: true
 
-# This migration comes from better_together (originally 20260514100000)
 class RefactorPlatformDomainPrimaryToPrimaryFlag < ActiveRecord::Migration[7.2]
-  def up # rubocop:disable Metrics/MethodLength
+  def up
     unless column_exists?(:better_together_platform_domains, :primary_flag)
       add_column :better_together_platform_domains, :primary_flag, :boolean, null: false, default: false
     end
@@ -22,8 +21,7 @@ class RefactorPlatformDomainPrimaryToPrimaryFlag < ActiveRecord::Migration[7.2]
                 name: 'index_better_together_platform_domains_on_primary_flag'
     end
 
-    remove_column :better_together_platform_domains, :primary if column_exists?(:better_together_platform_domains,
-                                                                                :primary)
+    remove_column :better_together_platform_domains, :primary if column_exists?(:better_together_platform_domains, :primary)
   end
 
   def down

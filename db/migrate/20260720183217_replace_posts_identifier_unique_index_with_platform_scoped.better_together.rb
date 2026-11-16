@@ -1,6 +1,5 @@
 # frozen_string_literal: true
 
-# This migration comes from better_together (originally 20260717140000)
 # Replace the bare unique index on better_together_posts.identifier with a
 # composite unique index on [identifier, platform_id], matching
 # 20260703171020_replace_pages_identifier_unique_index_with_platform_scoped

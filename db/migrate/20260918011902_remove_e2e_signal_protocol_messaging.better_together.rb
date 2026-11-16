@@ -1,6 +1,5 @@
 # frozen_string_literal: true
 
-# This migration comes from better_together (originally 20260911205151)
 # Removes the Signal Protocol E2EE messaging feature's schema footprint.
 #
 # The feature (added 20260315020000..20260508000002) was pulled from the 0.11.0

@@ -1,6 +1,5 @@
 # frozen_string_literal: true
 
-# This migration comes from better_together (originally 20260312235000)
 class CreateBetterTogetherPersonLinkedSeeds < ActiveRecord::Migration[7.2]
   def change
     unless table_exists?(:better_together_person_linked_seeds)

@@ -1,6 +1,5 @@
 # frozen_string_literal: true
 
-# This migration comes from better_together (originally 20250512155503)
 # Creates table for BetterTogether::Event
 class CreateBetterTogetherEvents < ActiveRecord::Migration[7.1]
   def change

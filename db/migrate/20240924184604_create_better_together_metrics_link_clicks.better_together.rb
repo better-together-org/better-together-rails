@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
-# This migration comes from better_together (originally 20240924181315)
-class CreateBetterTogetherMetricsLinkClicks < ActiveRecord::Migration[7.1]
+class CreateBetterTogetherMetricsLinkClicks < ActiveRecord::Migration[7.1] # rubocop:todo Style/Documentation
   def change
     create_bt_table :link_clicks, prefix: :better_together_metrics do |t|
       t.string :url, null: false

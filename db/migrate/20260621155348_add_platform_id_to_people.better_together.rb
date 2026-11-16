@@ -1,6 +1,5 @@
 # frozen_string_literal: true
 
-# This migration comes from better_together (originally 20260607003001)
 # Phase 7 — People are per-platform. Every person record belongs to exactly one platform.
 class AddPlatformIdToPeople < ActiveRecord::Migration[7.2]
   def change
