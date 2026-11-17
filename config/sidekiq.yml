@@ -5,6 +5,7 @@ development:
   <<: *default
   verbose: true
   queues:
+    - [billing, 10]   # Billing and payment work: heaviest weight, also served by the billing capsule
     - [default, 1]   # Default queue with priority 1
     - [mailers, 2]   # Mailers queue with priority 2
     - [es_indexing, 3]   # Elasticsearch indexing queue with priority 3 (lower priority)
@@ -16,10 +17,16 @@ development:
     - [low_priority, 3]   # Low priority work (boundary imports, notification cache warming)
     - [webhooks, 3]   # Outbound webhook delivery
     - [weather, 3]   # Weather refresh and backfill jobs (CE weather sources)
+  capsules:
+    billing:        # reserved threads that only ever work billing jobs
+      concurrency: 2
+      queues:
+        - [billing, 1]
 
 test:
   <<: *default
   queues:
+    - [billing, 10]   # Billing and payment work: heaviest weight, also served by the billing capsule
     - [default, 1]   # Default queue with priority 1
     - [mailers, 2]   # Mailers queue with priority 2
     - [es_indexing, 3]   # Elasticsearch indexing queue with priority 3 (lower priority)
@@ -31,10 +38,16 @@ test:
     - [low_priority, 3]   # Low priority work (boundary imports, notification cache warming)
     - [webhooks, 3]   # Outbound webhook delivery
     - [weather, 3]   # Weather refresh and backfill jobs (CE weather sources)
+  capsules:
+    billing:        # reserved threads that only ever work billing jobs
+      concurrency: 2
+      queues:
+        - [billing, 1]
 
 production:
   <<: *default
   queues:
+    - [better_together_production_billing, 10]   # Billing and payment work: heaviest weight, also served by the billing capsule
     - [better_together_production_default, 1]   # Default queue with priority 1
     - [better_together_production_mailers, 2]   # Mailers queue with priority 2
     - [better_together_production_es_indexing, 3]   # Elasticsearch indexing queue with priority 3 (lower priority)
@@ -46,3 +59,8 @@ production:
     - [better_together_production_low_priority, 3]   # Low priority work (boundary imports, notification cache warming)
     - [better_together_production_webhooks, 3]   # Outbound webhook delivery
     - [better_together_production_weather, 3]   # Weather refresh and backfill jobs (CE weather sources)
+  capsules:
+    billing:        # reserved threads that only ever work billing jobs
+      concurrency: 2
+      queues:
+        - [better_together_production_billing, 1]
