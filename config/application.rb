@@ -13,9 +13,9 @@ module BetterTogether
   class Application < Rails::Application # rubocop:todo Style/Documentation
     # Initialize configuration defaults for originally generated Rails version.
     config.api_only = false
-    config.session_store :cookie_store, key: '_bt_session'
-    config.middleware.use ActionDispatch::Cookies
-    config.middleware.use config.session_store, config.session_options
+    # One cookie-store session. Rails already installs the session middleware from this setting; adding it again
+    # by hand set a second cookie that was sent on every response and pushed headers past nginx's 4k buffer.
+    config.session_store :cookie_store, key: '_better_together_session'
 
     config.generators do |g|
       g.orm :active_record, primary_key_type: :uuid
