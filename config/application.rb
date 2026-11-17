@@ -40,6 +40,19 @@ module BetterTogether
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 7.2
 
+    # Engine models (billing tax ids, processor settings) use Active Record encryption. Generate keys with
+    # `bin/rails db:encryption:init` and set all three variables. A partial set raises.
+    if ENV['ACTIVE_RECORD_ENCRYPTION_PRIMARY_KEY'].present?
+      config.active_record.encryption.primary_key = ENV.fetch('ACTIVE_RECORD_ENCRYPTION_PRIMARY_KEY')
+      config.active_record.encryption.deterministic_key = ENV.fetch('ACTIVE_RECORD_ENCRYPTION_DETERMINISTIC_KEY')
+      config.active_record.encryption.key_derivation_salt = ENV.fetch('ACTIVE_RECORD_ENCRYPTION_KEY_DERIVATION_SALT')
+    elsif Rails.env.test?
+      # Stable throwaway keys so test runs do not depend on credentials inside ephemeral containers.
+      config.active_record.encryption.primary_key = '4f7f0d8d0e2b7c8f9a1b2c3d4e5f60714f7f0d8d0e2b7c8f9a1b2c3d4e5f6071'
+      config.active_record.encryption.deterministic_key = '6a8b0c1d2e3f4051' * 4
+      config.active_record.encryption.key_derivation_salt = '8c9d0e1f2a3b4c5d' * 4
+    end
+
     config.active_storage.analyzers = [
       ActiveStorage::Analyzer::ImageAnalyzer::Vips,
       ActiveStorage::Analyzer::ImageAnalyzer::ImageMagick,
