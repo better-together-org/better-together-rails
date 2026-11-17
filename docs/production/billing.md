@@ -10,9 +10,8 @@ The Community Engine billing stack is bundled with the gem and stays closed unti
 | `PAY_BUSINESS_NAME`, `PAY_BUSINESS_ADDRESS` | Required, printed on invoices and receipts |
 | `PAY_SUPPORT_EMAIL` | Required, or set `DEFAULT_FROM_EMAIL` |
 | `BT_BILLING_DEFAULT_CURRENCY`, `BT_BILLING_DEFAULT_COUNTRY` | Plan form preselect and processor country |
-| `ACTIVE_RECORD_ENCRYPTION_PRIMARY_KEY`, `_DETERMINISTIC_KEY`, `_KEY_DERIVATION_SALT` | Required for encrypted billing fields; all three or none (`bin/rails db:encryption:init`) |
 
-Losing the encryption keys makes the encrypted billing fields unreadable.
+Encryption keys: each environment keeps `active_record_encryption` (primary_key, deterministic_key, key_derivation_salt) in its encrypted credentials. Losing them makes the encrypted billing fields unreadable.
 
 ## Upgrading
 

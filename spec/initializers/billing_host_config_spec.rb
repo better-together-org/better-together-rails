@@ -11,7 +11,7 @@ RSpec.describe 'Billing host configuration' do # rubocop:disable RSpec/DescribeC
   end
 
   it 'has Active Record encryption keys for the engine encrypted fields' do
-    encryption = Rails.application.config.active_record.encryption
+    encryption = ActiveRecord::Encryption.config
 
     expect([encryption.primary_key, encryption.deterministic_key, encryption.key_derivation_salt]).to all(be_present)
   end
