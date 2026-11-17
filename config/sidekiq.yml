@@ -15,6 +15,7 @@ development:
     - [platform_sync, 3]   # Federation platform sync queue
     - [low_priority, 3]   # Low priority work (boundary imports, notification cache warming)
     - [webhooks, 3]   # Outbound webhook delivery
+    - [weather, 3]   # Weather refresh and backfill jobs (CE weather sources)
 
 test:
   <<: *default
@@ -29,6 +30,7 @@ test:
     - [platform_sync, 3]   # Federation platform sync queue
     - [low_priority, 3]   # Low priority work (boundary imports, notification cache warming)
     - [webhooks, 3]   # Outbound webhook delivery
+    - [weather, 3]   # Weather refresh and backfill jobs (CE weather sources)
 
 production:
   <<: *default
@@ -43,3 +45,4 @@ production:
     - [better_together_production_platform_sync, 3]   # Federation platform sync queue
     - [better_together_production_low_priority, 3]   # Low priority work (boundary imports, notification cache warming)
     - [better_together_production_webhooks, 3]   # Outbound webhook delivery
+    - [better_together_production_weather, 3]   # Weather refresh and backfill jobs (CE weather sources)
