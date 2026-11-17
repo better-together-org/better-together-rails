@@ -1,6 +1,5 @@
 # frozen_string_literal: true
 
-# This migration comes from better_together (originally 20240612113954)
 # Creates the person_platform_integrations table for storing OAuth connections.
 # Stores encrypted OAuth credentials and profile information from external platforms.
 # Supports multiple OAuth providers with token refresh capabilities.

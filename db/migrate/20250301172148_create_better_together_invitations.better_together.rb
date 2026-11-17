@@ -1,11 +1,10 @@
 # frozen_string_literal: true
 
-# This migration comes from better_together (originally 20190301040948)
 # Creates invitations table
 class CreateBetterTogetherInvitations < ActiveRecord::Migration[7.0]
   def change # rubocop:todo Metrics/MethodLength, Metrics/AbcSize
     create_bt_table :invitations do |t| # rubocop:todo Metrics/BlockLength
-      t.string 'type', default: 'BetterTogether::Invitation', null: false
+      t.string "type", default: "BetterTogether::Invitation", null: false
       t.string :status,
                limit: 20,
                null: false,
@@ -40,18 +39,18 @@ class CreateBetterTogetherInvitations < ActiveRecord::Migration[7.0]
                       index: {
                         name: 'by_invitable'
                       }
-      t.bt_references  :inviter,
-                       null: false,
-                       polymorphic: true,
-                       index: {
-                         name: 'by_inviter'
-                       }
-      t.bt_references  :invitee,
-                       null: false,
-                       polymorphic: true,
-                       index: {
-                         name: 'by_invitee'
-                       }
+      t.bt_references :inviter,
+                      null: false,
+                      polymorphic: true,
+                      index: {
+                        name: 'by_inviter'
+                      }
+      t.bt_references :invitee,
+                      null: false,
+                      polymorphic: true,
+                      index: {
+                        name: 'by_invitee'
+                      }
       t.string :invitee_email,
                null: false,
                index: {
@@ -65,12 +64,11 @@ class CreateBetterTogetherInvitations < ActiveRecord::Migration[7.0]
     end
 
     add_index :better_together_invitations, %i[invitee_email invitable_id], unique: true,
-                                                                            # rubocop:todo Layout/LineLength
-                                                                            name: 'invitations_on_invitee_email_and_invitable_id'
-    # rubocop:enable Layout/LineLength
+                                                                            # rubocop:todo-next Layout/LineLength
+                                                                            name: "invitations_on_invitee_email_and_invitable_id"
     add_index :better_together_invitations, %i[invitable_id status],
-              name: 'invitations_on_invitable_id_and_status'
+              name: "invitations_on_invitable_id_and_status"
     add_index :better_together_invitations, :invitee_email, where: "status = 'pending'",
-                                                            name: 'pending_invites_on_invitee_email'
+                                                            name: "pending_invites_on_invitee_email"
   end
 end

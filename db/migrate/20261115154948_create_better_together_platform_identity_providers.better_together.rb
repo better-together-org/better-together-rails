@@ -1,6 +1,5 @@
 # frozen_string_literal: true
 
-# This migration comes from better_together (originally 20261110120000)
 # Per-platform OAuth sign-in configuration. The external Platform record is the
 # provider identity; this row holds the credentials and options for one local platform.
 class CreateBetterTogetherPlatformIdentityProviders < ActiveRecord::Migration[7.2]

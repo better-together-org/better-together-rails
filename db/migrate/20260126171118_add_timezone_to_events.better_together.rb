@@ -1,6 +1,5 @@
 # frozen_string_literal: true
 
-# This migration comes from better_together (originally 20260117124817)
 # Adds timezone column to events and backfills existing records
 class AddTimezoneToEvents < ActiveRecord::Migration[7.2]
   def up
@@ -18,7 +17,9 @@ class AddTimezoneToEvents < ActiveRecord::Migration[7.2]
 
   private
 
-  def backfill_event_timezones # rubocop:todo Metrics/MethodLength
+  def backfill_event_timezones
+    return unless table_has_rows?(:better_together_events)
+
     # Get platform timezone (safe for multi-tenancy)
     platform = BetterTogether::Platform.find_by(host: true)
     default_timezone = platform&.time_zone || 'UTC'

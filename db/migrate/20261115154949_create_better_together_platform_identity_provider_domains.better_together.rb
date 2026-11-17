@@ -1,6 +1,5 @@
 # frozen_string_literal: true
 
-# This migration comes from better_together (originally 20261110130000)
 # Explicit allow-list of the platform domains (callback hosts) a provider configuration serves.
 # A sign-in is valid only on a domain listed here; there is no implicit fallback.
 class CreateBetterTogetherPlatformIdentityProviderDomains < ActiveRecord::Migration[7.2]

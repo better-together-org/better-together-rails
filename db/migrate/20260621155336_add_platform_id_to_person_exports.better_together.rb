@@ -1,6 +1,5 @@
 # frozen_string_literal: true
 
-# This migration comes from better_together (originally 20260606001010)
 # Phase 5 — PersonDataExport and PersonDeletionRequest isolation.
 # Records the platform where the GDPR request was submitted (audit trail).
 # Nullable; backfill assigns host platform to pre-existing records.

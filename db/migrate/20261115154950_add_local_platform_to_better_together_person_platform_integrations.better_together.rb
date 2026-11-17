@@ -1,6 +1,5 @@
 # frozen_string_literal: true
 
-# This migration comes from better_together (originally 20261110140000)
 # A provider identity (provider + uid) is now linked per local platform: the same GitHub or Google
 # account may be linked to different people on different platforms. Existing links belong to the host platform.
 class AddLocalPlatformToBetterTogetherPersonPlatformIntegrations < ActiveRecord::Migration[7.2]

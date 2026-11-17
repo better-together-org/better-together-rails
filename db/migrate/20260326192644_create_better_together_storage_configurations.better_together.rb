@@ -1,6 +1,5 @@
 # frozen_string_literal: true
 
-# This migration comes from better_together (originally 20260321000001)
 # Creates storage_configurations table and adds active storage config FK to platforms.
 #
 # Each platform can have many storage configurations; platforms.storage_configuration_id

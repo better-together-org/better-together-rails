@@ -1,6 +1,5 @@
 # frozen_string_literal: true
 
-# This migration comes from better_together (originally 20260416214500)
 class AddContributorDisplayVisibilitySettings < ActiveRecord::Migration[7.2]
   def up
     add_community_settings_column

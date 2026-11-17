@@ -1,6 +1,5 @@
 # frozen_string_literal: true
 
-# This migration comes from better_together (originally 20261113120000)
 # Platform-scoped URL redirects (301/302/307/308) and gone (410) responses, resolved before routing.
 class CreateBetterTogetherRedirects < ActiveRecord::Migration[7.2]
   TABLE = :better_together_redirects

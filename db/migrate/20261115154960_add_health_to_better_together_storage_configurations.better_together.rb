@@ -1,6 +1,5 @@
 # frozen_string_literal: true
 
-# This migration comes from better_together (originally 20261113120100)
 # Records the outcome of the last connection test on a storage configuration, so an admin can see
 # whether a platform's bucket is reachable without running a test by hand.
 class AddHealthToBetterTogetherStorageConfigurations < ActiveRecord::Migration[7.2]

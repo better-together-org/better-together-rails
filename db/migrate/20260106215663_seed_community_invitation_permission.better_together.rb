@@ -1,18 +1,12 @@
 # frozen_string_literal: true
 
-# This migration comes from better_together (originally 20251230152546)
 # Migration to seed the invite_community_members permission and assign it to appropriate community roles
 class SeedCommunityInvitationPermission < ActiveRecord::Migration[7.2]
   def up
     puts 'Seeding community invitation permission and role assignments...'
 
-    load BetterTogether::Engine.root.join('lib', 'tasks', 'better_together', 'seed_rbac_and_navigation.rake')
-
-    begin
-      Rake::Task['better_together:seed:community_invitation_permission'].invoke
-    rescue RuntimeError
-      Rake::Task['app:better_together:seed:community_invitation_permission'].invoke
-    end
+    run_engine_rake_task('better_together:seed:community_invitation_permission', file: 'seed_rbac_and_navigation.rake',
+                                                                                 skip_when_empty: %i[better_together_platforms])
   end
 
   def down

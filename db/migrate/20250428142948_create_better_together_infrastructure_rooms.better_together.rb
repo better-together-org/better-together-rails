@@ -1,6 +1,5 @@
 # frozen_string_literal: true
 
-# This migration comes from better_together (originally 20250325181419)
 # Rooms are individual spatial units that make up a floor
 class CreateBetterTogetherInfrastructureRooms < ActiveRecord::Migration[7.1]
   def change

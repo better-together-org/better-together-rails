@@ -1,6 +1,5 @@
 # frozen_string_literal: true
 
-# This migration comes from better_together (originally 20250902231322)
 class CreateBetterTogetherSeedPlantings < ActiveRecord::Migration[7.1]
   def change
     return if table_exists?(:better_together_seed_plantings)

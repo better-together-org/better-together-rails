@@ -1,6 +1,5 @@
 # frozen_string_literal: true
 
-# This migration comes from better_together (originally 20260717120100)
 # RichTextLink.platform_id has never been set by any code path — RichTextLinkIdentifier
 # never passed it. rich_text_record can be any model with has_rich_text content, so
 # rather than a fixed type list this discovers the distinct owner types actually present

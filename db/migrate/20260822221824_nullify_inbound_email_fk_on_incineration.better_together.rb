@@ -1,6 +1,5 @@
 # frozen_string_literal: true
 
-# This migration comes from better_together (originally 20260822170000)
 # Rails' default ActionMailbox::IncinerationJob (~30 days) destroys
 # action_mailbox_inbound_emails rows. The original FK from
 # better_together_inbound_email_messages had no on_delete option (default

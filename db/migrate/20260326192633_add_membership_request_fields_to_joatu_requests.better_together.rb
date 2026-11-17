@@ -1,6 +1,5 @@
 # frozen_string_literal: true
 
-# This migration comes from better_together (originally 20260315014500)
 class AddMembershipRequestFieldsToJoatuRequests < ActiveRecord::Migration[7.1] # :nodoc:
   TABLE = :better_together_joatu_requests
   private_constant :TABLE

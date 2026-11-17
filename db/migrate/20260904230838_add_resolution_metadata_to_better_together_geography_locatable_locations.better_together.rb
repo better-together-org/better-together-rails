@@ -1,6 +1,5 @@
 # frozen_string_literal: true
 
-# This migration comes from better_together (originally 20260715120100)
 # Adds resolution provenance to LocatableLocation so it can also represent hierarchy
 # placements (Settlement/Region/State/Country/Continent) resolved automatically by
 # HierarchyResolutionJob, alongside its existing user-entered Address/Building/name rows.

@@ -1,6 +1,5 @@
 # frozen_string_literal: true
 
-# This migration comes from better_together (originally 20260719160000)
 # Replace the bare unique index on identifier with a composite
 # [identifier, platform_id] index — the same duplicate-identifier-across-
 # platforms fix already applied to pages and posts. Without this,

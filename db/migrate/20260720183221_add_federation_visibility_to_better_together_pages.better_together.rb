@@ -1,6 +1,5 @@
 # frozen_string_literal: true
 
-# This migration comes from better_together (originally 20260718100100)
 # Adds a per-item federation_visibility override to pages.
 class AddFederationVisibilityToBetterTogetherPages < ActiveRecord::Migration[7.2]
   def up

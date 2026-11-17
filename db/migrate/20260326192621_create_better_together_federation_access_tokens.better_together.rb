@@ -1,6 +1,5 @@
 # frozen_string_literal: true
 
-# This migration comes from better_together (originally 20260312172000)
 # Creates the federation access tokens table.
 # Tokens are issued to remote platforms for authenticated cross-instance API calls.
 # token_digest stores a secure hash of the token — the raw token is never persisted.

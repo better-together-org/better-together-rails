@@ -1,6 +1,5 @@
 # frozen_string_literal: true
 
-# This migration comes from better_together (originally 20260605003002)
 # Phase 3 — Joatu exchange isolation.
 # Requests, Offers, and Joatu::Agreements all get platform_id so exchange
 # listings are scoped to the active platform context.

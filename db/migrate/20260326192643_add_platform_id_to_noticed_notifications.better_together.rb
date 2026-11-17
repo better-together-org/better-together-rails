@@ -1,6 +1,5 @@
 # frozen_string_literal: true
 
-# This migration comes from better_together (originally 20260318000001)
 # Adds platform_id to noticed_notifications so notification queries can be
 # scoped to the current platform in multi-platform-per-instance deployments.
 #

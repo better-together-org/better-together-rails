@@ -1,6 +1,5 @@
 # frozen_string_literal: true
 
-# This migration comes from better_together (originally 20261114120000)
 # Seeds were unique on (type, identifier) across the whole database, so two platforms could not
 # store the same seed. A nullable platform_id scopes a seed to one platform; seeds without one stay
 # global (federation and CE builders), unique among themselves.

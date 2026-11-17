@@ -1,6 +1,5 @@
 # frozen_string_literal: true
 
-# This migration comes from better_together (originally 20260607001001)
 # Phase 6 — Platform isolation for join tables.
 # AgreementParticipant allows cross-platform queries without this column.
 class AddPlatformIdToAgreementParticipants < ActiveRecord::Migration[7.2]

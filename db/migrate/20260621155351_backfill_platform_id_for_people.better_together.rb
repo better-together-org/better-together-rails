@@ -1,6 +1,5 @@
 # frozen_string_literal: true
 
-# This migration comes from better_together (originally 20260607004001)
 # Phase 7 — Backfill people.platform_id from the platform whose host community matches
 # the person's community_id, with membership and host-platform fallbacks.
 class BackfillPlatformIdForPeople < ActiveRecord::Migration[7.2]

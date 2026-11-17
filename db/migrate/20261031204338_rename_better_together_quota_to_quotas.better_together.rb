@@ -1,6 +1,5 @@
 # frozen_string_literal: true
 
-# This migration comes from better_together (originally 20261031164300)
 # "quota" pluralizes regularly to "quotas" in standard English (it entered English
 # as a Latin adjective form, not a neuter -um noun like datum/quantum), but Rails'
 # classical-Latin inflection rule matched it by pattern anyway, making

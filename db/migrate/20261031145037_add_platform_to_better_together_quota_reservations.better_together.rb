@@ -1,6 +1,5 @@
 # frozen_string_literal: true
 
-# This migration comes from better_together (originally 20261029120000)
 # better_together_quota_reservations was created without a platform_id column, which
 # QuotaReservation < PlatformRecord requires via PlatformScoped, so every reserve!
 # failed validation. Same follow-up fix as AddPlatformToBetterTogetherQuotaBalances.

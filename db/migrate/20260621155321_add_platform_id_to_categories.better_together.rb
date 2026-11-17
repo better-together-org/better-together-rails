@@ -1,6 +1,5 @@
 # frozen_string_literal: true
 
-# This migration comes from better_together (originally 20260605003001)
 # Phase 3 — Category and Categorization isolation.
 # Categories (event, joatu, page) were global; now per-platform.
 # Categorizations join table also gets platform_id for efficient scoped queries.

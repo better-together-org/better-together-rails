@@ -1,14 +1,17 @@
 # frozen_string_literal: true
 
-# This migration comes from better_together (originally 20260516193000)
 class BackfillFederatedMirroredIdentifiers < ActiveRecord::Migration[7.2]
   NAMESPACE_SEPARATOR = '--'
 
   def up
+    return unless %i[better_together_posts better_together_pages better_together_events].any? do |table|
+      table_has_rows?(table)
+    end
+
     say_with_time migration_message(:title) do
       backfill(::BetterTogether::Post, content_type: 'post') +
         backfill(::BetterTogether::Page, content_type: 'page') +
-        backfill(::BetterTogether::Event, content_type: 'event')
+        backfill(event_backfill_class, content_type: 'event')
     end
   end
 
@@ -18,7 +21,28 @@ class BackfillFederatedMirroredIdentifiers < ActiveRecord::Migration[7.2]
 
   private
 
-  def backfill(model_class, content_type:) # rubocop:disable Metrics/MethodLength, Metrics/AbcSize
+  # Migration-local stand-in for BetterTogether::Event. The real model
+  # declares `enum :status, ...`, which Rails validates against the schema
+  # at class-load time — but the `status` column isn't added until a later
+  # migration (add_status_to_better_together_events). Loading the real class
+  # here would abort any host upgrade that installs both migrations in one
+  # batch. This stub only needs the table and the `platform` association.
+  def event_backfill_class
+    Class.new(ActiveRecord::Base) do
+      self.table_name = 'better_together_events'
+      # better_together_events.type backs STI on the real model. Without this,
+      # Rails resolves the `type` column against the real BetterTogether::Event
+      # class and rejects this stand-in as an invalid subclass.
+      self.inheritance_column = :_type_disabled_for_backfill
+      belongs_to :platform, class_name: 'BetterTogether::Platform', optional: true
+
+      def self.name
+        'BetterTogether::Event'
+      end
+    end
+  end
+
+  def backfill(model_class, content_type:)
     updated = 0
 
     model_class.where.not(source_id: [nil, '']).find_each do |record|
@@ -47,7 +71,13 @@ class BackfillFederatedMirroredIdentifiers < ActiveRecord::Migration[7.2]
         next
       end
 
-      record.update!(identifier: new_identifier)
+      # update_columns bypasses validation deliberately: this migration only
+      # rewrites `identifier` and must not fail records whose other
+      # attributes (e.g. federation_visibility) aren't valid yet because a
+      # later-timestamped migration hasn't added/backfilled that column on
+      # this host database. See EnsureFederatedMirroredIdentifierBackfill,
+      # which repairs this migration's output using the same bypass.
+      record.update_columns(identifier: new_identifier, updated_at: Time.current)
       updated += 1
     end
 

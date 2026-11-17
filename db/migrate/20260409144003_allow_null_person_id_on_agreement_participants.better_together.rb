@@ -1,6 +1,5 @@
 # frozen_string_literal: true
 
-# This migration comes from better_together (originally 20260404204500)
 class AllowNullPersonIdOnAgreementParticipants < ActiveRecord::Migration[7.2]
   def up
     change_column_null :better_together_agreement_participants, :person_id, true if column_exists?(:better_together_agreement_participants,

@@ -1,6 +1,5 @@
 # frozen_string_literal: true
 
-# This migration comes from better_together (originally 20260313003000)
 class AddOauthCredentialsToBetterTogetherPlatformConnections < ActiveRecord::Migration[7.2]
   def change
     add_column :better_together_platform_connections, :oauth_client_id, :string unless column_exists?(:better_together_platform_connections,

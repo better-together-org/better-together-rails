@@ -1,6 +1,5 @@
 # frozen_string_literal: true
 
-# This migration comes from better_together (originally 20261112130000)
 # Phase 1 of platform tenancy: accounts belong to one platform.
 # - backfills users.platform_id with the host platform (all existing accounts belong to the host;
 #   other platform rows are external ones for OAuth providers and federation)

@@ -1,6 +1,5 @@
 # frozen_string_literal: true
 
-# This migration comes from better_together (originally 20261028220000)
 # Table name is singular ("quota", not "quotas") deliberately: this app's inflections
 # resolve "quota".pluralize to "quota" unchanged (verified: Rails' own default,
 # unconfigured ActiveRecord::Base.table_name for a class named Quota is "quota" too),

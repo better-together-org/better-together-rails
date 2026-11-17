@@ -1,8 +1,7 @@
 # frozen_string_literal: true
 
-# This migration comes from better_together (originally 20260514100002)
 class CreateBetterTogetherShortLinks < ActiveRecord::Migration[7.2]
-  def change # rubocop:disable Metrics/MethodLength
+  def change
     return if table_exists?(:better_together_short_links)
 
     create_bt_table :short_links do |t|

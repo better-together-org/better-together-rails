@@ -1,6 +1,5 @@
 # frozen_string_literal: true
 
-# This migration comes from better_together (originally 20250902203001)
 # Migration to create the better_together_metrics_link_checker_reports table.
 #
 # This migration defines the following columns:

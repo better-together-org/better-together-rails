@@ -1,6 +1,5 @@
 # frozen_string_literal: true
 
-# This migration comes from better_together (originally 20260716120200)
 # Adds platform tracking to this compliance audit table. Some historical/automated
 # rows have no derivable platform at all (e.g. a direct hard-deletion with no
 # person_deletion_request), so this column stays nullable permanently — do not

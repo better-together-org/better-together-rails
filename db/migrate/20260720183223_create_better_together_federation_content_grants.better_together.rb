@@ -1,6 +1,5 @@
 # frozen_string_literal: true
 
-# This migration comes from better_together (originally 20260719020000)
 # Per-item x per-connection federation consent override. Absence of a grant
 # for a given (federatable, platform_connection) pair means "defer to the
 # item's federation_visibility tri-state" (see docs/plans/federation-item-consent.md).

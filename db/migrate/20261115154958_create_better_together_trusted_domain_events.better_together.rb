@@ -1,6 +1,5 @@
 # frozen_string_literal: true
 
-# This migration comes from better_together (originally 20261113100100)
 # Append-only audit trail for trusted domain changes and for accounts created through a trusted domain.
 class CreateBetterTogetherTrustedDomainEvents < ActiveRecord::Migration[7.2]
   def change

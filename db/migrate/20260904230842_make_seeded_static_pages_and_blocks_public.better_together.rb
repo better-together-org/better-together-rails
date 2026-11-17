@@ -1,6 +1,5 @@
 # frozen_string_literal: true
 
-# This migration comes from better_together (originally 20260903151133)
 # Page#privacy and Content::Block#privacy both default to 'private', and nothing
 # syncs a block's privacy from its page. The built-in informational pages seeded
 # by NavigationBuilder / AgreementBuilder (home, about, FAQ, the legal pages,

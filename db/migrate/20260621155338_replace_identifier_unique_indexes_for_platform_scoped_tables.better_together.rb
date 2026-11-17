@@ -1,6 +1,5 @@
 # frozen_string_literal: true
 
-# This migration comes from better_together (originally 20260606005001)
 # Replace bare unique indexes on `identifier` with composite unique indexes on
 # `[identifier, platform_id]` for all platform-scoped tables. This allows the
 # same identifier to exist on different platforms while maintaining uniqueness

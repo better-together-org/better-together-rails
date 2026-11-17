@@ -1,6 +1,5 @@
 # frozen_string_literal: true
 
-# This migration comes from better_together (originally 20260605004001)
 # Phase 4 — Report isolation.
 # Reports are moderation artifacts; platform admins should only see reports
 # from their own platform context. Nullable; backfill to host platform.

@@ -1,6 +1,5 @@
 # frozen_string_literal: true
 
-# This migration comes from better_together (originally 20260716120000)
 # Fixes a cross-platform messaging-permission leak: grants had no platform_id at all,
 # so a grant created in one platform's context silently authorized messaging on any
 # other platform where the same two people also exist.

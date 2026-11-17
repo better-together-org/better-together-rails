@@ -1,6 +1,5 @@
 # frozen_string_literal: true
 
-# This migration comes from better_together (originally 20250301000000)
 # Removes query strings from existing page_url entries
 class PurgeQueryStringsFromPageUrls < ActiveRecord::Migration[7.1]
   class PageView < BetterTogether::ApplicationRecord # rubocop:todo Style/Documentation

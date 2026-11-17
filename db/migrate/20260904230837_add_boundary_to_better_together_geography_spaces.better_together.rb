@@ -1,6 +1,5 @@
 # frozen_string_literal: true
 
-# This migration comes from better_together (originally 20260715120000)
 require 'activerecord-postgis-adapter'
 
 # Adds a polygon/multipolygon boundary column to Space so that any geospatial owner

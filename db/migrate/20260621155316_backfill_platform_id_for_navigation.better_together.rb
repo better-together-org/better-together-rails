@@ -1,6 +1,5 @@
 # frozen_string_literal: true
 
-# This migration comes from better_together (originally 20260605001003)
 # Phase 1 — Backfill platform_id for navigation areas and items.
 #
 # All existing navigation areas are assigned to the host platform.

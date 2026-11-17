@@ -1,6 +1,5 @@
 # frozen_string_literal: true
 
-# This migration comes from better_together (originally 20260629000002)
 class CreateBetterTogetherMessageRequests < ActiveRecord::Migration[7.2]
   def change
     return if table_exists?(:better_together_message_requests)

@@ -1,6 +1,5 @@
 # frozen_string_literal: true
 
-# This migration comes from better_together (originally 20260607005001)
 # Phase 8 — Safety case chain: Case, Action, Agreement, Note.
 class AddPlatformIdToSafetyTables < ActiveRecord::Migration[7.2]
   def change

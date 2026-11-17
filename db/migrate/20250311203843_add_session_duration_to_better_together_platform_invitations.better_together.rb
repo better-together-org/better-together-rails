@@ -1,6 +1,5 @@
 # frozen_string_literal: true
 
-# This migration comes from better_together (originally 20250311185427)
 # Add session duration to BetterTogether::PlatformInvitation
 class AddSessionDurationToBetterTogetherPlatformInvitations < ActiveRecord::Migration[7.1]
   def change

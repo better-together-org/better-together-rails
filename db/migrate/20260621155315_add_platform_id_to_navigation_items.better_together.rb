@@ -1,6 +1,5 @@
 # frozen_string_literal: true
 
-# This migration comes from better_together (originally 20260605001002)
 # Phase 1 — Navigation isolation (items).
 #
 # NavigationItems are children of NavigationAreas. Adding platform_id directly

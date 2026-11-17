@@ -1,6 +1,5 @@
 # frozen_string_literal: true
 
-# This migration comes from better_together (originally 20260312171000)
 # Creates the platform connections table for federation between BetterTogether instances.
 # A connection represents a directed trust relationship between two platforms, enabling
 # content sharing, federated auth, and other cross-instance collaboration features.

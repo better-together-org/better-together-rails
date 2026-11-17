@@ -1,6 +1,5 @@
 # frozen_string_literal: true
 
-# This migration comes from better_together (originally 20260607001006)
 # Phase 6 — Platform isolation for ContactDetail children.
 # All child tables inherit platform_id from their ContactDetail parent.
 class AddPlatformIdToContactDetailChildren < ActiveRecord::Migration[7.2]

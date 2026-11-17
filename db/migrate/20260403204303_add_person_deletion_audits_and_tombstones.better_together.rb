@@ -1,6 +1,5 @@
 # frozen_string_literal: true
 
-# This migration comes from better_together (originally 20260401143000)
 class AddPersonDeletionAuditsAndTombstones < ActiveRecord::Migration[7.1]
   def change
     add_column :better_together_people, :deleted_at, :datetime unless column_exists?(:better_together_people, :deleted_at)

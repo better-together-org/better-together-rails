@@ -1,6 +1,5 @@
 # frozen_string_literal: true
 
-# This migration comes from better_together (originally 20250321194847)
 # Add table to store map data
 class CreateBetterTogetherGeographyMaps < ActiveRecord::Migration[7.1]
   def change

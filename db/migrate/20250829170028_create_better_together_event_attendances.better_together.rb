@@ -1,6 +1,5 @@
 # frozen_string_literal: true
 
-# This migration comes from better_together (originally 20250821121000)
 # Create event attendance table for RSVP functionality
 class CreateBetterTogetherEventAttendances < ActiveRecord::Migration[7.1]
   def change

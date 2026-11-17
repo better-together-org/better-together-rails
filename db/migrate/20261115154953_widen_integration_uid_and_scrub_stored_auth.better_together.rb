@@ -1,6 +1,5 @@
 # frozen_string_literal: true
 
-# This migration comes from better_together (originally 20261112120000)
 # OpenID Connect `sub` values can be 255 characters, and the raw provider payload kept in the plain
 # `auth` jsonb column held access/refresh/id tokens that the encrypted token columns exist to protect.
 class WidenIntegrationUidAndScrubStoredAuth < ActiveRecord::Migration[7.1]

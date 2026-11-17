@@ -1,6 +1,5 @@
 # frozen_string_literal: true
 
-# This migration comes from better_together (originally 20250901203002)
 # Migration to add children_count column and backfill existing counts for checklist items.
 class AddChildrenCountToChecklistItems < ActiveRecord::Migration[7.1]
   disable_ddl_transaction!
@@ -19,7 +18,7 @@ class AddChildrenCountToChecklistItems < ActiveRecord::Migration[7.1]
   private
 
   def backfill_children_count # rubocop:todo Metrics/MethodLength
-    execute(<<-SQL.squish)
+    execute(<<~SQL.squish)
       UPDATE better_together_checklist_items parent
       SET children_count = sub.count
       FROM (

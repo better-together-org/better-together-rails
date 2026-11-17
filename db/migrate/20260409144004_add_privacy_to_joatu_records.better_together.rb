@@ -1,6 +1,5 @@
 # frozen_string_literal: true
 
-# This migration comes from better_together (originally 20260404213000)
 class AddPrivacyToJoatuRecords < ActiveRecord::Migration[7.1]
   def change
     add_privacy_column(:better_together_joatu_requests)

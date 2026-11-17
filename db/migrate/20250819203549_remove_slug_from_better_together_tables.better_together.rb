@@ -1,6 +1,5 @@
 # frozen_string_literal: true
 
-# This migration comes from better_together (originally 20250819120000)
 # These slug columns were never really used since I added localized slugs using the mobility string translations table
 class RemoveSlugFromBetterTogetherTables < ActiveRecord::Migration[7.1]
   TABLES = {

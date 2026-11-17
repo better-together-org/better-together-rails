@@ -1,6 +1,5 @@
 # frozen_string_literal: true
 
-# This migration comes from better_together (originally 20260607001003)
 # Phase 6 — Platform isolation for join tables.
 # EventAttendance allows cross-platform queries without this column.
 class AddPlatformIdToEventAttendances < ActiveRecord::Migration[7.2]

@@ -1,6 +1,5 @@
 # frozen_string_literal: true
 
-# This migration comes from better_together (originally 20240826143510)
 # Creates the PlatformInvitations database table
 class CreateBetterTogetherPlatformInvitations < ActiveRecord::Migration[7.1]
   def change # rubocop:todo Metrics/AbcSize, Metrics/MethodLength
@@ -50,21 +49,15 @@ class CreateBetterTogetherPlatformInvitations < ActiveRecord::Migration[7.1]
                   name: 'platform_invitations_by_status'
                 }
 
-      t.string  :locale,
-                limit: 5,
-                null: false,
-                index: {
-                  name: 'platform_invitations_by_locale'
-                },
-                default: I18n.default_locale
+      t.bt_locale('better_together_platform_invitations')
 
-      t.string  :token,
-                limit: 24,
-                null: false,
-                index: {
-                  name: 'platform_invitations_by_token',
-                  unique: true
-                }
+      t.string :token,
+               limit: 24,
+               null: false,
+               index: {
+                 name: 'platform_invitations_by_token',
+                 unique: true
+               }
 
       t.datetime :valid_from,
                  null: false,
@@ -81,8 +74,8 @@ class CreateBetterTogetherPlatformInvitations < ActiveRecord::Migration[7.1]
 
     add_index :better_together_platform_invitations, %i[invitee_email invitable_id], unique: true
     add_index :better_together_platform_invitations, %i[invitable_id status],
-              name: 'index_platform_invitations_on_invitable_id_and_status'
+              name: "index_platform_invitations_on_invitable_id_and_status"
     add_index :better_together_platform_invitations, :invitee_email, where: "status = 'pending'",
-                                                                     name: 'index_pending_invitations_on_invitee_email'
+                                                                     name: "index_pending_invitations_on_invitee_email"
   end
 end

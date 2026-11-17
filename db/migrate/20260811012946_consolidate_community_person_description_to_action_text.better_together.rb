@@ -1,6 +1,5 @@
 # frozen_string_literal: true
 
-# This migration comes from better_together (originally 20260805120000)
 # Community and Person previously had TWO separate description-type attributes:
 # a plain `description` (used by PrimaryCommunity's auto-bootstrap, the JSON:API
 # CommunityResource, structured data, wizards, OAuth bio linking, Devise

@@ -1,6 +1,5 @@
 # frozen_string_literal: true
 
-# This migration comes from better_together (originally 20260717140200)
 # Metrics::Share.platform_id is NOT NULL, populated at creation time from the
 # *viewer's* current platform context (SharesController -> TrackShareJob), not
 # from the content actually shared. For federated/cross-platform content this
@@ -19,6 +18,8 @@ class CorrectPlatformIdMismatchForMetricsShares < ActiveRecord::Migration[7.2]
     return unless column_exists?(:better_together_metrics_shares, :platform_id)
 
     CONTENT_TYPES.each do |type, owner_table|
+      next unless column_exists?(owner_table, :platform_id)
+
       execute <<~SQL.squish
         UPDATE better_together_metrics_shares m
         SET platform_id = owner.platform_id

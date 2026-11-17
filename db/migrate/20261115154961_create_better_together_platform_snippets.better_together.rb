@@ -1,6 +1,5 @@
 # frozen_string_literal: true
 
-# This migration comes from better_together (originally 20261113200000)
 # Per-platform head and body code snippets (WordPress style header and footer scripts) with an
 # append-only audit table. Snippets are disabled until a steward enables them.
 class CreateBetterTogetherPlatformSnippets < ActiveRecord::Migration[7.2]

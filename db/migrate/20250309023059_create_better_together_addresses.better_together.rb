@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
-# This migration comes from better_together (originally 20240921162459)
-class CreateBetterTogetherAddresses < ActiveRecord::Migration[7.1]
+class CreateBetterTogetherAddresses < ActiveRecord::Migration[7.1] # rubocop:todo Style/Documentation
   def change # rubocop:todo Metrics/MethodLength
     create_bt_table :addresses do |t|
       t.bt_label

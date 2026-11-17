@@ -1,6 +1,5 @@
 # frozen_string_literal: true
 
-# This migration comes from better_together (originally 20260607004002)
 # Phase 7 — Backfill users.platform_id via active identification → person.platform_id.
 # Backfill identifications.platform_id from the linked person.
 class BackfillPlatformIdForUsersAndIdentifications < ActiveRecord::Migration[7.2]

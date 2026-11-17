@@ -1,6 +1,5 @@
 # frozen_string_literal: true
 
-# This migration comes from better_together (originally 20260825010000)
 # Geography::Map had no platform association at all, unlike every other
 # platform-scoped content model - MapPolicy could only ever check
 # manage_platform/manage_platform_settings globally (see the matching policy

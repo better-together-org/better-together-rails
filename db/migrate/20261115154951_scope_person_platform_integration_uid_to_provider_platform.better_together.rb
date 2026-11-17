@@ -1,6 +1,5 @@
 # frozen_string_literal: true
 
-# This migration comes from better_together (originally 20261110150000)
 # A provider uid is unique only within its provider platform: two OpenID Connect issuers may issue the same
 # `sub`, so the identity key now includes the external provider platform (one per issuer).
 class ScopePersonPlatformIntegrationUidToProviderPlatform < ActiveRecord::Migration[7.2]

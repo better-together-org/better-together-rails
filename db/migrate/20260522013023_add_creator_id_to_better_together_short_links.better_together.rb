@@ -1,6 +1,5 @@
 # frozen_string_literal: true
 
-# This migration comes from better_together (originally 20260514100004)
 class AddCreatorIdToBetterTogetherShortLinks < ActiveRecord::Migration[7.2]
   def change
     return unless table_exists?(:better_together_short_links)

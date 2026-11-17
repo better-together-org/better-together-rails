@@ -1,6 +1,5 @@
 # frozen_string_literal: true
 
-# This migration comes from better_together (originally 20260607006001)
 # Phase 8 — Backfill safety tables: Case from report, then Action/Agreement/Note from case.
 class BackfillPlatformIdForSafetyTables < ActiveRecord::Migration[7.2]
   def up

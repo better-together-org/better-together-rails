@@ -1,6 +1,5 @@
 # frozen_string_literal: true
 
-# This migration comes from better_together (originally 20261112150000)
 # Invitations and OAuth records created before platform binding have no platform. Every such row
 # was issued by the host platform (the only platform with accounts and sign in), so bind them to it
 # rather than refusing them at runtime. Other platform rows are external (OAuth providers, federation).

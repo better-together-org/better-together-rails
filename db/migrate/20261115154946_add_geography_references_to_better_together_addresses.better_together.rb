@@ -1,6 +1,5 @@
 # frozen_string_literal: true
 
-# This migration comes from better_together (originally 20261109150000)
 # Optional links from an address to the geography records it was entered against.
 # The string columns stay as the free-text fallback when no record exists.
 class AddGeographyReferencesToBetterTogetherAddresses < ActiveRecord::Migration[7.2]

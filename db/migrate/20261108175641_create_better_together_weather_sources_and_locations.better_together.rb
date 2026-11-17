@@ -1,6 +1,5 @@
 # frozen_string_literal: true
 
-# This migration comes from better_together (originally 20261102150000)
 # Weather data sources (one per adapter configuration) and the settlement
 # locations that are tracked through them.
 class CreateBetterTogetherWeatherSourcesAndLocations < ActiveRecord::Migration[7.1]

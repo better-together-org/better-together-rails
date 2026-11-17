@@ -1,6 +1,5 @@
 # frozen_string_literal: true
 
-# This migration comes from better_together (originally 20261113100000)
 # Per-platform list of email domains whose verified addresses may register without an invitation.
 class CreateBetterTogetherPlatformTrustedDomains < ActiveRecord::Migration[7.2]
   def change

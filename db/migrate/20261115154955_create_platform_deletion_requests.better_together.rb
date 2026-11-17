@@ -1,6 +1,5 @@
 # frozen_string_literal: true
 
-# This migration comes from better_together (originally 20261112140000)
 # Requests from the last steward of a platform to have the platform removed by host stewards.
 class CreatePlatformDeletionRequests < ActiveRecord::Migration[7.2]
   def change

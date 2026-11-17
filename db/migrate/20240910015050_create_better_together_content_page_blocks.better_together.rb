@@ -1,6 +1,5 @@
 # frozen_string_literal: true
 
-# This migration comes from better_together (originally 20240906152410)
 # Created join table between pages and blocks
 class CreateBetterTogetherContentPageBlocks < ActiveRecord::Migration[7.1]
   def change

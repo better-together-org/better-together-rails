@@ -1,6 +1,5 @@
 # frozen_string_literal: true
 
-# This migration comes from better_together (originally 20260606001005)
 # Phase 5 — Activity isolation.
 # Scopes PublicActivity audit log entries to the platform where they occurred.
 # Nullable; backfill assigns host platform to pre-existing records.

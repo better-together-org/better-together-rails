@@ -1,6 +1,5 @@
 # frozen_string_literal: true
 
-# This migration comes from better_together (originally 20250710121000)
 # Creates reports for flagged content or users
 class CreateBetterTogetherReports < ActiveRecord::Migration[7.0]
   def change

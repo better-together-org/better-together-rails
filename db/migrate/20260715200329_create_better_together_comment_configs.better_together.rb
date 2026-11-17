@@ -1,6 +1,5 @@
 # frozen_string_literal: true
 
-# This migration comes from better_together (originally 20260710180000)
 class CreateBetterTogetherCommentConfigs < ActiveRecord::Migration[7.2]
   def change
     return if table_exists?(:better_together_comment_configs)

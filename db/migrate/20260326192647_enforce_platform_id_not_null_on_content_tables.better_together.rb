@@ -1,6 +1,5 @@
 # frozen_string_literal: true
 
-# This migration comes from better_together (originally 20260321000004)
 # Enforce NOT NULL on platform_id for the three primary content tables.
 #
 # This is safe to run only AFTER the following backfill migrations have

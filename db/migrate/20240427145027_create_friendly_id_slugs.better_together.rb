@@ -1,6 +1,5 @@
 # frozen_string_literal: true
 
-# This migration comes from better_together (originally 20190224040555)
 MIGRATION_CLASS =
   if ActiveRecord::VERSION::MAJOR >= 5
     ActiveRecord::Migration["#{ActiveRecord::VERSION::MAJOR}.#{ActiveRecord::VERSION::MINOR}"]

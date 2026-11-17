@@ -1,6 +1,5 @@
 # frozen_string_literal: true
 
-# This migration comes from better_together (originally 20260616001001)
 # Phase 9 — Critical isolation: Conversations, Messages, Activities, Reports, PersonBlocks, Invitations, Authorships
 class AddPlatformIdToCriticalIsolationTables < ActiveRecord::Migration[7.2]
   def change

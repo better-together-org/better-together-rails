@@ -1,10 +1,9 @@
 # frozen_string_literal: true
 
-# This migration comes from better_together (originally 20241124181740)
 # Migration to create the persistent links table used by the
 # BetterTogether rich text link metrics system.
 class CreateBetterTogetherContentLinks < ActiveRecord::Migration[7.1]
-  # rubocop:disable Metrics/MethodLength
+  # rubocop:disable-next Metrics/MethodLength
   def change
     create_bt_table :links, prefix: :better_together_content do |t|
       t.string :link_type, null: false, index: true
@@ -18,5 +17,4 @@ class CreateBetterTogetherContentLinks < ActiveRecord::Migration[7.1]
       t.text :error_message
     end
   end
-  # rubocop:enable Metrics/MethodLength
 end

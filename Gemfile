@@ -11,7 +11,7 @@ gem 'aws-sdk-s3', require: false
 # Use the published version of better_together for production
 gem 'better_together', '~> 0.11.0',
     github: 'better-together-org/community-engine-rails',
-    ref: '4f929dff17565fbe4321e16e2496faea90cabca8'
+    ref: 'f237d15ab49fbefa7d2c2706dc300e05fc762548'
 
 # Google Analytics 4, one measurement id per platform (replaces the inline GTAG_ID partial)
 gem 'better_together-google-analytics',

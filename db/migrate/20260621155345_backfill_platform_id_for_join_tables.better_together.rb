@@ -1,6 +1,5 @@
 # frozen_string_literal: true
 
-# This migration comes from better_together (originally 20260607002001)
 # Phase 6 — Backfill platform_id for join tables from their parent records.
 class BackfillPlatformIdForJoinTables < ActiveRecord::Migration[7.2]
   def up

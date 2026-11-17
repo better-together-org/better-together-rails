@@ -1,6 +1,5 @@
 # frozen_string_literal: true
 
-# This migration comes from better_together (originally 20260523090000)
 class BackfillExpiredFeatureAccessGrants < ActiveRecord::Migration[7.2]
   def up
     execute <<~SQL.squish

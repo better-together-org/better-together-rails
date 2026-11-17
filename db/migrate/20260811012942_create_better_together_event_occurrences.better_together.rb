@@ -1,6 +1,5 @@
 # frozen_string_literal: true
 
-# This migration comes from better_together (originally 20260729120000)
 # Lightweight, lazily-created per-occurrence override for a recurring Event.
 # Only created when a specific session is interacted with (RSVP, comment, or
 # an organizer override) — most occurrences of a series never get a row.

@@ -1,6 +1,5 @@
 # frozen_string_literal: true
 
-# This migration comes from better_together (originally 20190224201824)
 # Creates roles table
 class CreateBetterTogetherRoles < ActiveRecord::Migration[7.0]
   def change

@@ -1,9 +1,8 @@
 # frozen_string_literal: true
 
-# This migration comes from better_together (originally 20260111233253)
 # Migration to add creator tracking to all metrics report tables
 class AddCreatorToMetricsReports < ActiveRecord::Migration[7.2]
-  # rubocop:disable Metrics/MethodLength
+  # rubocop:disable-next Metrics/MethodLength
   def change
     # Add creator_id to all metrics report tables only if the column doesn't exist
     unless column_exists?(:better_together_metrics_user_account_reports, :creator_id)
@@ -38,5 +37,4 @@ class AddCreatorToMetricsReports < ActiveRecord::Migration[7.2]
                   null: true,
                   index: true
   end
-  # rubocop:enable Metrics/MethodLength
 end

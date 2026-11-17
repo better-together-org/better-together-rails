@@ -1,6 +1,5 @@
 # frozen_string_literal: true
 
-# This migration comes from better_together (originally 20260717120000)
 # Metrics::Download/PageView already have platform_id NOT NULL, populated at creation
 # time from the *viewer's* current platform context (TrackDownloadJob/TrackPageViewJob),
 # not from the content actually downloaded/viewed. For federated/cross-platform content
@@ -31,6 +30,8 @@ class CorrectPlatformIdMismatchForDownloadsAndPageViews < ActiveRecord::Migratio
     return unless column_exists?(table, :platform_id)
 
     CONTENT_TYPES.each do |type, owner_table|
+      next unless column_exists?(owner_table, :platform_id)
+
       execute <<~SQL.squish
         UPDATE #{quote_table_name(table)} m
         SET platform_id = owner.platform_id

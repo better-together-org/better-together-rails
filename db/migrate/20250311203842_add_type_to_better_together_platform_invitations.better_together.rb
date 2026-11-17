@@ -1,6 +1,5 @@
 # frozen_string_literal: true
 
-# This migration comes from better_together (originally 20250311134000)
 # Ensure that the type column is present on BetterTogether::PlatformInvitation
 class AddTypeToBetterTogetherPlatformInvitations < ActiveRecord::Migration[7.1]
   def change

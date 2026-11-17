@@ -1,6 +1,5 @@
 # frozen_string_literal: true
 
-# This migration comes from better_together (originally 20261109150100)
 # Links existing addresses to their already-resolved geography records.
 class BackfillBetterTogetherAddressGeographyLinks < ActiveRecord::Migration[7.2]
   def up

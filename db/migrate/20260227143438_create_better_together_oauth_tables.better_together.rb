@@ -1,6 +1,5 @@
 # frozen_string_literal: true
 
-# This migration comes from better_together (originally 20260215000001)
 # Creates OAuth2 tables for Doorkeeper integration.
 # Uses UUID primary keys and better_together_ prefix to match engine conventions.
 class CreateBetterTogetherOauthTables < ActiveRecord::Migration[7.2]

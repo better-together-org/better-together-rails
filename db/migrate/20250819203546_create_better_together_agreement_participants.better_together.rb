@@ -1,6 +1,5 @@
 # frozen_string_literal: true
 
-# This migration comes from better_together (originally 20250715200000)
 # Creates join table between agreements and people
 class CreateBetterTogetherAgreementParticipants < ActiveRecord::Migration[7.1]
   def change # rubocop:todo Metrics/MethodLength

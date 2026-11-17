@@ -1,6 +1,5 @@
 # frozen_string_literal: true
 
-# This migration comes from better_together (originally 20261028220310)
 # better_together_quota_balances was created without a platform_id column, which
 # QuotaBalance < PlatformRecord requires via PlatformScoped. Fixing with a new
 # migration rather than editing the original create migration, since it already ran.

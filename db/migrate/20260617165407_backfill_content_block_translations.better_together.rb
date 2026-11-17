@@ -1,6 +1,5 @@
 # frozen_string_literal: true
 
-# This migration comes from better_together (originally 20260602220138)
 class BackfillContentBlockTranslations < ActiveRecord::Migration[7.2]
   STRING_FIELDS = {
     'BetterTogether::Content::AlertBlock' => %w[heading],

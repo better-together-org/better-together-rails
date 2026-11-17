@@ -1,6 +1,5 @@
 # frozen_string_literal: true
 
-# This migration comes from better_together (originally 20260607006002)
 # Phase 8 — Backfill simple child tables from their parent platform_id.
 class BackfillPlatformIdForChildTables < ActiveRecord::Migration[7.2]
   PARENT_MAP = [
@@ -8,7 +7,6 @@ class BackfillPlatformIdForChildTables < ActiveRecord::Migration[7.2]
     %i[better_together_wizard_steps better_together_wizards wizard_id],
     %i[better_together_wizard_step_definitions better_together_wizards wizard_id],
     %i[better_together_checklist_items better_together_checklists checklist_id],
-    %i[better_together_joatu_settlements better_together_joatu_agreements agreement_id],
     %i[better_together_event_hosts better_together_events event_id],
     %i[better_together_calendar_entries better_together_events event_id],
     %i[better_together_person_community_memberships better_together_communities joinable_id]
@@ -16,6 +14,7 @@ class BackfillPlatformIdForChildTables < ActiveRecord::Migration[7.2]
 
   def up
     PARENT_MAP.each do |child_table, parent_table, fk|
+      next unless table_exists?(child_table)
       next unless column_exists?(child_table, :platform_id)
 
       execute <<~SQL
@@ -31,6 +30,7 @@ class BackfillPlatformIdForChildTables < ActiveRecord::Migration[7.2]
 
   def down
     PARENT_MAP.each do |child_table, _, _|
+      next unless table_exists?(child_table)
       next unless column_exists?(child_table, :platform_id)
 
       execute "UPDATE #{child_table} SET platform_id = NULL"
