@@ -98,96 +98,88 @@ textarea.form-control {
   // border-color: $beige; // #EAF0CE
 }
 
+// The header and footer use the platform theme's navbar and footer tokens when a theme is set (the CE gem emits
+// --bts-* on :root and re-points them in dark mode) and the brand green otherwise, so a chosen theme is never
+// half covered by these fixed colours.
 #main-nav {
   position: sticky;
   top: 0;
   z-index: 1000;
-  background: $header-footer-bg;
-  color: $light-background-text-color;
+  background: var(--bts-navbar-bg, #{$header-footer-bg});
+  color: var(--bts-navbar-link, #{$light-background-text-color});
 
-  a {
-    color: $light-background-text-color;
+  a:not(.dropdown-item) {
+    color: var(--bts-navbar-link, #{$light-background-text-color});
   }
 
   .dropdown-menu {
-    background: $header-footer-bg;
-
-    .dropdown-item:hover, .dropdown-item:active {
-      color: $light-background-text-color;
-      // background-color: $beige;
-    }
+    background: var(--bts-navbar-bg, #{$header-footer-bg});
   }
 }
 
 #app-footer {
-  background: $header-footer-bg;
-  color: $light-background-text-color;
+  background: var(--bts-footer-bg, #{$header-footer-bg});
+  color: var(--bts-footer-link, #{$light-background-text-color});
 
-  a {
-    color: $light-background-text-color;
+  a:not(.dropdown-item),
+  .navbar-text {
+    color: var(--bts-footer-link, #{$light-background-text-color});
   }
 
   .dropdown-menu {
-    background: $header-footer-bg;
-
-    .dropdown-item:hover, .dropdown-item:active {
-      color: $light-background-text-color;
-      // background-color: $beige;
-    }
-  }
-
-  .navbar-text {
-    color: $light-background-text-color;
+    background: var(--bts-footer-bg, #{$header-footer-bg});
   }
 }
 
-// Dark colour mode. The colour-mode toggle sets data-bs-theme="dark"; the light green header and footer above
-// are fixed colours, so give them a dark brand tint with light text and links.
+// Dark colour mode with no platform theme: the light green header and footer are fixed colours, so give them a
+// dark brand tint with light text. With a theme the tokens above already switch to their dark values.
 [data-bs-theme='dark'] {
-  --bt-mobile-nav-bg: #{$header-footer-bg-dark};
-  --bt-mobile-nav-color: #{$dark-background-text-color};
-  --bt-mobile-nav-hover-color: #{lighten($brand-accent, 25%)};
-  --bt-navbar-toggler-color: #{$dark-background-text-color};
+  --bt-mobile-nav-bg: var(--bts-navbar-bg, #{$header-footer-bg-dark});
+  --bt-mobile-nav-color: var(--bts-navbar-link, #{$dark-background-text-color});
+  --bt-mobile-nav-hover-color: var(--bts-navbar-link, #{lighten($brand-accent, 25%)});
+  --bt-navbar-toggler-color: var(--bts-navbar-link, #{$dark-background-text-color});
 
-  #main-nav,
-  #app-footer {
-    background: $header-footer-bg-dark;
-    color: $dark-background-text-color;
+  #main-nav {
+    background: var(--bts-navbar-bg, #{$header-footer-bg-dark});
+    color: var(--bts-navbar-link, #{$dark-background-text-color});
 
-    a,
-    .navbar-text {
-      color: $dark-background-text-color;
-    }
-
-    .dropdown-menu {
-      background: $header-footer-bg-dark;
-
-      .dropdown-item {
-        color: $dark-background-text-color;
-      }
-
-      .dropdown-item:hover,
-      .dropdown-item:active {
-        color: $dark-background-text-color;
-        background: rgba($dark-background-text-color, 0.12);
-      }
+    a:not(.dropdown-item) {
+      color: var(--bts-navbar-link, #{$dark-background-text-color});
     }
   }
 
+  #app-footer {
+    background: var(--bts-footer-bg, #{$header-footer-bg-dark});
+    color: var(--bts-footer-link, #{$dark-background-text-color});
+
+    a:not(.dropdown-item),
+    .navbar-text {
+      color: var(--bts-footer-link, #{$dark-background-text-color});
+    }
+  }
+
+  #main-nav .dropdown-menu {
+    background: var(--bts-navbar-bg, #{$header-footer-bg-dark});
+  }
+
+  #app-footer .dropdown-menu {
+    background: var(--bts-footer-bg, #{$header-footer-bg-dark});
+  }
+
   .navbar-nav .nav-link {
-    color: lighten($brand-accent, 25%);
+    color: var(--bts-navbar-link, #{lighten($brand-accent, 25%)});
   }
 
   .navbar-nav .nav-link.active,
   .navbar-nav .nav-link:hover,
   .navbar-nav .nav-link:focus {
-    border-bottom-color: lighten($brand-accent, 25%);
+    border-bottom-color: var(--bts-navbar-link, #{lighten($brand-accent, 25%)});
   }
 }
 
 .navbar-nav .nav-link {
   position: relative;
-  color: $primary;
+  color: var(--bts-navbar-link, #{$primary});
   text-decoration: none; /* Remove default text underline */
   padding: 5px 10px;
   border-bottom: 4px solid transparent; /* Invisible border by default */
@@ -197,7 +189,7 @@ textarea.form-control {
 .navbar-nav .nav-link.active,
 .navbar-nav .nav-link:hover,
 .navbar-nav .nav-link:focus {
-  border-bottom: 4px solid $primary; /* Add underline on hover/focus */
+  border-bottom: 4px solid var(--bts-navbar-link, #{$primary}); /* Add underline on hover/focus */
 }
 
 /* Animation keyframes for shrinking and growing */
