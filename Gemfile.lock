@@ -1,7 +1,15 @@
 GIT
+  remote: https://github.com/better-together-org/better_together-google-analytics.git
+  revision: bad1ec0034dbe1ffb9913654de635ba30f1cd09d
+  branch: main
+  specs:
+    better_together-google-analytics (0.3.0)
+      better_together (>= 0.11.0)
+
+GIT
   remote: https://github.com/better-together-org/community-engine-rails.git
-  revision: e65d8807ba1749ecd5f0a04627931de4d42a5881
-  ref: e65d8807ba1749ecd5f0a04627931de4d42a5881
+  revision: f237d15ab49fbefa7d2c2706dc300e05fc762548
+  ref: f237d15ab49fbefa7d2c2706dc300e05fc762548
   specs:
     better_together (0.11.0)
       active_storage_svg_sanitizer
@@ -204,8 +212,8 @@ GEM
     aws-sdk-kms (1.143.0)
       aws-sdk-core (~> 3, >= 3.268.0)
       aws-sigv4 (~> 1.5)
-    aws-sdk-s3 (1.240.0)
-      aws-sdk-core (~> 3, >= 3.266.0)
+    aws-sdk-s3 (1.242.0)
+      aws-sdk-core (~> 3, >= 3.268.0)
       aws-sdk-kms (~> 1)
       aws-sigv4 (~> 1.5)
     aws-sigv4 (1.12.1)
@@ -431,7 +439,7 @@ GEM
       i18n
     i18n (1.15.2)
       concurrent-ruby (~> 1.0)
-    i18n-tasks (1.2.0)
+    i18n-tasks (1.2.1)
       activesupport (>= 4.0.2)
       ast (>= 2.1.0)
       erubi
@@ -1050,10 +1058,10 @@ GEM
       faraday (~> 2.0)
       faraday-follow_redirects
     websocket (1.2.11)
-    websocket-driver (0.8.2)
+    websocket-driver (0.9.0)
       base64
-      websocket-extensions (>= 0.1.0)
-    websocket-extensions (0.1.5)
+      websocket-extensions (>= 0.2.0)
+    websocket-extensions (0.2.0)
     xpath (3.2.0)
       nokogiri (~> 1.8)
     zeitwerk (2.8.3)
@@ -1069,6 +1077,7 @@ DEPENDENCIES
   bcrypt (~> 3.1.21)
   better_errors
   better_together (~> 0.11.0)!
+  better_together-google-analytics!
   binding_of_caller
   bootsnap (>= 1.7.0)
   brakeman
@@ -1085,7 +1094,7 @@ DEPENDENCIES
   faker
   fog-aws
   fuubar
-  i18n-tasks (~> 1.2.0)
+  i18n-tasks (~> 1.2.1)
   i18n_generators
   listen (>= 3.0.5, < 3.11)
   opentelemetry-exporter-otlp (~> 0.37.0)

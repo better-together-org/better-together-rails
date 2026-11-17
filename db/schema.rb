@@ -1725,7 +1725,7 @@ ActiveRecord::Schema[8.1].define(version: 2026_11_16_213273) do
     t.text "meta_description"
     t.string "keywords"
     t.datetime "published_at"
-    t.string "privacy", default: "private", null: false
+    t.string "privacy", default: "public", null: false
     t.string "layout"
     t.string "template"
     t.uuid "sidebar_nav_id"
@@ -2050,8 +2050,8 @@ ActiveRecord::Schema[8.1].define(version: 2026_11_16_213273) do
     t.jsonb "settings", default: {}, null: false
     t.string "oauth_client_id"
     t.text "oauth_client_secret_ciphertext"
-    t.string "oauth_client_secret_digest"
     t.text "oauth_client_secret"
+    t.string "oauth_client_secret_digest"
     t.string "noise_public_key"
     t.boolean "routing_allowed", default: true, null: false
     t.index ["connection_kind"], name: "index_better_together_platform_connections_on_connection_kind"
@@ -2704,7 +2704,7 @@ ActiveRecord::Schema[8.1].define(version: 2026_11_16_213273) do
     t.string "platform_name", null: false
     t.string "handle", null: false
     t.string "url"
-    t.string "privacy", limit: 50, default: "private", null: false
+    t.string "privacy", limit: 50, default: "public", null: false
     t.uuid "contact_detail_id", null: false
     t.uuid "platform_id"
     t.index ["contact_detail_id", "platform_name"], name: "index_bt_sma_on_contact_detail_and_platform", unique: true
@@ -3011,6 +3011,19 @@ ActiveRecord::Schema[8.1].define(version: 2026_11_16_213273) do
     t.index ["platform_id"], name: "index_friendly_id_slugs_on_platform_id"
     t.index ["slug", "sluggable_type", "locale"], name: "index_friendly_id_slugs_on_slug_and_sluggable_type_and_locale"
     t.index ["sluggable_type", "sluggable_id"], name: "by_sluggable"
+  end
+
+  create_table "friendly_id_slugs_deduplicated_backup", id: false, force: :cascade do |t|
+    t.bigint "id"
+    t.string "slug"
+    t.uuid "sluggable_id"
+    t.string "sluggable_type"
+    t.string "scope"
+    t.integer "lock_version"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string "locale"
+    t.uuid "platform_id"
   end
 
   create_table "mobility_string_translations", force: :cascade do |t|

@@ -11,7 +11,12 @@ gem 'aws-sdk-s3', require: false
 # Use the published version of better_together for production
 gem 'better_together', '~> 0.11.0',
     github: 'better-together-org/community-engine-rails',
-    ref: 'e65d8807ba1749ecd5f0a04627931de4d42a5881'
+    ref: 'f237d15ab49fbefa7d2c2706dc300e05fc762548'
+
+# Google Analytics 4, one measurement id per platform (replaces the inline GTAG_ID partial)
+gem 'better_together-google-analytics',
+    github: 'better-together-org/better_together-google-analytics',
+    branch: 'main'
 
 # Use the local development version of better_together
 # gem 'better_together', path: '/community-engine'
@@ -78,7 +83,7 @@ group :development, :test do
   # Fuubar for fancy test progress bar
   gem 'fuubar'
   # Help with managing translation database
-  gem 'i18n-tasks', '~> 1.2.0'
+  gem 'i18n-tasks', '~> 1.2.1'
   # Pry for a powerful shell alternative to IRB
   gem 'pry'
   # RuboCop for static code analysis
