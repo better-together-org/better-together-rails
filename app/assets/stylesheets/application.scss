@@ -10,10 +10,11 @@
  * files in this directory. Styles in this file should be added after the last require_* statement.
  * It is generally better to create a new file per style scope.
  *
- *= require_tree .
  *= require_self
  */
 
- @import 'theme';
+// theme.scss is the only stylesheet here. Pulling it in with require_tree as well as this import compiled
+// it into application.css twice.
+@import 'theme';
 
 
