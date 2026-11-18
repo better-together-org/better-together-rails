@@ -8,8 +8,8 @@ GIT
 
 GIT
   remote: https://github.com/better-together-org/community-engine-rails.git
-  revision: b05f9ffd16561020e117f5ae2a5bd009129450b5
-  ref: b05f9ffd16561020e117f5ae2a5bd009129450b5
+  revision: 7c60dfb40c0f1adeb982a5df7ccd186691f8fc5a
+  ref: 7c60dfb40c0f1adeb982a5df7ccd186691f8fc5a
   specs:
     better_together (0.11.0)
       active_storage_svg_sanitizer
@@ -745,7 +745,7 @@ GEM
       faraday-follow_redirects
       json-jwt (>= 1.11.0)
       rack (>= 2.1.0)
-    rack-protection (4.2.1)
+    rack-protection (4.2.2)
       base64 (>= 0.1.0)
       logger (>= 1.6.0)
       rack (>= 3.0.0, < 4)
