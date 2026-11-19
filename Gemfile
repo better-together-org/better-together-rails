@@ -33,7 +33,7 @@ gem 'ostruct'
 # Database adapter for PostgreSQL
 gem 'pg', '>= 0.18', '< 2.0'
 # Puma as the app server
-gem 'puma', '~> 8.0'
+gem 'puma', '~> 8.1'
 
 # Pundit for authorization, custom fork for Better Together
 gem 'pundit-resources', '~> 1.1.6', github: 'better-together-org/pundit-resources'
