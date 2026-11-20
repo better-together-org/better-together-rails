@@ -8,8 +8,8 @@ GIT
 
 GIT
   remote: https://github.com/better-together-org/community-engine-rails.git
-  revision: 8e543daa09de950578301c1171a6d51061724f12
-  ref: 8e543daa09de950578301c1171a6d51061724f12
+  revision: 1098d7acb34673dbaddb958c875a461d950756b9
+  ref: 1098d7acb34673dbaddb958c875a461d950756b9
   specs:
     better_together (0.11.0)
       active_storage_svg_sanitizer
@@ -317,7 +317,7 @@ GEM
     doorkeeper (5.9.9)
       railties (>= 5)
     drb (2.2.3)
-    dry-auto_inject (1.2.1)
+    dry-auto_inject (1.2.2)
       dry-core (~> 1.1)
       zeitwerk (~> 2.6)
     dry-configurable (1.4.0)
@@ -334,7 +334,7 @@ GEM
       concurrent-ruby (~> 1.0)
       dry-core (~> 1.1)
       zeitwerk (~> 2.6)
-    dry-schema (1.16.0)
+    dry-schema (1.17.0)
       concurrent-ruby (~> 1.0)
       dry-configurable (~> 1.0, >= 1.0.1)
       dry-core (~> 1.1)
@@ -342,7 +342,7 @@ GEM
       dry-logic (~> 1.6)
       dry-types (~> 1.9, >= 1.9.1)
       zeitwerk (~> 2.6)
-    dry-types (1.9.1)
+    dry-types (1.9.2)
       bigdecimal (>= 3.0)
       concurrent-ruby (~> 1.0)
       dry-core (~> 1.0)
@@ -356,7 +356,7 @@ GEM
     erubi (1.13.1)
     et-orbi (1.4.2)
       tzinfo
-    event_stream_parser (1.0.1)
+    event_stream_parser (1.0.2)
     excon (1.10.0)
     execjs (2.10.0)
     factory_bot (6.5.5)
@@ -585,7 +585,7 @@ GEM
     octokit (10.0.0)
       faraday (>= 1, < 3)
       sawyer (~> 0.9)
-    omniauth (2.4.1)
+    omniauth (2.4.2)
       hashie (>= 3.5.2)
       logger
       rack (>= 2.2.8)
@@ -695,7 +695,7 @@ GEM
     parser (3.3.13.0)
       ast (~> 2.4.1)
       racc
-    pay (12.5.0)
+    pay (12.5.1)
       rails (>= 7.0.0)
     pg (1.7.0-aarch64-linux)
     pg (1.7.0-x86_64-linux)
