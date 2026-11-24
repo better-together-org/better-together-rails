@@ -8,8 +8,8 @@ GIT
 
 GIT
   remote: https://github.com/better-together-org/community-engine-rails.git
-  revision: 1098d7acb34673dbaddb958c875a461d950756b9
-  ref: 1098d7acb34673dbaddb958c875a461d950756b9
+  revision: 536cbd5dbe1d8c745d0755101581389e6fdea47a
+  ref: 536cbd5dbe1d8c745d0755101581389e6fdea47a
   specs:
     better_together (0.11.0)
       active_storage_svg_sanitizer
@@ -23,7 +23,7 @@ GIT
       devise-i18n
       devise-jwt
       devise_zxcvbn
-      doorkeeper (>= 5.7, < 6.0)
+      doorkeeper (>= 5.9.9, < 6.0)
       fast-mcp (>= 1.6.0)
       font-awesome-sass (~> 6.5)
       friendly_id (>= 5.2, < 5.6)
@@ -185,7 +185,7 @@ GEM
       securerandom (>= 0.3)
       tzinfo (~> 2.0, >= 2.0.5)
       uri (>= 0.13.1)
-    addressable (2.9.2)
+    addressable (2.10.0)
       public_suffix (>= 2.0.2, < 8.0)
     aes_key_wrap (1.1.0)
     anonymous_loader (0.1.5)
@@ -314,7 +314,7 @@ GEM
     disposable (0.7.0)
       declarative (>= 0.0.9, < 1.0.0)
       representable (>= 3.1.1, < 4)
-    doorkeeper (5.9.9)
+    doorkeeper (5.9.10)
       railties (>= 5)
     drb (2.2.3)
     dry-auto_inject (1.2.2)
@@ -329,7 +329,7 @@ GEM
       zeitwerk (~> 2.6)
     dry-inflector (1.3.1)
     dry-initializer (3.2.0)
-    dry-logic (1.6.0)
+    dry-logic (1.6.1)
       bigdecimal
       concurrent-ruby (~> 1.0)
       dry-core (~> 1.1)
@@ -462,13 +462,13 @@ GEM
     i18n_generators (2.2.2)
       activerecord (>= 3.0.0)
       railties (>= 3.0.0)
-    icalendar (2.13.0)
+    icalendar (2.14.0)
       base64
       ice_cube (~> 0.16)
       logger
     ice_cube (0.17.0)
     ice_nine (0.11.2)
-    image_processing (2.2.0)
+    image_processing (2.2.2)
     importmap-rails (2.2.3)
       actionpack (>= 6.0.0)
       activesupport (>= 6.0.0)
@@ -570,7 +570,7 @@ GEM
       racc (~> 1.4)
     nokogiri (1.19.7-x86_64-linux-gnu)
       racc (~> 1.4)
-    noticed (3.1.1)
+    noticed (3.2.0)
       rails (>= 7.1.0)
     oauth2 (2.1.0)
       anonymous_loader (~> 0.1, >= 0.1.5)
@@ -734,7 +734,7 @@ GEM
       ffi
     raabro (1.5.0)
     racc (1.8.1)
-    rack (3.2.8)
+    rack (3.2.9)
     rack-attack (6.8.0)
       rack (>= 1.0, < 4)
     rack-cors (3.0.0)
