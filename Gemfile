@@ -48,7 +48,7 @@ gem 'rails', '~> 8.1.0'
 # Redis for ActionCable and background jobs
 # actioncable 8.1.4+ allows redis 6 (`< 7`); older 8.1.x capped it below 6.
 # Sidekiq only needs redis-client >= 0.29.0.
-gem 'redis', '~> 6.0'
+gem 'redis', '~> 6.1'
 
 gem 'connection_pool', '~> 3.0.2'
 gem 'sidekiq', '~> 8.1.7'
